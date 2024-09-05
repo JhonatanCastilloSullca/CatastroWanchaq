@@ -13,22 +13,24 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('lotes', function (Blueprint $table) {
-            $table->string('id_lote',14);
-            $table->string('id_mzna',11)->unsigned();
-            $table->foreign('id_mzna')->references('id_mzna')->on('manzanas');
-            $table->string('codi_lote',3);
-            $table->string('id_hab_urba',10)->nullable();
-            $table->string('mzna_dist',15)->nullable();
-            $table->string('lote_dist',15)->nullable();
-            $table->string('sub_lote_dist',6)->nullable();
-            $table->string('estructuracion',30)->nullable();
-            $table->string('zonificacion',30)->nullable();
-            $table->string('cuc',8)->nullable();
-            $table->string('zona_dist',15)->nullable();   
-            
+        Schema::create('tf_lotes', function (Blueprint $table) {
+            $table->string('id_lote', 14);
+            $table->string('id_mzna', 11)->unsigned();
+            $table->foreign('id_mzna')->references('id_mzna')->on('manzanas')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+            $table->string('codi_lote', 3);
+            $table->string('id_hab_urba', 10)->nullable();
+            $table->string('mzna_dist', 15)->nullable();
+            $table->string('lote_dist', 15)->nullable();
+            $table->string('sub_lote_dist', 6)->nullable();
+            $table->string('estructuracion', 30)->nullable();
+            $table->string('zonificacion', 30)->nullable();
+            $table->string('cuc', 8)->nullable();
+            $table->string('zona_dist', 15)->nullable();
             $table->primary('id_lote');
         });
+        
     }
 
     /**
@@ -38,6 +40,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lotes');
+        Schema::dropIfExists('tf_lotes');
     }
 };

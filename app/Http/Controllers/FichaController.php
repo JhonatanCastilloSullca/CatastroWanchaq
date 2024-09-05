@@ -339,8 +339,8 @@ class FichaController extends Controller
                         $domicilio->lote = $request->lote_dist;
                         $domicilio->sublote = $request->sub_lote_dist;
                         $domicilio->codi_dep = "08";
-                        $domicilio->codi_pro = "13";
-                        $domicilio->codi_dis = "01";
+                        $domicilio->codi_pro = "01";
+                        $domicilio->codi_dis = "08";
                         $domicilio->ubicacion = $request->ubicacionpersona;
                         $domicilio->save();
                     } elseif ($request->ubicacionpersona == '02') {
@@ -420,8 +420,8 @@ class FichaController extends Controller
                         $domicilio->lote = $request->lote_dist;
                         $domicilio->sublote = $request->sub_lote_dist;
                         $domicilio->codi_dep = "08";
-                        $domicilio->codi_pro = "13";
-                        $domicilio->codi_dis = "01";
+                        $domicilio->codi_pro = "01";
+                        $domicilio->codi_dis = "08";
                         $domicilio->ubicacion = $request->ubicacionpersona;
                         $domicilio->save();
                     } elseif ($request->ubicacionpersona == '02') {
@@ -483,8 +483,8 @@ class FichaController extends Controller
                         $domicilio->lote = $request->lote_dist;
                         $domicilio->sublote = $request->sub_lote_dist;
                         $domicilio->codi_dep = "08";
-                        $domicilio->codi_pro = "13";
-                        $domicilio->codi_dis = "01";
+                        $domicilio->codi_pro = "01";
+                        $domicilio->codi_dis = "08";
                         $domicilio->ubicacion = $request->ubicacionpersona;
                         $domicilio->save();
                     } elseif ($request->ubicacionpersona == '02') {
@@ -557,8 +557,8 @@ class FichaController extends Controller
                         $domicilio->lote = $request->lote_dist;
                         $domicilio->sublote = $request->sub_lote_dist;
                         $domicilio->codi_dep = "08";
-                        $domicilio->codi_pro = "13";
-                        $domicilio->codi_dis = "01";
+                        $domicilio->codi_pro = "01";
+                        $domicilio->codi_dis = "08";
                         $domicilio->ubicacion = $request->ubicacionpersona;
                         $domicilio->save();
                     } elseif ($request->ubicacionpersona == '02') {
@@ -1011,7 +1011,8 @@ class FichaController extends Controller
         $mytime = Carbon::now('America/Lima');
         $fileName = 'certificadocatastral.pdf';
         $connection = DB::connection('pgsqlgeo');
-        $coordenadas = $connection->select("
+        $coordenadas = $connection->select(
+            "
             SELECT geom_point.id_lote,
                 ROUND(ST_X(geom_point.geom)::decimal, 2) AS x,
                 ROUND(ST_Y(geom_point.geom)::decimal, 2) AS y,
@@ -1032,11 +1033,11 @@ class FichaController extends Controller
         FROM (
             SELECT ST_Expand(ST_Extent(geom), 5) AS extent
             FROM geo.tg_lote
-            WHERE id_lote= '".$ficha->ficha->id_lote."'
+            WHERE id_lote= '" . $ficha->ficha->id_lote . "'
         ) AS subconsulta;
         ");
 
-        $url = env('URL_MAP')."/servicio/wms?service=WMS&request=GetMap&layers=lotes,id_lotes,vertices_lote&styles=&format=image%2Fpng&transparent=true&version=1.1.1&width=450&height=400&srs=EPSG%3A32718&bbox=".$extension[0]->extension."&id=".$ficha->ficha->id_lote;
+        $url = env('URL_MAP') . "/servicio/wms?service=WMS&request=GetMap&layers=lotes,id_lotes,vertices_lote&styles=&format=image%2Fpng&transparent=true&version=1.1.1&width=450&height=400&srs=EPSG%3A32718&bbox=" . $extension[0]->extension . "&id=" . $ficha->ficha->id_lote;
 
         $usos = Uso::orderBy('codi_uso')->get();
         $mpdf = new \Mpdf\Mpdf([
@@ -1051,7 +1052,7 @@ class FichaController extends Controller
         $logos = Institucion::first();
         $fecha = date("d/m/Y", strtotime($mytime));
         $hora = date("H:m:s", strtotime($mytime));
-        $html = \View::make('pages.pdf.certificadocatastral', compact('url','ficha', 'logos', 'fecha', 'hora', 'usos','coordenadas'));
+        $html = \View::make('pages.pdf.certificadocatastral', compact('url', 'ficha', 'logos', 'fecha', 'hora', 'usos', 'coordenadas'));
         $html = $html->render();
         $mpdf->setFooter('<div style="background-color: #4646A3;border: solid 1px #fff !important;color:#fff;margin:0;padding:0;line-height:14px;text-align: center">LA INFORMACION CONTENIDA EN EL PRESENTE NO GENERA NI RECONOCE DERECHOS DE PROPIEDAD</div><div style="border: solid 1px #fff !important;text-align: center; font-size:8px;">LA INFORMACION CONTENIDA EN EL PRESENTE NO GENERA NI RECONOCE DERECHOS DE PROPIEDAD</div><div style="border: solid 1px #fff !important;text-align: center; font-size:8px;">MEJORAMIENTO DEL SERVICIO DE INFORMACION PREDIAL URBANA DEL DISTRITO DE  PROVINCIA DE  - CUSCO</div>');
         $mpdf->WriteHTML($html);
@@ -1154,16 +1155,16 @@ class FichaController extends Controller
             'margin_bottom' => 10,
             'margin_header' => 10,
             'margin_footer' => 10,
-        ]); 
+        ]);
 
         $sectores = Sectore::where('id_sector', $sector)->orderby('codi_sector')->first();
         $sector2 = $sector;
         $areaPorLote = UniCat::select('tf_uni_cat.id_lote')
-        ->join('tf_fichas as tf', 'tf_uni_cat.id_uni_cat', '=', 'tf.id_uni_cat')
-        ->leftJoin('tf_fichas_bienes_comunes as tb', 'tf.id_ficha', '=', 'tb.id_ficha')
-        ->leftJoin('tf_fichas_individuales as ti', 'tf.id_ficha', '=', 'ti.id_ficha')
-        ->leftJoin('tf_construcciones as tc', 'tf.id_ficha', '=', 'tc.id_ficha')
-        ->selectRaw('
+            ->join('tf_fichas as tf', 'tf_uni_cat.id_uni_cat', '=', 'tf.id_uni_cat')
+            ->leftJoin('tf_fichas_bienes_comunes as tb', 'tf.id_ficha', '=', 'tb.id_ficha')
+            ->leftJoin('tf_fichas_individuales as ti', 'tf.id_ficha', '=', 'ti.id_ficha')
+            ->leftJoin('tf_construcciones as tc', 'tf.id_ficha', '=', 'tc.id_ficha')
+            ->selectRaw('
             SUM(
                 CASE
                     WHEN tf.tipo_ficha = \'04\' THEN COALESCE(tb.area_verificada, 0)
@@ -1176,16 +1177,16 @@ class FichaController extends Controller
                 END
             ) as totalAreaPorLote
         ')
-        ->groupBy('tf_uni_cat.id_lote')
-        ->toSql();
-        
-        $areaPorPiso = UniCat::select('tf_uni_cat.id_lote','tf_uni_cat.id_edificacion','tf_uni_cat.codi_entrada','tf_uni_cat.codi_piso')
-        ->join('tf_fichas as tf', 'tf_uni_cat.id_uni_cat', '=', 'tf.id_uni_cat')
-        ->join('tf_edificaciones as te', 'tf_uni_cat.id_edificacion', '=', 'te.id_edificacion')
-        ->leftJoin('tf_fichas_bienes_comunes as tb', 'tf.id_ficha', '=', 'tb.id_ficha')
-        ->leftJoin('tf_fichas_individuales as ti', 'tf.id_ficha', '=', 'ti.id_ficha')
-        ->leftJoin('tf_construcciones as tc', 'tf.id_ficha', '=', 'tc.id_ficha')
-        ->selectRaw('
+            ->groupBy('tf_uni_cat.id_lote')
+            ->toSql();
+
+        $areaPorPiso = UniCat::select('tf_uni_cat.id_lote', 'tf_uni_cat.id_edificacion', 'tf_uni_cat.codi_entrada', 'tf_uni_cat.codi_piso')
+            ->join('tf_fichas as tf', 'tf_uni_cat.id_uni_cat', '=', 'tf.id_uni_cat')
+            ->join('tf_edificaciones as te', 'tf_uni_cat.id_edificacion', '=', 'te.id_edificacion')
+            ->leftJoin('tf_fichas_bienes_comunes as tb', 'tf.id_ficha', '=', 'tb.id_ficha')
+            ->leftJoin('tf_fichas_individuales as ti', 'tf.id_ficha', '=', 'ti.id_ficha')
+            ->leftJoin('tf_construcciones as tc', 'tf.id_ficha', '=', 'tc.id_ficha')
+            ->selectRaw('
             SUM(
                 CASE
                     WHEN tf.tipo_ficha = \'04\' THEN COALESCE(tb.area_verificada, 0)
@@ -1198,33 +1199,33 @@ class FichaController extends Controller
                 END
             ) as totalAreaPorPiso
         ')
-        ->groupBy('tf_uni_cat.id_lote','tf_uni_cat.id_edificacion','tf_uni_cat.codi_entrada','tf_uni_cat.codi_piso')
-        ->toSql();
+            ->groupBy('tf_uni_cat.id_lote', 'tf_uni_cat.id_edificacion', 'tf_uni_cat.codi_entrada', 'tf_uni_cat.codi_piso')
+            ->toSql();
 
         $titulares = UniCat::with([
-            'edificacion', 
-            'lote', 
-            'lote.manzana', 
+            'edificacion',
+            'lote',
+            'lote.manzana',
             'lote.manzana.sectore',
             'titularesPersonalizados',
             'puertaPersonalizada',
             'areaIndividual'
         ])
-        ->whereHas('fichas')
-        ->whereHas('lote.manzana.sectore', function ($query) use ($sector2) {
-            $query->where('id_sector', $sector2);
-        })
-        ->join(DB::raw('(' . $areaPorLote . ') as area_por_lote'), 'tf_uni_cat.id_lote', '=', 'area_por_lote.id_lote')
-        ->join(DB::raw('(' . $areaPorPiso . ') as area_por_piso'), function($join) {
-            $join->on('tf_uni_cat.id_lote', '=', 'area_por_piso.id_lote')
-                ->on('tf_uni_cat.codi_entrada', '=', 'area_por_piso.codi_entrada')
-                ->on('tf_uni_cat.codi_piso', '=', 'area_por_piso.codi_piso')
-                ->on('tf_uni_cat.id_edificacion', '=', 'area_por_piso.id_edificacion');
-        })
-        ->select('tf_uni_cat.*', 'area_por_lote.totalareaporlote', 'area_por_piso.totalareaporpiso')
-        ->distinct()
-        ->orderBy('tf_uni_cat.cuc', 'asc')
-        ->get();
+            ->whereHas('fichas')
+            ->whereHas('lote.manzana.sectore', function ($query) use ($sector2) {
+                $query->where('id_sector', $sector2);
+            })
+            ->join(DB::raw('(' . $areaPorLote . ') as area_por_lote'), 'tf_uni_cat.id_lote', '=', 'area_por_lote.id_lote')
+            ->join(DB::raw('(' . $areaPorPiso . ') as area_por_piso'), function ($join) {
+                $join->on('tf_uni_cat.id_lote', '=', 'area_por_piso.id_lote')
+                    ->on('tf_uni_cat.codi_entrada', '=', 'area_por_piso.codi_entrada')
+                    ->on('tf_uni_cat.codi_piso', '=', 'area_por_piso.codi_piso')
+                    ->on('tf_uni_cat.id_edificacion', '=', 'area_por_piso.id_edificacion');
+            })
+            ->select('tf_uni_cat.*', 'area_por_lote.totalareaporlote', 'area_por_piso.totalareaporpiso')
+            ->distinct()
+            ->orderBy('tf_uni_cat.cuc', 'asc')
+            ->get();
 
         $numero = count($titulares);
         $total = 0;
@@ -1246,11 +1247,11 @@ class FichaController extends Controller
         $sectores = Sectore::where('id_sector', $sector)->orderby('codi_sector')->first();
         $sector2 = $sector;
         $areaPorLote = UniCat::select('tf_uni_cat.id_lote')
-        ->join('tf_fichas as tf', 'tf_uni_cat.id_uni_cat', '=', 'tf.id_uni_cat')
-        ->leftJoin('tf_fichas_bienes_comunes as tb', 'tf.id_ficha', '=', 'tb.id_ficha')
-        ->leftJoin('tf_fichas_individuales as ti', 'tf.id_ficha', '=', 'ti.id_ficha')
-        ->leftJoin('tf_construcciones as tc', 'tf.id_ficha', '=', 'tc.id_ficha')
-        ->selectRaw('
+            ->join('tf_fichas as tf', 'tf_uni_cat.id_uni_cat', '=', 'tf.id_uni_cat')
+            ->leftJoin('tf_fichas_bienes_comunes as tb', 'tf.id_ficha', '=', 'tb.id_ficha')
+            ->leftJoin('tf_fichas_individuales as ti', 'tf.id_ficha', '=', 'ti.id_ficha')
+            ->leftJoin('tf_construcciones as tc', 'tf.id_ficha', '=', 'tc.id_ficha')
+            ->selectRaw('
             SUM(
                 CASE
                     WHEN tf.tipo_ficha = \'04\' THEN COALESCE(tb.area_verificada, 0)
@@ -1263,16 +1264,16 @@ class FichaController extends Controller
                 END
             ) as totalAreaPorLote
         ')
-        ->groupBy('tf_uni_cat.id_lote')
-        ->toSql();
-        
-        $areaPorPiso = UniCat::select('tf_uni_cat.id_lote','tf_uni_cat.id_edificacion','tf_uni_cat.codi_entrada','tf_uni_cat.codi_piso')
-        ->join('tf_fichas as tf', 'tf_uni_cat.id_uni_cat', '=', 'tf.id_uni_cat')
-        ->join('tf_edificaciones as te', 'tf_uni_cat.id_edificacion', '=', 'te.id_edificacion')
-        ->leftJoin('tf_fichas_bienes_comunes as tb', 'tf.id_ficha', '=', 'tb.id_ficha')
-        ->leftJoin('tf_fichas_individuales as ti', 'tf.id_ficha', '=', 'ti.id_ficha')
-        ->leftJoin('tf_construcciones as tc', 'tf.id_ficha', '=', 'tc.id_ficha')
-        ->selectRaw('
+            ->groupBy('tf_uni_cat.id_lote')
+            ->toSql();
+
+        $areaPorPiso = UniCat::select('tf_uni_cat.id_lote', 'tf_uni_cat.id_edificacion', 'tf_uni_cat.codi_entrada', 'tf_uni_cat.codi_piso')
+            ->join('tf_fichas as tf', 'tf_uni_cat.id_uni_cat', '=', 'tf.id_uni_cat')
+            ->join('tf_edificaciones as te', 'tf_uni_cat.id_edificacion', '=', 'te.id_edificacion')
+            ->leftJoin('tf_fichas_bienes_comunes as tb', 'tf.id_ficha', '=', 'tb.id_ficha')
+            ->leftJoin('tf_fichas_individuales as ti', 'tf.id_ficha', '=', 'ti.id_ficha')
+            ->leftJoin('tf_construcciones as tc', 'tf.id_ficha', '=', 'tc.id_ficha')
+            ->selectRaw('
             SUM(
                 CASE
                     WHEN tf.tipo_ficha = \'04\' THEN COALESCE(tb.area_verificada, 0)
@@ -1285,33 +1286,33 @@ class FichaController extends Controller
                 END
             ) as totalAreaPorPiso
         ')
-        ->groupBy('tf_uni_cat.id_lote','tf_uni_cat.id_edificacion','tf_uni_cat.codi_entrada','tf_uni_cat.codi_piso')
-        ->toSql();
+            ->groupBy('tf_uni_cat.id_lote', 'tf_uni_cat.id_edificacion', 'tf_uni_cat.codi_entrada', 'tf_uni_cat.codi_piso')
+            ->toSql();
 
         $titulares = UniCat::with([
-            'edificacion', 
-            'lote', 
-            'lote.manzana', 
+            'edificacion',
+            'lote',
+            'lote.manzana',
             'lote.manzana.sectore',
             'titularesPersonalizados',
             'puertaPersonalizada',
             'areaIndividual'
         ])
-        ->whereHas('fichas')
-        ->whereHas('lote.manzana.sectore', function ($query) use ($sector2) {
-            $query->where('id_sector', $sector2);
-        })
-        ->join(DB::raw('(' . $areaPorLote . ') as area_por_lote'), 'tf_uni_cat.id_lote', '=', 'area_por_lote.id_lote')
-        ->join(DB::raw('(' . $areaPorPiso . ') as area_por_piso'), function($join) {
-            $join->on('tf_uni_cat.id_lote', '=', 'area_por_piso.id_lote')
-                ->on('tf_uni_cat.codi_entrada', '=', 'area_por_piso.codi_entrada')
-                ->on('tf_uni_cat.codi_piso', '=', 'area_por_piso.codi_piso')
-                ->on('tf_uni_cat.id_edificacion', '=', 'area_por_piso.id_edificacion');
-        })
-        ->select('tf_uni_cat.*', 'area_por_lote.totalareaporlote', 'area_por_piso.totalareaporpiso')
-        ->distinct()
-        ->orderBy('tf_uni_cat.cuc', 'asc')
-        ->get();
+            ->whereHas('fichas')
+            ->whereHas('lote.manzana.sectore', function ($query) use ($sector2) {
+                $query->where('id_sector', $sector2);
+            })
+            ->join(DB::raw('(' . $areaPorLote . ') as area_por_lote'), 'tf_uni_cat.id_lote', '=', 'area_por_lote.id_lote')
+            ->join(DB::raw('(' . $areaPorPiso . ') as area_por_piso'), function ($join) {
+                $join->on('tf_uni_cat.id_lote', '=', 'area_por_piso.id_lote')
+                    ->on('tf_uni_cat.codi_entrada', '=', 'area_por_piso.codi_entrada')
+                    ->on('tf_uni_cat.codi_piso', '=', 'area_por_piso.codi_piso')
+                    ->on('tf_uni_cat.id_edificacion', '=', 'area_por_piso.id_edificacion');
+            })
+            ->select('tf_uni_cat.*', 'area_por_lote.totalareaporlote', 'area_por_piso.totalareaporpiso')
+            ->distinct()
+            ->orderBy('tf_uni_cat.cuc', 'asc')
+            ->get();
 
         $numero = count($titulares);
         $total = 0;

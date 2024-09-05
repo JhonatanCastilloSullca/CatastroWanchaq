@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('registro_legals', function (Blueprint $table) {
-            $table->string('id_ficha',19)->unsigned();
-            $table->foreign('id_ficha')->references('id_ficha')->on('fichas');
-            $table->string('id_notaria',11)->unsigned();
-            $table->foreign('id_notaria')->references('id_notaria')->on('notarias');
-            $table->string('kardex',20)->nullable();
-            $table->date('fecha_escritura')->nullable();   
+        Schema::create('tf_registro_legal', function (Blueprint $table) {
+            $table->string('id_ficha', 19)->unsigned();
+            $table->foreign('id_ficha')->references('id_ficha')->on('tf_fichas')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('id_notaria', 11)->unsigned();
+            $table->foreign('id_notaria')->references('id_notaria')->on('tf_notarias')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('kardex', 20)->nullable();
+            $table->date('fecha_escritura')->nullable();
         });
+        
     }
 
     /**
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('registro_legals');
+        Schema::dropIfExists('tf_registro_legal');
     }
 };

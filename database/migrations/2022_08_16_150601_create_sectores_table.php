@@ -13,23 +13,26 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sectores', function (Blueprint $table) {
-            $table->string('id_sector',8);
-            $table->string('id_ubi_geo',6)->unsigned();
-            $table->foreign('id_ubi_geo')->references('id_ubi_geo')->on('ubigeos');
-            $table->string('codi_sector',2)->unique();
-            $table->string('nomb_sector',20)->nullable();
-            $table->integer('fichaindividual')->nullable()->default('0');
-            $table->integer('fichacotitular')->nullable()->default('0');
-            $table->integer('fichaeconomica')->nullable()->default('0');
-            $table->integer('fichabiencomun')->nullable()->default('0');
-            $table->integer('fichacultural')->nullable()->default('0');
-            $table->integer('ficharural')->nullable()->default('0');
-
-            $table->string('estado',1);
-
+        Schema::create('tf_sectores', function (Blueprint $table) {
+            $table->string('id_sector', 8);
+            $table->string('id_ubi_geo', 6)->unsigned();            
+            $table->foreign('id_ubi_geo')
+                  ->references('id_ubi_geo')
+                  ->on('tf_ubigeo')
+                  ->onDelete('cascade') 
+                  ->onUpdate('cascade');            
+            $table->string('codi_sector', 2)->unique();
+            $table->string('nomb_sector', 20)->nullable();
+            $table->integer('fichaindividual')->nullable()->default(0);
+            $table->integer('fichacotitular')->nullable()->default(0);
+            $table->integer('fichaeconomica')->nullable()->default(0);
+            $table->integer('fichabiencomun')->nullable()->default(0);
+            $table->integer('fichacultural')->nullable()->default(0);
+            $table->integer('ficharural')->nullable()->default(0);
+            $table->string('estado', 1);
             $table->primary('id_sector');
         });
+        
     }
 
     /**

@@ -13,18 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('documento_adjuntos', function (Blueprint $table) {
-            $table->string('id_doc',21);
-            $table->string('id_ficha',19)->unsigned();
-            $table->foreign('id_ficha')->references('id_ficha')->on('fichas');
-            $table->integer('codi_doc')->nullable(); 
-            $table->string('tipo_doc',2)->nullable(); 
-            $table->string('nume_doc',20)->nullable(); 
-            $table->decimal('area_autorizada',7,2)->nullable(); 
-            $table->date('fecha_doc')->nullable(); 
-            $table->string('url_doc',250)->nullable(); 
+        Schema::create('tf_documentos_adjuntos', function (Blueprint $table) {
+            $table->string('id_doc', 21);
+            $table->string('id_ficha', 19)->unsigned();
+            $table->foreign('id_ficha')->references('id_ficha')->on('fichas')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('codi_doc')->nullable();
+            $table->string('tipo_doc', 2)->nullable();
+            $table->string('nume_doc', 20)->nullable();
+            $table->decimal('area_autorizada', 7, 2)->nullable();
+            $table->date('fecha_doc')->nullable();
+            $table->string('url_doc', 250)->nullable();
             $table->primary('id_doc');
         });
+        
     }
 
     /**
@@ -34,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('documento_adjuntos');
+        Schema::dropIfExists('tf_documentos_adjuntos');
     }
 };

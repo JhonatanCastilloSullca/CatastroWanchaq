@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('historia_vias', function (Blueprint $table) {
+        Schema::create('tf_historia_via', function (Blueprint $table) {
             $table->id('id_historia_via');
-            $table->string('nomb_via_ant',100);
-            $table->date('fecha_his_via')->nullable();;            
-            $table->string('id_via',12)->unsigned();
-            $table->foreign('id_via')->references('id_via')->on('vias');
-            $table->string('activo',1);  
-
+            $table->string('nomb_via_ant', 100);
+            $table->date('fecha_his_via')->nullable();
+            $table->string('id_via', 12)->unsigned();
+            $table->foreign('id_via')->references('id_via')->on('vias')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('activo', 1);
         });
+        
     }
 
     /**
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('historia_vias');
+        Schema::dropIfExists('tf_historia_via');
     }
 };

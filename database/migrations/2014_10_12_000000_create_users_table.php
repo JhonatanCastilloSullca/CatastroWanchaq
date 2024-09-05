@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('tf_usuarios', function (Blueprint $table) {
             $table->id('id_usuario');
             $table->integer('codi_usuario');
             $table->string('usuario',50)->unique();
@@ -38,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('tf_usuarios');
     }
 };

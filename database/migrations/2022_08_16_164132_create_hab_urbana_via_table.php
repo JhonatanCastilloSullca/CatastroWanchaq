@@ -14,12 +14,20 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tf_vias_hab_urba', function (Blueprint $table) {
-            $table->string('id_via',12)->unsigned();
-            $table->foreign('id_via')->references('id_via')->on('vias');
-            $table->string('id_hab_urba',10)->unsigned();
-            $table->foreign('id_hab_urba')->references('id_hab_urba')->on('hab_urbanas');
-
+            $table->string('id_via', 12)->unsigned();
+            $table->foreign('id_via')
+            ->references('id_via')
+            ->on('vias')
+            ->onDelete('cascade') 
+            ->onUpdate('cascade');        
+            $table->string('id_hab_urba', 10)->unsigned();
+            $table->foreign('id_hab_urba')
+            ->references('id_hab_urba')
+            ->on('hab_urbanas')
+            ->onDelete('cascade') 
+            ->onUpdate('cascade');
         });
+        
     }
 
     /**
@@ -29,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hab_urbana_via');
+        Schema::dropIfExists('tf_vias_hab_urba');
     }
 };

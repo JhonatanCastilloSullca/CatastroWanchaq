@@ -13,16 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('manzanas', function (Blueprint $table) {
-            $table->string('id_mzna',11);
-            $table->string('id_sector',8)->unsigned();
-            $table->foreign('id_sector')->references('id_sector')->on('sectores');
-            $table->string('codi_mzna',3);
-            $table->string('nume_mzna',15)->nullable();
-            $table->string('estado',1);
-            
+        Schema::create('tf_manzanas', function (Blueprint $table) {
+            $table->string('id_mzna', 11);            
+            $table->string('id_sector', 8)->unsigned();            
+            $table->foreign('id_sector')
+            ->references('id_sector')
+            ->on('sectores')
+            ->onDelete('cascade') 
+            ->onUpdate('cascade');            
+            $table->string('codi_mzna', 3);
+            $table->string('nume_mzna', 15)->nullable();
+            $table->string('estado', 1);            
             $table->primary('id_mzna');
         });
+        
     }
 
     /**
@@ -32,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('manzanas');
+        Schema::dropIfExists('tf_manzanas');
     }
 };

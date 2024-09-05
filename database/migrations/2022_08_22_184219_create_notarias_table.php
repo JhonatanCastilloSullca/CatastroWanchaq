@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('notarias', function (Blueprint $table) {
-            $table->string('id_notaria',11);
+        Schema::create('tf_notarias', function (Blueprint $table) {
+            $table->string('id_notaria', 11);
             $table->integer('codi_notaria')->nullable();
-            $table->string('nomb_notaria',50)->nullable();           
-            $table->string('id_ubi_geo',6)->unsigned();
-            $table->foreign('id_ubi_geo')->references('id_ubi_geo')->on('ubigeos');
-
+            $table->string('nomb_notaria', 50)->nullable();
+            $table->string('id_ubi_geo', 6)->unsigned();
+            $table->foreign('id_ubi_geo')->references('id_ubi_geo')->on('ubigeos')->onDelete('cascade')->onUpdate('cascade');
             $table->primary('id_notaria');
         });
+        
     }
 
     /**
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('notarias');
+        Schema::dropIfExists('tf_notarias');
     }
 };

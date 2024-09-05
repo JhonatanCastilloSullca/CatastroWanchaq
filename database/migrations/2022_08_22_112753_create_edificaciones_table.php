@@ -13,17 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('edificaciones', function (Blueprint $table) {
-            $table->string('id_edificacion',16);
-            $table->string('id_lote',14)->unsigned();
-            $table->foreign('id_lote')->references('id_lote')->on('lotes');
-            $table->string('codi_edificacion',3);
-            $table->string('tipo_edificacion',15)->nullable();
-            $table->string('nomb_edificacion',15)->nullable();
-            $table->string('clasificacion',4)->nullable();  
-            
+        Schema::create('tf_edificaciones', function (Blueprint $table) {
+            $table->string('id_edificacion', 16);
+            $table->string('id_lote', 14)->unsigned();
+            $table->foreign('id_lote')->references('id_lote')->on('lotes')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+            $table->string('codi_edificacion', 3);
+            $table->string('tipo_edificacion', 15)->nullable();
+            $table->string('nomb_edificacion', 15)->nullable();
+            $table->string('clasificacion', 4)->nullable();
             $table->primary('id_edificacion');
         });
+        
     }
 
     /**
@@ -33,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('edificaciones');
+        Schema::dropIfExists('tf_edificaciones');
     }
 };

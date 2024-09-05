@@ -910,8 +910,8 @@ class FichaIndividualRentasEdit extends Component
                 ]);
             }
             $this->departamentootros = "08";
-            $this->provinciaotros = "13";
-            $this->distritootros = "01";
+            $this->provinciaotros = "01";
+            $this->distritootros = "08";
 
             foreach ($this->tipopuerta as $i => $tipovia) {
                 if ($tipovia == "P") {

@@ -13,19 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('puertas', function (Blueprint $table) {
-            $table->string('id_puerta',16);
-            $table->string('id_lote',14)->unsigned();
-            $table->foreign('id_lote')->references('id_lote')->on('lotes');
-            $table->string('codi_puerta',2)->nullable();
-            $table->string('tipo_puerta',1)->nullable();
-            $table->string('nume_muni',20)->nullable();
-            $table->string('cond_nume',2)->nullable();
-            $table->string('id_via',12)->unsigned();
-            $table->foreign('id_via')->references('id_via')->on('vias');
-            $table->string('nume_certificacion',10)->nullable();
+        Schema::create('tf_puertas', function (Blueprint $table) {
+            $table->string('id_puerta', 16);
+            $table->string('id_lote', 14)->unsigned();
+            $table->foreign('id_lote')->references('id_lote')->on('lotes')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('codi_puerta', 2)->nullable();
+            $table->string('tipo_puerta', 1)->nullable();
+            $table->string('nume_muni', 20)->nullable();
+            $table->string('cond_nume', 2)->nullable();
+            $table->string('id_via', 12)->unsigned();
+            $table->foreign('id_via')->references('id_via')->on('vias')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('nume_certificacion', 10)->nullable();
             $table->primary('id_puerta');
         });
+        
     }
 
     /**
@@ -35,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('puertas');
+        Schema::dropIfExists('tf_puertas');
     }
 };

@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('personas', function (Blueprint $table) {
+        Schema::create('tf_personas', function (Blueprint $table) {
             $table->string('id_persona',21);
             $table->string('nume_doc',17)->nullable();
             $table->string('tipo_doc',2)->nullable();  
@@ -24,8 +24,7 @@ return new class extends Migration
             $table->string('tipo_persona_juridica',2)->nullable();
             $table->string('tipo_funcion',1)->nullable(); 
             $table->string('nregistro',7)->nullable(); 
-            $table->string('razon_social',100)->nullable(); 
-            
+            $table->string('razon_social',100)->nullable();             
             $table->primary('id_persona');
         });
     }
@@ -37,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('personas');
+        Schema::dropIfExists('tf_personas');
     }
 };

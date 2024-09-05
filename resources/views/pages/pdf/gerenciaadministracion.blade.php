@@ -255,13 +255,13 @@
     <div style="width: 716px;height:16px;margin: auto;border:none; margin-bottom:5px;background-color:#fff;">
 
         <div style="width: 120px;height: 120px;float:left;border:none;vertical-align:middle">
-            <img src="{{$logos?->logo_institucion}}" alt="Logo">
+            <img src="{{ $logos?->logo_institucion }}" alt="Logo">
         </div>
 
         <div style="width: 473px;height: 8px;float:left;border:none;">
             <div style="width: 473px;height:16px;margin: auto;" class="bn">
                 <div class="texto fz18 lh14">
-                    <b style="color:#5d0d0d"> {{$logos?->desc_institucion}}</b>
+                    <b style="color:#5d0d0d"> {{ $logos?->desc_institucion }}</b>
                 </div>
             </div>
             <div style="width: 473px;height:16px;margin: auto;" class="bn">
@@ -272,10 +272,11 @@
             <div style="width: 473px;height:16px;margin: auto;" class="bn">
                 <div class="texto fz8 lh14">
                     GERENCIA DE DESARROLLO URBANO Y RURAL<br>
-                    FECHA: {{$fecha}} / HORA: {{$hora}}
+                    FECHA: {{ $fecha }} / HORA: {{ $hora }}
                 </div>
             </div>
-            <div style="width: 473px;height:16px;margin: auto; padding-top:5px;padding-bottom:5px; margin-bottom:5px; " class="bgfdc">
+            <div style="width: 473px;height:16px;margin: auto; padding-top:5px;padding-bottom:5px; margin-bottom:5px; "
+                class="bgfdc">
                 <div class="texto fz14 lh14">
                     <b>INFORME TECNICO CATASTRAL GERENCIA DE ADMINISTRACION TRIBUTARIA</b>
                 </div>
@@ -361,43 +362,43 @@
                             08
                         </div>
                         <div style="width: 34px;height: 16px;float:left;" class="texto2 fz8 lh14">
-                            13
+                            01
                         </div>
                         <div style="width: 34.9px;height: 16px;float:left;" class="texto2 fz8 lh14">
-                            01
+                            08
                         </div>
                     </div>
                 </div>
                 <div style="width: 35px;height: 16px;float:left;" class="texto2 fz8 lh14">
-                    {{$ficha?->unicat?->edificacion?->lote?->manzana?->sectore?->codi_sector}}
+                    {{ $ficha?->unicat?->edificacion?->lote?->manzana?->sectore?->codi_sector }}
                 </div>
                 <div style="width: 53px;height: 16px;float:left;" class="texto2 fz8 lh14">
-                    {{$ficha?->unicat?->edificacion?->lote?->manzana?->codi_mzna}}
+                    {{ $ficha?->unicat?->edificacion?->lote?->manzana?->codi_mzna }}
                 </div>
                 <div style="width: 51px;height: 16px;float:left;" class="texto2 fz8 lh14">
-                    {{$ficha?->unicat?->edificacion?->lote?->codi_lote}}
+                    {{ $ficha?->unicat?->edificacion?->lote?->codi_lote }}
                 </div>
                 <div style="width: 35px;height: 16px;float:left;" class="texto2 fz8 lh14">
-                    {{$ficha?->unicat?->edificacion?->codi_edificacion}}
+                    {{ $ficha?->unicat?->edificacion?->codi_edificacion }}
                 </div>
                 <div style="width: 34px;height: 16px;float:left;" class="texto2 fz8 lh14">
-                    {{$ficha?->unicat?->codi_entrada}}
+                    {{ $ficha?->unicat?->codi_entrada }}
                 </div>
                 <div style="width: 35px;height: 16px;float:left;" class="texto2 fz8 lh14">
-                    {{$ficha?->unicat?->codi_piso}}
+                    {{ $ficha?->unicat?->codi_piso }}
                 </div>
                 <div style="width: 52px;height: 16px;float:left;" class="texto2 fz8 lh14">
-                    {{$ficha?->unicat?->codi_unidad}}
+                    {{ $ficha?->unicat?->codi_unidad }}
                 </div>
                 <div style="width: 17.9px;height: 16px;float:left;" class="texto2 fz8 lh14">
-                    {{$ficha?->dc}}
+                    {{ $ficha?->dc }}
                 </div>
             </div>
             <!-- fila 05-->
         </div>
 
         <div style="width: 120px;height: 120px;float:left;border:none;">
-            <img src="{{$logos?->logo_catastro}}" alt="">
+            <img src="{{ $logos?->logo_catastro }}" alt="">
         </div>
     </div>
     <br></br>
@@ -418,30 +419,31 @@
             </div>
 
 
-            @if($ficha?->titulars != "")
-            @foreach($ficha?->titulars as $titulars)
-            <div style="width: 290px;height: 16px;float:left;">
-                <div class="texto fz6 lh14" class="texto2 fz8 lh14">
-                    {{$titulars?->persona?->nombres}} {{$titulars?->persona?->ape_paterno}} {{$titulars?->persona?->ape_materno}} {{$titulars?->persona?->razon_social}}
-                </div>
-            </div>
-            <div style="width: 124.9px;height: 16px;float:left;">
-                <div class="texto2 fz8 lh14">
-                    {{$titulars?->persona?->nume_doc}}
-                </div>
-            </div>
-            @endforeach
+            @if ($ficha?->titulars != '')
+                @foreach ($ficha?->titulars as $titulars)
+                    <div style="width: 290px;height: 16px;float:left;">
+                        <div class="texto fz6 lh14" class="texto2 fz8 lh14">
+                            {{ $titulars?->persona?->nombres }} {{ $titulars?->persona?->ape_paterno }}
+                            {{ $titulars?->persona?->ape_materno }} {{ $titulars?->persona?->razon_social }}
+                        </div>
+                    </div>
+                    <div style="width: 124.9px;height: 16px;float:left;">
+                        <div class="texto2 fz8 lh14">
+                            {{ $titulars?->persona?->nume_doc }}
+                        </div>
+                    </div>
+                @endforeach
             @else
-            <div style="width: 290px;height: 16px;float:left;">
-                <div class="texto fz6 lh14">
+                <div style="width: 290px;height: 16px;float:left;">
+                    <div class="texto fz6 lh14">
 
+                    </div>
                 </div>
-            </div>
-            <div style="width: 124.9px;height: 16px;float:left;">
-                <div class="texto fz6 lh14">
+                <div style="width: 124.9px;height: 16px;float:left;">
+                    <div class="texto fz6 lh14">
 
+                    </div>
                 </div>
-            </div>
             @endif
 
             <div style="width: 417px;height:10px;float:left;" class="bn">
@@ -454,8 +456,8 @@
                 </div>
                 <div style="width: 120PX;height:10px;float:left;" class="bn">
                     <div class=" ti texto fz6 lh14">
-                        @if($ficha?->titular != "")
-                        {{$ficha?->titular?->condiciontitular?->desc_codigo}}
+                        @if ($ficha?->titular != '')
+                            {{ $ficha?->titular?->condiciontitular?->desc_codigo }}
                         @endif
                     </div>
                 </div>
@@ -467,7 +469,7 @@
                 <div style="width: 80PX;height:10px;float:left;" class="bn">
                     <div class=" ti texto fz6 lh14">
 
-                        {{$ficha?->titular?->porc_cotitular}}
+                        {{ $ficha?->titular?->porc_cotitular }}
 
                     </div>
                 </div>
@@ -479,8 +481,9 @@
                 </div>
                 <div style="width: 206PX;height:10px;float:left;" class="bn">
                     <div class=" ti texto fz6 lh14">
-                        @if($ficha?->domiciliotitular != "")
-                        {{$ficha?->domiciliotitular?->tipo_via}} {{$ficha?->domiciliotitular?->nomb_via}} {{$ficha?->domiciliotitular?->nume_muni}}
+                        @if ($ficha?->domiciliotitular != '')
+                            {{ $ficha?->domiciliotitular?->tipo_via }} {{ $ficha?->domiciliotitular?->nomb_via }}
+                            {{ $ficha?->domiciliotitular?->nume_muni }}
                         @endif
                     </div>
                 </div>
@@ -503,42 +506,42 @@
                     N° MUNI
                 </div>
             </div>
-            @if($ficha?->puertas!="")
-            @foreach($ficha?->puertas as $puerta)
-            <div style="width: 102PX;height: 16px;float:left;">
-                <div class="texto fz8 lh14">
-                    {{$puerta?->via?->tipo_via}}
-                </div>
-            </div>
-            <div style="width: 208PX;height: 16px;float:left;">
-                <div class="texto fz8 lh14">
-                    {{$puerta?->via?->nomb_via}}
-                </div>
-            </div>
+            @if ($ficha?->puertas != '')
+                @foreach ($ficha?->puertas as $puerta)
+                    <div style="width: 102PX;height: 16px;float:left;">
+                        <div class="texto fz8 lh14">
+                            {{ $puerta?->via?->tipo_via }}
+                        </div>
+                    </div>
+                    <div style="width: 208PX;height: 16px;float:left;">
+                        <div class="texto fz8 lh14">
+                            {{ $puerta?->via?->nomb_via }}
+                        </div>
+                    </div>
 
-            <div style="width: 103.9PXpx;height: 16px;float:left;">
-                <div class="texto fz8 lh14">
-                    {{$puerta?->nume_muni}}
-                </div>
-            </div>
-            @endforeach
+                    <div style="width: 103.9PXpx;height: 16px;float:left;">
+                        <div class="texto fz8 lh14">
+                            {{ $puerta?->nume_muni }}
+                        </div>
+                    </div>
+                @endforeach
             @else
-            <div style="width: 102PX;height: 16px;float:left;">
-                <div class="texto fz8 lh14">
+                <div style="width: 102PX;height: 16px;float:left;">
+                    <div class="texto fz8 lh14">
 
+                    </div>
                 </div>
-            </div>
-            <div style="width: 208PX;height: 16px;float:left;">
-                <div class="texto fz8 lh14">
+                <div style="width: 208PX;height: 16px;float:left;">
+                    <div class="texto fz8 lh14">
 
+                    </div>
                 </div>
-            </div>
 
-            <div style="width: 103.9PXpx;height: 16px;float:left;">
-                <div class="texto fz8 lh14">
+                <div style="width: 103.9PXpx;height: 16px;float:left;">
+                    <div class="texto fz8 lh14">
 
+                    </div>
                 </div>
-            </div>
             @endif
         </div>
         <div style="width: 417px;height:10px;float:left;" class="bn">
@@ -550,7 +553,9 @@
 
 
         <div style="width: 298px;height:200px;float:left;" class="bn">
-            <img src="{{asset('storage/img/imageneslotes/'.$ficha?->lote?->manzana?->sectore?->codi_sector.''.$ficha?->lote?->manzana?->codi_mzna.''.$ficha?->lote?->codi_lote.'.jpg')}}" alt="" style="width: 298px;height:200px;  object-fit: contain;image-orientation: from-image;display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: center;">
+            <img src="{{ asset('storage/img/imageneslotes/' . $ficha?->lote?->manzana?->sectore?->codi_sector . '' . $ficha?->lote?->manzana?->codi_mzna . '' . $ficha?->lote?->codi_lote . '.jpg') }}"
+                alt=""
+                style="width: 298px;height:200px;  object-fit: contain;image-orientation: from-image;display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: center;">
 
         </div>
     </div>
@@ -662,61 +667,61 @@
                 </div>
             </div>
             <!-- ################################## -->
-            @foreach($ficha?->construccions as $construccion)
-            <div style="width: 63px;height:14px;float:left;" class="texto2 fz8 lh14">
-                {{$construccion?->nume_piso}}
-            </div>
+            @foreach ($ficha?->construccions as $construccion)
+                <div style="width: 63px;height:14px;float:left;" class="texto2 fz8 lh14">
+                    {{ $construccion?->nume_piso }}
+                </div>
 
 
-            <div style="width: 65px;height:14px;float:left;" class="texto2 fz8 lh14">
-                {{$construccion?->uca}}
-            </div>
+                <div style="width: 65px;height:14px;float:left;" class="texto2 fz8 lh14">
+                    {{ $construccion?->uca }}
+                </div>
 
-            <div style="width: 65px;height:14px;float:left;" class="texto2 fz8 lh14">
-                {{date("m-Y", strtotime($construccion?->fecha))}}
-            </div>
+                <div style="width: 65px;height:14px;float:left;" class="texto2 fz8 lh14">
+                    {{ date('m-Y', strtotime($construccion?->fecha)) }}
+                </div>
 
-            <div style="width: 70px;height:14px;float:left;" class="texto2 fz8 lh14">
-                {{$construccion?->mep}}
-            </div>
+                <div style="width: 70px;height:14px;float:left;" class="texto2 fz8 lh14">
+                    {{ $construccion?->mep }}
+                </div>
 
-            <div style="width: 70px;height:14px;float:left;" class="texto2 fz8 lh14">
-                {{$construccion?->ecs}}
-            </div>
+                <div style="width: 70px;height:14px;float:left;" class="texto2 fz8 lh14">
+                    {{ $construccion?->ecs }}
+                </div>
 
-            <div style="width: 70px;height:14px;float:left;" class="texto2 fz8 lh14">
-                {{$construccion?->ecc}}
-            </div>
+                <div style="width: 70px;height:14px;float:left;" class="texto2 fz8 lh14">
+                    {{ $construccion?->ecc }}
+                </div>
 
 
-            <div style="width: 26px;height:14px;float:left;" class="texto2 fz8 lh14">
-                {{$construccion?->estr_muro_col}}
-            </div>
-            <div style="width: 26px;height:14px;float:left;" class="texto2 fz8 lh14">
-                {{$construccion?->estr_techo}}
-            </div>
-            <div style="width: 26px;height:14px;float:left;" class="texto2 fz8 lh14">
-                {{$construccion?->acab_piso}}
-            </div>
-            <div style="width: 26px;height:14px;float:left;" class="texto2 fz8 lh14">
-                {{$construccion?->acab_puerta_ven}}
-            </div>
-            <div style="width: 26px;height:14px;float:left;" class="texto2 fz8 lh14">
-                {{$construccion?->acab_revest}}
-            </div>
-            <div style="width: 26px;height:14px;float:left;" class="texto2 fz8 lh14">
-                {{$construccion?->acab_bano}}
-            </div>
-            <div style="width: 26px;height:14px;float:left;" class="texto2 fz8 lh14">
-                {{$construccion?->inst_elect_sanita}}
-            </div>
+                <div style="width: 26px;height:14px;float:left;" class="texto2 fz8 lh14">
+                    {{ $construccion?->estr_muro_col }}
+                </div>
+                <div style="width: 26px;height:14px;float:left;" class="texto2 fz8 lh14">
+                    {{ $construccion?->estr_techo }}
+                </div>
+                <div style="width: 26px;height:14px;float:left;" class="texto2 fz8 lh14">
+                    {{ $construccion?->acab_piso }}
+                </div>
+                <div style="width: 26px;height:14px;float:left;" class="texto2 fz8 lh14">
+                    {{ $construccion?->acab_puerta_ven }}
+                </div>
+                <div style="width: 26px;height:14px;float:left;" class="texto2 fz8 lh14">
+                    {{ $construccion?->acab_revest }}
+                </div>
+                <div style="width: 26px;height:14px;float:left;" class="texto2 fz8 lh14">
+                    {{ $construccion?->acab_bano }}
+                </div>
+                <div style="width: 26px;height:14px;float:left;" class="texto2 fz8 lh14">
+                    {{ $construccion?->inst_elect_sanita }}
+                </div>
 
-            <div style="width: 59px;height:14px;float:left;" class="texto2 fz8 lh14">
-                {{$construccion?->area_verificada}}
-            </div>
-            <div style="width: 54.8px;height:14px;float:left;" class="texto2 fz8 lh14">
-                {{$construccion?->area_verificada}}
-            </div>
+                <div style="width: 59px;height:14px;float:left;" class="texto2 fz8 lh14">
+                    {{ $construccion?->area_verificada }}
+                </div>
+                <div style="width: 54.8px;height:14px;float:left;" class="texto2 fz8 lh14">
+                    {{ $construccion?->area_verificada }}
+                </div>
             @endforeach
 
         </div>
@@ -785,40 +790,40 @@
             </div>
         </div>
 
-        @foreach($ficha?->instalacions as $instalacion)
-        <div style="width: 716px;height:14px;float:left;">
-            <div style="width: 70px;height: 14px;float:left;" class="texto2 fz10 lh14">
-                {{$instalacion?->codiinstalacion?->codi_instalacion}}
-            </div>
-            <div style="width: 170.9px;height: 14px;float:left;" class="texto2 fz10 lh14">
-                {{$instalacion?->codiinstalacion?->desc_instalacion}}
-            </div>
+        @foreach ($ficha?->instalacions as $instalacion)
+            <div style="width: 716px;height:14px;float:left;">
+                <div style="width: 70px;height: 14px;float:left;" class="texto2 fz10 lh14">
+                    {{ $instalacion?->codiinstalacion?->codi_instalacion }}
+                </div>
+                <div style="width: 170.9px;height: 14px;float:left;" class="texto2 fz10 lh14">
+                    {{ $instalacion?->codiinstalacion?->desc_instalacion }}
+                </div>
 
 
-            <div style="width: 85px;height: 14px;float:left;" class="texto2 fz10 lh14">
-                {{date("d-m-Y", strtotime($instalacion?->fecha))}}
-            </div>
+                <div style="width: 85px;height: 14px;float:left;" class="texto2 fz10 lh14">
+                    {{ date('d-m-Y', strtotime($instalacion?->fecha)) }}
+                </div>
 
-            <div style="width: 60px;height: 14px;float:left;" class="texto2 fz10 lh14">
-                {{$instalacion?->mep}}
-            </div>
+                <div style="width: 60px;height: 14px;float:left;" class="texto2 fz10 lh14">
+                    {{ $instalacion?->mep }}
+                </div>
 
-            <div style="width: 60px;height: 14px;float:left;" class="texto2 fz10 lh14">
-                {{$instalacion?->ecs}}
+                <div style="width: 60px;height: 14px;float:left;" class="texto2 fz10 lh14">
+                    {{ $instalacion?->ecs }}
+                </div>
+                <div style="width: 60px;height: 14px;float:left;" class="texto2 fz10 lh14">
+                    {{ $instalacion?->ecc }}
+                </div>
+                <div style="width: 80px;height: 14px;float:left;" class="texto2 fz10 lh14">
+                    {{ $instalacion?->prod_total }}
+                </div>
+                <div style="width: 60px;height: 14px;float:left;" class="texto2 fz10 lh14">
+                    {{ $instalacion?->uni_med }}
+                </div>
+                <div style="width: 60px;height: 14px;float:left;" class="texto2 fz10 lh14">
+                    {{ $instalacion?->uca }}
+                </div>
             </div>
-            <div style="width: 60px;height: 14px;float:left;" class="texto2 fz10 lh14">
-                {{$instalacion?->ecc}}
-            </div>
-            <div style="width: 80px;height: 14px;float:left;" class="texto2 fz10 lh14">
-                {{$instalacion?->prod_total}}
-            </div>
-            <div style="width: 60px;height: 14px;float:left;" class="texto2 fz10 lh14">
-                {{$instalacion?->uni_med}}
-            </div>
-            <div style="width: 60px;height: 14px;float:left;" class="texto2 fz10 lh14">
-                {{$instalacion?->uca}}
-            </div>
-        </div>
         @endforeach
     </div>
 
@@ -856,12 +861,12 @@
                 </div>
                 <div style="width: 78PX;height:20PX;float:left;" class="">
                     <div class="texto fz8 lh14">
-                        {{$ficha?->fichaindividual?->area_declarada}}
+                        {{ $ficha?->fichaindividual?->area_declarada }}
                     </div>
                 </div>
                 <div style="width: 78.9PX;height:20PX;float:left;" class="">
                     <div class="texto fz8 lh14">
-                        {{$ficha?->fichaindividual?->area_verificada}}
+                        {{ $ficha?->fichaindividual?->area_verificada }}
                     </div>
                 </div>
 
@@ -930,7 +935,8 @@
             </div>
             <div style="width: 350px;height: 20px;float:left;margin-bottom:7px" class="bn">
                 <div class="texto fz8 lh8">
-                    El presente registro catastral no constituye titulo de dominio, ni sanea los vicios que pueda contener
+                    El presente registro catastral no constituye titulo de dominio, ni sanea los vicios que pueda
+                    contener
                     la definicion de los linderos del bien inmueble. <br>Vigencia del certificado 18 Meses
                 </div>
             </div>

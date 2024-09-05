@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('litigantes', function (Blueprint $table) {
-            $table->string('id_ficha',19)->unsigned();
-            $table->foreign('id_ficha')->references('id_ficha')->on('fichas');
-            $table->string('id_persona',21)->unsigned();
-            $table->foreign('id_persona')->references('id_persona')->on('personas');
-            $table->string('codi_contribuye',18)->nullable(); 
+        Schema::create('tf_litigantes', function (Blueprint $table) {
+            $table->string('id_ficha', 19)->unsigned();
+            $table->foreign('id_ficha')->references('id_ficha')->on('fichas')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('id_persona', 21)->unsigned();
+            $table->foreign('id_persona')->references('id_persona')->on('personas')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('codi_contribuye', 18)->nullable();
         });
+        
     }
 
     /**
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('litigantes');
+        Schema::dropIfExists('tf_litigantes');
     }
 };

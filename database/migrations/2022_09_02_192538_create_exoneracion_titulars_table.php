@@ -13,17 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('exoneracion_titulars', function (Blueprint $table) {
-            $table->string('id_ficha',19)->unsigned();
-            $table->foreign('id_ficha')->references('id_ficha')->on('fichas');
-            $table->string('id_persona',21)->unsigned();
-            $table->foreign('id_persona')->references('id_persona')->on('personas');
-            $table->string('condicion',2)->nullable();
-            $table->string('nume_resolucion',20)->nullable();  
-            $table->string('nume_boleta_pension',20)->nullable();
-            $table->date('fecha_inicio')->nullable(); 
+        Schema::create('tf_exoneraciones_titular', function (Blueprint $table) {
+            $table->string('id_ficha', 19)->unsigned();
+            $table->foreign('id_ficha')->references('id_ficha')->on('tf_fichas')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('id_persona', 21)->unsigned();
+            $table->foreign('id_persona')->references('id_persona')->on('personas')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('condicion', 2)->nullable();
+            $table->string('nume_resolucion', 20)->nullable();
+            $table->string('nume_boleta_pension', 20)->nullable();
+            $table->date('fecha_inicio')->nullable();
             $table->date('fecha_vencimiento')->nullable();
         });
+        
     }
 
     /**
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('exoneracion_titulars');
+        Schema::dropIfExists('tf_exoneraciones_titular');
     }
 };

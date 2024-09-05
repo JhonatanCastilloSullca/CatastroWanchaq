@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('codigo_instalacions', function (Blueprint $table) {
+        Schema::create('tf_codigos_instalaciones', function (Blueprint $table) {
             $table->string('codi_instalacion',2);
             $table->string('desc_instalacion',50)->nullable(); 
             $table->string('material',50)->nullable(); 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('codigo_instalacions');
+        Schema::dropIfExists('tf_codigos_instalaciones');
     }
 };

@@ -46,8 +46,8 @@ class FichaBienesComunes extends Component
     public $nume_ficha_lote2;
     public $cuc;
     public $dpto=8;
-    public $prov=13;
-    public $dist=1;
+    public $prov=1;
+    public $dist=8;
     public $sector;
     public $mzna;
     public $lote;
