@@ -57,6 +57,8 @@ class FichaBienesComunes extends Component
     public $unidad=999;
     public $dc;
     public $codi_hoja_catastral;
+    public $codi_cont_rentas;
+    public $codi_pred_rentas;
 
     public $tipoHabi;
     public $nomb_hab_urba;
@@ -496,11 +498,11 @@ class FichaBienesComunes extends Component
                 'clasificacion'                 => 'required',
                 'cont_en'                       => 'required',
                 'codi_uso'                      => 'required',
-                'zonificacion'                  => 'nullable|max:30',
+                'zonificacion'                  => 'required|max:30',
                 'area_declarada'                => 'nullable|numeric|regex:/^[\d]{0,7}(\.[\d]{1,2})?$/',
                 'area_verificada1'              => 'required|numeric|regex:/^[\d]{0,7}(\.[\d]{1,2})?$/',
                 'area_declarada'                => 'nullable|numeric|regex:/^[\d]{0,7}(\.[\d]{1,2})?$/',
-                'area_verificada1'              => 'nullable|numeric|regex:/^[\d]{0,7}(\.[\d]{1,2})?$/',
+                'area_verificada1'              => 'required|numeric|regex:/^[\d]{0,7}(\.[\d]{1,2})?$/',
                 'fren_campo'                    => 'nullable|max:100',
                 'dere_campo'                    => 'nullable|max:100',
                 'izqu_campo'                    => 'nullable|max:100',
@@ -718,6 +720,8 @@ class FichaBienesComunes extends Component
                 $unicat->codi_piso=str_pad($this->piso,2,'0',STR_PAD_LEFT);
                 $unicat->codi_unidad=str_pad($this->unidad,3,'0',STR_PAD_LEFT);
                 $unicat->codi_hoja_catastral=str_pad($this->codi_hoja_catastral,10,'0',STR_PAD_LEFT);
+                $unicat->codi_cont_rentas=$this->codi_cont_rentas;
+                $unicat->codi_pred_rentas=$this->codi_pred_rentas;
                 $unicat->cuc=str_pad($this->cuc,12,'0',STR_PAD_LEFT);
                 $unicat->save();
             }else{
@@ -729,6 +733,8 @@ class FichaBienesComunes extends Component
                 $unicat->codi_piso=str_pad($this->piso,2,'0',STR_PAD_LEFT);
                 $unicat->codi_unidad=str_pad($this->unidad,3,'0',STR_PAD_LEFT);
                 $unicat->codi_hoja_catastral=str_pad($this->codi_hoja_catastral,10,'0',STR_PAD_LEFT);
+                $unicat->codi_cont_rentas=$this->codi_cont_rentas;
+                $unicat->codi_pred_rentas=$this->codi_pred_rentas;
                 $unicat->cuc=str_pad($this->cuc,12,'0',STR_PAD_LEFT);
                 $unicat->save();
             }

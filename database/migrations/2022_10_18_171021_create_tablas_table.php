@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tablas', function (Blueprint $table) {
+        Schema::create('tf_tablas', function (Blueprint $table) {
             $table->string('id_tabla',3);  
             $table->string('desc_tabla',50)->nullable();  
             $table->integer('ultimo_codigo')->nullable();
-
             $table->primary('id_tabla');
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tablas');
+        Schema::dropIfExists('tf_tablas');
     }
 };

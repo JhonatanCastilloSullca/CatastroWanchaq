@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('tipo_materials', function (Blueprint $table) {
             $table->string('id_ficha',19)->unsigned();
-            $table->foreign('id_ficha')->references('id_ficha')->on('fichas');
-            $table->string('codigo',2)->nullable(); 
+            $table->foreign('id_ficha')->references('id_ficha')->on('tf_fichas')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('codigo',2)->nullable();
             $table->string('descripcion',100)->nullable();
-        });
+        });        
     }
 
     /**

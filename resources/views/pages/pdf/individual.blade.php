@@ -23,7 +23,7 @@
         }
 
         .numeros {
-            background-color: #b9b9b9;
+            background-color: #c7c7c7;
             color: #000;
             width: 15px;
             height: 15px;
@@ -110,12 +110,12 @@
         }
 
         .fondoclaro {
-            background-color: #a9e5ff;
+            background-color: #bbfefe;
         }
 
         .fondoclarito {
             background-color: #ffff7e;
-            color: #c62200;
+            color: #000000;
 
         }
 
@@ -992,7 +992,7 @@
         <!--AQUI SE REPETIRA LOS TITULARES CATASTRALES FOREACH-->
         <!-- LEYENDA TIPO VIA TIPO PUERTA-->
         <div style="width: 716px;height:10px;margin: auto;">
-            <div style="width: 92px;height: 15PX;float:left;">
+            <div style="width: 92px;height: 15PX;float:left;" class="fondoclaro">
                 TIPO DE DOC. IDENTIDAD
             </div>
             <div style="width: 154PX;height: 15PX;float:left;" class="fondoclarito">
@@ -1212,7 +1212,7 @@
 
                 <div style="width: 107px;height: 16px;float:right;" class="fondoclaro">
                     <div class="numeros">
-                        31
+                        33
                     </div>
                     <div class="texto fz8 lh14">
                         DISTRITOS
@@ -1228,7 +1228,7 @@
                 </div>
                 <div style="width: 106px;height: 16px;float:right;" class="fondoclaro">
                     <div class="numeros">
-                        33
+                        31
                     </div>
                     <div class="texto fz8 lh14">
                         DEPARTAMENTO
@@ -2192,97 +2192,97 @@
     <!-- DESCRIPCION DEL BIEN COMUN-->
     <!-- LEYENDA TIPO VIA TIPO PUERTA-->
     <div style="width: 716px;height:10px;margin: auto;" class="fondoclarito">
-        <div style="width: 119px;height: 10px;float:left;">
-            <div style="font-size:5px;border:none;text-align:center;">
+        <div  class="bn" style="width: 119px;height: 10px;float:left;">
+            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.1 CLÍNICA
             </div>
         </div>
-        <div style="width: 115px;height: 10px;float:left;">
-            <div style="font-size:5px;border:none;text-align:center;">
+        <div  class="bn" style="width: 115px;height: 10px;float:left;">
+            <div class="bn"  style="font-size:5px;border:none;text-align:center;">
                 4.2 HOSPITAL
             </div>
         </div>
-        <div style="width: 119px;height: 10px;float:left;">
-            <div style="font-size:5px;border:none;text-align:center;">
+        <div  class="bn" style="width: 119px;height: 10px;float:left;">
+            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.3 CINE, TEATRO
             </div>
         </div>
-        <div style="width: 119px;height: 10px;float:left;">
-            <div style="font-size:5px;border:none;text-align:center;">
+        <div  class="bn" style="width: 119px;height: 10px;float:left;">
+            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.4 INDUSTRIA
             </div>
         </div>
-        <div style="width: 119px;height: 10px;float:left;">
-            <div style="font-size:5px;border:none;text-align:center;">
+        <div  class="bn" style="width: 119px;height: 10px;float:left;">
+            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.5 TALLER
             </div>
         </div>
-        <div style="width: 119px;height: 10px;float:left;">
-            <div style="font-size:5px;border:none;text-align:center;">
+        <div  class="bn" style="width: 119px;height: 10px;float:left;">
+            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.6 IGLESIA / TEMPLO
             </div>
         </div>
     </div>
     <div style="width: 716px;height:10px;margin: auto;" class="fondoclarito">
-        <div style="width: 119px;height: 10px;float:left;">
-            <div style="font-size:5px;border:none;text-align:center;">
+        <div  class="bn" style="width: 119px;height: 10px;float:left;">
+            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.7 CENTRO DE ENSEÑANZA
             </div>
         </div>
-        <div style="width: 115px;height: 10px;float:left;">
-            <div style="font-size:5px;border:none;text-align:center;">
+        <div  class="bn" style="width: 115px;height: 10px;float:left;">
+            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.8 SERVICIO DE COMIDA
             </div>
         </div>
-        <div style="width: 119px;height: 10px;float:left;">
-            <div style="font-size:5px;border:none;text-align:center;">
+        <div  class="bn" style="width: 119px;height: 10px;float:left;">
+            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.9 PARQUE
             </div>
         </div>
-        <div style="width: 119px;height: 10px;float:left;">
-            <div style="font-size:5px;border:none;text-align:center;">
+        <div  class="bn" style="width: 119px;height: 10px;float:left;">
+            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.10 CEMENTERIO
             </div>
         </div>
-        <div style="width: 119px;height: 10px;float:left;">
-            <div style="font-size:5px;border:none;text-align:center;">
+        <div  class="bn" style="width: 119px;height: 10px;float:left;">
+            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.11 SUB ESTACIÓN
             </div>
         </div>
-        <div style="width: 119px;height: 10px;float:left;">
-            <div style="font-size:5px;border:none;text-align:center;">
+        <div  class="bn" style="width: 119px;height: 10px;float:left;">
+            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.12 BANCO FINANCIERA
             </div>
         </div>
     </div>
     <div style="width: 716px;height:10px;margin: auto;" class="fondoclarito">
-        <div style="width: 119px;height: 10px;float:left;">
-            <div style="font-size:5px;border:none;text-align:center;">
+        <div  class="bn" style="width: 119px;height: 10px;float:left;">
+            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.13 TERMINAL DE TRANSPORTE
             </div>
         </div>
-        <div style="width: 115px;height: 10px;float:left;">
-            <div style="font-size:5px;border:none;text-align:center;">
+        <div  class="bn" style="width: 115px;height: 10px;float:left;">
+            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.14 MERCADO
             </div>
         </div>
-        <div style="width: 119px;height: 10px;float:left;">
-            <div style="font-size:5px;border:none;text-align:center;">
+        <div  class="bn" style="width: 119px;height: 10px;float:left;">
+            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.15 CLUB SOCIAL
             </div>
         </div>
-        <div style="width: 119px;height: 10px;float:left;">
-            <div style="font-size:5px;border:none;text-align:center;">
+        <div  class="bn" style="width: 119px;height: 10px;float:left;">
+            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.16 CLUB DE ESPARCIMIENTO
             </div>
         </div>
-        <div style="width: 119px;height: 10px;float:left;">
-            <div style="font-size:5px;border:none;text-align:center;">
+        <div  class="bn" style="width: 119px;height: 10px;float:left;">
+            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.17 PLAYA DE ESTACIONAMIENTO
             </div>
         </div>
-        <div style="width: 119px;height: 10px;float:left;">
-            <div style="font-size:5px;border:none;text-align:center;">
+        <div  class="bn" style="width: 119px;height: 10px;float:left;">
+            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.18 OTROS
             </div>
         </div>
@@ -2445,7 +2445,7 @@
     </div>
     <!-- 47 AL 48-->
     <div style="width: 716px;height:16px;margin: auto;">
-        <div style="width: 142PX;height: 16px;float:left;">
+        <div class="fondoclaro" style="width: 142PX;height: 16px;float:left;">
             LINDEROS DE LOTE(ML)
         </div>
         <div style="width: 247PX;height: 16px;float:left;" class="fondoclaro">
@@ -2466,7 +2466,7 @@
         </div>
     </div>
     <div style="width: 716px;height:16px;margin: auto;">
-        <div style="width: 142PX;height: 16px;float:left;">
+        <div class="fondoclaro" style="width: 142PX;height: 16px;float:left;">
             FRENTE
         </div>
         <div style="width: 247PX;height: 16px;float:left;" class="texto2 fz8 lh14">
@@ -2477,7 +2477,7 @@
         </div>
     </div>
     <div style="width: 716px;height:16px;margin: auto;">
-        <div style="width: 142PX;height: 16px;float:left;">
+        <div class="fondoclaro" style="width: 142PX;height: 16px;float:left;">
             DERECHA
         </div>
         <div style="width: 247PX;height: 16px;float:left;" class="texto2 fz8 lh14">
@@ -2488,7 +2488,7 @@
         </div>
     </div>
     <div style="width: 716px;height:16px;margin: auto;">
-        <div style="width: 142PX;height: 16px;float:left;">
+        <div class="fondoclaro" style="width: 142PX;height: 16px;float:left;">
             IZQUIERDA
         </div>
         <div style="width: 247PX;height: 16px;float:left;" class="texto2 fz8 lh14">
@@ -2499,7 +2499,7 @@
         </div>
     </div>
     <div style="width: 716px;height:16px;margin: auto;">
-        <div style="width: 142PX;height: 16px;float:left;">
+        <div class="fondoclaro" style="width: 142PX;height: 16px;float:left;">
             FONDO
         </div>
         <div style="width: 247PX;height: 16px;float:left;" class="texto2 fz8 lh14">
@@ -3659,131 +3659,133 @@
             </div>
         </div>
     </div>
-    <div style="width: 716px;height:16px;margin: auto;">
-        <div style="width: 716px;height: 16px;float:left;" class="fondoclaro">
-            <div class="numeros">
-                89
-            </div>
-            <div class="texto fz8 lh14">
-                IDENTIFICACION DE LOS LITIGANTES
-            </div>
-        </div>
-        <div style="width: 65px;height: 16px;float:left;" class="fondoclaro">
-            <div class="texto fz8 lh14">
-                TD
-            </div>
-        </div>
-        <div style="width: 133px;height: 16px;float:left;" class="fondoclaro">
-            <div class="texto fz8 lh14">
-                N° DOCUMENTO
-            </div>
-        </div>
-        <div style="width: 371px;height: 16px;float:left;" class="fondoclaro">
-            <div class="texto fz8 lh14">
-                APELLIDOS Y NOMBRES DE LOS LITIGANTES
-            </div>
-        </div>
-        <div style="width: 143px;height: 16px;float:left;" class="fondoclaro">
-            <div class="texto fz8 lh14">
-                CODIGO DEL CONTRIBUYENTE
-            </div>
-        </div>
-        <!--foreach-->
-        @if ($ficha?->litigantes != '')
-            @foreach ($ficha?->litigantes as $litigante)
-                <div style="width: 65px;height: 16px;float:left;" class="texto2 fz8 lh14">
-                    {{ $litigante?->persona?->tipo_doc }}
+    <div style="width: 716px;height:16px;margin auto">
+        <div style="width: 400px;height:16px;float:left;" class="">
+            <div style="width: 400px;height: 16px;float:left;" class="fondoclaro">
+                <div class="numeros">
+                    89
                 </div>
-                <div style="width: 133px;height: 16px;float:left;" class="texto2 fz8 lh14">
-                    {{ $litigante?->persona?->nume_doc }}
+                <div class="texto fz6 lh14">
+                    IDENTIFICACION DE LOS LITIGANTES
                 </div>
-                <div style="width: 371px;height: 16px;float:left;" class="texto2 fz8 lh14">
-                    {{ $litigante?->persona?->nombres }} {{ $litigante?->persona?->ape_paterno }}
-                    {{ $litigante?->persona?->ape_materno }}
+            </div>
+            <div style="width: 30px;height: 16px;float:left;" class="fondoclaro">
+                <div class="texto fz6 lh14">
+                    TD
                 </div>
-                <div style="width: 143px;height: 16px;float:left;" class="texto2 fz8 lh14">
-                    {{ $litigante?->codi_contribuye }}
+            </div>
+            <div style="width: 73px;height: 16px;float:left;" class="fondoclaro">
+                <div class="texto fz6 lh14">
+                    N° DOCUMENTO
                 </div>
-                <!--foreach-->
-            @endforeach
-        @else
-            <div style="width: 65px;height: 16px;float:left;" class="texto2 fz8 lh14">
-
             </div>
-            <div style="width: 133px;height: 16px;float:left;" class="texto2 fz8 lh14">
-
+            <div style="width: 209.9px;height: 16px;float:left;" class="fondoclaro">
+                <div class="texto fz6 lh14">
+                    APELLIDOS Y NOMBRES DE LOS LITIGANTES
+                </div>
             </div>
-            <div style="width: 371px;height: 16px;float:left;" class="texto2 fz8 lh14">
-
-            </div>
-            <div style="width: 143px;height: 16px;float:left;" class="texto2 fz8 lh14">
-
+            <div style="width: 83px;height: 16px;float:left;" class="fondoclaro">
+                <div class="texto fz6 lh14">
+                    CODIGO DEL CONTRIBUYENTE
+                </div>
             </div>
             <!--foreach-->
-        @endif
+            @if ($ficha?->litigantes != '')
+                @foreach ($ficha?->litigantes as $litigante)
+                    <div style="width: 30px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                        {{ $litigante?->persona?->tipo_doc }}
+                    </div>
+                    <div style="width: 73px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                        {{ $litigante?->persona?->nume_doc }}
+                    </div>
+                    <div style="width: 209.9px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                        {{ $litigante?->persona?->nombres }} {{ $litigante?->persona?->ape_paterno }}
+                        {{ $litigante?->persona?->ape_materno }}
+                    </div>
+                    <div style="width: 83px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                        {{ $litigante?->codi_contribuye }}
+                    </div>
+                    <!--foreach-->
+                @endforeach
+            @else
+                <div style="width: 30px;height: 16px;float:left;" class="texto2 fz8 lh14">
 
-    </div>
+                </div>
+                <div style="width: 73px;height: 16px;float:left;" class="texto2 fz8 lh14">
 
+                </div>
+                <div style="width: 209.9px;height: 16px;float:left;" class="texto2 fz8 lh14">
 
-    <div style="width: 716px;height:16px;margin: auto;">
+                </div>
+                <div style="width: 83px;height: 16px;float:left;" class="texto2 fz8 lh14">
 
-        <div style="width: 158px;height: 16px;float:left;" class="fondoclaro">
-            <div class="numeros">
-                90
-            </div>
-            <div class="texto fz8 lh14">
-                ESTADO DE LLENADO DE LA FICHA
-            </div>
+                </div>
+                <!--foreach-->
+            @endif
+
         </div>
-        <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14">
-            {{ $ficha?->fichaindividual?->esta_llenado }}
-        </div>
 
-        <div style="width: 170px;height: 16px;float:left;border:none;" class="fondoclarito">
-            <div style="width: 30px;height: 16px;float:left;">
-                <div class="texto fz4 lh6">
-                    01 FICHA <br> COMPLETA
+
+        <div style="width: 314px;height:16px;float:left;">
+
+            <div style="width: 295px;height: 16px;float:left;" class="fondoclaro">
+                <div class="numeros">
+                    90
+                </div>
+                <div class="texto fz8 lh14">
+                    ESTADO DE LLENADO DE LA FICHA
                 </div>
             </div>
-            <div style="width: 34px;height: 16px;float:left;">
-                <div class="texto fz4 lh6">
-                    02 FICHA INCOMPLETA
-                </div>
+            <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                {{ $ficha?->fichaindividual?->esta_llenado }}
             </div>
-            <div style="width: 42px;height: 16px;float:left;">
-                <div class="texto fz4 lh6">
-                    03 COMPLETADA EN OFICINA
-                </div>
-            </div>
-            <div style="width: 59.9px;height: 16px;float:left;">
-                <div class="texto fz4 lh6">
-                    04 COMPLETADA EN CONTROL EXTERIOR
-                </div>
-            </div>
-        </div>
 
-        <div style="width: 165px;height: 16px;float:left;" class="fondoclaro">
-            <div class="numeros">
-                91
+            <div style="width: 314px;height: 16px;float:left;border:none;" class="fondoclarito">
+                <div style="width: 155px;height: 16px;float:left;">
+                    <div class="texto fz4 lh6">
+                        01 FICHA <br> COMPLETA
+                    </div>
+                </div>
+                <div style="width: 156.9px;height: 16px;float:left;">
+                    <div class="texto fz4 lh6">
+                        02 FICHA INCOMPLETA
+                    </div>
+                </div>
+                <div style="width: 155px;height: 16px;float:left;">
+                    <div class="texto fz4 lh6">
+                        03 COMPLETADA EN OFICINA
+                    </div>
+                </div>
+                <div style="width: 156.9px;height: 16px;float:left;">
+                    <div class="texto fz4 lh6">
+                        04 COMPLETADA EN CONTROL EXTERIOR
+                    </div>
+                </div>
             </div>
-            <div class="texto fz8 lh14">
-                N° DE HABITANTE
-            </div>
-        </div>
-        <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14">
-            {{ $ficha?->fichaindividual?->nume_habitantes }}
-        </div>
 
-        <div style="width: 165px;height: 16px;float:left;" class="fondoclaro">
-            <div class="numeros">
-                92
+            <div style="width: 137px;height: 16px;float:left;" class="fondoclaro">
+                <div class="numeros">
+                    91
+                </div>
+                <div class="texto fz8 lh14">
+                    N° DE HABITANTE
+                </div>
             </div>
-            <div class="texto fz8 lh14">
-                N° DE FAMILIAS
+            <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                {{ $ficha?->fichaindividual?->nume_habitantes }}
             </div>
-        </div>
-        <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14">
-            {{ $ficha?->fichaindividual?->nume_familias }}
+
+            <div style="width: 138.9px;height: 16px;float:left;" class="fondoclaro">
+                <div class="numeros">
+                    92
+                </div>
+                <div class="texto fz8 lh14">
+                    N° DE FAMILIAS
+                </div>
+            </div>
+            <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                {{ $ficha?->fichaindividual?->nume_familias }}
+            </div>
         </div>
     </div>
     <!-- 49 AL 92-->

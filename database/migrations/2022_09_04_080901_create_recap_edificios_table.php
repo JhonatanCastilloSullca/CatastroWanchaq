@@ -13,16 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('recap_edificios', function (Blueprint $table) {
+        Schema::create('tf_recap_edificio', function (Blueprint $table) {
             $table->string('id_ficha',19)->unsigned();
-            $table->foreign('id_ficha')->references('id_ficha')->on('fichas');
-            $table->string('edificio',2)->nullable(); 
-            $table->decimal('total_porcentaje',7,2)->nullable(); 
-            $table->decimal('total_atc',7,2)->nullable(); 
-            $table->decimal('total_acc',7,2)->nullable(); 
-            $table->decimal('total_aoic',7,2)->nullable(); 
-            $table->integer('id_recap')->nullable(); 
-        });
+            $table->foreign('id_ficha')->references('id_ficha')->on('tf_fichas')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('edificio',2)->nullable();
+            $table->decimal('total_porcentaje',7,2)->nullable();
+            $table->decimal('total_atc',7,2)->nullable();
+            $table->decimal('total_acc',7,2)->nullable();
+            $table->decimal('total_aoic',7,2)->nullable();
+            $table->integer('id_recap')->nullable();
+        });        
     }
 
     /**
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('recap_edificios');
+        Schema::dropIfExists('tf_recap_edificio');
     }
 };

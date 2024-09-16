@@ -13,19 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('recap_bbccs', function (Blueprint $table) {
-            $table->string('id_ficha',19)->unsigned();
-            $table->foreign('id_ficha')->references('id_ficha')->on('fichas');
-            $table->string('edifica',2)->nullable();
-            $table->string('entrada',2)->nullable(); 
-            $table->string('nume_piso',2)->nullable(); 
-            $table->string('unidad',3)->nullable();  
-            $table->decimal('porcentaje',7,2)->nullable(); 
-            $table->decimal('atc',7,2)->nullable(); 
-            $table->decimal('acc',7,2)->nullable(); 
-            $table->decimal('aoic',7,2)->nullable(); 
-            $table->integer('nume_registro')->nullable(); 
+        Schema::create('tf_recap_bbcc', function (Blueprint $table) {
+            $table->string('id_ficha', 19)->unsigned();
+            $table->foreign('id_ficha')->references('id_ficha')->on('tf_fichas')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('edifica', 2)->nullable();
+            $table->string('entrada', 2)->nullable();
+            $table->string('nume_piso', 2)->nullable();
+            $table->string('unidad', 3)->nullable();
+            $table->decimal('porcentaje', 7, 2)->nullable();
+            $table->decimal('atc', 7, 2)->nullable();
+            $table->decimal('acc', 7, 2)->nullable();
+            $table->decimal('aoic', 7, 2)->nullable();
+            $table->integer('nume_registro')->nullable();        
+            $table->primary(['id_ficha', 'nume_registro']);
         });
+        
     }
 
     /**
@@ -35,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('recap_bbccs');
+        Schema::dropIfExists('tf_recap_bbcc');
     }
 };

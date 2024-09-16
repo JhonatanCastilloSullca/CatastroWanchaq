@@ -34,6 +34,7 @@ class FichaEconomica extends Authenticatable implements AuditableContract
         'pred_area_verif',
         'observaciones',
         'nume_ficha',
+        'codigo_secuencial',
     ];
     public $incrementing = false;
     protected $keyType = 'string';

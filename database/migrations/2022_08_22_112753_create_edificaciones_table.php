@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('tf_edificaciones', function (Blueprint $table) {
             $table->string('id_edificacion', 16);
             $table->string('id_lote', 14)->unsigned();
-            $table->foreign('id_lote')->references('id_lote')->on('lotes')
+            $table->foreign('id_lote')->references('id_lote')->on('tf_lotes')
             ->onDelete('cascade')
             ->onUpdate('cascade');
             $table->string('codi_edificacion', 3);

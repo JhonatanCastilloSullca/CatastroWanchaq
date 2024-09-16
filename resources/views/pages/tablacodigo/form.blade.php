@@ -2,9 +2,9 @@
     <label for="recipient-name" class="form-label">Codigos de tabla:</label>
     <select class="form-select id_tablacodigos" id="id_tablacodigos" name="id_tablacodigos" data-width="100%">
         <option value="">SELECCIONE</option>
-        @foreach($desc_tabla as $i => $desctabla)
+        @foreach($tablas as $i => $desctabla)
             <option value="{{ $i }}" {{ old('id_tablacodigos') == $i ? 'selected' : '' }}>
-            {{ $i }} - {{ $desctabla }}
+            {{ $desctabla->id_tabla }} - {{ $desctabla->desc_tabla }}
             </option>
         @endforeach
 

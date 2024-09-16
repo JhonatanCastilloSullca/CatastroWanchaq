@@ -17,13 +17,13 @@ return new class extends Migration
             $table->string('id_via', 12)->unsigned();
             $table->foreign('id_via')
             ->references('id_via')
-            ->on('vias')
+            ->on('tf_vias')
             ->onDelete('cascade') 
             ->onUpdate('cascade');        
             $table->string('id_hab_urba', 10)->unsigned();
             $table->foreign('id_hab_urba')
             ->references('id_hab_urba')
-            ->on('hab_urbanas')
+            ->on('tf_hab_urbana')
             ->onDelete('cascade') 
             ->onUpdate('cascade');
         });

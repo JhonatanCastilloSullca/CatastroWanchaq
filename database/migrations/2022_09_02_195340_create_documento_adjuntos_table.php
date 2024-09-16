@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('tf_documentos_adjuntos', function (Blueprint $table) {
             $table->string('id_doc', 21);
             $table->string('id_ficha', 19)->unsigned();
-            $table->foreign('id_ficha')->references('id_ficha')->on('fichas')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_ficha')->references('id_ficha')->on('tf_fichas')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('codi_doc')->nullable();
             $table->string('tipo_doc', 2)->nullable();
             $table->string('nume_doc', 20)->nullable();

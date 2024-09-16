@@ -116,6 +116,10 @@
                                                             {{ $sector->codi_sector }}</option>
                                                     @endforeach
                                                 </select>
+                                                @error('sector')
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label labelpeque d-inline-flex">MANZANA</label>
@@ -253,10 +257,10 @@
                                                         <div class="divcuadrorequired">5</div> CÓDIGO DE VIA
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">6</div> TIPO DE VIA
+                                                        <div class="divcuadrorequired">6</div> TIPO DE VIA
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">7</div> NOMBRE DE VIA
+                                                        <div class="divcuadrorequired">7</div> NOMBRE DE VIA
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
                                                         <div class="divcuadrorequired">8</div>TIPO DE PUERTA
@@ -1802,15 +1806,11 @@
                                                                 style="color:red">{{ $message }}</span>
                                                         @enderror
                                                     </td>
+                                                    
                                                     <td>
-                                                        <input type="date" class="form-control"
-                                                            name="inst_fecha[]" placeholder="FECHA"
-                                                            id="inst-fecha.{{ $i }}"
-                                                            wire:model="inst_fecha.{{ $i }}"
-                                                            tabindex="109">
-                                                        @error('inst_fecha.' . $i)
-                                                            <span class="error-message"
-                                                                style="color:red">{{ $message }}</span>
+                                                        <input type="month" class="form-control" name="inst_fecha[]" placeholder="FECHA" id="inst-fecha.{{$i}}" wire:model="inst_fecha.{{$i}}" tabindex="109">
+                                                        @error('inst_fecha.'.$i)
+                                                        <span class="error-message" style="color:red">{{ $message }}</span>
                                                         @enderror
                                                     </td>
                                                     <td>
@@ -2299,7 +2299,7 @@
                                 <div class="col-md-2">
                                     <div class="mb-3">
                                         <label class="form-label d-inline-flex">
-                                            <div class="divcuadro">93</div>MANTENIMIENTO
+                                            <div class="divcuadrorequired">93</div>MANTENIMIENTO
                                         </label>
                                         <select class="form-select" data-width="100%" data-live-search="true"
                                             name="mantenimiento" id="mantenimiento" wire:model="mantenimiento"
@@ -2699,9 +2699,9 @@
                 $('#departamentootros').empty();
                 $('#departamentootros').append("<option value='08' >CUSCO</option>");
                 $('#provinciaotros').empty();
-                $('#provinciaotros').append("<option value='01' ></option>");
+                $('#provinciaotros').append("<option value='01' >CUSCO</option>");
                 $('#distritootros').empty();
-                $('#distritootros').append("<option value='08' ></option>");
+                $('#distritootros').append("<option value='08' >WANCHAQ</option>");
             } else {
                 $('#departamentootros').empty();
                 $('#departamentootros').append("<option value='' >SELECCIONE</option>");

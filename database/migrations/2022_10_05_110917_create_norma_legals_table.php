@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('norma_legals', function (Blueprint $table) {
+        Schema::create('tf_norma_legal', function (Blueprint $table) {
             $table->string('id_ficha',19)->unsigned();
-            $table->foreign('id_ficha')->references('id_ficha')->on('fichas');
-            $table->string('normatividad',20)->nullable(); 
-            $table->date('fecha_norma')->nullable(); 
+            $table->foreign('id_ficha')->references('id_ficha')->on('tf_fichas')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('normatividad',20)->nullable();
+            $table->date('fecha_norma')->nullable();
             $table->string('numero_plano',20)->nullable();
             $table->string('tipo_norma',1)->nullable();
-        });
+        });        
     }
 
     /**
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('norma_legals');
+        Schema::dropIfExists('tf_norma_legal');
     }
 };

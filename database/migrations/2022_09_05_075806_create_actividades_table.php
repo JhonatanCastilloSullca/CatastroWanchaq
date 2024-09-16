@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('actividades', function (Blueprint $table) {
+        Schema::create('tf_actividades', function (Blueprint $table) {
             $table->string('codi_actividad',6);
-            $table->string('desc_actividad',150)->nullable();
-            
+            $table->string('desc_actividad',150)->nullable();            
             $table->primary('codi_actividad');
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('actividades');
+        Schema::dropIfExists('tf_actividades');
     }
 };

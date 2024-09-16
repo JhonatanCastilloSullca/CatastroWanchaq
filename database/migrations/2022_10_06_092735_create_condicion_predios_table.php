@@ -13,27 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('condicion_predios', function (Blueprint $table) {
+        Schema::create('tf_condicion_predio', function (Blueprint $table) {
             $table->string('id_ficha',19)->unsigned();
-            $table->foreign('id_ficha')->references('id_ficha')->on('fichas');
-            $table->string('cond_titular',2)->nullable();  
-            $table->date('fecha_ini')->nullable();  
+            $table->foreign('id_ficha')->references('id_ficha')->on('tf_fichas')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('cond_titular',2)->nullable();
+            $table->date('fecha_ini')->nullable();
             $table->string('insc_rrpp',2)->nullable();
-            $table->integer('num_part')->nullable(); 
-            $table->date('fecha_insc')->nullable(); 
-            $table->string('doc_propiedad',2)->nullable(); 
-            $table->date('fecha_adq')->nullable();  
-        });
+            $table->integer('num_part')->nullable();
+            $table->date('fecha_insc')->nullable();
+            $table->string('doc_propiedad',2)->nullable();
+            $table->date('fecha_adq')->nullable();
+        });        
     }
-
-    
-
-
-
-
-
-
-
     /**
      * Reverse the migrations.
      *
@@ -41,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('condicion_predios');
+        Schema::dropIfExists('tf_condicion_predio');
     }
 };

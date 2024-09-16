@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('tf_exoneraciones_predio', function (Blueprint $table) {
             $table->string('id_ficha', 19)->unsigned();
-            $table->foreign('id_ficha')->references('id_ficha')->on('fichas')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_ficha')->references('id_ficha')->on('tf_fichas')->onDelete('cascade')->onUpdate('cascade');
             $table->string('condicion', 2)->nullable();
             $table->string('nume_resolucion', 20)->nullable();
             $table->decimal('porcentaje', 7, 2)->nullable();

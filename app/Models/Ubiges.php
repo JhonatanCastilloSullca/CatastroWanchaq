@@ -12,6 +12,8 @@ use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 class Ubiges extends Authenticatable implements AuditableContract
 {
     use HasFactory, Notifiable, Auditable;
+    public $timestamps = false;
+
 
     protected $fillable = [
         'cod_dep',

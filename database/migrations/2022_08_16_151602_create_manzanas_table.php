@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('id_sector', 8)->unsigned();            
             $table->foreign('id_sector')
             ->references('id_sector')
-            ->on('sectores')
+            ->on('tf_sectores')
             ->onDelete('cascade') 
             ->onUpdate('cascade');            
             $table->string('codi_mzna', 3);

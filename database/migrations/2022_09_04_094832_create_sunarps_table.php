@@ -13,18 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sunarps', function (Blueprint $table) {
+        Schema::create('tf_sunarp', function (Blueprint $table) {
             $table->string('id_ficha',19)->unsigned();
-            $table->foreign('id_ficha')->references('id_ficha')->on('fichas');
-            $table->string('tipo_partida',2)->nullable(); 
-            $table->string('nume_partida',18)->nullable(); 
-            $table->string('fojas',18)->nullable(); 
-            $table->string('asiento',18)->nullable(); 
-            $table->date('fecha_inscripcion')->nullable(); 
-            $table->string('codi_decla_fabrica',2)->nullable(); 
-            $table->string('asie_fabrica',18)->nullable(); 
-            $table->date('fecha_fabrica')->nullable(); 
-        });
+            $table->foreign('id_ficha')->references('id_ficha')->on('tf_fichas')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('tipo_partida',2)->nullable();
+            $table->string('nume_partida',18)->nullable();
+            $table->string('fojas',18)->nullable();
+            $table->string('asiento',18)->nullable();
+            $table->date('fecha_inscripcion')->nullable();
+            $table->string('codi_decla_fabrica',2)->nullable();
+            $table->string('asie_fabrica',18)->nullable();
+            $table->date('fecha_fabrica')->nullable();
+        });        
     }
 
     /**
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sunarps');
+        Schema::dropIfExists('tf_sunarp');
     }
 };

@@ -27,9 +27,10 @@ class UserSeeder extends Seeder
             'ape_materno' => 'DEL SISTEMA',
             'email' => '',
             'fecha_creacion' => '2022-07-01',
-            'fecha_cese' => '2022-07-01',
+            'fecha_cese' => '2024-12-01',
             'imagen' => 'default.png',
             'estado' => 1,
         ])->assignRole('ADMINISTRADOR');
+
     }
 }

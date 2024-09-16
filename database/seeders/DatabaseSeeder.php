@@ -22,6 +22,20 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call(RolSeeder::class);
-        // $this->call(UserSeeder::class);
+        $this->call(UserSeeder::class);
+        $this->call(ActividadesSeeder::class);
+        $this->call(CodigoInstalacionSeeder::class);
+        $this->call(UbigeoSeeder::class);
+        $this->call(UbigesSeeder::class);
+        $this->call(HabUrbanaSeeder::class);
+        $this->call(InstitucionSeeder::class);
+        $this->call(SectoresSeeder::class);
+        $this->call(ManzanaSeeder::class);
+        $this->call(ViasSeeder::class);
+        $this->call(TablasSeeder::class);
+        $this->call(TablaCodigosSeeder::class);
+        $this->call(UsosSeeder::class);
+        $this->call(UsosBCSeeder::class);
+        $this->call(TecnicosSeeder::class);
     }
 }

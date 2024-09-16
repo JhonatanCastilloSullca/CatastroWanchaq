@@ -13,17 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('servicio_basicos', function (Blueprint $table) {
-            $table->string('id_ficha',19)->unsigned();
-            $table->foreign('id_ficha')->references('id_ficha')->on('fichas');
-            $table->integer('luz')->nullable(); 
-            $table->integer('agua')->nullable(); 
-            $table->integer('telefono')->nullable(); 
-            $table->integer('desague')->nullable(); 
-            $table->integer('gas')->nullable(); 
-            $table->integer('internet')->nullable(); 
+        Schema::create('tf_servicios_basicos', function (Blueprint $table) {
+            $table->string('id_ficha', 19)->unsigned();
+            $table->foreign('id_ficha')->references('id_ficha')->on('tf_fichas')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('luz')->nullable();
+            $table->integer('agua')->nullable();
+            $table->integer('telefono')->nullable();
+            $table->integer('desague')->nullable();
+            $table->integer('gas')->nullable();
+            $table->integer('internet')->nullable();
             $table->integer('tvcable')->nullable();
         });
+        
     }
 
     /**
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('servicio_basicos');
+        Schema::dropIfExists('tf_servicios_basicos');
     }
 };

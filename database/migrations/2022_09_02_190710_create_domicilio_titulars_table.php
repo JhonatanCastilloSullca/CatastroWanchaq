@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('id_ficha', 19)->unsigned();
             $table->foreign('id_ficha')->references('id_ficha')->on('tf_fichas')->onDelete('cascade')->onUpdate('cascade');
             $table->string('id_persona', 21)->unsigned();
-            $table->foreign('id_persona')->references('id_persona')->on('personas')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_persona')->references('id_persona')->on('tf_personas')->onDelete('cascade')->onUpdate('cascade');
             $table->string('codi_via', 6)->nullable();
             $table->string('tipo_via', 5)->nullable();
             $table->string('nomb_via', 100)->nullable();

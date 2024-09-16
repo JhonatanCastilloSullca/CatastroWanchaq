@@ -302,7 +302,7 @@ class FichaCotitularidadCreate extends Component
             for ($i = 0; $i < $this->total; $i++) {
                 $this->validate([
                     'tipoTitular.' . $i           =>  'required',
-                    'porc_cotitular.' . $i            =>  'required|numeric|regex:/^[\d]{0,7}(\.[\d]{1,2})?$/',
+                    'porc_cotitular.' . $i        =>  'nulable|numeric|regex:/^[\d]{0,7}(\.[\d]{1,2})?$/',
                     'codi_contribuyente.' . $i            =>  'nullable|max:10',
 
                     'tipo_doc1.' . $i             =>  'nullable',

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Tabla;
 use App\Models\TablaCodigo;
 use Illuminate\Support\Facades\Redirect;
 use DB;
@@ -12,62 +13,12 @@ class TablaCodigoController extends Controller
     //
     public function index()
     {
+        $tablas=Tabla::all();
         $tablacodigos=TablaCodigo::all();
-        $desc_tabla = [
-            'TDC' => 'Tipo de Documento',
-            'DCF' => '',
-            'PEN' => 'Predio Catastral en',
-            'VIA' => '',
-            'TIN' => 'Tipo de Interior',
-            'ECH' => '',
-            'TED' => 'Tipo de Edificación',
-            'CNP' => 'Condicion Numerica',
-            'RUT' => '',
-            'MEP' => 'Instalaciones MEP',
-            'CDC' => 'Condicion de Conductor',
-            'MFC' => '',
-            'LLE' => 'Estado de llenado',
-            'FC'  => '',
-            'CTT' => 'Condicion de Titular',
-            'ARE' => '',
-            'IEI' => '',
-            'FE'  => '',
-            'MFI' => 'Mantenimiento Ficha Individual',
-            'CDP' => 'Clasificación de Predio',
-            'TIF' => '',
-            'HUR' => '',
-            'TDA' => '',
-            'CTF' => '',
-            'MFE' => 'Mantenimiento Ficha Economica',
-            'ECS' => 'Instalaciones ECS',
-            'ECC' => 'Instalaciones ECC',
-            'TPE' => 'Tipo de Persona',
-            'LOG' => '',
-            'DOC' => 'Tipo de Doc. Identidad',
-            'CDE' => 'Condicion de declarante',
-            'TCZ' => '',
-            'UCA' => 'Instalaciones UCA',
-            'EPC' => '',
-            'TPR' => 'Tipo de Puerta',
-            'CEF' => 'Condicion Especial de Titular',
-            'TPC' => '',
-            'CDI' => '',
-            'DFB' => 'Declaratoria de Fabrica',
-            'FAQ' => 'Forma de Adquisición',
-            'CET' => '',
-            'ECV' => 'Estado Civil',
-            'FCH' => '',
-            'DFE' => 'Documentos Presentados',
-            'ANU' => 'Codigo de Anuncio',
-            'CEP' => '',
-            'TPJ' => 'Tipo de Persona Juridica',
-            'TPA' => 'Tipo de Partida Registral',
-            'ZON' => 'Zonificacion'
-        ];
         $i=0;
 
 
-        return view('pages.tablacodigo.index',compact('tablacodigos','desc_tabla','i'));
+        return view('pages.tablacodigo.index',compact('tablas','tablacodigos','i'));
     }
     public function store(Request $request)
     {

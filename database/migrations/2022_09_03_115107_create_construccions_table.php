@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('construccions', function (Blueprint $table) {
+        Schema::create('tf_construcciones', function (Blueprint $table) {
             $table->string('id_construccion', 25);
             $table->string('id_ficha', 19)->unsigned();
-            $table->foreign('id_ficha')->references('id_ficha')->on('fichas');
+            $table->foreign('id_ficha')->references('id_ficha')->on('tf_fichas')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('codi_construccion')->nullable();
             $table->string('nume_piso', 2)->nullable();
             $table->date('fecha')->nullable();
@@ -33,10 +33,10 @@ return new class extends Migration
             $table->decimal('area_declarada', 8, 2)->nullable();
             $table->decimal('area_verificada', 8, 2)->nullable();
             $table->string('uca', 2)->nullable();
-            $table->string('bloque', 2)->nullable();
-
+            $table->string('bloque', 2)->nullable();            
             $table->primary('id_construccion');
         });
+        
     }
 
     /**
@@ -46,6 +46,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('construccions');
+        Schema::dropIfExists('tf_construcciones');
     }
 };

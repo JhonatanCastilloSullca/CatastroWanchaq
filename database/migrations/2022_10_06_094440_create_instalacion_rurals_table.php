@@ -13,19 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('instalacion_rurals', function (Blueprint $table) {
+        Schema::create('tf_instalacion_rural', function (Blueprint $table) {
             $table->string('id_ficha',19)->unsigned();
-            $table->foreign('id_ficha')->references('id_ficha')->on('fichas');
-            $table->string('tipo_ins',25)->nullable();  
-            $table->integer('cantidad')->nullable();  
+            $table->foreign('id_ficha')->references('id_ficha')->on('tf_fichas')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('tipo_ins',25)->nullable();
+            $table->integer('cantidad')->nullable();
             $table->decimal('area_porcentaje',7,2)->nullable();
-            $table->decimal('area_const',7,2)->nullable(); 
-            $table->decimal('volumen',7,2)->nullable(); 
-            $table->date('fecha_const',75)->nullable(); 
-            $table->string('material_est',2)->nullable(); 
-            $table->string('estado_conserva',2)->nullable(); 
-            $table->string('estado_construc',175)->nullable(); 
-        });
+            $table->decimal('area_const',7,2)->nullable();
+            $table->decimal('volumen',7,2)->nullable();
+            $table->date('fecha_const')->nullable();
+            $table->string('material_est',2)->nullable();
+            $table->string('estado_conserva',2)->nullable();
+            $table->string('estado_construc',175)->nullable();
+        });              
     }
 
     /**
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('instalacion_rurals');
+        Schema::dropIfExists('tf_instalacion_rural');
     }
 };

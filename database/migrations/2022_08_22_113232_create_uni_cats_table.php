@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('id_uni_cat', 23);
             $table->string('id_lote', 16)->nullable();
             $table->string('id_edificacion')->unsigned();
-            $table->foreign('id_edificacion')->references('id_edificacion')->on('edificaciones')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_edificacion')->references('id_edificacion')->on('tf_edificaciones')->onDelete('cascade')->onUpdate('cascade');
             $table->string('codi_entrada', 2)->nullable();
             $table->string('codi_piso', 2)->nullable();
             $table->string('codi_unidad', 3)->nullable();

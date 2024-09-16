@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('licencias', function (Blueprint $table) {
+        Schema::create('tf_licencias', function (Blueprint $table) {
             $table->id();
             $table->string('nroexpediente');
             $table->date('fecha_emision');
@@ -65,6 +65,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('licencias');
+        Schema::dropIfExists('tf_licencias');
     }
 };

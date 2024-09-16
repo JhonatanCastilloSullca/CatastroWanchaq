@@ -55,9 +55,9 @@ class PersonaController extends Controller
         $requ=\Validator::make($request->all(), [
             'nume_doc' => 'required|numeric|digits:8',
             'nombres' => 'required|max:150',
-            'nombres' => 'required|regex:/^[a-zA-Z\s]+$/u|max:50',
-            'ape_paterno' => 'required|regex:/^[a-zA-Z\s]+$/u|max:50',
-            'ape_materno' => 'required|regex:/^[a-zA-Z\s]+$/u|max:50',
+            'nombres' => 'required|max:50',
+            'ape_paterno' => 'required|max:50',
+            'ape_materno' => 'required|max:50',
             'nregistro' => 'max:7',
             'email' => 'nullable|email|max:50',
         ]);

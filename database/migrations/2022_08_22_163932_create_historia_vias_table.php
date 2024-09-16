@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nomb_via_ant', 100);
             $table->date('fecha_his_via')->nullable();
             $table->string('id_via', 12)->unsigned();
-            $table->foreign('id_via')->references('id_via')->on('vias')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_via')->references('id_via')->on('tf_vias')->onDelete('cascade')->onUpdate('cascade');
             $table->string('activo', 1);
         });
         

@@ -13,19 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('monumentos', function (Blueprint $table) {
+        Schema::create('tf_monumento', function (Blueprint $table) {
             $table->string('id_ficha',19)->unsigned();
-            $table->foreign('id_ficha')->references('id_ficha')->on('fichas');
+            $table->foreign('id_ficha')->references('id_ficha')->on('tf_fichas')->onDelete('cascade')->onUpdate('cascade');
             $table->string('cat_inmueble',2)->nullable();
-            $table->string('nomb_monumento',150)->nullable(); 
-            $table->string('cod_monumento',15)->nullable();  
-            $table->string('presencia_arquitectura',2)->nullable(); 
-            $table->string('filiacion_cronologica',2)->nullable(); 
-            $table->string('tipo_area',1)->nullable(); 
-            $table->decimal('area_monu',11,2)->nullable(); 
-            $table->decimal('perimetro_monumento',11,2)->nullable();  
-            $table->string('observaciones',500)->nullable(); 
-        });
+            $table->string('nomb_monumento',150)->nullable();
+            $table->string('cod_monumento',15)->nullable();
+            $table->string('presencia_arquitectura',2)->nullable();
+            $table->string('filiacion_cronologica',2)->nullable();
+            $table->string('tipo_area',1)->nullable();
+            $table->decimal('area_monu',11,2)->nullable();
+            $table->decimal('perimetro_monumento',11,2)->nullable();
+            $table->string('observaciones',500)->nullable();
+        });        
     }
 
     /**
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('monumentos');
+        Schema::dropIfExists('tf_monumento');
     }
 };

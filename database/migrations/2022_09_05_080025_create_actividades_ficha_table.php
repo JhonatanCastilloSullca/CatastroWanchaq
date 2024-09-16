@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('actividades_ficha', function (Blueprint $table) {
+        Schema::create('tf_autorizaciones_funcionamiento', function (Blueprint $table) {
             $table->string('codi_actividad',6)->unsigned();
-            $table->foreign('codi_actividad')->references('codi_actividad')->on('actividades');
+            $table->foreign('codi_actividad')->references('codi_actividad')->on('tf_actividades')->onDelete('cascade')->onUpdate('cascade');
             $table->string('id_ficha',19)->unsigned();
-            $table->foreign('id_ficha')->references('id_ficha')->on('fichas');
-        });
+            $table->foreign('id_ficha')->references('id_ficha')->on('tf_fichas')->onDelete('cascade')->onUpdate('cascade');
+        });        
     }
 
     /**
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('actividades_ficha');
+        Schema::dropIfExists('tf_autorizaciones_funcionamiento');
     }
 };

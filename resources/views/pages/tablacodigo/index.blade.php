@@ -45,7 +45,7 @@
                 @foreach($tablacodigos as $tablacodigo)
                 <tr>
                     <td>{{++$i}}</td>
-                    <td>{{$tablacodigo->id_tabla}} - {{$desc_tabla[$tablacodigo->id_tabla]}}</td>
+                    <td>{{$tablacodigo->id_tabla}}</td>
                     <td>{{$tablacodigo->codigo}}</td>
                     <td>{{$tablacodigo->desc_codigo}}</td>
                     <td>

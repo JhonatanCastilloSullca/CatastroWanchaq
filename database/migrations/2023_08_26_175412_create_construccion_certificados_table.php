@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('construccion_certificados', function (Blueprint $table) {
             $table->id();
-
             $table->integer('codi_construccion')->nullable();
             $table->string('nume_piso', 2)->nullable();
             $table->date('fecha')->nullable();
@@ -33,9 +32,13 @@ return new class extends Migration
             $table->decimal('area_verificada', 8, 2)->nullable();
             $table->string('uca', 2)->nullable();
             $table->string('bloque', 2)->nullable();
-            $table->BigInteger('certificado_id')->unsigned()->nullable();
-            $table->foreign('certificado_id')->references('id')->on('generar_certificados');
-        });
+            $table->bigInteger('certificado_id')->unsigned()->nullable();
+            $table->foreign('certificado_id')
+                  ->references('id')
+                  ->on('generar_certificados')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+        });        
     }
 
     /**

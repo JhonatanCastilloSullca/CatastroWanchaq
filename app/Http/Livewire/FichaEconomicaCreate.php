@@ -37,11 +37,13 @@ class FichaEconomicaCreate extends Component
     public $distritos;
 
     public $numeficha;
+    public $codigo_secuencial;
     public $nume_ficha_lote;
     public $nume_ficha_lote2;
     public $codi_hoja_catastral;
 
     public $tipoConductor;
+    public $requiredtipoConductor;
     public $nomb_comercial;
     public $tipo_doc1;
     public $numedoc1;
@@ -52,9 +54,9 @@ class FichaEconomicaCreate extends Component
     public $razon_social;
     public $cond_conductor;
 
-    public $deparamentoconductor;
-    public $provinciaconductor;
-    public $distritoconductor;
+    public $deparamentoconductor = '08';
+    public $provinciaconductor = '01';
+    public $distritoconductor = '08';
     public $telefonoconductor;
     public $anexoconductor;
     public $faxconductor;
@@ -245,7 +247,7 @@ class FichaEconomicaCreate extends Component
                     'inic_actividad'                => 'nullable',
 
 
-                    'cond_declarante'               => 'nullable',
+                    'cond_declarante'               => 'required',
                     'docu_presentado'               => 'nullable',
                     'esta_llenado'                  => 'required',
 
@@ -319,11 +321,11 @@ class FichaEconomicaCreate extends Component
                     'inic_actividad'                => 'nullable',
 
 
-                    'cond_declarante'               => 'nullable',
+                    'cond_declarante'               => 'required',
                     'docu_presentado'               => 'nullable',
                     'esta_llenado'                  => 'required',
 
-                    'mantenimiento'                 => 'nullable',
+                    'mantenimiento'                 => 'required',
                     'observacion'                   => 'nullable|max:500',
 
                     'supervisor'                    => 'nullable',
@@ -741,6 +743,7 @@ class FichaEconomicaCreate extends Component
             $fichaeconomica=new FichaEconomica();
             $fichaeconomica->id_ficha=$ficha->id_ficha;
             $fichaeconomica->nomb_comercial=strtoupper($this->nomb_comercial);
+            $fichaeconomica->codigo_secuencial=strtoupper($this->codigo_secuencial);
             if($this->pred_area_autor!=""){
                 $fichaeconomica->pred_area_autor=$this->pred_area_autor;
             }
@@ -879,6 +882,8 @@ class FichaEconomicaCreate extends Component
         $this->verificadores=Persona::where('tipo_funcion',4)->get();
         $this->departamentos=Ubiges::where('cod_pro','00')->where('codi_dis','00')->get();
         $this->provincias=Ubiges::where('cod_pro','!=','00')->where('codi_dis','00')->get();
+        // $this->provinciasdef=Ubiges::where('cod_dep','=','08')->where('cod_pro','!=','00')->where('codi_dis','00')->get();
+        
         $this->distritos=Ubiges::where('codi_dis','!=','00')->get();
     }
 
@@ -966,6 +971,15 @@ class FichaEconomicaCreate extends Component
         }else{
             $this->razon_social=$persona['nombre'];
             $this->numedoc3=$ruc;
+        }
+    }
+    public function updatedtipoConductor($value)
+    {
+        if ($value == 1) {
+            $this-> requiredtipoConductor = 1;
+        }
+        elseif ($value == 2) {
+            $this-> requiredtipoConductor = 2;
         }
     }
 

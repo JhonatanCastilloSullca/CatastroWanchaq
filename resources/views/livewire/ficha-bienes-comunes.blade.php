@@ -11,7 +11,7 @@
                             <h4 class="mb-4"> DATOS GENERALES</h4>
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex"> NUMERO DE FICHA</label>
+                                    <label class="form-label d-inline-flex pb-2"> NUMERO DE FICHA</label>
                                     <input type="text" class="form-control" placeholder="" name="numeficha" wire:model.lazy="numeficha" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="7" tabindex="1" @if($errors->has('numeficha')) autofocus @endif >
                                     @error('numeficha')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
@@ -20,7 +20,7 @@
                             </div><!-- Col -->
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex"> NUMERO DE FICHAS POR LOTE</label>
+                                    <label class="form-label d-inline-flex pb-2"> NUMERO DE FICHAS POR LOTE</label>
                                     <div class="row form-group">
                                         <div class="col-md-6">
                                             <input type="text" class="form-control" placeholder="" name="nume_ficha_lote" wire:model="nume_ficha_lote" maxlength="2" tabindex="2">
@@ -37,7 +37,7 @@
                                     </div>
                                 </div>
                             </div><!-- Col -->
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
                                         <div class="divcuadro">1</div> CÓDIGO ÚNICO CATASTRAL - CUC
@@ -48,7 +48,7 @@
                                     @enderror
                                 </div>
                             </div><!-- Col -->
-                            <div class="col-md-3">
+                            {{-- <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
                                         <div class="divcuadro">2</div> CÓDIGO HOJA CATASTRAL
@@ -58,13 +58,15 @@
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
                                 </div>
-                            </div><!-- Col -->
+                            </div><!-- Col --> --}}
                         </div><!-- Row -->
+                        
+                        
                         <div class="row  form-group">
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadrorequired">3</div> CÓDIGO DE REFERENCIA CATASTRAL
+                                        <div class="divcuadrorequired">2</div> CÓDIGO DE REFERENCIA CATASTRAL
                                     </label>
                                     <div class="row row3 mb-3" style="place-content: center;text-align: center;">
                                         <div class="col-md-3 row">
@@ -164,6 +166,34 @@
                                 </div>
                             </div><!-- Col -->
                         </div><!-- Row -->
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label d-inline-flex">
+                                        <div class="divcuadro">3</div> CÓDIGO CONTRIBUYENTE DE RENTAS
+                                    </label>
+                                    <input type="text" class="form-control" placeholder=""
+                                        name="codi_cont_rentas" wire:model="codi_cont_rentas" maxlength="15"
+                                        tabindex="16">
+                                    @error('codi_cont_rentas')
+                                        <span class="error-message" style="color:red">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div><!-- Col -->
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label d-inline-flex">
+                                        <div class="divcuadro">4</div> CÓDIGO PREDIAL DE RENTAS
+                                    </label>
+                                    <input type="text" class="form-control" placeholder=""
+                                        name="codi_pred_rentas" wire:model="codi_pred_rentas" maxlength="15"
+                                        tabindex="17">
+                                    @error('codi_pred_rentas')
+                                        <span class="error-message" style="color:red">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div><!-- Col -->
+                        </div><!-- Row -->
 
                         <div class="row form-group">
                             <h4 class="mb-4"> UBICACION DEL PREDIO CATASTRAL</h4>
@@ -173,26 +203,26 @@
                                         <thead>
                                             <tr>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadrorequired">07</div> CÓDIGO DE VIA
+                                                        <div class="divcuadrorequired">05</div> CÓDIGO DE VIA
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">08</div> TIPO DE VIA
+                                                        <div class="divcuadrorequired">06</div> TIPO DE VIA
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">09</div> NOMBRE DE VIA
+                                                        <div class="divcuadrorequired">07</div> NOMBRE DE VIA
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadrorequired">10</div>TIPO DE PUERTA
+                                                        <div class="divcuadrorequired">08</div>TIPO DE PUERTA
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">11</div> N° MUNICIPAL
+                                                        <div class="divcuadro">09</div> N° MUNICIPAL
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">12</div> COND. NUMER.
+                                                        <div class="divcuadro">10</div> COND. NUMER.
                                                     </label></th>
-                                                <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">13</div> NUM. CERTIFICACION
-                                                    </label></th>
+                                                {{-- <th><label class="form-label d-inline-flex">
+                                                        <div class="divcuadro">09</div> NUM. CERTIFICACION
+                                                    </label></th> --}}
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -243,12 +273,12 @@
                                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                                     @enderror
                                                 </td>
-                                                <td>
+                                                {{-- <td>
                                                     <input type="text" class="form-control" placeholder="" name="nume_certificacion[]" id="nume_certificacion.{{$i}}" wire:model="nume_certificacion.{{$i}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="10" tabindex="18">
                                                     @error('nume_certificacion.'.$i)
                                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                                     @enderror
-                                                </td>
+                                                </td> --}}
                                                 <td>
                                                     @if($i==$cont-1)
                                                     <button type="button" class="btn btn-success btn-icon" wire:click="aumentarUbicacion" tabindex="18">+</button>
@@ -264,7 +294,7 @@
                             </div><!-- Col -->
                         </div><!-- Row -->
                         <div class="row form-group">
-                            <div class="col-md-6">
+                            {{-- <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
                                         <div class="divcuadro">14</div> NOMBRE DE EDIFICACION
@@ -274,11 +304,11 @@
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
                                 </div>
-                            </div><!-- Col -->
-                            <div class="col-md-6">
+                            </div><!-- Col --> --}}
+                            <div class="col-md-4">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">15</div> TIPO DE EDIFICACION
+                                        <div class="divcuadro">11</div> TIPO DE EDIFICACION
                                     </label>
                                     <select class="form-select" data-width="100%" data-live-search="true" name="tipo_edificacion" id="tipo_edificacion" wire:model="tipo_edificacion" tabindex="20">
                                         <option value="">SELECCIONE</option>
@@ -300,7 +330,7 @@
                                 <div class="mb-3">
                                     <div wire:ignore>
                                         <label class="form-label d-inline-flex">
-                                            <div class="divcuadrorequired">18</div> CODIGO URBANO
+                                            <div class="divcuadrorequired">14</div> CODIGO URBANO
                                         </label>
                                         <select class="form-select insumo_id" id="hab_urbana_id" name="hab_urbana_id" data-width="100%" wire:model="tipoHabi" tabindex="21">
                                             <option value="">Seleccione</option>
@@ -315,7 +345,7 @@
                             <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">19</div> NOMBRE DE LA HABILITACION URBANA
+                                        <div class="divcuadrorequired">15</div> NOMBRE DE LA HABILITACION URBANA
                                     </label>
                                     <input type="text" class="form-control" name="nomb_hab_urba" readonly placeholder="Nombre Habilitacion Urbana" wire:model="nomb_hab_urba" tabindex="22">
                                     <span class="text-danger">@error('nomb_hab_urba'){{$message}}@enderror</span>
@@ -324,7 +354,7 @@
                             <div class="col-md-2">
                                 <div class="mb-2">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">20</div> ZONA/SECTOR/ETAPA
+                                        <div class="divcuadro">16</div> ZONA/SECTOR/ETAPA
                                     </label>
                                     <input type="text" class="form-control" name="zona_dist" wire:model="zona_dist" placeholder="Zona, Sector, Etapa" onkeydown="return /[a-z. ;]/i.test(event.key)" tabindex="23" maxlength="15">
                                     <span class="text-danger">@error('zona_dist'){{$message}}@enderror</span>
@@ -333,7 +363,7 @@
                             <div class="col-md-2">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">21</div> MANZANA
+                                        <div class="divcuadro">17</div> MANZANA
                                     </label>
                                     <input type="text" class="form-control" name="mzna_dist" wire:model="mzna_dist" placeholder="Manzana" maxlength="15" tabindex="24">
                                     <span class="text-danger">@error('mzna_dist'){{$message}}@enderror</span>
@@ -342,7 +372,7 @@
                             <div class="col-md-1">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">22</div> LOTE
+                                        <div class="divcuadro">18</div> LOTE
                                     </label>
                                     <input type="text" class="form-control" name="lote_dist" wire:model="lote_dist" placeholder="Lote" maxlength="5" tabindex="25">
                                     <span class="text-danger">@error('lote_dist'){{$message}}@enderror</span>
@@ -351,7 +381,7 @@
                             <div class="col-md-2">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">23</div> SUB-LOTE
+                                        <div class="divcuadro">19</div> SUB-LOTE
                                     </label>
                                     <input type="text" class="form-control" name="sub_lote_dist" wire:model="sub_lote_dist" placeholder="Sublote" maxlength="6" tabindex="26">
                                     <span class="text-danger">@error('sub_lote_dist'){{$message}}@enderror</span>
@@ -364,7 +394,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadrorequired">54</div> CLASIFICACION DEL PREDIO
+                                        <div class="divcuadrorequired">40</div> CLASIFICACION DEL PREDIO
                                     </label>
                                     <select class="form-select" data-width="100%" data-live-search="true" name="clasificacion" id="clasificacion" wire:model="clasificacion" tabindex="27">
                                         <option value="">SELECCIONE</option>
@@ -380,7 +410,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadrorequired">55</div> PREDIO CATASTRAL EN
+                                        <div class="divcuadrorequired">41</div> PREDIO CATASTRAL EN
                                     </label>
                                     <select class="form-select" data-width="100%" data-live-search="true" name="cont_en" id="cont_en" wire:model="cont_en" tabindex="28">
                                         <option value="">SELECCIONE</option>
@@ -399,7 +429,7 @@
                                 <div class="mb-3">
                                     <div wire:ignore>
                                         <label class="form-label d-inline-flex">
-                                            <div class="divcuadrorequired">56</div> CODIGO DE USO
+                                            <div class="divcuadrorequired">42</div> CODIGO DE USO
                                         </label>
                                         <select class="form-select" data-width="100%" data-live-search="true" name="codi_uso" id="codi_uso" wire:model="codi_uso" tabindex="29">
                                             <option value="">SELECCIONE</option>
@@ -413,26 +443,26 @@
                                     @enderror
                                 </div>
                             </div><!-- Col -->
-                            <div class="col-md-3">
+                            {{-- <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">58</div> ESTRUCTURACION
+                                        <div class="divcuadro">44</div> ESTRUCTURACION
                                     </label>
                                     <input type="text" class="form-control" placeholder="Estructuracion" name="estructuracion" wire:model="estructuracion" tabindex="30">
                                     @error('estructuracion')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
                                 </div>
-                            </div><!-- Col -->
-                            <div class="col-md-3">
+                            </div><!-- Col --> --}}
+                            <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">59</div> ZONIFICACION
+                                        <div class="divcuadrorequired">44</div> ZONIFICACION
                                     </label>
                                     <select class="form-select" data-width="100%" data-live-search="true" name="zonificacion" id="zonificacion" wire:model="zonificacion" tabindex="71">
                                         <option value="">SELECCIONE</option>
                                         @foreach(\App\Models\TablaCodigo::where('id_tabla','=','ZON')->orderby('codigo','asc')->get() as $tablacodigo)
-                                        <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
+                                        <option value="{{$tablacodigo->codigo}}">z{{$tablacodigo->desc_codigo}}</option>
                                         @endforeach
                                     </select>
                                     @error('zonificacion')
@@ -444,7 +474,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">60</div> AREA DE TERRENO ADQUIRIDO (M2)
+                                        <div class="divcuadro">45</div> AREA DE TERRENO ADQUIRIDO (M2)
                                     </label>
                                     <input type="text" class="form-control" placeholder="" name="area_declarada" wire:model="area_declarada" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="8" tabindex="32">
                                     @error('area_declarada')
@@ -455,7 +485,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">62</div> AREA DE TERRENO VERIFICADA (M2)
+                                        <div class="divcuadrorequired">46</div> AREA DE TERRENO VERIFICADA (M2)
                                     </label>
                                     <input type="text" class="form-control" placeholder="" name="area_verificada1" wire:model="area_verificada1" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="9" tabindex="33">
                                     @error('area_verificada1')
@@ -483,10 +513,10 @@
                                 </div><!-- Col -->
                             </div>
                             <div class="col-md-10 row">
-                                <div class="col-md-3">
+                                <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label d-inline-flex">
-                                            <div class="divcuadro">63</div> MEDIDA EN CAMPO
+                                            <div class="divcuadro">47</div> MEDIDA EN CAMPO
                                         </label>
                                     </div><!-- Col -->
                                     <div class="mb-3">
@@ -514,10 +544,10 @@
                                         @enderror
                                     </div><!-- Col -->
                                 </div>
-                                <div class="col-md-3">
+                                {{-- <div class="col-md-3">
                                     <div class="mb-3">
                                         <label class="form-label d-inline-flex">
-                                            <div class="divcuadro">64</div>MEDIDA SEGUN TITULO
+                                            <div class="divcuadro">48</div>MEDIDA SEGUN TITULO
                                         </label>
                                     </div><!-- Col -->
                                     <div class="mb-3">
@@ -544,11 +574,11 @@
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                         @enderror
                                     </div><!-- Col -->
-                                </div>
-                                <div class="col-md-3">
+                                </div> --}}
+                                <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label d-inline-flex">
-                                            <div class="divcuadro">65</div>COLIDANCIAS EN CAMPO
+                                            <div class="divcuadro">48</div>COLIDANCIAS EN CAMPO
                                         </label>
                                     </div><!-- Col -->
                                     <div class="mb-3">
@@ -576,7 +606,7 @@
                                         @enderror
                                     </div><!-- Col -->
                                 </div>
-                                <div class="col-md-3">
+                                {{-- <div class="col-md-3">
                                     <div class="mb-3">
                                         <label class="form-label d-inline-flex">
                                             <div class="divcuadro">66</div> COLIDANCIAS SEGUN TITULO
@@ -606,7 +636,7 @@
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                         @enderror
                                     </div><!-- Col -->
-                                </div>
+                                </div> --}}
                             </div>
                         </div><!-- Row -->
                         <div class="row form-group">
@@ -614,7 +644,7 @@
                             <div class="lineatoggle">
                                 <div>
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">67</div> LUZ
+                                        <div class="divcuadro">49</div> LUZ
                                     </label>
                                 </div>
                                 <div style="padding-left: 10px;">
@@ -626,7 +656,7 @@
                             <div class="lineatoggle">
                                 <div>
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">68</div> AGUA
+                                        <div class="divcuadro">50</div> AGUA
                                     </label>
                                 </div>
                                 <div style="padding-left: 10px;">
@@ -638,7 +668,7 @@
                             <div class="lineatoggle">
                                 <div>
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">69</div> TELEFONO
+                                        <div class="divcuadro">51</div> TELEFONO
                                     </label>
                                 </div>
                                 <div style="padding-left: 10px;">
@@ -650,7 +680,7 @@
                             <div class="lineatoggle">
                                 <div>
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">70</div> DESAGÛE
+                                        <div class="divcuadro">52</div> DESAGÛE
                                     </label>
                                 </div>
                                 <div style="padding-left: 10px;">
@@ -662,7 +692,7 @@
                             <div class="lineatoggle">
                                 <div>
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">71</div> GAS
+                                        <div class="divcuadro">53</div> GAS
                                     </label>
                                 </div>
                                 <div style="padding-left: 10px;">
@@ -674,7 +704,7 @@
                             <div class="lineatoggle">
                                 <div>
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">72</div> INTERNET
+                                        <div class="divcuadro">54</div> INTERNET
                                     </label>
                                 </div>
                                 <div style="padding-left: 10px;">
@@ -686,7 +716,7 @@
                             <div class="lineatoggle">
                                 <div>
                                     <label class="form-label d-inline-flex" style="width: 250px;">
-                                        <div class="divcuadro">73</div> CONEXION TV POR CABLE O CABLE SATELITAL
+                                        <div class="divcuadro">55</div> CONEXION TV POR CABLE O CABLE SATELITAL
                                     </label>
                                 </div>
                                 <div style="padding-left: 10px;">
@@ -705,49 +735,49 @@
                                         <thead>
                                             <tr>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">74</div> BLOQUE
+                                                        <div class="divcuadro">301</div> BLOQUE
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">74</div> N° PISO
+                                                        <div class="divcuadro">56</div> N° PISO
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">75</div> FECHA
+                                                        <div class="divcuadro">57</div> FECHA
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">76</div> MEP
+                                                        <div class="divcuadro">58</div> MEP
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">77</div> ECS
+                                                        <div class="divcuadro">59</div> ECS
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">78</div> ECC
+                                                        <div class="divcuadro">60</div> ECC
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">79</div> MUROS
+                                                        <div class="divcuadro">61</div> MUROS
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">80</div> TECHOS
+                                                        <div class="divcuadro">62</div> TECHOS
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">81</div> PISOS
+                                                        <div class="divcuadro">63</div> PISOS
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">82</div> P. Y V.
+                                                        <div class="divcuadro">64</div> P. Y V.
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">83</div> REVEST.
+                                                        <div class="divcuadro">65</div> REVEST.
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">84</div> BAÑOS
+                                                        <div class="divcuadro">66</div> BAÑOS
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">85</div> INST. E.
+                                                        <div class="divcuadro">67</div> INST. E.
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">87</div> AREA V.
+                                                        <div class="divcuadro">68</div> AREA V.
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">88</div> UCA
+                                                        <div class="divcuadro">69</div> UCA
                                                     </label></th>
                                                 <th>
 
@@ -903,21 +933,21 @@
                                         <thead>
                                             <tr>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">90</div> CODIGO
+                                                        <div class="divcuadro">71</div> CODIGO
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">75</div> FECHA
+                                                        <div class="divcuadro">57</div> FECHA
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">76</div> MEP
+                                                        <div class="divcuadro">58</div> MEP
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">77</div> ECS
+                                                        <div class="divcuadro">59</div> ECS
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">78</div> ECC
+                                                        <div class="divcuadro">60</div> ECC
                                                     </label></th>
-                                                <th><label class="form-label d-inline-flex">
+                                                {{-- <th><label class="form-label d-inline-flex">
                                                         <div class="divcuadro">92</div> DIMENSIÓN LARGO
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
@@ -925,15 +955,15 @@
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
                                                         <div class="divcuadro">94</div> DIMENSIÓN ALTO
+                                                    </label></th> --}}
+                                                <th><label class="form-label d-inline-flex">
+                                                        <div class="divcuadro">73</div> PRODUCTO TOTAL
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">95</div> PRODUCTO TOTAL
+                                                        <div class="divcuadro">74</div> U. MEDIDA
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">96</div> U. MEDIDA
-                                                    </label></th>
-                                                <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">88</div> UCA
+                                                        <div class="divcuadro">69</div> UCA
                                                     </label></th>
                                                 <th>
                                                     @if($cont3>0)
@@ -996,7 +1026,7 @@
                                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                                     @enderror
                                                 </td>
-                                                <td>
+                                                {{-- <td>
                                                     <input type="text" class="form-control" name="dime_largo[]" placeholder="D. largo" id="dime_largo.{{$i}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="7" wire:model.defer="dime_largo.{{$i}}" tabindex="58">
                                                     @error('dime_largo.'.$i)
                                                     <span class="error-message" style="color:red">{{ $message }}</span>
@@ -1013,7 +1043,7 @@
                                                     @error('dime_alto.'.$i)
                                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                                     @enderror
-                                                </td>
+                                                </td> --}}
                                                 <td>
                                                     <input type="text" class="form-control" name="inst_prod_total[]" placeholder="PRODUCTO TOTAL" id="inst-prod_total.{{$i}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="8" wire:model.defer="inst_prod_total.{{$i}}" tabindex="58">
                                                     @error('inst_prod_total.'.$i)
@@ -1138,7 +1168,7 @@
                         <div class="row form-group">
 
                             <label class="form-label d-inline-flex">
-                                <div class="divcuadro">113</div>ÁREA DE TERRENO INVADIDA (M2)
+                                <div class="divcuadro">87</div>ÁREA DE TERRENO INVADIDA (M2)
                             </label>
                             <div class="col-md-3">
                                 <div class="mb-3">
@@ -1284,7 +1314,7 @@
                             </div><!-- Col -->
                         </div><!-- Row -->
 
-                        <div class="row form-group">
+                        {{-- <div class="row form-group">
                             <h4 class="mb-4"> DOCUMENTOS Y DATOS REGISTRALES</h4>
                             <label class="form-label d-inline-flex">REGISTROS NOTARIAL DE LA ESCRITURA PUBLICA</label>
 
@@ -1323,15 +1353,16 @@
                                 <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> --}}
 
 
                         <div class="row form-group">
+                            <h4 class="mb-1"> DOCUMENTOS Y DATOS REGISTRALES</h4>
                             <h4 class="mb-5"> INSCRIPCION DEL PREDIO CATASTRAL</h4>
                             <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">104</div>TIPO DE PARTIDA REGISTRAL
+                                        <div class="divcuadro">79</div>TIPO DE PARTIDA REGISTRAL
                                     </label>
                                     <select class="form-select" id="tipo_partida" aria-label="Default select example" name="tipo_partida" wire:model="tipo_partida" tabindex="134">
                                         <option value="">SELECCIONE</option>
@@ -1349,7 +1380,7 @@
                             <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">105</div>NUMERO
+                                        <div class="divcuadro">80</div>NUMERO
                                     </label>
                                     <input type="text" id="nume_partida" class="form-control" name="nume_partida" maxlength="18" wire:model="nume_partida" tabindex="134">
                                     @error('nume_partida')
@@ -1360,7 +1391,7 @@
                             <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">106</div>FOJAS
+                                        <div class="divcuadro">81</div>FOJAS
                                     </label>
                                     <input type="text" id="fojas" class="form-control" name="fojas" maxlength="18" wire:model="fojas" tabindex="134">
                                     @error('fojas')
@@ -1371,7 +1402,7 @@
                             <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">107</div>ASIENTO
+                                        <div class="divcuadro">82</div>ASIENTO
                                     </label>
                                     <input type="text" id="asiento" class="form-control" name="asiento" maxlength="18" wire:model="asiento" tabindex="134">
                                     @error('asiento')
@@ -1384,7 +1415,7 @@
                             <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">108</div>FECHA DE INSCRIPCION
+                                        <div class="divcuadro">83</div>FECHA DE INSCRIPCION
                                     </label>
                                     <input type="date" id="fecha_inscripcion" class="form-control" name="fecha_inscripcion" wire:model="fecha_inscripcion" tabindex="134">
                                     @error('fecha_inscripcion')
@@ -1395,7 +1426,7 @@
                             <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">109</div>DECLARATORIA DE FABRICA
+                                        <div class="divcuadro">84</div>DECLARATORIA DE FABRICA
                                     </label>
                                     <select class="form-select" id="codi_decla_fabrica" aria-label="Default select example" name="codi_decla_fabrica" wire:model="codi_decla_fabrica" tabindex="134">
                                         <option value="">Seleccione</option>
@@ -1411,7 +1442,7 @@
                             <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">110</div>AS. INSC. DE FABRICA
+                                        <div class="divcuadro">85</div>AS. INSC. DE FABRICA
                                     </label>
                                     <input type="text" id="asie_fabrica" class="form-control" name="asie_fabrica" maxlength="18" wire:model="asie_fabrica" tabindex="134">
                                     @error('asie_fabrica')
@@ -1422,7 +1453,7 @@
                             <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">111</div>FECHA DE INSC. DE FABRICA
+                                        <div class="divcuadro">86</div>FECHA DE INSC. DE FABRICA
                                     </label>
                                     <input type="date" id="fecha_fabrica" class="form-control" name="fecha_fabrica" wire:model="fecha_fabrica" tabindex="134">
                                     @error('fecha_fabrica')
@@ -1437,7 +1468,7 @@
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="form-label d-inline-flex">
-                                            <div class="divcuadro">114</div>CONDICIÓN DE DECLARANTE
+                                            <div class="divcuadro">88</div>CONDICIÓN DE DECLARANTE
                                         </label>
                                         <select class="form-select" data-width="100%" data-live-search="true" name="cond_declarante" id="cond_declarante" wire:model="cond_declarante" tabindex="136">
                                             <option value="">SELECCIONE</option>
@@ -1453,7 +1484,7 @@
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="form-label d-inline-flex">
-                                            <div class="divcuadrorequired">116</div>ESTADO DE LLENADO DE LA FICHA
+                                            <div class="divcuadrorequired">90</div>ESTADO DE LLENADO DE LA FICHA
                                         </label>
                                         <select class="form-select" data-width="100%" data-live-search="true" name="esta_llenado" id="esta_llenado" wire:model="esta_llenado" tabindex="137">
                                             <option value="">SELECCIONE</option>
@@ -1470,7 +1501,7 @@
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="form-label d-inline-flex">
-                                            <div class="divcuadro">119</div>MANTENIMIENTO
+                                            <div class="divcuadro">93</div>MANTENIMIENTO
                                         </label>
                                         <select class="form-select" data-width="100%" data-live-search="true" name="mantenimiento" id="mantenimiento" wire:model="mantenimiento" tabindex="140">
                                             <option value="">SELECCIONE</option>
@@ -1503,7 +1534,7 @@
                             <div class="col-md-3 mb-3">
 
                                 <label class="form-label d-inline-flex">
-                                    <div class="divcuadro">120</div>DECLARANTE DNI
+                                    <div class="divcuadro">94</div>DECLARANTE DNI
                                 </label>
 
                                 <label class="form-label d-inline-flex"></label>
@@ -1546,7 +1577,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label class="form-label d-inline-flex">
-                                    <div class="divcuadro">121</div>SUPERVISOR
+                                    <div class="divcuadro">95</div>SUPERVISOR
                                 </label>
                                 <select class="form-select" data-width="100%" data-live-search="true" name="supervisor" id="supervisor" wire:model="supervisor" tabindex="147">
                                     <option value="">SELECCIONE</option>
@@ -1565,7 +1596,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label class="form-label d-inline-flex">
-                                    <div class="divcuadrorequired">122</div>TÉCNICO CATASTRAL
+                                    <div class="divcuadrorequired">96</div>TÉCNICO CATASTRAL
                                 </label>
                                 <select class="form-select" data-width="100%" data-live-search="true" name="tecnico" id="tecnico" wire:model="tecnico" tabindex="149">
                                     <option value="">SELECCIONE</option>
@@ -1584,7 +1615,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label class="form-label d-inline-flex">
-                                    <div class="divcuadro">123</div>Vº Bº VERIFICADOR CATASTRAL
+                                    <div class="divcuadro">97</div>Vº Bº VERIFICADOR CATASTRAL
                                 </label>
                                 <select class="form-select" data-width="100%" data-live-search="true" name="verificador" id="verificador" wire:model="verificador" tabindex="151">
                                     <option value="">SELECCIONE</option>

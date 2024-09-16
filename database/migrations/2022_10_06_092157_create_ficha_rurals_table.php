@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ficha_rurals', function (Blueprint $table) {
+        Schema::create('tf_ficha_rural', function (Blueprint $table) {
             $table->string('id_ficha',19)->unsigned();
-            $table->foreign('id_ficha')->references('id_ficha')->on('fichas');
+            $table->foreign('id_ficha')->references('id_ficha')->on('tf_fichas')->onDelete('cascade')->onUpdate('cascade');
             $table->string('cuc',15)->nullable();
             $table->string('codigo_hoja_catastral',15)->nullable();
             $table->string('codigo_contr_rentas',15)->nullable();
@@ -49,7 +49,7 @@ return new class extends Migration
             $table->string('observaciones',500)->nullable();
             $table->string('nume_ficha',7)->nullable();
             $table->string('zona_geografica',2)->nullable();
-        });
+        });        
     }
 
     /**
@@ -59,6 +59,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ficha_rurals');
+        Schema::dropIfExists('tf_ficha_rural');
     }
 };

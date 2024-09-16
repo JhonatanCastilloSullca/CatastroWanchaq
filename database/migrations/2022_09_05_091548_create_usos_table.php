@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('usos', function (Blueprint $table) {
+        Schema::create('tf_usos', function (Blueprint $table) {
             $table->string('codi_uso',6);
             $table->string('desc_uso',250); 
-
             $table->primary('codi_uso');
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('usos');
+        Schema::dropIfExists('tf_usos');
     }
 };

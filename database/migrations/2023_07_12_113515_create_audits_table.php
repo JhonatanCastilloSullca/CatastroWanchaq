@@ -15,11 +15,9 @@ class CreateAuditsTable extends Migration
     {
         $connection = config('audit.drivers.database.connection', config('database.default'));
         $table = config('audit.drivers.database.table', 'audits');
-
         Schema::connection($connection)->create($table, function (Blueprint $table) {
 
             $morphPrefix = config('audit.user.morph_prefix', 'user');
-
             $table->bigIncrements('id');
             $table->string($morphPrefix . '_type')->nullable();
             $table->unsignedBigInteger($morphPrefix . '_id')->nullable();

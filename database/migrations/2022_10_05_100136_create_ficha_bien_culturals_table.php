@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ficha_bien_culturals', function (Blueprint $table) {
+        Schema::create('tf_ficha_bien_cultural', function (Blueprint $table) {
             $table->string('id_ficha',19)->unsigned();
-            $table->foreign('id_ficha')->references('id_ficha')->on('fichas');
+            $table->foreign('id_ficha')->references('id_ficha')->on('tf_fichas')->onDelete('cascade')->onUpdate('cascade');
             $table->decimal('area_titulo',7,2)->nullable();
             $table->decimal('area_construido',7,2)->nullable();
-            $table->decimal('area_libre',7,2)->nullable(); ;
+            $table->decimal('area_libre',7,2)->nullable();
             $table->string('descripcion_fachada',350)->nullable();
             $table->string('descripcion_interior',350)->nullable();
             $table->string('filiacion_estilistica',2)->nullable();
@@ -30,7 +30,7 @@ return new class extends Migration
             $table->integer('nume_familias')->nullable();
             $table->string('nume_ficha',7)->nullable();
             $table->string('crc_rural',20)->nullable();
-        });
+        });        
     }
 
     /**
@@ -40,6 +40,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ficha_bien_culturals');
+        Schema::dropIfExists('tf_ficha_bien_cultural');
     }
 };

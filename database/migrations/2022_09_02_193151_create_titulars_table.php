@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('id_ficha', 19)->unsigned();
             $table->foreign('id_ficha')->references('id_ficha')->on('tf_fichas')->onDelete('cascade')->onUpdate('cascade');
             $table->string('id_persona', 21)->unsigned();
-            $table->foreign('id_persona')->references('id_persona')->on('personas')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_persona')->references('id_persona')->on('tf_personas')->onDelete('cascade')->onUpdate('cascade');
             $table->string('form_adquisicion', 2)->nullable();
             $table->date('fecha_adquisicion')->nullable();
             $table->decimal('porc_cotitular', 7, 4)->nullable();

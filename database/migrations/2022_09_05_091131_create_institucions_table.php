@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('institucions', function (Blueprint $table) {
+        Schema::create('tf_institucion', function (Blueprint $table) {
             $table->string('id_institucion',6);
             $table->string('desc_institucion',50)->nullable(); 
             $table->string('dire_institucion',100)->nullable(); 
@@ -23,8 +23,7 @@ return new class extends Migration
             $table->date('fecha_registro')->nullable(); 
             $table->text('logo_institucion'); 
             $table->text('logo_catastro'); 
-            $table->timestamps();
-            
+            $table->timestamps();            
             $table->primary('id_institucion');
         });
     }
@@ -36,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('institucions');
+        Schema::dropIfExists('tf_institucion');
     }
 };

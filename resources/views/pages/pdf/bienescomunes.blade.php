@@ -30,7 +30,7 @@
         }
 
         .numeros {
-            background-color: #777777;
+            background-color: #c7c7c7;
             color: #000;
             width: 15px;
             height: 15px;
@@ -116,12 +116,12 @@
         }
 
         .fondoclaro {
-            background-color: #d92828;
+            background-color: #fd8b57;
         }
 
         .fondoclarito {
             background-color: #ffff7e;
-            color: #c62200;
+            color: #000000;
 
         }
 
@@ -251,7 +251,7 @@
             <img src="{{$logos?->logo_institucion}}" alt="">
         </div>
         <div style="width: 473px;height: 8px;float:left;border:none;">
-        <div style="width: 427PX;height:16px;margin: auto;">
+            <div style="width: 212px;height:16px;margin: auto;">
                 <div style="width: 211.9px;height: 16px;float:left;" class="fondoclaro">
                     <div class="numeros">
                         01
@@ -260,32 +260,32 @@
                         CÓDIGO ÚNICO CATASTRAL - CUC
                     </div>
                 </div>
-                <div style="width: 212.9px;height: 16px;float:left;" class="fondoclaro">
+                {{-- <div style="width: 212.9px;height: 16px;float:left;" class="fondoclaro">
                     <div class="numeros">
                         01
                     </div>
                     <div class="texto fz8 lh14">
                         CÓDIGO DE HOJA CATASTRAL
                     </div>
-                </div>
+                </div> --}}
             </div>
-            <div style="width: 427px;height:16px;margin: auto;">
+            <div style="width: 212px;height:16px;margin: auto;">
                 <div style="width: 211.9;height: 16px;float:left;">
                     <div class="texto fz8 lh14">
                         {{$ficha?->unicat?->cuc}}
                     </div>
                 </div>
-                <div style="width: 212.9;height: 16px;float:left;">
+                {{-- <div style="width: 212.9;height: 16px;float:left;">
                     <div class="texto fz8 lh14">
                     {{$ficha?->unicat?->codi_hoja_catastral}}
                     </div>
-                </div>
+                </div> --}}
             </div>
              <!-- fila 01-->
           <div style="width: 427px;height:16px;margin: auto;">
             <div style="width: 427px;height: 16px;float:left;" class="fondoclaro">
               <div class="numeros">
-                03
+                02
               </div>
               <div class="texto fz8 lh14">
                 CÓDIGO DE REFERENCIA CATASTRAL
@@ -400,6 +400,32 @@
                     {{$ficha?->dc}}
                 </div>
             </div>
+            <div style="width: 427px;height:16px;margin: auto;">
+                <div style="width: 212px;height: 16px;float:left;" class="fondoclaro">
+                    <div class="numeros">
+                        03
+                    </div>
+                    <div class="texto fz8 lh14">
+                        CÓD. CONTRIBUYENTE DE RENTAS
+                    </div>
+                </div>
+                <div style="width: 212.9px;height: 16px;float:left;" class="fondoclaro">
+                    <div class="numeros">
+                        04
+                    </div>
+                    <div class="texto fz8 lh14">
+                        CÓDIGO PREDIAL DE RENTAS
+                    </div>
+                </div>
+            </div>
+            <div style="width: 427px;height:16px;margin: auto;">
+                <div style="width: 212px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                    {{ $ficha?->unicat?->codi_cont_rentas }}
+                </div>
+                <div style="width: 212.9px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                    {{ $ficha?->unicat?->codi_pred_rentas }}
+                </div>
+            </div>
         </div>
         <div style="width: 120px;height: 120px;float:left;border:none;vertical-align:middle">
             <img src="{{$logos?->logo_institucion}}" alt="Logo">
@@ -413,108 +439,90 @@
         </div>
     </div>
     <div style="width: 716px;height:16px;margin: auto;">
-        <div style="width: 123px;height: 16px;float:left;" class="fondoclaro">
+        <div style="width: 130px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                07
+                05
             </div>
             <div class="texto fz8 lh14">
                 CODIGO DE VIA
             </div>
 
         </div>
-        <div style="width: 71px;height: 16px;float:left;" class="fondoclaro">
+        <div style="width: 80px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                08
+                06
             </div>
             <div class="texto fz8 lh14">
                 TIPO DE VIA
             </div>
         </div>
-        <div style="width: 272.9px;height: 16px;float:left;" class="fondoclaro">
+        <div style="width: 275px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                09
+                07
             </div>
             <div class="texto fz8 lh14">
                 NOMBRE DE VIA
             </div>
         </div>
-        <div style="width: 74px;height: 16px;float:left;" class="fondoclaro">
+        <div style="width: 80px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                10
+                08
             </div>
             <div class="texto fz6 lh14">
                 TIPO DE PUERTA
             </div>
         </div>
-        <div style="width: 76px;height: 16px;float:left;" class="fondoclaro">
+        <div style="width: 80px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                11
+                09
             </div>
             <div class="texto fz6 lh14">
                 N° MUNICIPAL
             </div>
         </div>
-        <div style="width: 46px;height: 16px;float:left;" class="fondoclaro">
+        <div style="width: 65px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                12
+                10
             </div>
             <div class="texto fz5 lh6">
                 COND.<BR>
                 NUMER
             </div>
         </div>
-        <div style="width: 46px;height: 16px;float:left;" class="fondoclaro">
-            <div class="numeros">
-                13
-            </div>
-            <div class="texto fz5 lh6">
-                NUM. CERT.
-            </div>
-        </div>
     </div>
     <!-- INTERIOR 05 AL 10-->
     @foreach($ficha?->puertas as $puerta)
     <div style="width: 716px;height:16px;margin: auto;">
-        <div style="width: 123px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 130px;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$puerta?->via?->codi_via}}
         </div>
-        <div style="width: 71px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 80px;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$puerta?->via?->tipo_via}}
         </div>
-        <div style="width: 272.9px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 275px;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$puerta?->via?->nomb_via}}
         </div>
-        <div style="width: 74px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 80px;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$puerta?->tipo_puerta}}
         </div>
-        <div style="width: 76px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 80px;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$puerta?->nume_muni}}
         </div>
-        <div style="width: 46px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 65px;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$puerta?->cond_nume}}
         </div>
-        <div style="width: 46px;height: 16px;float:left;" class="texto2 fz8 lh14">
-            {{$puerta?->nume_certificacion}}
-        </div>
+        
     </div>
     <!-- INTERIOR 05 AL 10-->
     @endforeach
     <!-- 14 AL 17-->
     <div style="width: 716px;height:16px;margin: auto;">
-        <div style="width: 136PX;height: 16px;float:left;" class="fondoclaro">
-            <div class="numeros">
-                14
-            </div>
-            <div class="texto fz8 lh14">
-                NOMBRE DE EDIFICACION
-            </div>
-        </div>
-        <div style="width: 400px;height: 16px;float:left;" class="texto2 fz8 lh14">
-            {{$ficha?->unicat?->edificacion?->nomb_edificacion}}
+        <div style="width: 537PX;height: 16px;float:left;" class="">
+           
         </div>
         <div style="width: 109px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                15
+                11
             </div>
             <div class="texto fz8 lh14">
                 TIPO DE EDIFICACION
@@ -678,7 +686,7 @@
     <div style="width: 716px;height:16px;margin: auto;">
         <div style="width: 111px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                18
+                14
             </div>
             <div class="texto fz8 lh14">
                 CODIGO HU
@@ -686,7 +694,7 @@
         </div>
         <div style="width: 222px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                19
+                15
             </div>
             <div class="texto fz8 lh14">
                 NOMBRE DE LA HABILITACION URBANA
@@ -694,7 +702,7 @@
         </div>
         <div style="width: 130px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                20
+                16
             </div>
             <div class="texto fz8 lh14">
                 ZONA/SECTOR/ETAPA
@@ -702,7 +710,7 @@
         </div>
         <div style="width: 93px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                21
+                17
             </div>
             <div class="texto fz8 lh14">
                 MANZANA
@@ -710,7 +718,7 @@
         </div>
         <div style="width: 80px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                22
+                18
             </div>
             <div class="texto fz8 lh14">
                 LOTE
@@ -718,7 +726,7 @@
         </div>
         <div style="width: 74px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                23
+                19
             </div>
             <div class="texto fz8 lh14">
                 SUB-LOTE
@@ -761,7 +769,7 @@
 
         <div style="width: 128px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                54
+                40
             </div>
             <div class="texto fz8 lh14">
                 CLASIFICACION DEL PREDIO
@@ -907,7 +915,7 @@
 
         <div style="width: 95px;height: 32px;float:left;" class="fondoclaro">
             <div class="numeros">
-                55
+                41
             </div>
             <div class="texto fz8 lh8">
                 PREDIO CATASTRAL EN
@@ -916,9 +924,9 @@
                 {{$ficha?->fichabiencomun?->cont_en}}
             </div>
         </div>
-        <div style="width: 619px;height: 32px;float:left;border:none;" class="fondoclarito">
-            <div style="width: 620px; height: 17px;border:none;">
-                <div style="width: 87px;height: 16px;float:left;">
+        <div style="width: 620px;height: 32px;float:left;border:none;" class="fondoclarito">
+            <div style="width: 620px; height: 17px;border:none;" class="">
+                <div style="width: 87.9px;height: 16px;float:left;">
                     <div style="font-size:5px;border:none;text-align:center;">
                         01 GALERIA
                     </div>
@@ -979,7 +987,7 @@
                         12 PREDIO EN EDIFICIO
                     </div>
                 </div>
-                <div style="width: 178px;height: 16px;float:left;">
+                <div style="width: 178.9px;height: 16px;float:left;">
                     <div style="font-size:5px;border:none;text-align:center;">
                         13 OTROS (especif.).....................................
                     </div>
@@ -991,33 +999,25 @@
 
     <!-- 56 AL 59-->
     <div style="width: 716px;height:16px;margin: auto;">
-        <div style="width: 103px;height: 16px;float:left;" class="fondoclaro">
+        <div style="width: 146px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                56
+                42
             </div>
             <div class="texto fz8 lh14">
                 CODIGO DE USO
             </div>
         </div>
-        <div style="width: 348.9PX;height: 16px;float:left;" class="fondoclaro">
+        <div style="width: 420px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                57
+                43
             </div>
             <div class="texto fz8 lh14">
                 USO DEL PREDIO CATASTRAL (Descripción)
             </div>
-        </div>
-        <div style="width: 130px;height: 16px;float:left;" class="fondoclaro">
+        </div>        
+        <div style="width: 147px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                58
-            </div>
-            <div class="texto fz8 lh14">
-                ESTRUCTURACION
-            </div>
-        </div>
-        <div style="width: 130px;height: 16px;float:left;" class="fondoclaro">
-            <div class="numeros">
-                59
+                44
             </div>
             <div class="texto fz8 lh14">
                 ZONIFICACION
@@ -1042,7 +1042,7 @@
     <div style="width: 716px;height:16px;margin: auto;">
         <div style="width: 357px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                60
+                45
             </div>
             <div class="texto fz8 lh14">
                 ÁREA DE TERRENO ADQUIRIDA(M2)
@@ -1050,7 +1050,7 @@
         </div>
         <div style="width: 357px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                62
+                46
             </div>
             <div class="texto fz8 lh14">
                 ÁREA DE TERRENO VERIFICADA(M2)
@@ -1067,110 +1067,110 @@
     </div>
     <!-- 47 AL 48-->
     <div style="width: 716px;height:16px;margin: auto;">
-        <div style="width: 142PX;height: 16px;float:left;">
+        <div style="width: 142PX;height: 16px;float:left;" class="fondoclaro">
             LINDEROS DE LOTE(ML)
         </div>
-        <div style="width: 142PX;height: 16px;float:left;" class="fondoclaro">
+        <div style="width: 285px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                63
+                47
             </div>
             <div class="texto fz8 lh14">
                 MEDIDA EN CAMPO
             </div>
         </div>
-        <div style="width: 142PX;height: 16px;float:left;" class="fondoclaro">
+        {{-- <div style="width: 142PX;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
                 64
             </div>
             <div class="texto fz8 lh14">
                 MEDIDA SEGUN TITULO
             </div>
-        </div>
-        <div style="width: 142PX;height: 16px;float:left;" class="fondoclaro">
+        </div> --}}
+        <div style="width: 285.9px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                65
+                48
             </div>
             <div class="texto fz8 lh14">
                 COLINDANCIAS DE CAMPO
             </div>
         </div>
-        <div style="width: 142.9PX;height: 16px;float:left;" class="fondoclaro">
+        {{-- <div style="width: 142.9PX;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
                 66
             </div>
             <div class="texto fz8 lh14">
                 CONLINDANCIAS SEGUN TITULO
             </div>
-        </div>
+        </div> --}}
     </div>
     <div style="width: 716px;height:16px;margin: auto;">
-        <div style="width: 142PX;height: 16px;float:left;">
+        <div style="width: 142PX;height: 16px;float:left;" class="fondoclaro">
             FRENTE
         </div>
-        <div style="width: 142PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 285px;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$ficha?->lindero?->fren_campo}}
         </div>
-        <div style="width: 142PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+        {{-- <div style="width: 142PX;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$ficha?->lindero?->fren_titulo}}
-        </div>
-        <div style="width: 142PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+        </div> --}}
+        <div style="width: 285.9px;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$ficha?->lindero?->fren_colinda_campo}}
         </div>
-        <div style="width: 142.9PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+        {{-- <div style="width: 142.9PX;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$ficha?->lindero?->fren_colinda_titulo}}
-        </div>
+        </div> --}}
     </div>
     <div style="width: 716px;height:16px;margin: auto;">
-        <div style="width: 142PX;height: 16px;float:left;">
+        <div style="width: 142PX;height: 16px;float:left;" class="fondoclaro">
             DERECHA
         </div>
 
-        <div style="width: 142PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 285px;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$ficha?->lindero?->dere_campo}}
         </div>
-        <div style="width: 142PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+        {{-- <div style="width: 142PX;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$ficha?->lindero?->dere_titulo}}
-        </div>
-        <div style="width: 142PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+        </div> --}}
+        <div style="width: 285.9px;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$ficha?->lindero?->dere_colinda_campo}}
         </div>
-        <div style="width: 142.9PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+        {{-- <div style="width: 142.9PX;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$ficha?->lindero?->dere_colinda_titulo}}
-        </div>
+        </div> --}}
     </div>
     <div style="width: 716px;height:16px;margin: auto;">
-        <div style="width: 142PX;height: 16px;float:left;">
+        <div style="width: 142PX;height: 16px;float:left;" class="fondoclaro">
             IZQUIERDA
         </div>
-        <div style="width: 142PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 285px;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$ficha?->lindero?->izqu_campo}}
         </div>
-        <div style="width: 142PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+        {{-- <div style="width: 142PX;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$ficha?->lindero?->izqu_titulo}}
-        </div>
-        <div style="width: 142PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+        </div> --}}
+        <div style="width: 285.9px;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$ficha?->lindero?->izqu_colinda_campo}}
         </div>
-        <div style="width: 142.9PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+        {{-- <div style="width: 142.9PX;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$ficha?->lindero?->izqu_colinda_titulo}}
-        </div>
+        </div> --}}
     </div>
     <div style="width: 716px;height:16px;margin: auto;">
-        <div style="width: 142PX;height: 16px;float:left;">
+        <div style="width: 142PX;height: 16px;float:left;" class="fondoclaro">
             FONDO
         </div>
-        <div style="width: 142PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 285px;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$ficha?->lindero?->fond_campo}}
         </div>
-        <div style="width: 142PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+        {{-- <div style="width: 142PX;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$ficha?->lindero?->fond_titulo}}
-        </div>
-        <div style="width: 142PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+        </div> --}}
+        <div style="width: 285.9px;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$ficha?->lindero?->fond_colinda_campo}}
         </div>
-        <div style="width: 142.9PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+        {{-- <div style="width: 142.9PX;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$ficha?->lindero?->fond_colinda_titulo}}
-        </div>
+        </div> --}}
     </div>
     <!-- SERVICIOS QUE CUENTA EL PREDIO-->
 
@@ -1186,7 +1186,7 @@
 
         <div style="width: 73px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                67
+                49
             </div>
             <div class="texto fz8 lh14">
                 LUZ
@@ -1197,7 +1197,7 @@
         </div>
         <div style="width: 73px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                68
+                50
             </div>
             <div class="texto fz8 lh14">
                 AGUA
@@ -1208,7 +1208,7 @@
         </div>
         <div style="width: 74px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                69
+                51
             </div>
             <div class="texto fz8 lh14">
                 TELEFONO
@@ -1219,7 +1219,7 @@
         </div>
         <div style="width: 74px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                70
+                52
             </div>
             <div class="texto fz8 lh14">
                 DESAGÜE
@@ -1230,7 +1230,7 @@
         </div>
         <div style="width: 62px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                71
+                53
             </div>
             <div class="texto fz8 lh14">
                 GAS
@@ -1241,7 +1241,7 @@
         </div>
         <div style="width: 74px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                72
+                54
             </div>
             <div class="texto fz8 lh14">
                 INTERNET
@@ -1252,7 +1252,7 @@
         </div>
         <div style="width: 115px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                73
+                55
             </div>
             <div class="texto" style="font-size:5px;">
                 CONEXION A TV POR CABLE<BR>O CABLE SATELITAL
@@ -1671,106 +1671,73 @@
 
     <!-- 71 - 69 -->
     <div style="width: 716px;height:32px;margin: auto;" class="fondoclaro">
-        <div style="width: 54px;height: 32px;float:left;">
+        <div style="width: 75px;height: 32px;float:left;">
             <div class="numeros">
-                90
+                71
             </div>
             <div class="texto fz8 lh14">
                 CODIGO
             </div>
         </div>
-        <div style="width: 147px;height: 32px;float:left;">
+        <div style="width: 220px;height: 32px;float:left;">
             <div class="numeros">
-                91
+                72
             </div>
             <div class="texto fz8 lh14">
                 DESCRIPCION
             </div>
         </div>
 
-        <div style="width: 83px;height: 32px;float:left;border:none;">
-            <div style="width: 83px;height: 16px;float:left;">
+        <div style="width: 100px;height: 32px;float:left;border:none;">
+            <div style="width: 100px;height: 16px;float:left;">
                 <div class="numeros">
-                    75
+                    57
                 </div>
                 <div class="texto fz8 lh14">
                     FECHA CONST.
                 </div>
             </div>
-            <div style="width: 83px;height: 16px;float:left;border:none;">
-                <div style="width: 40px;height: 16px;float:left;">
+            <div style="width: 100px;height: 16px;float:left;border:none;">
+                <div style="width: 48px;height: 16px;float:left;">
                     <div class="texto fz8 lh14">
                         MES
                     </div>
                 </div>
-                <div style="width: 40.9px;height: 16px;float:left;">
+                <div style="width: 49.9px;height: 16px;float:left;">
                     <div class="texto fz8 lh14">
                         AÑO
                     </div>
                 </div>
             </div>
         </div>
-        <div style="width: 32px;height: 32px;float:left;">
+        <div style="width: 50px;height: 32px;float:left;">
             <div class="numeros">
-                76
+                58
             </div>
             <div class="texto fz8 lh14">
                 MEP
             </div>
         </div>
-        <div style="width: 32px;height: 32px;float:left;">
+        <div style="width: 50px;height: 32px;float:left;">
             <div class="numeros">
-                77
+                59
             </div>
             <div class="texto fz8 lh14">
                 ECS
             </div>
         </div>
-        <div style="width: 32px;height: 32px;float:left;">
+        <div style="width: 50px;height: 32px;float:left;">
             <div class="numeros">
-                78
+                60
             </div>
             <div class="texto fz8 lh14">
                 ECC
             </div>
         </div>
-        <div style="width: 170PX;height: 32px;float:left;border:none;">
-            <div style="width: 170PX;height: 16px;float:left;">
-
-                <div class="texto fz8 lh14">
-                    DIMENSIONES VERIFICADAS
-                </div>
-            </div>
-            <div style="width: 170PX;height: 16px;float:left;border:none;">
-                <div style="width: 56PX;height: 16px;float:left;">
-                    <div class="numeros">
-                        92
-                    </div>
-                    <div class="texto fz8 lh14">
-                        LARGO
-                    </div>
-                </div>
-                <div style="width: 55.9PX;height: 16px;float:left;">
-                    <div class="numeros">
-                        93
-                    </div>
-                    <div class="texto fz8 lh14">
-                        ANCHO
-                    </div>
-                </div>
-                <div style="width: 55PX;height: 16px;float:left;">
-                    <div class="numeros">
-                        94
-                    </div>
-                    <div class="texto fz8 lh14">
-                        ALTO
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div style="width: 62px;height: 32px;float:left;">
+        
+        <div style="width: 60px;height: 32px;float:left;">
             <div class="numeros">
-                95
+                73
             </div>
             <div class="texto fz8 lh14">
                 PRODUCTO <BR>TOTAL
@@ -1778,15 +1745,15 @@
         </div>
         <div style="width: 62px;height: 32px;float:left;">
             <div class="numeros">
-                96
+                74
             </div>
             <div class="texto fz8 lh14">
                 UNIDAD DE MEDIDA
             </div>
         </div>
-        <div style="width: 33.9px;height: 32px;float:left;">
+        <div style="width: 40.9px;height: 32px;float:left;">
             <div class="numeros">
-                88
+                69
             </div>
             <div class="texto fz8 lh14">
                 UCA
@@ -1796,34 +1763,34 @@
     <!--FOREACH 71 - 69-->
     @foreach($ficha?->instalacions as $instalacion)
     <div style="width: 716px;height:16px;margin: auto;">
-        <div style="width: 64px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 75px;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$instalacion?->codiinstalacion?->codi_instalacion}}
         </div>
-        <div style="width: 307px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 220px;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$instalacion?->codiinstalacion?->desc_instalacion}}
         </div>
-        <div style="width: 40px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 48px;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{date("m", strtotime($instalacion?->fecha))}}
         </div>
-        <div style="width: 41px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 49.9px;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{date("Y", strtotime($instalacion?->fecha))}}
         </div>
-        <div style="width: 32px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 50px;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$instalacion?->mep}}
         </div>
-        <div style="width: 32px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 50px;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$instalacion?->ecs}}
         </div>
-        <div style="width: 32px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 50px;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$instalacion?->ecc}}
         </div>
-        <div style="width: 62px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 60px;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$instalacion?->prod_total}}
         </div>
         <div style="width: 62px;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$instalacion?->uni_med}}
         </div>
-        <div style="width: 33.9px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 40.9px;height: 16px;float:left;" class="texto2 fz8 lh14">
             {{$instalacion?->uca}}
         </div>
     </div>
@@ -1948,7 +1915,7 @@
                 </div>
                 <div style="width: 230.9px;height: 16px;float:left;" class="fondoclaro">
                     <div class="numeros">
-                        113
+                        87
                     </div>
                     <div class="texto fz6 lh14">
                         ÁREA DE TERRENO INVADIDA EN M2
@@ -2182,7 +2149,7 @@
             </div>
             <div style="width: 231.9px;height: 16px;float:left;" class="fondoclaro">
                 <div class="numeros">
-                    119
+                    93
                 </div>
                 <div class="texto fz8 lh14">
                     MANTENIMIENTO
@@ -2192,7 +2159,6 @@
                 {{$ficha?->fichabiencomun?->mantenimiento}}
             </div>
             <div style="width: 250.9px;height: 16px;float:left;" class="fondoclarito">
-
                 <div class="texto fz8 lh14 ti">
                     1 = POR VARIACIÓN DE UNIDADES
                 </div>
@@ -2220,14 +2186,14 @@
                     DOCUMENTOS Y DATOS REGISTRALES
                 </div>
             </div>
-            <div style="width: 250.9px;height: 16px;float:left;" class="fondoclaro">
+            {{-- <div style="width: 250.9px;height: 16px;float:left;" class="fondoclaro">
                 <div class="texto fz8 lh14">
                     REGISTROS NOTARIAL DE LA ESCRITURA PUBLICA
                 </div>
             </div>
             <div style="width: 250.9px;height: 16px;float:left;" class="fondoclaro">
                 <div class="numeros">
-                    101
+                    79
                 </div>
                 <div class="texto fz8 lh14">
                     NOMBRE DE LA NOTARIA
@@ -2263,7 +2229,7 @@
                 @if($ficha?->registrolegal!="")
                 {{date("d-m-Y", strtotime($ficha?->registrolegal?->fecha_escritura))}}
                 @endif
-            </div>
+            </div> --}}
 
 
 
@@ -2276,44 +2242,12 @@
                     INSCRIPCIÓN EN REGISTRO DE PREDIOS
                 </div>
             </div>
-            <div style="width: 120px;height: 16px;float:left;" class="fondoclaro">
+            <div style="width: 229.9px;height: 16px;float:left;" class="fondoclaro">
                 <div class="numeros">
-                    104
+                    79
                 </div>
                 <div class="texto fz7 lh6">
-                    TIPO DE PARTIDA<BR>REGISTRAL
-                </div>
-            </div>
-            <div style="width: 128.9px;height: 16px;float:left;" class="fondoclaro">
-                <div class="numeros">
-                    105
-                </div>
-                <div class="texto fz8 lh14">
-                    NÚMERO
-                </div>
-            </div>
-            <div style="width: 30px;height: 16px;float:left;" class="fondoclarito bn">
-                <div style="width: 30px;height: 8px;float:left;" class="fondoclarito">
-                    <div class="textotitulo fz5 lh6">
-                        01 TOMO
-                    </div>
-                </div>
-                <div style="width: 30px;height: 8px;float:left;" class="fondoclarito">
-                    <div class="textotitulo fz5 lh6">
-                        02 FICHA
-                    </div>
-                </div>
-            </div>
-            <div style="width: 71px;height: 16px;float:left;" class="fondoclarito bn">
-                <div style="width: 71px;height: 8px;float:left;" class="fondoclarito">
-                    <div class="textotitulo fz5 lh6">
-                        03 PART. ELECTRÓNICA
-                    </div>
-                </div>
-                <div style="width: 71px;height: 8px;float:left;" class="fondoclarito">
-                    <div class="textotitulo fz5 lh6">
-                        04 CÓDIGO DE PREDIO
-                    </div>
+                    TIPO DE PARTIDA REGISTRAL
                 </div>
             </div>
             <div style="width: 19px;height: 16px;float:left;" class="texto2 fz8 lh14">
@@ -2321,101 +2255,130 @@
                 {{$ficha?->sunarp?->tipo_partida}}
                 @endif
             </div>
-            <div style="width: 128.9px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 61px;height: 16px;float:left;" class="fondoclarito">
+                <div class="texto fz5 lh14 tc">
+                    01 TOMO
+                </div>
+            </div>
+            <div style="width: 61px;height: 16px;float:left;" class="fondoclarito">
+                <div class="texto fz5 lh14 tc">
+                    02 FICHA
+                </div>
+            </div>
+            <div style="width: 62px;height: 16px;float:left;" class="fondoclarito">
+                <div class="texto fz5 lh14 tc">
+                    03 PART. ELECTRÓNICA
+                </div>
+            </div>
+            <div style="width: 62.9px;height: 16px;float:left;" class="fondoclarito">
+                <div class="texto fz5 lh14 tc">
+                    04 CÓDIGO DE PREDIO
+                </div>
+            </div>
+            
+            <div style="width: 128.9px;height: 16px;float:left;" class="fondoclaro">
+                <div class="numeros">
+                    80
+                </div>
+                <div class="texto fz8 lh14">
+                    NÚMERO
+                </div>
+            </div>
+            
+            <div style="width: 120px;height: 16px;float:left;" class="texto2 fz8 lh14">
                 @if($ficha?->sunarp!="")
                 {{$ficha?->sunarp?->nume_partida}}
                 @endif
             </div>
 
-            <div style="width: 60PX;height: 16px;float:left;" class="fondoclaro">
+            <div style="width: 128.9px;height: 16px;float:left;" class="fondoclaro">
                 <div class="numeros">
-                    106
+                    81
                 </div>
                 <div class="texto fz8 lh14">
                     FOJAS
                 </div>
             </div>
-            <div style="width: 59PX;height: 16px;float:left;" class="fondoclaro">
+            <div style="width: 120px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                @if($ficha?->sunarp!="")
+                {{$ficha?->sunarp?->fojas}}
+                @endif
+            </div>
+            <div style="width: 128.9px;height: 16px;float:left;" class="fondoclaro">
                 <div class="numeros">
-                    107
+                    82
                 </div>
                 <div class="texto fz8 lh14">
                     ASIENTO
                 </div>
             </div>
-            <div style="width: 128.9px;height: 16px;float:left;" class="fondoclaro">
-                <div class="numeros">
-                    108
-                </div>
-                <div class="texto fz7 lh6">
-                    FECHA DE INSCRIPCION<BR>DEL PREDIO
-                </div>
-            </div>
-
-            <div style="width: 60PX;height: 16px;float:left;" class="texto2 fz8 lh14">
-                @if($ficha?->sunarp!="")
-                {{$ficha?->sunarp?->fojas}}
-                @endif
-            </div>
-            <div style="width: 59PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 120px;height: 16px;float:left;" class="texto2 fz8 lh14">
                 @if($ficha?->sunarp!="")
                 {{$ficha?->sunarp?->asiento}}
                 @endif
             </div>
-            <div style="width: 128.9px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 128.9px;height: 16px;float:left;" class="fondoclaro">
+                <div class="numeros">
+                    83
+                </div>
+                <div class="texto fz6 lh12">
+                    FECHA DE INSCRIPCION DEL PREDIO
+                </div>
+            </div>           
+            
+            <div style="width: 120px;height: 16px;float:left;" class="texto2 fz8 lh14">
                 @if($ficha?->sunarp!="")
                 {{date("d-m-Y", strtotime($ficha?->sunarp?->fecha_inscripcion))}}
                 @endif
             </div>
 
-            <div style="width: 60PX;height: 16px;float:left;" class="fondoclaro">
+            <div style="width: 231px;height: 16px;float:left;" class="fondoclaro">
                 <div class="numeros">
-                    109
+                    84
                 </div>
-                <div class="texto fz6 lh6">
-                    DECLARATORIA<BR>FABRICA
-                </div>
-            </div>
-            <div style="width: 59PX;height: 16px;float:left;" class="fondoclaro">
-                <div class="numeros">
-                    110
-                </div>
-                <div class="texto fz6 lh6">
-                    AS. INSC.<BR>DE FABRICA
+                <div class="texto fz7 lh14">
+                    DECLARATORIA DE FABRICA
                 </div>
             </div>
-            <div style="width: 128.9px;height: 16px;float:left;" class="fondoclaro">
-                <div class="numeros">
-                    111
-                </div>
-                <div class="texto fz6 lh6">
-                    FECHA DE INSCRIPCION<BR>DE FABRICA
-                </div>
-            </div>
-
-            <div style="width: 60PX;height: 16px;float:left;" class="fondoclarito bn">
-                <div style="width: 60PX;height: 8px;float:left;" class="fondoclarito">
-                    <div class="textotitulo fz4 lh6">
-                        01 = FAB. INSCRITA
-                    </div>
-                </div>
-                <div style="width: 60PX;height: 8px;float:left;" class="fondoclarito">
-                    <div class="textotitulo fz4 lh6">
-                        02 = FAB. NO INSCRITA
-                    </div>
-                </div>
-            </div>
-            <div style="width: 17PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 17.9PX;height: 16px;float:left;" class="texto2 fz8 lh14">
                 @if($ficha?->sunarp!="")
                 {{$ficha?->sunarp?->codi_decla_fabrica}}
                 @endif
             </div>
-            <div style="width: 42PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 124px;height: 16px;float:left;" class="fondoclarito">
+                <div class="texto fz5 lh14 tc">
+                    01 = FAB. INSCRITA
+                </div>
+            </div>
+            <div style="width: 124.9px;height: 16px;float:left;" class="fondoclarito">
+                <div class="texto fz5 lh14 tc">
+                    02 = FAB. NO INSCRITA
+                </div>
+            </div>
+            <div style="width: 128.9px;height: 16px;float:left;" class="fondoclaro">
+                <div class="numeros">
+                    85
+                </div>
+                <div class="texto fz7 lh14">
+                    AS. INSC. DE FABRICA
+                </div>
+            </div>
+            <div style="width: 120px;height: 16px;float:left;" class="texto2 fz8 lh14">
                 @if($ficha?->sunarp!="")
                 {{$ficha?->sunarp?->asie_fabrica}}
                 @endif
             </div>
-            <div style="width: 128.9px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 128.9px;height: 16px;float:left;" class="fondoclaro">
+                <div class="numeros">
+                    86
+                </div>
+                <div class="texto fz6 lh12">
+                    FECHA DE INSCRIPCION DE FABRICA
+                </div>
+            </div>
+            
+            
+            <div style="width: 120px;height: 16px;float:left;" class="texto2 fz8 lh14">
                 @if($ficha?->sunarp!="")
                 {{date("d-m-Y", strtotime($ficha?->sunarp?->fecha_fabrica))}}
                 @endif
@@ -2437,9 +2400,9 @@
         </div>
     </div>
     <div style="width: 716px;height:16px;margin: auto;">
-        <div style="width: 126px;height: 16px;float:left;" class="fondoclaro">
+        <div style="width: 160px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                114
+                88
             </div>
             <div class="texto fz8 lh14">
                 CONDICION DEL DECLARANTE
@@ -2473,51 +2436,46 @@
                 05 VECINO
             </div>
         </div>
-        <div style="width: 197px;height: 16px;float:left;" class="fondoclarito">
+        <div style="width: 163px;height: 16px;float:left;" class="fondoclarito">
             <div class="texto ti pl5" style="font-size:4px;">
                 06 OTRO(Especificar):..............................................
             </div>
         </div>
     </div>
-
-    <div style="width: 716px;height:32px;margin: auto;">
-
-        <div style="width: 215px;height: 32px;float:left;" class="fondoclaro">
+    <div style="width: 716px;height:16px;margin: auto;">
+        <div style="width: 160px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">
-                116
+                90
             </div>
-            <div class="texto fz8 lh12">
+            <div class="texto fz8 lh14">
                 ESTADO DE LLENADO DE FICHA
             </div>
-            <div style="background-color:#FFFFFF;color:#000000;width:17px;height:15px;border:none;float:right;" class="texto2 fz8 lh14">
-                {{$ficha?->fichabiencomun?->esta_llenado}}
+        </div>
+        <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            {{$ficha?->fichabiencomun?->esta_llenado}}
+        </div>
+        <div style="width: 133px;height: 16px;float:left;" class="fondoclarito">
+            <div class="texto fz6 lh12">
+                1 = FICHA COMPLETA
             </div>
         </div>
-        <div style="width: 500px;height: 32px;float:left;border:none;" class="fondoclarito">
-            <div style="width: 620px; height: 17px;border:none;">
-                <div style="width: 249px;height: 16px;float:left;">
-                    <div style="font-size:5px;border:none;text-align:center;">
-                        1 = FICHA COMPLETA
-                    </div>
-                </div>
-                <div style="width: 249px;height: 16px;float:left;">
-                    <div style="font-size:5px;border:none;text-align:center;">
-                        2 = FICHA INCOMPLETA
-                    </div>
-                </div>
-                <div style="width: 249px;height: 16px;float:left;">
-                    <div style="font-size:5px;border:none;text-align:center;">
-                        3 = COMPLETADA EN OFICINA
-                    </div>
-                </div>
-                <div style="width: 249px;height: 16px;float:left;">
-                    <div style="font-size:5px;border:none;text-align:center;">
-                        4 = COMPLETADA CONTROL EXTERIOR
-                    </div>
-                </div>
+        <div style="width: 133px;height: 16px;float:left;" class="fondoclarito">
+            <div class="texto fz6 lh12">
+                2 = FICHA INCOMPLETA
+            </div>
+        </div>
+        <div style="width: 133px;height: 16px;float:left;" class="fondoclarito">
+            <div class="texto fz6 lh12">
+                3 = COMPLETADA EN OFICINA
+            </div>
+        </div>
+        <div style="width: 133.9px;height: 16px;float:left;" class="fondoclarito">
+            <div class="texto fz6 lh12">
+                4 = COMPLETADA CONTROL EXTERIOR
             </div>
         </div>
     </div>
+
 
     <div style="height:7px; width:800px;background-color:#fff;border:none;margin-top:5px;margin-bottom:5px">
         <div class="textotitulo ti pl15">
@@ -2543,7 +2501,7 @@
     <div style="width: 716px;height:23px;margin: auto;">
         <div style="width: 178px;height: 70px;float:left;">
             <div class="numeros">
-                120
+                94
             </div>
             <div class="texto fz8 lh14">
                 FIRMA DEL DECLARANTE
@@ -2551,7 +2509,7 @@
         </div>
         <div style="width: 178px;height: 70px;float:left;">
             <div class="numeros">
-                121
+                95
             </div>
             <div class="texto fz8 lh14">
                 FIRMA DEL SUPERVISOR
@@ -2559,7 +2517,7 @@
         </div>
         <div style="width: 178px;height: 70px;float:left;">
             <div class="numeros">
-                122
+                96
             </div>
             <div class="texto fz8 lh14">
                 FIRMA DEL TECNICO CATASTRAL
@@ -2568,7 +2526,7 @@
         <div style="width: 178px;height: 70px;float:left;">
             <div style="width: 178px;height: 56px;float:left;">
                 <div class="numeros">
-                    123
+                    97
                 </div>
                 <div class="texto fz8 lh14">
                     V°B° DEL VERIFICADOR CATASTRAL

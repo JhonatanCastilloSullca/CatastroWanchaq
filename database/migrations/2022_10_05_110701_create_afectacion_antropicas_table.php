@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('afectacion_antropicas', function (Blueprint $table) {
+        Schema::create('tf_afectacion_antropica', function (Blueprint $table) {
             $table->string('id_ficha',19)->unsigned();
-            $table->foreign('id_ficha')->references('id_ficha')->on('fichas');
-            $table->string('codigo',2)->nullable(); 
+            $table->foreign('id_ficha')->references('id_ficha')->on('tf_fichas')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('codigo',2)->nullable();
             $table->string('descripcion',100)->nullable();
-        });
+        });        
     }
 
     /**
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('afectacion_antropicas');
+        Schema::dropIfExists('tf_afectacion_antropica');
     }
 };

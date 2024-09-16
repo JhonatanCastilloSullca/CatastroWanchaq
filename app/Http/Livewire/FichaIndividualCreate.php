@@ -971,7 +971,7 @@ class FichaIndividualCreate extends Component
 
 
                         'condtitular'                   => 'required',
-                        'form_adquisicion'              => 'nullable',
+                        'form_adquisicion'              => 'required',
                         'fecha_adquisicion'             => 'nullable',
                         'tipoTitular'                   => 'required',
                         'ubicacionpersona'              => 'required',
@@ -1032,7 +1032,7 @@ class FichaIndividualCreate extends Component
                         'nume_habitantes'               => 'nullable|numeric|min:0',
                         'nume_familias'                 => 'nullable|numeric|min:0',
 
-                        'mantenimiento'                 => 'nullable',
+                        'mantenimiento'                 => 'required',
                         'observacion'                   => 'nullable|max:500',
 
                         'numdocumentodeclarante'        => 'nullable|max:8',

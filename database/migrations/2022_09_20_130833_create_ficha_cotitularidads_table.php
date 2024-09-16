@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ficha_cotitularidads', function (Blueprint $table) {
+        Schema::create('tf_fichas_cotitularidades', function (Blueprint $table) {
             $table->string('id_ficha',19)->unsigned();
-            $table->foreign('id_ficha')->references('id_ficha')->on('fichas');
-            $table->string('cond_declarante',2)->nullable(); 
-            $table->string('esta_llenado',1)->nullable();  
-            $table->string('observaciones',500)->nullable(); 
-            $table->string('nume_ficha',7)->nullable(); 
-        });
+            $table->foreign('id_ficha')->references('id_ficha')->on('tf_fichas')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('cond_declarante',2)->nullable();
+            $table->string('esta_llenado',1)->nullable();
+            $table->string('observaciones',500)->nullable();
+            $table->string('nume_ficha',7)->nullable();
+        });        
     }
 
     /**
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ficha_cotitularidads');
+        Schema::dropIfExists('tf_fichas_cotitularidades');
     }
 };

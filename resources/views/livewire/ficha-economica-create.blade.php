@@ -48,9 +48,9 @@
                         </div><!-- Col -->
                         <div class="col-md-4">
                             <div class="mb-3">
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">2</div> CÓDIGO HOJA CATASTRAL</label>
-                                <input type="text" class="form-control" placeholder="" name="codi_hoja_catastral" wire:model="codi_hoja_catastral" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="10">
-                                @error('codi_hoja_catastral')
+                                <label class="form-label d-inline-flex" > <div class="divcuadro">303</div> CÓDIGO SECUENCIAL DE ACTIVIDAD ECONOMICA</label>
+                                <input type="text" class="form-control" placeholder="" name="codigo_secuencial" wire:model="codigo_secuencial" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="3">
+                                @error('codigo_secuencial')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -58,7 +58,7 @@
                     </div><!-- Row -->
                     <div class="row  form-group">
                         <div class="col-md-12 row" style="place-content: center;text-align: center;">
-                            <label class="form-label d-inline-flex" > <div class="divcuadrorequired">3</div> CÓDIGO DE REFERENCIA CATASTRAL</label>
+                            <label class="form-label d-inline-flex" > <div class="divcuadrorequired">2</div> CÓDIGO DE REFERENCIA CATASTRAL</label>
                             <div class="col-md-3 row">
                                 <div class="col-md-4 mb-3">
                                     <label class="form-label labelpeque" >DPTO.</label>
@@ -150,9 +150,13 @@
                                     @enderror
                                 </div>
                             </div><!-- Col -->
+
+                            <!-- codigo_secuencial-->
+                            <!-- codigo_secuencial-->
+                            <!-- codigo_secuencial-->
                             <div class="col-md-2">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex" > <div class="divcuadro">26</div> TIPO DOC. IDENTIDAD</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadro">22</div> TIPO DOC. IDENTIDAD</label>
                                     <select class="form-select"  data-width="100%" data-live-search="true" name="tipo_doc1" id="tipo_doc1" wire:model="tipo_doc1" >
                                         <option value="0" >SELECCIONE</option>
                                         @foreach(\App\Models\TablaCodigo::where('id_tabla','=','DOC')->orderby('codigo','asc')->get() as $tablacodigo)
@@ -166,7 +170,7 @@
                             </div><!-- Col -->
                             <div class="col-md-2">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex" > <div class="divcuadro">27</div> N° DOC.</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadro">23</div> N° DOC.</label>
                                     <input type="text" class="form-control" placeholder="" name="nume_doc1" id="nume_doc1" wire:model.lazy="numedoc1" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="17">
                                     @error('nume_doc1')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
@@ -179,7 +183,7 @@
                             <div class="col-md-8 row">
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <label class="form-label d-inline-flex" > <div class="divcuadro">32</div> NOMBRES</label>
+                                        <label class="form-label d-inline-flex" > <div class="{{ $requiredtipoConductor == 1 ? 'divcuadrorequired' : 'divcuadro' }}">28</div>  NOMBRES</label>
                                         <input type="text" class="form-control" placeholder="" name="nombres1" id="nombres1" wire:model="nombres1" onkeydown="return /[a-ñ]/i.test(event.key)" maxlength="150">
                                         @error('nombres1')
                                             <span class="error-message" style="color:red">{{ $message }}</span>
@@ -188,7 +192,7 @@
                                 </div><!-- Col -->
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <label class="form-label d-inline-flex" > <div class="divcuadro">32</div> APELLIDO PATERNO</label>
+                                        <label class="form-label d-inline-flex" > <div class="{{ $requiredtipoConductor == 1 ? 'divcuadrorequired' : 'divcuadro' }}">28</div>  APELLIDO PATERNO</label>
                                         <input type="text" class="form-control" placeholder="" name="ape_paterno1" id="ape_paterno1" wire:model="ape_paterno1" onkeydown="return /[a-ñ]/i.test(event.key)" maxlength="50">
                                         @error('ape_paterno1')
                                             <span class="error-message" style="color:red">{{ $message }}</span>
@@ -197,7 +201,10 @@
                                 </div><!-- Col -->
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <label class="form-label d-inline-flex" > <div class="divcuadro">32</div> APELLIDO MATERNO</label>
+                                        <label class="form-label d-inline-flex" > 
+                                            <div class="{{ $requiredtipoConductor == 1 ? 'divcuadrorequired' : 'divcuadro' }}">28</div> 
+                                            APELLIDO MATERNO</label>
+                                            
                                         <input type="text" class="form-control" placeholder="" name="ape_materno1" id="ape_materno1" wire:model="ape_materno1" onkeydown="return /[a-ñ]/i.test(event.key)" maxlength="50">
                                         @error('ape_materno1')
                                             <span class="error-message" style="color:red">{{ $message }}</span>
@@ -207,7 +214,7 @@
                             </div><!-- Col -->
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex" > <div class="divcuadro">31</div> Nº DE R.U.C.</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadro">27</div> Nº DE R.U.C.</label>
                                     <input type="text" class="form-control" placeholder="" name="nume_doc3" wire:model.lazy="numedoc3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="17">
                                     @error('numedoc3')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
@@ -219,13 +226,18 @@
                             </div><!-- Col -->
                             <div class="col-md-7">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex" > <div class="divcuadro">32</div> RAZON SOCIAL</label>
+                                    <label class="form-label d-inline-flex">
+                                        <div class="{{ $requiredtipoConductor == 2 ? 'divcuadrorequired' : 'divcuadro' }}">28</div> 
+                                        RAZON SOCIAL
+                                    </label>
                                     <input type="text" class="form-control" placeholder="" name="razon_social" wire:model="razon_social" onkeydown="return /[a-z]/i.test(event.key)" maxlength="100">
                                     @error('razon_social')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div><!-- Col -->
+                            
+                            
                             <div class="col-md-2">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex" > <div class="divcuadrorequired">142</div> COND. CONDUCTOR</label>
@@ -249,7 +261,7 @@
                             <div class="col-md-2" >
                                 <div class="mb-3">
                                     <div wire:ignore >
-                                        <label class="form-label d-inline-flex" > <div class="divcuadrorequired">39</div> DEPARTAMENTO</label>
+                                        <label class="form-label d-inline-flex" > <div class="divcuadrorequired">31</div> DEPARTAMENTO</label>
                                         <select  class="form-select " data-width="100%" data-live-search="true"  name="deparamentoconductor" id="deparamentoconductor" wire:model="deparamentoconductor">
                                             <option value="">SELECCIONE</option>
                                         </select>
@@ -262,7 +274,7 @@
                             <div class="col-md-2" >
                                 <div class="mb-3">
                                     <div wire:ignore >
-                                        <label class="form-label d-inline-flex" > <div class="divcuadrorequired">40</div> PROVINCIA</label>
+                                        <label class="form-label d-inline-flex" > <div class="divcuadrorequired">32</div> PROVINCIA</label>
                                         <select  class="form-select " name="provinciaconductor" id="provinciaconductor"  wire:model="provinciaconductor">
                                         </select>
                                     </div>
@@ -274,7 +286,7 @@
                             <div class="col-md-2" >
                                 <div class="mb-3">
                                     <div wire:ignore >
-                                        <label class="form-label d-inline-flex" > <div class="divcuadrorequired">41</div> DISTRITO</label>
+                                        <label class="form-label d-inline-flex" > <div class="divcuadrorequired">33</div> DISTRITO</label>
                                         <select  class="form-select " name="distritoconductor" id="distritoconductor"  wire:model="distritoconductor">
                                         </select>
                                     </div>
@@ -285,23 +297,23 @@
                             </div><!-- Col -->
                             <div class="col-md-2">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex" > <div class="divcuadro">42</div> TELEFONO</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadro">34</div> TELEFONO</label>
                                     <input type="text" class="form-control" placeholder=""  name="telefonoconductor" wire:model="telefonoconductor" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="10">
                                     @error('telefonoconductor')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div><!-- Col -->
-                            <div class="col-md-1">
+                            <div class="col-md-2">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex" > <div class="divcuadro">43</div> ANEXO</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadro">35</div> ANEXO</label>
                                     <input type="text" class="form-control" placeholder=""  name="anexoconductor" wire:model="anexoconductor" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="5">
                                     @error('anexoconductor')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div><!-- Col -->
-                            <div class="col-md-1">
+                            {{-- <div class="col-md-1">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex" > <div class="divcuadro">44</div> FAX</label>
                                     <input type="text" class="form-control" placeholder="" name="faxconductor" wire:model="faxconductor" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="5">
@@ -309,10 +321,10 @@
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
                                 </div>
-                            </div><!-- Col -->
+                            </div><!-- Col --> --}}
                             <div class="col-md-2">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex" > <div class="divcuadro">45</div> EMAIL</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadro">36</div> EMAIL</label>
                                     <input type="text" class="form-control" placeholder="" name="emailconductor" wire:model="emailconductor" maxlength="100">
                                     @error('emailconductor')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
@@ -321,18 +333,18 @@
                             </div><!-- Col -->
                         </div><!-- Row -->
                         <div class="row form-group">
-                            <div class="col-md-1">
+                            <div class="col-md-2">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex" > <div class="divcuadro">7</div> C. VIA</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadro">05</div> C. VIA</label>
                                     <input type="text" class="form-control" placeholder="" name="codigoviaconductor" wire:model="codigoviaconductor" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="6">
                                     @error('codigoviaconductor')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div><!-- Col -->
-                            <div class="col-md-1">
+                            <div class="col-md-2">
                                 <div class="mb-">
-                                    <label class="form-label d-inline-flex" > <div class="divcuadro">8</div> T. VIA</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadro">06</div> T. VIA</label>
                                     <input type="text" class="form-control" placeholder="" name="tipoviaconductor" wire:model="tipoviaconductor" maxlength="5">
                                     @error('tipoviaconductor')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
@@ -341,7 +353,7 @@
                             </div><!-- Col -->
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex" > <div class="divcuadro">9</div> NOMBRE DE VIA</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadro">07</div> NOMBRE DE VIA</label>
                                     <input type="text" class="form-control" placeholder="" name="nombreviaconductor" wire:model="nombreviaconductor" maxlength="100">
                                     @error('nombreviaconductor')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
@@ -350,14 +362,14 @@
                             </div><!-- Col -->
                             <div class="col-md-2">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex" > <div class="divcuadro">11</div> N° MUNICIPAL</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadro">09</div> N° MUNICIPAL</label>
                                     <input type="text" class="form-control" placeholder="" name="nmunicipalconductor" wire:model="nmunicipalconductor" maxlength="6">
                                     @error('nmunicipalconductor')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div><!-- Col -->
-                            <div class="col-md-2">
+                            {{-- <div class="col-md-2">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex" > <div class="divcuadro">14</div> NOMB. EDIFICACION</label>
                                     <input type="text" class="form-control" placeholder="" name="nomb_edificacionconductor" wire:model="nomb_edificacionconductor" maxlength="100">
@@ -365,10 +377,10 @@
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
                                 </div>
-                            </div><!-- Col -->
+                            </div><!-- Col --> --}}
                             <div class="col-md-2">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex" > <div class="divcuadro">17</div> N. INTERIOR</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadro">13</div> N. INTERIOR</label>
                                     <input type="text" class="form-control" placeholder="" name="ninteriorconductor" wire:model="ninteriorconductor" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="5">
                                     @error('ninteriorconductor')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
@@ -379,7 +391,7 @@
                         <div class="row form-group">
                             <div class="col-md-2">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex" > <div class="divcuadro">18</div> CODIGO URBANO</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadro">14</div> CODIGO URBANO</label>
                                     <input type="text" class="form-control" placeholder="" name="codigohurbanoconductor" wire:model="codigohurbanoconductor" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="4">
                                     @error('codigohurbanoconductor')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
@@ -388,7 +400,7 @@
                             </div><!-- Col -->
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex" > <div class="divcuadro">19</div> NOMBRE DE LA HABILITACION URBANA</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadro">15</div> NOMBRE DE LA HABILITACION URBANA</label>
                                     <input type="text" class="form-control" placeholder="" name="nombrehhurbanaconductor" wire:model="nombrehhurbanaconductor" maxlength="100">
                                     @error('nombrehhurbanaconductor')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
@@ -397,7 +409,7 @@
                             </div><!-- Col -->
                             <div class="col-md-2">
                                 <div class="mb-2">
-                                    <label class="form-label d-inline-flex" > <div class="divcuadro">20</div> ZONA/SECTOR/ETAPA</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadro">16</div> ZONA/SECTOR/ETAPA</label>
                                     <input type="text" class="form-control" placeholder="" name="zonaconductor" wire:model="zonaconductor" maxlength="20">
                                     @error('zonaconductor')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
@@ -406,7 +418,7 @@
                             </div><!-- Col -->
                             <div class="col-md-2">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex" > <div class="divcuadro">21</div> MANZANA</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadro">17</div> MANZANA</label>
                                     <input type="text" class="form-control" placeholder="" name="manzanaconductor" wire:model="manzanaconductor" maxlength="5">
                                     @error('manzanaconductor')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
@@ -415,7 +427,7 @@
                             </div><!-- Col -->
                             <div class="col-md-1">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex" > <div class="divcuadro">22</div> LOTE</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadro">18</div> LOTE</label>
                                     <input type="text" class="form-control" placeholder="" name="loteconductor" wire:model="loteconductor" maxlength="5">
                                     @error('loteconductor')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
@@ -424,7 +436,7 @@
                             </div><!-- Col -->
                             <div class="col-md-2">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex" > <div class="divcuadro">23</div> SUB-LOTE</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadro">19</div> SUB-LOTE</label>
                                     <input type="text" class="form-control" placeholder="" name="subloteconductor" wire:model="subloteconductor" maxlength="5">
                                     @error('subloteconductor')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
@@ -495,7 +507,7 @@
                                         <label class="form-label d-inline-flex" style="FONT-SIZE: 9PX;" > <div class="divcuadro">145</div>AREA AUTORIZADA</label>
                                     </div>
                                     <div class="col-md-4 mb-2">
-                                        <label class="form-label d-inline-flex" style="FONT-SIZE: 9PX;" > <div class="divcuadro">146</div>AREA VERIFICADA</label>
+                                        <label class="form-label d-inline-flex" style="FONT-SIZE: 9PX;" > <div class="divcuadrorequired">146</div>AREA VERIFICADA</label>
                                     </div>
                                     <div class="col-md-3 mb-2">
                                         <p class="form-label d-inline-flex" >PREDIO CATASTRAL</p>
@@ -714,7 +726,7 @@
                         <div class="row form-group">
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex" > <div class="divcuadro">114</div>CONDICIÓN DE DECLARANTE</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadrorequired">88</div>CONDICIÓN DE DECLARANTE</label>
                                     <select class="form-select"  data-width="100%" data-live-search="true" name="cond_declarante" id="cond_declarante" wire:model="cond_declarante" >
                                         <option value="" >SELECCIONE</option>
                                         @foreach(\App\Models\TablaCodigo::where('id_tabla','=','CDE')->orderby('codigo','asc')->get() as $tablacodigo)
@@ -742,7 +754,7 @@
                             </div><!-- Col -->
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex" > <div class="divcuadrorequired">116</div>ESTADO DE LLENADO DE LA FICHA</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadrorequired">90</div>ESTADO DE LLENADO DE LA FICHA</label>
                                     <select class="form-select"  data-width="100%" data-live-search="true" name="esta_llenado" id="esta_llenado" wire:model="esta_llenado">
 
                                         <option value="">SELECCIONE</option>
@@ -757,7 +769,7 @@
                             </div><!-- Col -->
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex" style="height: 40px;"> <div class="divcuadro">119</div>MANTENIMIENTO</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadrorequired">93</div>MANTENIMIENTO</label>
                                     <select class="form-select"  data-width="100%" data-live-search="true" name="mantenimiento" id="mantenimiento" wire:model="mantenimiento">
                                         <option value="">SELECCIONE</option>
                                         @foreach(\App\Models\TablaCodigo::where('id_tabla','=','MFE')->orderby('codigo','asc')->get() as $tablacodigo)
@@ -787,7 +799,7 @@
                         <div class="col-md-3 mb-3">
 
                             <label class="form-label d-inline-flex">
-                                <div class="divcuadro">120</div>DECLARANTE DNI
+                                <div class="divcuadro">94</div>DECLARANTE DNI
                             </label>
 
                             <label class="form-label d-inline-flex"></label>
@@ -832,7 +844,7 @@
 
 
                         <div class="col-md-3 mb-3">
-                            <label class="form-label d-inline-flex" > <div class="divcuadro">121</div>SUPERVISOR</label>
+                            <label class="form-label d-inline-flex" > <div class="divcuadro">95</div>SUPERVISOR</label>
                             <select class="form-select"  data-width="100%" data-live-search="true" name="supervisor" id="supervisor" wire:model="supervisor">
                                 <option value="">SELECCIONE</option>
                                 @foreach($supervisores as $supervisor)
@@ -849,7 +861,7 @@
                             @enderror
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label class="form-label d-inline-flex" > <div class="divcuadrorequired">122</div>TÉCNICO CATASTRAL</label>
+                            <label class="form-label d-inline-flex" > <div class="divcuadrorequired">96</div>TÉCNICO CATASTRAL</label>
                             <select class="form-select"  data-width="100%" data-live-search="true" name="tecnico" id="tecnico" wire:model="tecnico">
                                 <option value="">SELECCIONE</option>
                                 @foreach($tecnicos as $tecnico)
@@ -866,7 +878,7 @@
                             @enderror
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label class="form-label d-inline-flex" > <div class="divcuadro">123</div>Vº Bº VERIFICADOR CATASTRAL</label>
+                            <label class="form-label d-inline-flex" > <div class="divcuadro">97</div>Vº Bº VERIFICADOR CATASTRAL</label>
                             <select class="form-select"  data-width="100%" data-live-search="true" name="verificador" id="verificador" wire:model="verificador">
                                 <option value="">SELECCIONE</option>
                                 @foreach($verificadores as $verificador)
