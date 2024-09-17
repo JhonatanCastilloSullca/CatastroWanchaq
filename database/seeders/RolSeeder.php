@@ -20,107 +20,100 @@ class RolSeeder extends Seeder
 
         // $role1 = Role::where('name', 'ADMINISTRADOR')->first();
         $role1 = Role::create(['name' => 'ADMINISTRADOR']);
-        Permission::create(['name' => 'ficha.editrentasindividual', 'description'=> 'Editar Codigo de Contribuyente'])->assignRole($role1);
+        Permission::create(['name' => 'ficha.editrentasindividual', 'description'=> 'Editar Codigo de Contribuyente', 'categoria' => 'Editar'])->assignRole($role1);
+
+        Permission::create(['name' => 'dashboard', 'description' => 'Ver Estadisticas', 'categoria' => 'Ver'])->assignRole($role1);
+
+        Permission::create(['name' => 'user.index', 'description' => 'Ver la lista de Usuarios', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'user.create', 'description' => 'Crear Usuarios', 'categoria' => 'Crear'])->assignRole($role1);
+        Permission::create(['name' => 'user.destroy', 'description' => 'Cambiar estado de Usuarios', 'categoria' => 'Eliminar'])->assignRole($role1);
+        Permission::create(['name' => 'user.show', 'description' => 'Mostrar Usuarios', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'user.edit', 'description' => 'Editar Usuarios', 'categoria' => 'Editar'])->assignRole($role1);
+
+        Permission::create(['name' => 'roles.index', 'description' => 'Ver la lista de Roles', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'roles.edit', 'description' => 'Editar Roles', 'categoria' => 'Editar'])->assignRole($role1);
+        Permission::create(['name' => 'roles.destroy', 'description' => 'Eliminar Roles', 'categoria' => 'Eliminar'])->assignRole($role1);
+        Permission::create(['name' => 'roles.create', 'description' => 'Crear Roles', 'categoria' => 'Crear'])->assignRole($role1);
+
+        Permission::create(['name' => 'manzana.index', 'description' => 'Ver la lista de Manzanas', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'manzana.edit', 'description' => 'Editar datos de Manzanas', 'categoria' => 'Editar'])->assignRole($role1);
+        Permission::create(['name' => 'manzana.destroy', 'description' => 'Cambiar estado de Manzanas', 'categoria' => 'Eliminar'])->assignRole($role1);
+        Permission::create(['name' => 'manzana.create', 'description' => 'Crear Manzanas', 'categoria' => 'Crear'])->assignRole($role1);
+
+        Permission::create(['name' => 'sectore.index', 'description' => 'Ver la lista de Sectores', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'sectore.edit', 'description' => 'Editar la lista de Sectores', 'categoria' => 'Editar'])->assignRole($role1);
+        Permission::create(['name' => 'sectore.destroy', 'description' => 'Cambiar estado de Sectores', 'categoria' => 'Eliminar'])->assignRole($role1);
+        Permission::create(['name' => 'sectore.create', 'description' => 'Crear Sectores', 'categoria' => 'Crear'])->assignRole($role1);
+
+        Permission::create(['name' => 'haburbana.index', 'description' => 'Ver la lista de Habilitaciones Urbanas', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'haburbana.edit', 'description' => 'Editar datos de Habilitaciones Urbanas', 'categoria' => 'Editar'])->assignRole($role1);
+        Permission::create(['name' => 'haburbana.destroy', 'description' => 'Cambiar estado de Habilitaciones Urbanas', 'categoria' => 'Eliminar'])->assignRole($role1);
+        Permission::create(['name' => 'haburbana.create', 'description' => 'Crear Habilitaciones Urbanas', 'categoria' => 'Crear'])->assignRole($role1);
+
+        Permission::create(['name' => 'vias.index', 'description' => 'Ver la lista de Vias', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'vias.edit', 'description' => 'Editar datos de Vias', 'categoria' => 'Editar'])->assignRole($role1);
+        Permission::create(['name' => 'vias.destroy', 'description' => 'Cambiar estado de Vias', 'categoria' => 'Eliminar'])->assignRole($role1);
+        Permission::create(['name' => 'vias.create', 'description' => 'Crear Vias', 'categoria' => 'Crear'])->assignRole($role1);
+
+        Permission::create(['name' => 'notaria.index', 'description' => 'Ver Notaria', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'notaria.edit', 'description' => 'Editar datos de Notaria', 'categoria' => 'Editar'])->assignRole($role1);
+        Permission::create(['name' => 'notaria.destroy', 'description' => 'Cambiar estado de Notaria', 'categoria' => 'Eliminar'])->assignRole($role1);
+        Permission::create(['name' => 'notaria.create', 'description' => 'Crear Notaria', 'categoria' => 'Crear'])->assignRole($role1);
+
+        Permission::create(['name' => 'reporte.index', 'description' => 'Vista de Reportes', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'lineatiempo', 'description' => 'Ver Linea Tiempo Fichas', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'progresofichas', 'description' => 'Ver Progreso de Fichas', 'categoria' => 'Ver'])->assignRole($role1);
+
+        Permission::create(['name' => 'persona.edit', 'description' => 'Editar datos de Persona', 'categoria' => 'Editar'])->assignRole($role1);
+        Permission::create(['name' => 'supervisor.edit', 'description' => 'Editar datos de Supervisor', 'categoria' => 'Editar'])->assignRole($role1);
+        Permission::create(['name' => 'tecnicos.edit', 'description' => 'Editar datos de Tecnicos', 'categoria' => 'Editar'])->assignRole($role1);
+        Permission::create(['name' => 'verificadores.edit', 'description' => 'Editar datos de Verificadores', 'categoria' => 'Editar'])->assignRole($role1);
+
+        Permission::create(['name' => 'persona.create', 'description' => 'Crear Persona', 'categoria' => 'Crear'])->assignRole($role1);
+        Permission::create(['name' => 'supervisor.create', 'description' => 'Crear Supervisor', 'categoria' => 'Crear'])->assignRole($role1);
+        Permission::create(['name' => 'tecnicos.create', 'description' => 'Crear Tecnicos', 'categoria' => 'Crear'])->assignRole($role1);
+        Permission::create(['name' => 'verificadores.create', 'description' => 'Crear Verificadores', 'categoria' => 'Crear'])->assignRole($role1);
+
+        Permission::create(['name' => 'mantenimiento.supervisores', 'description' => 'Ver lista de Supervisores', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'mantenimiento.tecnicos', 'description' => 'Ver lista de Tecnicos', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'mantenimiento.verificadores', 'description' => 'Ver lista de Verificadores', 'categoria' => 'Ver'])->assignRole($role1);
+
+        Permission::create(['name' => 'pdf.individual', 'description' => 'Ver Pdf de Ficha Individual', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'pdf.cotitularidad', 'description' => 'Ver Pdf de Ficha Cotitularidad', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'pdf.economica', 'description' => 'Ver Pdf de Ficha Economica', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'pdf.bienescomunes', 'description' => 'Ver Pdf de Ficha Bienes Comunes', 'categoria' => 'Ver'])->assignRole($role1);
+
+        Permission::create(['name' => 'pdf.informativa', 'description' => 'Ver Pdf de Ficha Informativa', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'pdf.bienesculturales', 'description' => 'Ver Pdf de Ficha Bienes Culturales', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'pdf.rural', 'description' => 'Ver Pdf de Ficha Rural', 'categoria' => 'Ver'])->assignRole($role1);
 
 
 
 
-        Permission::create(['name' => 'dashboard', 'description' => 'Ver Estadisticas'])->assignRole($role1);
 
-        Permission::create(['name' => 'user.index', 'description' => 'Ver la lista de Usuarios'])->assignRole($role1);
-        Permission::create(['name' => 'user.create', 'description' => 'Crear Usuarios'])->assignRole($role1);
-        Permission::create(['name' => 'user.destroy', 'description' => 'Cambiar estado de Usuarios'])->assignRole($role1);
-        Permission::create(['name' => 'user.show', 'description' => 'Mostrar Usuarios'])->assignRole($role1);
-        Permission::create(['name' => 'user.edit', 'description' => 'Editar Usuarios'])->assignRole($role1);
+        Permission::create(['name' => 'ficha.createcotitularidad', 'description' => 'Crear Ficha Cotitularidad', 'categoria' => 'Crear'])->assignRole($role1);
+        Permission::create(['name' => 'ficha.editcotitularidad', 'description' => 'Editar Ficha Cotitularidad', 'categoria' => 'Editar'])->assignRole($role1);
+        Permission::create(['name' => 'ficha.destroycotitularidad', 'description' => 'Eliminar Ficha Cotitularidad', 'categoria' => 'Eliminar'])->assignRole($role1);
 
+        Permission::create(['name' => 'ficha.editeconomica', 'description' => 'Editar Ficha Económica', 'categoria' => 'Editar'])->assignRole($role1);
+        Permission::create(['name' => 'ficha.destroyeconomica', 'description' => 'Eliminar Ficha Económica', 'categoria' => 'Eliminar'])->assignRole($role1);
 
-        Permission::create(['name' => 'roles.index', 'description' => 'Ver la lista de Roles'])->assignRole($role1);
-        Permission::create(['name' => 'roles.edit', 'description' => 'Editar Roles'])->assignRole($role1);
-        Permission::create(['name' => 'roles.destroy', 'description' => 'Eliminar Roles'])->assignRole($role1);
-        Permission::create(['name' => 'roles.create', 'description' => 'Crear Roles'])->assignRole($role1);
+        Permission::create(['name' => 'ficha.editindividual', 'description' => 'Editar Ficha Individual', 'categoria' => 'Editar'])->assignRole($role1);
+        Permission::create(['name' => 'ficha.destroyindividual', 'description' => 'Eliminar Ficha Individual', 'categoria' => 'Eliminar'])->assignRole($role1);
 
+        Permission::create(['name' => 'ficha.indexeconomica', 'description' => 'Ver Lista de Ficha Económica', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'ficha.indexcotitular', 'description' => 'Ver Lista de Ficha Cotitularidad', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'ficha.indexbiencomun', 'description' => 'Ver Lista de Ficha de Bien Común', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'ficha.indexbiencultural', 'description' => 'Ver Lista de Ficha Bienes Culturales', 'categoria' => 'Ver'])->assignRole($role1);
 
-        Permission::create(['name' => 'manzana.index', 'description' => 'Ver la lista de Manzanas'])->assignRole($role1);
-        Permission::create(['name' => 'manzana.edit', 'description' => 'Editar datos de Manzanas'])->assignRole($role1);
-        Permission::create(['name' => 'manzana.destroy', 'description' => 'Cambiar estado de Usuarios'])->assignRole($role1);
-        Permission::create(['name' => 'manzana.create', 'description' => 'Crear Manzanas'])->assignRole($role1);
+        Permission::create(['name' => 'ficha.createeconomica', 'description' => 'Crear Ficha Económica', 'categoria' => 'Crear'])->assignRole($role1);
+        Permission::create(['name' => 'ficha.createbiencomun', 'description' => 'Crear Ficha Bienes Comunes', 'categoria' => 'Crear'])->assignRole($role1);
+        Permission::create(['name' => 'ficha.fichacotitulariadadcreate', 'description'         => 'Crear Ficha Cotitularidad', 'categoria' => 'Crear'])->assignRole($role1);
 
+        Permission::create(['name' => 'ficha.createbiencultural', 'description' => 'Crear Ficha Bien Cultural', 'categoria' => 'Crear'])->assignRole($role1);
+        Permission::create(['name' => 'ficha.createrural', 'description' => 'Crear Ficha Rural', 'categoria' => 'Crear'])->assignRole($role1);
+        Permission::create(['name' => 'ficha.createindividual', 'description' => 'Crear Ficha Individual', 'categoria' => 'Crear'])->assignRole($role1);
 
-
-        Permission::create(['name' => 'sectore.index', 'description' => 'Ver la lista de Sectores'])->assignRole($role1);
-        Permission::create(['name' => 'sectore.edit', 'description' => 'Editar la lista de Sectores'])->assignRole($role1);
-        Permission::create(['name' => 'sectore.destroy', 'description' => 'Cambiar estado de Sectores'])->assignRole($role1);
-        Permission::create(['name' => 'sectore.create', 'description' => 'Crear Sectores'])->assignRole($role1);
-
-
-
-        Permission::create(['name' => 'haburbana.index', 'description' => 'Ver la lista de Habilitaciones Urbanas'])->assignRole($role1);
-        Permission::create(['name' => 'haburbana.edit', 'description' => 'Editar datos de Habilitaciones Urbanas'])->assignRole($role1);
-        Permission::create(['name' => 'haburbana.destroy', 'description' => 'Cambiar estado de Habilitaciones Urbanas'])->assignRole($role1);
-        Permission::create(['name' => 'haburbana.create', 'description' => 'Crear Habilitaciones Urbanas'])->assignRole($role1);
-
-
-        Permission::create(['name' => 'vias.index', 'description' => 'Ver la lista de Vias'])->assignRole($role1);
-        Permission::create(['name' => 'vias.edit', 'description' => 'Editar datos de Vias'])->assignRole($role1);
-        Permission::create(['name' => 'vias.destroy', 'description' => 'Cambiar estado de Vias'])->assignRole($role1);
-        Permission::create(['name' => 'vias.create', 'description' => 'Crear Vias'])->assignRole($role1);
-
-
-
-
-        Permission::create(['name' => 'notaria.index', 'description' => 'Ver Notaria'])->assignRole($role1);
-        Permission::create(['name' => 'notaria.edit', 'description' => 'Editar datos de Notaria'])->assignRole($role1);
-        Permission::create(['name' => 'notaria.destroy', 'description' => 'Cambiar estado de Notaria'])->assignRole($role1);
-        Permission::create(['name' => 'notaria.create', 'description' => 'Crear Notaria'])->assignRole($role1);
-
-
-        Permission::create(['name' => 'reporte.index', 'description' => 'Vista de Reportes'])->assignRole($role1);
-        Permission::create(['name' => 'lineatiempo', 'description' => 'Ver Linea Tiempo Fichas'])->assignRole($role1);
-        Permission::create(['name' => 'progresofichas', 'description' => 'Ver Progreso de Fichas'])->assignRole($role1);
-
-
-        Permission::create(['name' => 'persona.edit', 'description' => 'Editar datos de Persona'])->assignRole($role1);
-        Permission::create(['name' => 'supervisor.edit', 'description' => 'Editar datos de Supervisor'])->assignRole($role1);
-        Permission::create(['name' => 'tecnicos.edit', 'description' => 'Editar datos de Supervisor'])->assignRole($role1);
-        Permission::create(['name' => 'verificadores.edit', 'description' => 'Editar datos de Supervisor'])->assignRole($role1);
-
-        Permission::create(['name' => 'persona.create', 'description' => 'Crear Persona'])->assignRole($role1);
-        Permission::create(['name' => 'supervisor.create', 'description' => 'Crear Supervisor'])->assignRole($role1);
-        Permission::create(['name' => 'tecnicos.create', 'description' => 'Crear Tecnicos'])->assignRole($role1);
-        Permission::create(['name' => 'verificadores.create', 'description' => 'Crear Verificadores'])->assignRole($role1);
-
-
-        Permission::create(['name' => 'mantenimiento.supervisores', 'description'              => 'Ver lista de Supervisores'])->assignRole($role1);
-        Permission::create(['name' => 'mantenimiento.tecnicos', 'description'                  => 'Ver lista de Tecnicos'])->assignRole($role1);
-        Permission::create(['name' => 'mantenimiento.verificadores', 'description'             => 'Ver lista de Verificadores'])->assignRole($role1);
-
-        Permission::create(['name' => 'pdf.individual', 'description'                          => 'Ver Pdf de Ficha Individual'])->assignRole($role1);
-        Permission::create(['name' => 'pdf.cotitularidad', 'description'                       => 'Ver Pdf de Ficha Cotitularidad'])->assignRole($role1);
-        Permission::create(['name' => 'pdf.economica', 'description'                           => 'Ver Pdf de Ficha Economica'])->assignRole($role1);
-        Permission::create(['name' => 'pdf.bienescomunes', 'description'                       => 'Ver Pdf de Ficha Bienes Comunes'])->assignRole($role1);
-
-        Permission::create(['name' => 'pdf.informativa', 'description'                         => 'Ver Pdf de Ficha Informativa'])->assignRole($role1);
-        Permission::create(['name' => 'pdf.bienesculturales', 'description'                    => 'Ver Pdf de Ficha Bienes Culturales'])->assignRole($role1);
-        Permission::create(['name' => 'pdf.rural', 'description'                               => 'Ver Pdf de Ficha Rural'])->assignRole($role1);
-
-
-        Permission::create(['name' => 'ficha.createcotitularidad', 'description'               => 'Crear Ficha Cotitularidad'])->assignRole($role1);
-        Permission::create(['name' => 'ficha.editcotitularidad', 'description'                 => 'Editar Ficha Cotitularidad'])->assignRole($role1);
-        Permission::create(['name' => 'ficha.destroycotitularidad', 'description'                 => 'Eliminar Ficha Cotitularidad'])->assignRole($role1);
-        Permission::create(['name' => 'ficha.editeconomica', 'description'                 => 'Editar Ficha Economica'])->assignRole($role1);
-        Permission::create(['name' => 'ficha.destroyeconomica', 'description'                 => 'Eliminar Ficha Economica'])->assignRole($role1);
-        Permission::create(['name' => 'ficha.editindividual', 'description'                 => 'Editar Ficha Individual'])->assignRole($role1);
-        Permission::create(['name' => 'ficha.destroyindividual', 'description'                 => 'Eliminar Ficha Individual'])->assignRole($role1);
-        Permission::create(['name' => 'ficha.indexeconomica', 'description'                    => 'Ver Lista de Ficha Economica'])->assignRole($role1);
-        Permission::create(['name' => 'ficha.indexcotitular', 'description'                    => 'Ver Lista de Ficha Cotitularidad'])->assignRole($role1);
-        Permission::create(['name' => 'ficha.indexbiencomun', 'description'                    => 'Crear Ficha de Bien Comun'])->assignRole($role1);
-        Permission::create(['name' => 'ficha.indexbiencultural', 'description'                 => 'Ver Lista de Ficha Bienes Culturales'])->assignRole($role1);
-        Permission::create(['name' => 'ficha.createeconomica', 'description'                   => 'Crear Ficha Economica'])->assignRole($role1);
-        Permission::create(['name' => 'ficha.createbiencomun', 'description'                   => 'Crear Ficha Bienes Comunes'])->assignRole($role1);
-        Permission::create(['name' => 'ficha.fichacotitulariadadcreate', 'description'         => 'Crear Ficha Cotitularidad'])->assignRole($role1);
-        Permission::create(['name' => 'ficha.createbiencultural', 'description'                => 'Crear Ficha Bien Cultural'])->assignRole($role1);
-        Permission::create(['name' => 'ficha.createrural', 'description'                       => 'Crear Ficha Rural'])->assignRole($role1);
-        Permission::create(['name' => 'ficha.createindividual', 'description'                  => 'Crear Ficha Individual'])->assignRole($role1);
 
 
 
@@ -134,33 +127,37 @@ class RolSeeder extends Seeder
         Permission::create(['name' => 'impresion.vercnumeracion', 'description'                => 'Ver Impresion de Certificado de Numeracion'])->assignRole($role1);
 
         /*Falta Seedear*/
-        Permission::create(['name' => 'ficha.editbiencomun', 'description'                 => 'Editar Ficha Bien Comun'])->assignRole($role1);
-        Permission::create(['name' => 'ficha.destroybiencomun', 'description'                 => 'Eliminar Ficha Bien Comun'])->assignRole($role1);
+        Permission::create(['name' => 'ficha.editbiencomun', 'description'                 => 'Editar Ficha Bien Comun', 'categoria' => 'Editar'])->assignRole($role1);
+        Permission::create(['name' => 'ficha.destroybiencomun', 'description'                 => 'Eliminar Ficha Bien Comun', 'categoria' => 'Eliminar'])->assignRole($role1);
 
-        Permission::create(['name' => 'reporte.reportepersona', 'description'                  => 'Reporte por Persona'])->assignRole($role1);
-        Permission::create(['name' => 'reporte.reporteusuario', 'description'                  => 'Reporte por Usuario'])->assignRole($role1);
-        Permission::create(['name' => 'reporte.reportefechas', 'description'                   => 'Reporte por Fechas'])->assignRole($role1);
-        Permission::create(['name' => 'reporte.fichapuerta', 'description'                     => 'Reporte por Puerta'])->assignRole($role1);
-        Permission::create(['name' => 'reporte.fichapredio', 'description'                     => 'Reporte por Predio'])->assignRole($role1);
-        Permission::create(['name' => 'reporte.fichaconstrucciones', 'description'             => 'Reporte por Construcciones'])->assignRole($role1);
-        Permission::create(['name' => 'reporte.fichaantiguedad', 'description'                 => 'Reporte por Antiguedad'])->assignRole($role1);
-        Permission::create(['name' => 'imagenes', 'description'                                => 'Subir Imagenes'])->assignRole($role1);
-        Permission::create(['name' => 'reporte.llenadoficha', 'description'                  => 'Reporte Llenado de fichas'])->assignRole($role1);
-        Permission::create(['name' => 'reporte.porlote', 'description'                  => 'Reporte por Lote'])->assignRole($role1);
-        Permission::create(['name' => 'reporte.actividadeconomica', 'description'                  => 'Reporte por Actividad Economica'])->assignRole($role1);
-        Permission::create(['name' => 'reporte.fichasmasivas', 'description'                  => 'Reporte de Fichas Masivas'])->assignRole($role1);
-
+        
+        // Permisos relacionados con Reportes
+        Permission::create(['name' => 'reporte.reportepersona', 'description' => 'Reporte por Persona', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'reporte.reporteusuario', 'description' => 'Reporte por Usuario', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'reporte.reportefechas', 'description' => 'Reporte por Fechas', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'reporte.fichapuerta', 'description' => 'Reporte por Puerta', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'reporte.fichapredio', 'description' => 'Reporte por Predio', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'reporte.fichaconstrucciones', 'description' => 'Reporte por Construcciones', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'reporte.fichaantiguedad', 'description' => 'Reporte por Antigüedad', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'reporte.llenadoficha', 'description' => 'Reporte Llenado de Fichas', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'reporte.porlote', 'description' => 'Reporte por Lote', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'reporte.actividadeconomica', 'description' => 'Reporte por Actividad Económica', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'reporte.fichasmasivas', 'description' => 'Reporte de Fichas Masivas', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'reporte.reportefirmas', 'description' => 'Reporte por Firmas', 'categoria' => 'Ver'])->assignRole($role1);
 
 
         ##########################################################################################
-        Permission::create(['name' => 'reporte.reportefirmas', 'description'                  => 'Reporte por Firmas'])->assignRole($role1);
 
-        Permission::create(['name' => 'licenciaedificacion.index', 'description'                  => 'Lista de Licencia de Edificaciones'])->assignRole($role1);
-        Permission::create(['name' => 'licenciaedificacion.show', 'description'                  => 'Ver Licencia de Edificacion'])->assignRole($role1);
-        Permission::create(['name' => 'licenciaedificacion.create', 'description'                  => 'Crear Licencia de Edificacion'])->assignRole($role1);
-        Permission::create(['name' => 'licenciaedificacion.edit', 'description'                  => 'Editar Licencia de Edificacion'])->assignRole($role1);
-        Permission::create(['name' => 'licenciaedificacion.destroy', 'description'                  => 'Anular Licencia de Edificacion'])->assignRole($role1);
-        Permission::create(['name' => 'licenciaedificacion.reporte', 'description'                  => 'Reporte de Licencia de Edificacion'])->assignRole($role1);
-        Permission::create(['name' => 'licenciaedificacion.pdf', 'description'                  => 'Descargar PDF de Licencia de Edificacion'])->assignRole($role1);
+        
+        Permission::create(['name' => 'licenciaedificacion.index', 'description' => 'Lista de Licencia de Edificaciones', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'licenciaedificacion.show', 'description' => 'Ver Licencia de Edificación', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'licenciaedificacion.create', 'description' => 'Crear Licencia de Edificación', 'categoria' => 'Crear'])->assignRole($role1);
+        Permission::create(['name' => 'licenciaedificacion.edit', 'description' => 'Editar Licencia de Edificación', 'categoria' => 'Editar'])->assignRole($role1);
+        Permission::create(['name' => 'licenciaedificacion.destroy', 'description' => 'Anular Licencia de Edificación', 'categoria' => 'Eliminar'])->assignRole($role1);
+        Permission::create(['name' => 'licenciaedificacion.reporte', 'description' => 'Reporte de Licencia de Edificación', 'categoria' => 'Ver'])->assignRole($role1);
+        Permission::create(['name' => 'licenciaedificacion.pdf', 'description' => 'Descargar PDF de Licencia de Edificación', 'categoria' => 'Descargar'])->assignRole($role1);
+        Permission::create(['name' => 'imagenes', 'description' => 'Subir Imágenes', 'categoria' => 'Subir'])->assignRole($role1);
+
+
     }
 }
