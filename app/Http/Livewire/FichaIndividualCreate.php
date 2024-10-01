@@ -416,6 +416,15 @@ class FichaIndividualCreate extends Component
         $this->cond_nume[$this->cont] = "";
         $this->cont++;
     }
+    public function updatedcodiinstalacion($value,$nested)
+    {
+        $obras=CodigoInstalacion::where('codi_instalacion',$value)->first();
+        if($obras=="")
+        {
+        }else{
+            $this->inst_uni_med[$nested]=$obras->unidad;
+        }
+    }
 
     public function reducirUbicacion($i)
     {
