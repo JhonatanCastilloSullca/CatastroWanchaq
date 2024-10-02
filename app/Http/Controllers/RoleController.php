@@ -47,13 +47,8 @@ class RoleController extends Controller
 
     public function edit(Role $role)
     {
-        $permissions = Permission::all();
-        $permisionver = Permission::where('categoria', 'Ver')->orderBy('description', 'asc')->get();
-        $permisionCrear = Permission::where('categoria', 'Crear')->orderBy('description', 'asc')->get();
-        $permisionEditar = Permission::where('categoria', 'Editar')->orderBy('description', 'asc')->get();
-        $permisionEliminar = Permission::where('categoria', 'Eliminar')->orderBy('description', 'asc')->get();
-        $permisionReportes = Permission::where('categoria', 'Reportes')->orderBy('description', 'asc')->get();
-        return view('pages.roles.edit', compact('role', 'permissions', 'permisionver','permisionCrear','permisionEditar','permisionEliminar','permisionReportes'));
+        $permissions = Permission::groupBy('categoria','id')->orderBy('categoria','asc')->get();
+        return view('pages.roles.edit', compact('role', 'permissions'));
     }
 
     public function update(Request $request, Role $role)
