@@ -42,7 +42,6 @@ class TablaCodigoController extends Controller
         $tablacodigos->codigo=$request->codigo;
         $tablacodigos->id_tabla=$request->id_tablacodigos;
         $tablacodigos->desc_codigo=$request->desc_codigo;
-        // dd($tablacodigos);
         $tablacodigos->save();
         return redirect()->route('tablacodigo.index')
             ->with('success', 'Codigo Agregado Correctamente.');

@@ -48,9 +48,9 @@ class FichaIndividualEdit extends Component
     public $nume_ficha_lote;
     public $nume_ficha_lote2;
     public $cuc;
-    public $dpto = 8;
-    public $prov = 1;
-    public $dist = 8;
+    public $dpto = '08';
+    public $prov = '01';
+    public $dist = '08';
     public $sector;
     public $mzna;
     public $lote;
@@ -2485,5 +2485,31 @@ class FichaIndividualEdit extends Component
     public function render()
     {
         return view('livewire.ficha-individual-edit');
+    }
+
+    //CAMBIOS WANCHAQ
+    public function updatedmzna($value)
+    {
+        $this->mzna = str_pad($value, 3, '0', STR_PAD_LEFT);
+    }
+    public function updatedlote($value)
+    {
+        $this->lote = str_pad($value, 3, '0', STR_PAD_LEFT);
+    }
+    public function updatededifica($value)
+    {
+        $this->edifica = str_pad($value, 2, '0', STR_PAD_LEFT);
+    }
+    public function updatedentrada($value)
+    {
+        $this->entrada = str_pad($value, 2, '0', STR_PAD_LEFT);
+    }
+    public function updatedpiso($value)
+    {
+        $this->piso = str_pad($value, 2, '0', STR_PAD_LEFT);
+    }
+    public function updatedunidad($value)
+    {
+        $this->unidad = str_pad($value, 2, '0', STR_PAD_LEFT);
     }
 }

@@ -3,11 +3,10 @@
     <select class="form-select id_tablacodigos" id="id_tablacodigos" name="id_tablacodigos" data-width="100%">
         <option value="">SELECCIONE</option>
         @foreach($tablas as $i => $desctabla)
-            <option value="{{ $i }}" {{ old('id_tablacodigos') == $i ? 'selected' : '' }}>
+            <option value="{{ $desctabla->id_tabla }}" {{ old('id_tablacodigos') == $i ? 'selected' : '' }}>
             {{ $desctabla->id_tabla }} - {{ $desctabla->desc_tabla }}
             </option>
         @endforeach
-
     </select>
     @error('id_tablacodigos')
         <span class="error-message" style="color:red">{{ $message }}</span>

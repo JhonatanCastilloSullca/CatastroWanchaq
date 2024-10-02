@@ -268,17 +268,11 @@
                                 <li class="nav-item">
                                     <a href="{{ url('/impresion/verinformativaeconomica') }}"
                                         class="nav-link {{ active_class(['impresion/verinformativaeconomica']) }}"
-                                        style="height: 40px;display: block;width: 100%;white-space: break-spaces;overflow: hidden;text-overflow: clip;overflow-wrap: break-word !important;max-width: 125px !important;">Informe
-                                        Tecnico Catastral Economico</a>
+                                        style="height: 40px;display: block;width: 100%;white-space: break-spaces;overflow: hidden;text-overflow: clip;overflow-wrap: break-word !important;max-width: 125px !important;"> Informe Tecnico Catastral Economico
+                                        </a>
                                 </li>
                             @endcan
-                            @can('impresion.vercnumeracion')
-                                <li class="nav-item">
-                                    <a href="{{ url('/impresion/vercnumeracion') }}"
-                                        class="nav-link {{ active_class(['impresion/vercnumeracion']) }}">Certificado de
-                                        Numeracion</a>
-                                </li>
-                            @endcan
+                            
                         </ul>
                     </div>
                 </li>
@@ -364,8 +358,7 @@
                             @can('reporte.fichaconstrucciones')
                                 <li class="nav-item ">
                                     <a href="{{ url('reporte/fichaconstrucciones') }}"
-                                        class="nav-link {{ active_class(['reporte/fichaconstrucciones']) }}">Reporte
-                                        por construccion
+                                        class="nav-link {{ active_class(['reporte/fichaconstrucciones']) }}">Reporte por construccion
                                     </a>
                                 </li>
                             @endcan
@@ -375,8 +368,7 @@
                                 <li class="nav-item">
                                     <a href="{{ url('reporte/fichaantiguedad') }}"
                                         class="nav-link {{ active_class(['reporte/fichaantiguedad']) }}"
-                                        style="height: 40px;display: block;width: 100%;white-space: break-spaces;overflow: hidden;text-overflow: clip;overflow-wrap: break-word !important;max-width: 125px !important;">Reporte
-                                        por Años de antiguedad</a>
+                                        style="height: 40px;display: block;width: 100%;white-space: break-spaces;overflow: hidden;text-overflow: clip;overflow-wrap: break-word !important;max-width: 125px !important;">Reporte por Años de antiguedad</a>
                                 </li>
                             @endcan
                             @can('reporte.llenadoficha')
@@ -455,12 +447,14 @@
                     </a>
                 </li>
             @endcan
+            @can('visormapas')
             <li class="nav-item">
                 <a href="http://127.0.0.1:8080/visor_mpch/index.html" target="_blank" class="nav-link">
                     <i class="link-icon mdi mdi-google-maps"></i>
                     <span class="link-title">Visor de Mapas</span>
                 </a>
             </li>
+            @endcan
             @if (Gate::check('licenciaedificacion.index') ||
                     Gate::check('licenciaedificacion.create') ||
                     Gate::check('licenciaedificacion.reporte'))
@@ -498,6 +492,8 @@
             @endcan
 
 
+            @can('impresion.vercnumeracion')
+
             <li class="nav-item {{ active_class(['generarnumeracion/*']) }}">
                 <a class="nav-link" data-bs-toggle="collapse" href="#generarnumeracion" role="button"
                     aria-expanded="{{ is_active_route(['generarnumeracion/*']) }}"
@@ -520,6 +516,8 @@
                     </ul>
                 </div>
             </li>
+            @endcan
+            @can('impresion.verccatastral')
 
             <li class="nav-item {{ active_class(['generarcatastral/*']) }}">
                 <a class="nav-link" data-bs-toggle="collapse" href="#generarcatastral" role="button"
@@ -543,6 +541,7 @@
                     </ul>
                 </div>
             </li>
+            @endcan
 
 </div>
 </nav>

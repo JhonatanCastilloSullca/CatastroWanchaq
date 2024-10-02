@@ -150,7 +150,7 @@ class TablaCodigosSeeder extends Seeder
             ['codigo'=>'044'	    ,'id_tabla'=>'CDP'	,'desc_codigo'=>'INDUSTRIA'],
             ['codigo'=>'045'	    ,'id_tabla'=>'CDP'	,'desc_codigo'=>'TALLER'],
             ['codigo'=>'046'	    ,'id_tabla'=>'CDP'	,'desc_codigo'=>'IGLESIA / TEMPLO'],
-            ['codigo'=>'047'	    ,'id_tabla'=>'CDP'	,'desc_codigo'=>'CENTRO DE ENSEÃÂANZA'],
+            ['codigo'=>'047'	    ,'id_tabla'=>'CDP'	,'desc_codigo'=>'CENTRO DE ENSEÑANZA'],
             ['codigo'=>'048'	    ,'id_tabla'=>'CDP'	,'desc_codigo'=>'SERVICIO DE COMIDA'],
             ['codigo'=>'049'	    ,'id_tabla'=>'CDP'	,'desc_codigo'=>'PARQUE'],
             ['codigo'=>'05'	    ,'id_tabla'=>'CDP'	,'desc_codigo'=>'TERRENO SIN CONSTRUIR'],

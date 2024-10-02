@@ -45,9 +45,9 @@ class FichaBienesComunes extends Component
     public $nume_ficha_lote;
     public $nume_ficha_lote2;
     public $cuc;
-    public $dpto=8;
-    public $prov=1;
-    public $dist=8;
+    public $dpto='08';
+    public $prov='01';
+    public $dist='08';
     public $sector;
     public $mzna;
     public $lote;
@@ -267,22 +267,48 @@ class FichaBienesComunes extends Component
     }
 
 
-    public function updatededifica()
-    {
-        $this->mostrardc();
-        $this->dc=($this->dpto+$this->prov+$this->dist+$this->sector+$this->mzna+$this->lote+$this->edifica+$this->entrada+$this->piso+$this->unidad)%9;
-    }
+    // public function updatededifica()
+    // {
+    //     $this->mostrardc();
+    //     $this->dc=($this->dpto+$this->prov+$this->dist+$this->sector+$this->mzna+$this->lote+$this->edifica+$this->entrada+$this->piso+$this->unidad)%9;
+    // }
 
-    public function updatedlote()
-    {
-        $this->mostrardc();
-        $this->dc=($this->dpto+$this->prov+$this->dist+$this->sector+$this->mzna+$this->lote+$this->edifica+$this->entrada+$this->piso+$this->unidad)%9;
-    }
+    // public function updatedlote()
+    // {
+    //     $this->mostrardc();
+    //     $this->dc=($this->dpto+$this->prov+$this->dist+$this->sector+$this->mzna+$this->lote+$this->edifica+$this->entrada+$this->piso+$this->unidad)%9;
+    // }
 
-    public function updatedmzna()
+    // public function updatedmzna()
+    // {
+    //     $this->mostrardc();
+    //     $this->dc=($this->dpto+$this->prov+$this->dist+$this->sector+$this->mzna+$this->lote+$this->edifica+$this->entrada+$this->piso+$this->unidad)%9;
+    // }
+    public function calcularDC()
     {
-        $this->mostrardc();
-        $this->dc=($this->dpto+$this->prov+$this->dist+$this->sector+$this->mzna+$this->lote+$this->edifica+$this->entrada+$this->piso+$this->unidad)%9;
+        $this->validate([
+            'dpto' => 'required|numeric',
+            'prov' => 'required|numeric',
+            'dist' => 'required|numeric',
+            'sector' => 'required|numeric',
+            'mzna' => 'required|numeric',
+            'lote' => 'required|numeric',
+            'edifica' => 'required|numeric',
+            'entrada' => 'required|numeric',
+            'piso' => 'required|numeric',
+            'unidad' => 'required|numeric',
+        ]);
+
+        $this->dc = ($this->dpto + $this->prov + $this->dist + $this->sector + $this->mzna + $this->lote + $this->edifica + $this->entrada + $this->piso + $this->unidad) % 9;
+        $codicatastral = '080108' . $this->sector . $this->mzna . $this->lote . $this->edifica . $this->entrada . $this->piso . $this->unidad;
+
+        $exists = Unicat::where('id_uni_cat', $codicatastral)->exists();
+
+        if ($exists) {
+            $this->mensajeunicat = "Código de Referencia Catastral ya existe";
+        } else {
+            $this->mensajeunicat = "";
+        }
     }
 
     public function updatednumeficha()
@@ -1311,4 +1337,19 @@ class FichaBienesComunes extends Component
         return redirect()->route('reporte.reportelista')
         ->with('success', 'Ficha Bien Comun Agregado Correctamente.');
     }
+    
+    //CAMBIOS WANCHAQ
+    public function updatedmzna($value)
+    {
+        $this->mzna = str_pad($value, 3, '0', STR_PAD_LEFT);
+    }
+    public function updatedlote($value)
+    {
+        $this->lote = str_pad($value, 3, '0', STR_PAD_LEFT);
+    }
+    public function updatededifica($value)
+    {
+        $this->edifica = str_pad($value, 2, '0', STR_PAD_LEFT);
+    }
+    
 }

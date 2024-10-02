@@ -106,7 +106,7 @@
                     {{csrf_field()}}
                     <p>Estas seguro de cambiar el estado?</p>
                     <div class="modal-footer">
-                        <input type="text" name="id_usuario_2" class="id_usuario_2">
+                        <input type="hidden" name="id_usuario_2" class="id_usuario_2">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Aceptar</button>
                     </div>

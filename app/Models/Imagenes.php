@@ -21,6 +21,7 @@ class Imagenes extends Authenticatable implements AuditableContract
         'id_lote',
         'imagenfachada',
         'imagenmapa',
+        'id_usuario',
     ];
     public $timestamps = false;
 

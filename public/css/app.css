@@ -28144,3 +28144,6 @@ textarea:focus {
 .ck-editor__editable_inline {
 	min-height: 150px;
 }
+.w-65{
+	width: 65px !important;
+}

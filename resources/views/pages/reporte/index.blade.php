@@ -275,12 +275,13 @@
                                     @endcan
                                 </td>
                                 <td>
-
+                                    @can('ficha.editcultural')
                                     <a href="{{route('ficha.editbiencultural',$ficha)}}"  target="_blank" >
                                         <button type="button" class="btn btn-info btn-icon " >
                                         <i data-feather="edit"></i>
                                         </button>
                                     </a>
+                                    @endcan
 
                                 </td>
                                 <td>
