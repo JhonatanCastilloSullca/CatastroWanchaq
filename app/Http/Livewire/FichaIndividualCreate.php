@@ -48,9 +48,9 @@ class FichaIndividualCreate extends Component
     public $nume_ficha_lote;
     public $nume_ficha_lote2;
     public $cuc;
-    public $dpto = 8;
-    public $prov = 1;
-    public $dist = 8;
+    public $dpto = '08';
+    public $prov = '01';
+    public $dist = '08';
     public $sector;
     public $mzna;
     public $lote;
@@ -334,7 +334,6 @@ class FichaIndividualCreate extends Component
         $this->dc = ($this->dpto + $this->prov + $this->dist + $this->sector + $this->mzna + $this->lote + $this->edifica + $this->entrada + $this->piso + $this->unidad) % 9;
         $codicatastral = '080108' . $this->sector . $this->mzna . $this->lote . $this->edifica . $this->entrada . $this->piso . $this->unidad;
 
-        // Verificar si existe al menos una unicat con el ID proporcionado
         $exists = Unicat::where('id_uni_cat', $codicatastral)->exists();
 
         if ($exists) {
@@ -415,6 +414,15 @@ class FichaIndividualCreate extends Component
         $this->tipoVia[$this->cont] = "";
         $this->cond_nume[$this->cont] = "";
         $this->cont++;
+    }
+    public function updatedcodiinstalacion($value,$nested)
+    {
+        $obras=CodigoInstalacion::where('codi_instalacion',$value)->first();
+        if($obras=="")
+        {
+        }else{
+            $this->inst_uni_med[$nested]=$obras->unidad;
+        }
     }
 
     public function reducirUbicacion($i)
@@ -694,10 +702,57 @@ class FichaIndividualCreate extends Component
         $this->cont2++;
     }
 
-    public function reducirConstruccion()
+    public function reducirConstruccion($value)
     {
         $this->cont2--;
+
+        if (is_array($this->bloque)) {
+            array_splice($this->bloque, $value, 1);
+        }
+        if (is_array($this->num_piso)) {
+            array_splice($this->num_piso, $value, 1);
+        }
+        if (is_array($this->fecha)) {
+            array_splice($this->fecha, $value, 1);
+        }
+        if (is_array($this->mep)) {
+            array_splice($this->mep, $value, 1);
+        }
+        if (is_array($this->ecs)) {
+            array_splice($this->ecs, $value, 1);
+        }
+        if (is_array($this->ecc)) {
+            array_splice($this->ecc, $value, 1);
+        }
+        if (is_array($this->estr_muro_col)) {
+            array_splice($this->estr_muro_col, $value, 1);
+        }
+        if (is_array($this->estr_techo)) {
+            array_splice($this->estr_techo, $value, 1);
+        }
+        if (is_array($this->acab_piso)) {
+            array_splice($this->acab_piso, $value, 1);
+        }
+        if (is_array($this->acab_puerta_ven)) {
+            array_splice($this->acab_puerta_ven, $value, 1);
+        }
+        if (is_array($this->acab_revest)) {
+            array_splice($this->acab_revest, $value, 1);
+        }
+        if (is_array($this->acab_bano)) {
+            array_splice($this->acab_bano, $value, 1);
+        }
+        if (is_array($this->inst_elect_sanita)) {
+            array_splice($this->inst_elect_sanita, $value, 1);
+        }
+        if (is_array($this->area_verificada)) {
+            array_splice($this->area_verificada, $value, 1);
+        }
+        if (is_array($this->uca)) {
+            array_splice($this->uca, $value, 1);
+        }
     }
+
 
     /* CONSTRUCCIONES */
 
@@ -708,10 +763,36 @@ class FichaIndividualCreate extends Component
         $this->cont3++;
     }
 
-    public function reducirObras()
+    public function reducirObras($value) 
     {
         $this->cont3--;
+
+        if (is_array($this->codi_instalacion)) {
+            array_splice($this->codi_instalacion, $value, 1);
+        }
+        if (is_array($this->inst_fecha)) {
+            array_splice($this->inst_fecha, $value, 1);
+        }
+        if (is_array($this->inst_mep)) {
+            array_splice($this->inst_mep, $value, 1);
+        }
+        if (is_array($this->inst_ecs)) {
+            array_splice($this->inst_ecs, $value, 1);
+        }
+        if (is_array($this->inst_ecc)) {
+            array_splice($this->inst_ecc, $value, 1);
+        }
+        if (is_array($this->inst_prod_total)) {
+            array_splice($this->inst_prod_total, $value, 1);
+        }
+        if (is_array($this->inst_uni_med)) {
+            array_splice($this->inst_uni_med, $value, 1);
+        }
+        if (is_array($this->inst_uca)) {
+            array_splice($this->inst_uca, $value, 1);
+        }
     }
+
 
     /* OBRAS COMPLEMENTARIAS */
 
@@ -722,10 +803,27 @@ class FichaIndividualCreate extends Component
         $this->cont4++;
     }
 
-    public function reducirDocumentos()
+    public function reducirDocumentos($value)
     {
         $this->cont4--;
+
+        if (is_array($this->tipo_dococumento)) {
+            array_splice($this->tipo_dococumento, $value, 1);
+        }
+        if (is_array($this->nume_documento)) {
+            array_splice($this->nume_documento, $value, 1);
+        }
+        if (is_array($this->fecha_dococumento)) {
+            array_splice($this->fecha_dococumento, $value, 1);
+        }
+        if (is_array($this->area_autorizadadocumento)) {
+            array_splice($this->area_autorizadadocumento, $value, 1);
+        }
+        if (is_array($this->url_doc)) {
+            array_splice($this->url_doc, $value, 1);
+        }
     }
+
     /* DOCUMENTOS ADJUNTOS */
 
     /* INFORMACION COMPLEMENTARIA */
@@ -789,10 +887,30 @@ class FichaIndividualCreate extends Component
         $this->cont5++;
     }
 
-    public function reducirinformacion()
+    public function reducirinformacion($value)
     {
         $this->cont5--;
+
+        if (is_array($this->tipolitigante)) {
+            array_splice($this->tipolitigante, $value, 1);
+        }
+        if (is_array($this->numedoc)) {
+            array_splice($this->numedoc, $value, 1);
+        }
+        if (is_array($this->codi_contribuye)) {
+            array_splice($this->codi_contribuye, $value, 1);
+        }
+        if (is_array($this->nombres)) {
+            array_splice($this->nombres, $value, 1);
+        }
+        if (is_array($this->ape_paterno)) {
+            array_splice($this->ape_paterno, $value, 1);
+        }
+        if (is_array($this->ape_materno)) {
+            array_splice($this->ape_materno, $value, 1);
+        }
     }
+
 
     /* INFORMACION COMPLEMENTARIA */
 
@@ -2429,5 +2547,31 @@ class FichaIndividualCreate extends Component
         }
 
         return $id;
+    }
+
+    //CAMBIOS WANCHAQ
+    public function updatedmzna($value)
+    {
+        $this->mzna = str_pad($value, 3, '0', STR_PAD_LEFT);
+    }
+    public function updatedlote($value)
+    {
+        $this->lote = str_pad($value, 3, '0', STR_PAD_LEFT);
+    }
+    public function updatededifica($value)
+    {
+        $this->edifica = str_pad($value, 2, '0', STR_PAD_LEFT);
+    }
+    public function updatedentrada($value)
+    {
+        $this->entrada = str_pad($value, 2, '0', STR_PAD_LEFT);
+    }
+    public function updatedpiso($value)
+    {
+        $this->piso = str_pad($value, 2, '0', STR_PAD_LEFT);
+    }
+    public function updatedunidad($value)
+    {
+        $this->unidad = str_pad($value, 2, '0', STR_PAD_LEFT);
     }
 }

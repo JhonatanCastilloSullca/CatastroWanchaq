@@ -36,7 +36,7 @@ class FichaBienComunController extends Controller
     public function __construct()
     {
 
-        $this->middleware('can:ficha.indexbiencomun') ->only('indexbiencomun');
+        $this->middleware('can:ficha.createbiencomun') ->only('indexbiencomun');
         $this->middleware('can:ficha.createbiencomun') ->only('createbiencomun');
         $this->middleware('can:ficha.editbiencomun') ->only('editbiencomun');
         $this->middleware('can:ficha.destroybiencomun') ->only('destroybiencomun');

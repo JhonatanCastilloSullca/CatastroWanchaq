@@ -40,7 +40,6 @@ class ImagenesController extends Controller
             });
         }
 
-
         $ficha = $ficha->get();
         $ficha = $ficha->unique('id_lote');
         $total = 0;
@@ -55,20 +54,12 @@ class ImagenesController extends Controller
 
         Storage::delete('public/img/imageneslotes/' . $nombre . '.jpg');
         Storage::delete('public/img/imageneslotes/' . $nombre . '-mapa.jpg');
-
-
         if ($request->hasFile('imagenfachada')) {
 
 
             $nombrerecibo = $nombre . '.jpg';
             $ruta = $request->file('imagenfachada')->storeAs('\public\img\imageneslotes/', $nombrerecibo);
         }
-
-
-
-
-
-
         if ($request->hasFile('imagenmapa')) {
 
             $nombre = str_replace('080108', '', $request->fichaanterior);

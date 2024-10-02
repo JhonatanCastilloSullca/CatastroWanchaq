@@ -41,7 +41,7 @@ class FichaCotitularidadController extends Controller
 
         $this->middleware('can:ficha.createcotitularidad')->only('createcotitularidad');
         $this->middleware('can:ficha.editcotitularidad')->only('editcotitularidad');
-        $this->middleware('can:ficha.fichacotitulariadadcreate')->only('fichacotitulariadadcreate');
+        $this->middleware('can:ficha.createcotitularidad')->only('fichacotitulariadadcreate');
         $this->middleware('can:ficha.indexcotitular')->only('indexcotitular');
 
         $this->middleware('can:ficha.destroycotitularidad')->only('destroycotitularidad');
