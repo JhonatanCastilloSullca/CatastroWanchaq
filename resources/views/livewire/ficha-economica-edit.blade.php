@@ -86,12 +86,9 @@
                                     <div class="col-md-3 row">
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label labelpeque d-inline-flex">SECTOR</label>
-                                            <select class="form-select" data-width="100%" data-live-search="true" name="sector" id="sector" wire:model="sector" tabindex="8">
-                                                <option value="">SELECCIONE</option>
-                                                @foreach($sectores as $sector)
-                                                    <option value="{{$sector->codi_sector}}">{{$sector->codi_sector}}</option>
-                                                @endforeach
-                                            </select>
+                                        
+                                            <input type="text" class="form-control" placeholder="" name="sector"  wire:model="sector" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="3" tabindex="8">
+
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label labelpeque d-inline-flex" >MANZANA</label>
