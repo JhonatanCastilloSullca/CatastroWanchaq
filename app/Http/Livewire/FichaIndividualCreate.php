@@ -2393,7 +2393,7 @@ class FichaIndividualCreate extends Component
                         $documento->fecha_doc = "1950-01-01";
                     }
                 }
-                if ($this->url_doc[$contdoc]) {
+                if (isset($this->url_doc[$contdoc])) {
                     $nombreImagen3 = $ficha->id_ficha . '-' . $contdoc . '.' . $this->url_doc[$contdoc]->getClientOriginalExtension();
 
                     $rutaImagen3 = $this->url_doc[$contdoc]->storeAs('img/documentos/', $nombreImagen3);
@@ -2572,6 +2572,6 @@ class FichaIndividualCreate extends Component
     }
     public function updatedunidad($value)
     {
-        $this->unidad = str_pad($value, 2, '0', STR_PAD_LEFT);
+        $this->unidad = str_pad($value, 3, '0', STR_PAD_LEFT);
     }
 }
