@@ -326,7 +326,7 @@
                 DATOS DEL PREDIO
             </div>
             <div class="texto fz10 lh16 ti p5">
-                <b>CODIGO CATASTRAL:</b> {{  $ficha->ficha?->id_lote}}
+                <b>CÓDIGO CATASTRAL:</b> {{  $ficha->ficha?->id_lote}}
             </div>
             <div class="texto fz10 lh16 ti p5">
 

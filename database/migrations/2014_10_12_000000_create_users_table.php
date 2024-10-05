@@ -25,7 +25,9 @@ return new class extends Migration
             $table->date('fecha_creacion')->nullable();
             $table->date('fecha_cese')->nullable();
             $table->string('imagen',200)->nullable();
-            $table->string('estado',1);        
+            $table->string('estado',1);      
+            $table->string('session_id')->nullable();
+  
             
         });
         

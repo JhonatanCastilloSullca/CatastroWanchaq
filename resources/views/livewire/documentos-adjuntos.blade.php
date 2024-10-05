@@ -22,7 +22,7 @@
                                         <option value="0" {{ old('tipo_doc') == '0' ? 'selected' : '' }}>SELECCIONE</option>
                                         <option value="01" {{ old('tipo_doc') == '01' ? 'selected' : '' }}>CONFORMIDAD DE OBRA</option>
                                         <option value="02" {{ old('tipo_doc') == '02' ? 'selected' : '' }}>LICENCIA DE CONSTRUCCION</option>
-                                        <option value="03" {{ old('tipo_doc') == '03' ? 'selected' : '' }}>DECLARATORIA DE FABRICA</option>
+                                        <option value="03" {{ old('tipo_doc') == '03' ? 'selected' : '' }}>DECLARATORIA DE FÁBRICA</option>
                                         <option value="04" {{ old('tipo_doc') == '04' ? 'selected' : '' }}>DECLARACIÓN JURADA AUTOAVALÚD</option>
                                         <option value="05" {{ old('tipo_doc') == '05' ? 'selected' : '' }}>RESOLUCIÓN DE EXONERACIÓN</option>
                                         <option value="06" {{ old('tipo_doc') == '06' ? 'selected' : '' }}>PODERES</option>

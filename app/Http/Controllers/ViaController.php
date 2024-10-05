@@ -92,7 +92,9 @@ class ViaController extends Controller
     public function edit(Via $via)
     {
         $hab_urbanas=HabUrbana::all();
-        return view('pages.vias.edit',compact('hab_urbanas','via'));
+        $hab_urbanas_vias = $via->hab_urbanas;
+        // dd($hab_urbanas_vias);
+        return view('pages.vias.edit',compact('hab_urbanas','via', 'hab_urbanas_vias'));
     }
 
 }

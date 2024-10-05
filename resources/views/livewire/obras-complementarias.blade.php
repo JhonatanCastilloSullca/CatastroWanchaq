@@ -7,7 +7,7 @@
                     <table id="vias" class="table">
                         <thead>
                             <tr >
-                                <th><label class="form-label d-inline-flex" > <div class="divcuadro">71</div> CODIGO</label></th>
+                                <th><label class="form-label d-inline-flex" > <div class="divcuadro">71</div> CÓDIGO</label></th>
                                 <th><label class="form-label d-inline-flex" > <div class="divcuadro">72</div> DESCRIPCIÓN</label></th>
                                 <th><label class="form-label d-inline-flex" > <div class="divcuadro">57</div> FECHA</label></th>
                                 <th><label class="form-label d-inline-flex" > <div class="divcuadro">58</div> MEP</label></th>
@@ -23,7 +23,7 @@
                             @for($i=0;$i<$cont;$i++)
                             <tr >
                                 <td>
-                                    <input type="text" class="form-control"  name="codi_instalacion[]" placeholder="CODIGO" id="codi_instalacion.{{$i}}" maxlength="2" >
+                                    <input type="text" class="form-control"  name="codi_instalacion[]" placeholder="CÓDIGO" id="codi_instalacion.{{$i}}" maxlength="2" >
                                     @error('codi_instalacion.'.$i)
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror

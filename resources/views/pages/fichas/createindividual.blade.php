@@ -87,7 +87,7 @@
                     <div class="row form-group">
                         <div class="col-md-4">
                             <div class="mb-3">
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">34</div> TELEFONO</label>
+                                <label class="form-label d-inline-flex" > <div class="divcuadro">34</div> TELÉFONO</label>
                                 <input type="text" class="form-control" placeholder="" name="telefono_num">
                                 @error('telefono')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
@@ -105,7 +105,7 @@
                         </div><!-- Col -->
                         <div class="col-md-5">
                             <div class="mb-3">
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">36</div> CORREO ELECTRONICO</label>
+                                <label class="form-label d-inline-flex" > <div class="divcuadro">36</div> CORREO ELECTRÓNICO</label>
                                 <input type="text" class="form-control" placeholder="" name="email">
                                 @error('email')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
@@ -233,7 +233,7 @@
                     <div class="row form-group">
                         <div class="col-md-8">
                             <div class="mb-3">
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">42</div> CODIGO DE USO</label>
+                                <label class="form-label d-inline-flex" > <div class="divcuadro">42</div> CÓDIGO DE USO</label>
                                 <select class="form-select"  data-width="100%" data-live-search="true" name="codi_uso" id="codi_uso" >
                                     @foreach($usos as $uso)
                                         <option value="{{$uso->codi_uso}}">{{$uso->desc_uso}}</option>
@@ -373,7 +373,7 @@
                         </div>
                         <div class="lineatoggle">
                             <div>
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">51</div> TELEFONO</label>
+                                <label class="form-label d-inline-flex" > <div class="divcuadro">51</div> TELÉFONO</label>
                             </div>
                             <div style="padding-left: 10px;">
                                 <div class="form-check form-switch mb-2">
@@ -383,7 +383,7 @@
                         </div>
                         <div class="lineatoggle">
                             <div>
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">52</div> DESAGÛE</label>
+                                <label class="form-label d-inline-flex" > <div class="divcuadro">52</div> DESAGÜE</label>
                             </div>
                             <div style="padding-left: 10px;">
                                 <div class="form-check form-switch mb-2">
@@ -413,7 +413,7 @@
                         </div>
                         <div class="lineatoggle">
                             <div>
-                                <label class="form-label d-inline-flex" style="width: 250px;"> <div class="divcuadro">55</div> CONEXION TV POR CABLE O CABLE SATELITAL</label>
+                                <label class="form-label d-inline-flex" style="width: 250px;"> <div class="divcuadro">55</div> CONEXIÓN TV POR CABLE O CABLE SATELITAL</label>
                             </div>
                             <div style="padding-left: 10px;">
                                 <div class="form-check form-switch mb-2">
@@ -486,7 +486,7 @@
                                     <option value="01" {{ old('tipo_partida') == '01' ? 'selected' : '' }}>TOMO</option>
                                     <option value="02" {{ old('tipo_partida') == '02' ? 'selected' : '' }}>FICHA</option>
                                     <option value="03" {{ old('tipo_partida') == '03' ? 'selected' : '' }}>PART. ELECTRONICA</option>
-                                    <option value="04" {{ old('tipo_partida') == '04' ? 'selected' : '' }}>CODIGO DEL PREDIO</option>
+                                    <option value="04" {{ old('tipo_partida') == '04' ? 'selected' : '' }}>CÓDIGO DEL PREDIO</option>
                                 </select>
                                 @error('tipo_partida')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
@@ -533,7 +533,7 @@
                         </div><!-- Col -->
                         <div class="col-md-3">
                             <div class="mb-3">
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">84</div>DECLARATORIA DE FABRICA</label>
+                                <label class="form-label d-inline-flex" > <div class="divcuadro">84</div>DECLARATORIA DE FÁBRICA</label>
                                 <select class="form-select" id="codi_decla_fabrica" aria-label="Default select example" name="codi_decla_fabrica">
                                     <option value="0">Seleccione</option>
                                     <option value="01" {{ old('codi_decla_fabrica') == '02' ? 'selected' : '' }}>FÁBRICA INSCRITA</option>
@@ -546,7 +546,7 @@
                         </div><!-- Col -->
                         <div class="col-md-3">
                             <div class="mb-3">
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">85</div>AS. INSC. DE FABRICA </label>
+                                <label class="form-label d-inline-flex" > <div class="divcuadro">85</div>AS. INSC. DE FÁBRICA </label>
                                 <input type="text" id="asie_fabrica" class="form-control" name="asie_fabrica">
                                 @error('asie_fabrica')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
@@ -578,7 +578,7 @@
                         <div class="col-md-3">
                             <div class="mb-3">
                                 <label class="form-label d-inline-flex" >EN ÁREA PÚBLICA</label>
-                                <input type="text" id="en_area_publica" class="form-control" placeholder="EN AREA PUBLICA" name="en_area_publica">
+                                <input type="text" id="en_area_publica" class="form-control" placeholder="EN ÁREA PÚBLICA" name="en_area_publica">
                                 @error('en_area_publica')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
@@ -596,7 +596,7 @@
                         <div class="col-md-3">
                             <div class="mb-3">
                                 <label class="form-label d-inline-flex" >EN ÁREA INTANGIBLE</label>
-                                <input type="text" id="en_area_intangible" class="form-control" placeholder="EN AREA INTANGIBLE" name="en_area_intangible">
+                                <input type="text" id="en_area_intangible" class="form-control" placeholder="EN ÁREA INTANGIBLE" name="en_area_intangible">
                                 @error('en_area_intangible')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror

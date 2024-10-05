@@ -230,11 +230,11 @@ class FichaBienCulturalEdit extends Component
         }
 
 
-        $this->tipo_partida         = $fichaanterior->sunarpbiencultural->tipo_partida;
-        $this->nume_partida         = $fichaanterior->sunarpbiencultural->nume_partida;
-        $this->fojas                = $fichaanterior->sunarpbiencultural->fojas;
-        $this->asiento              = $fichaanterior->sunarpbiencultural->asiento;
-        $this->fecha_inscripcion    = $fichaanterior->sunarpbiencultural->fecha_inscripcion;
+        $this->tipo_partida         = $fichaanterior?->sunarpbiencultural?->tipo_partida;
+        $this->nume_partida         = $fichaanterior?->sunarpbiencultural?->nume_partida;
+        $this->fojas                = $fichaanterior?->sunarpbiencultural?->fojas;
+        $this->asiento              = $fichaanterior?->sunarpbiencultural?->asiento;
+        $this->fecha_inscripcion    = $fichaanterior?->sunarpbiencultural?->fecha_inscripcion;
 
 
 

@@ -54,7 +54,7 @@ class TablasSeeder extends Seeder
             ['id_tabla'=>'FCH'	,'desc_tabla'=>'TIPO DE FICHA','ultimo_codigo'=>NULL],
             ['id_tabla'=>'EPC'	,'desc_tabla'=>'EVALUACION DEL PREDIO CATASTRAL','ultimo_codigo'=>NULL],
             ['id_tabla'=>'ANU'	,'desc_tabla'=>'TIPO DE ANUNCIO','ultimo_codigo'=>NULL],
-            ['id_tabla'=>'DFB'	,'desc_tabla'=>'DECLARATORIA DE FABRICA','ultimo_codigo'=>NULL],
+            ['id_tabla'=>'DFB'	,'desc_tabla'=>'DECLARATORIA DE FÁBRICA','ultimo_codigo'=>NULL],
             ['id_tabla'=>'HUR'	,'desc_tabla'=>'TIPO DE HABILITACIONES URBANAS','ultimo_codigo'=>NULL],
             ['id_tabla'=>'CTF'	,'desc_tabla'=>'CONDICION DEL TITULAR FORMALIZACION','ultimo_codigo'=>NULL],
             ['id_tabla'=>'CEF'	,'desc_tabla'=>'CONDICION ESPECIAL DEL TITULAR FORMALIZACION','ultimo_codigo'=>NULL],

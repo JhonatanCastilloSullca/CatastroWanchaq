@@ -79,7 +79,7 @@
                             <tr >
                                 <th><label class="form-label d-inline-flex" > T. DOCUMENTO</label></th>
                                 <th><label class="form-label d-inline-flex" > N° DOCUMENTO</label></th>
-                                <th><label class="form-label d-inline-flex" > CODIGO DEL CONTRIBUYENTE</label></th>
+                                <th><label class="form-label d-inline-flex" > CÓDIGO DEL CONTRIBUYENTE</label></th>
                                 <th><label class="form-label d-inline-flex" > NOMBRES</label></th>
                                 <th><label class="form-label d-inline-flex" > APELLIDO PATERNO</label></th>
                                 <th><label class="form-label d-inline-flex" > APELLIDO MATERNO</label></th>
@@ -112,7 +112,7 @@
                                     @enderror
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control"  name="codi_contribuye[]" placeholder="CODIGO DE CONTRIBUYENTE" id="codi_contribuye{{$i}}" wire:model="codi_contribuye.{{$i}}"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  maxlength="18">
+                                    <input type="text" class="form-control"  name="codi_contribuye[]" placeholder="CÓDIGO DE CONTRIBUYENTE" id="codi_contribuye{{$i}}" wire:model="codi_contribuye.{{$i}}"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  maxlength="18">
                                     @error('codi_contribuye.'.$i)
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror

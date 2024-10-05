@@ -148,7 +148,7 @@
                                 <td>
                                     @can('ficha.editindividual')
                                     <a href="{{route('ficha.editindividual',$ficha)}}" target="_blank">
-                                        <button type="button" class="btn btn-primary btn-icon " >
+                                        <button type="button" class="btn btn-warning btn-icon " >
                                         <i data-feather="edit"></i>
                                         </button>
                                     </a>
@@ -187,7 +187,7 @@
                                 <td>
                                     @can('ficha.editcotitularidad')
                                     <a href="{{route('ficha.editcotitularidad',$ficha)}}" target="_blank">
-                                        <button type="button" class="btn btn-info btn-icon " >
+                                        <button type="button" class="btn btn-warning btn-icon " >
                                         <i data-feather="edit"></i>
                                         </button>
                                     </a>
@@ -217,7 +217,7 @@
                                 <td>
                                     @can('ficha.editbiencomun')
                                         <a href="{{route('ficha.editbiencomun',$ficha)}}" target="_blank">
-                                            <button type="button" class="btn btn-info btn-icon " >
+                                            <button type="button" class="btn btn-warning btn-icon " >
                                             <i data-feather="edit"></i>
                                             </button>
                                         </a>
@@ -247,7 +247,7 @@
                                 <td>
                                     @can('ficha.editeconomica')
                                     <a href="{{route('ficha.editeconomica',$ficha)}}"  target="_blank" >
-                                        <button type="button" class="btn btn-info btn-icon " >
+                                        <button type="button" class="btn btn-warning btn-icon " >
                                         <i data-feather="edit"></i>
                                         </button>
                                     </a>
@@ -277,7 +277,7 @@
                                 <td>
                                     @can('ficha.editcultural')
                                     <a href="{{route('ficha.editbiencultural',$ficha)}}"  target="_blank" >
-                                        <button type="button" class="btn btn-info btn-icon " >
+                                        <button type="button" class="btn btn-warning btn-icon " >
                                         <i data-feather="edit"></i>
                                         </button>
                                     </a>
@@ -302,7 +302,7 @@
 
                                 <td>
                                     <a href="{{route('ficha.editrural',$ficha)}}"  target="_blank" >
-                                        <button type="button" class="btn btn-info btn-icon " >
+                                        <button type="button" class="btn btn-warning btn-icon " >
                                         <i data-feather="edit"></i>
                                         </button>
                                     </a>

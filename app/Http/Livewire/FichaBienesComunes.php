@@ -217,16 +217,16 @@ class FichaBienesComunes extends Component
 
     public function mount()
     {
-        $this->usos=UsosBc::all();
-        $this->tecnicos=Persona::where('tipo_funcion',3)->get();
-        $this->supervisores=Persona::where('tipo_funcion',2)->get();
-        $this->verificadores=Persona::where('tipo_funcion',4)->get();
-        $this->codigosinstalacion=CodigoInstalacion::all();
-        $this->sectores=Sectore::all();
-        $this->manzanas=Manzana::all();
-        $this->hab_urbanas=HabUrbana::orderBy('codi_hab_urba')->get();
-        $this->notarias=Notarias::all();
-        $this->vias=Via::orderBy('codi_via')->get();
+        $this->usos = UsosBc::orderBy('codi_uso', 'asc')->get();
+        $this->tecnicos = Persona::where('tipo_funcion', 3)->orderBy('nume_doc', 'asc')->get();
+        $this->supervisores = Persona::where('tipo_funcion', 2)->orderBy('nume_doc', 'asc')->get();
+        $this->verificadores = Persona::where('tipo_funcion', 4)->orderBy('nume_doc', 'asc')->get();
+        $this->codigosinstalacion = CodigoInstalacion::orderBy('codi_instalacion', 'asc')->get();
+        $this->sectores = Sectore::orderBy('codi_sector', 'asc')->get();
+        $this->manzanas = Manzana::orderBy('codi_mzna', 'asc')->get();
+        $this->hab_urbanas = HabUrbana::orderBy('codi_hab_urba', 'asc')->get();
+        $this->notarias = Notarias::orderBy('nomb_notaria', 'asc')->get();
+        $this->vias = Via::orderBy('codi_via', 'asc')->get();
         for($i=0;$i<$this->cont;$i++){
             $this->tipoVianombre[$i]="";
             $this->tipoViatipo[$i]="";
@@ -396,7 +396,52 @@ class FichaBienesComunes extends Component
 
     public function reducirConstruccion()
     {
-        $this->cont2--;
+        $this->cont2--;        
+        if (is_array($this->bloque)) {
+            array_splice($this->bloque, $value, 1);
+        }
+        if (is_array($this->num_piso)) {
+            array_splice($this->num_piso, $value, 1);
+        }
+        if (is_array($this->fecha)) {
+            array_splice($this->fecha, $value, 1);
+        }
+        if (is_array($this->mep)) {
+            array_splice($this->mep, $value, 1);
+        }
+        if (is_array($this->ecs)) {
+            array_splice($this->ecs, $value, 1);
+        }
+        if (is_array($this->ecc)) {
+            array_splice($this->ecc, $value, 1);
+        }
+        if (is_array($this->estr_muro_col)) {
+            array_splice($this->estr_muro_col, $value, 1);
+        }
+        if (is_array($this->estr_techo)) {
+            array_splice($this->estr_techo, $value, 1);
+        }
+        if (is_array($this->acab_piso)) {
+            array_splice($this->acab_piso, $value, 1);
+        }
+        if (is_array($this->acab_puerta_ven)) {
+            array_splice($this->acab_puerta_ven, $value, 1);
+        }
+        if (is_array($this->acab_revest)) {
+            array_splice($this->acab_revest, $value, 1);
+        }
+        if (is_array($this->acab_bano)) {
+            array_splice($this->acab_bano, $value, 1);
+        }
+        if (is_array($this->inst_elect_sanita)) {
+            array_splice($this->inst_elect_sanita, $value, 1);
+        }
+        if (is_array($this->area_verificada)) {
+            array_splice($this->area_verificada, $value, 1);
+        }
+        if (is_array($this->uca)) {
+            array_splice($this->uca, $value, 1);
+        }
     }
 
     /* CONSTRUCCIONES */

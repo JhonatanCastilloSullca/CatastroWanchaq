@@ -17,7 +17,7 @@ class AutorizacionMunicipal extends Component
 
     public function mount()
     {
-        $this->actividades=Actividades::all();
+        $this->actividades = Actividades::orderBy('nombre', 'asc')->get();
     }
     
     public function aumentar()

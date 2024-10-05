@@ -59,18 +59,7 @@
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
                                 </div>
-                            </div><!-- Col -->
-                            {{-- <div class="col-md-3">
-                                <div class="mb-3">
-                                    <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">2</div> CÓDIGO HOJA CATASTRAL
-                                    </label>
-                                    <input type="text" class="form-control" placeholder="" name="codi_hoja_catastral" wire:model="codi_hoja_catastral" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="12" tabindex="4">
-                                    @error('codi_hoja_catastral')
-                                    <span class="error-message" style="color:red">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div><!-- Col --> --}}
+                            </div><!-- Col -->                            
                         </div><!-- Row -->
 
 
@@ -214,9 +203,11 @@
                                             </div>
                                         </div>
                                         <button type="button" class="btn btn-primary btn-icon mt-3"
-                                            wire:click="calcularDC">
+                                                wire:click="calcularDC"
+                                                wire:loading.attr="disabled">
                                             <i class="mdi mdi-calculator"></i>
                                         </button>
+
                                     </div>
                                 </div>
                             </div><!-- Col -->
@@ -257,6 +248,7 @@
                                     <table id="vias" class="table">
                                         <thead>
                                             <tr>
+                                                <th></th>
                                                 <th><label class="form-label d-inline-flex">
                                                         <div class="divcuadrorequired">05</div> CÓDIGO DE VIA
                                                     </label></th>
@@ -278,12 +270,24 @@
                                                 {{-- <th><label class="form-label d-inline-flex">
                                                         <div class="divcuadro">09</div> NUM. CERTIFICACION
                                                     </label></th> --}}
-                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @for ($i = 0; $i < $cont; $i++)
-                                                <tr>
+                                                <tr>                                                    
+                                                    <td>
+                                                        @if ($i == $cont - 1)
+                                                            <button type="button" class="btn btn-success btn-icon"
+                                                                wire:click="aumentarUbicacion"
+                                                                wire:loading.attr="disabled"
+                                                                tabindex="18">+</button>
+                                                        @else
+                                                            <button type="button" class="btn btn-danger btn-icon"
+                                                                wire:click="reducirUbicacion"
+                                                                wire:loading.attr="disabled"
+                                                                tabindex="18">-</button>
+                                                        @endif
+                                                    </td>
                                                     <td>
                                                         <select class="form-select" id="via_id{{ $i }}"
                                                             name="via_id[]" data-width="100%"
@@ -354,23 +358,7 @@
                                                                 style="color:red">{{ $message }}</span>
                                                         @enderror
                                                     </td>
-                                                    {{-- <td>
-                                                    <input type="text" class="form-control" placeholder="" name="nume_certificacion[]" id="nume_certificacion.{{$i}}" wire:model="nume_certificacion.{{$i}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="10" tabindex="18">
-                                                    @error('nume_certificacion.' . $i)
-                                                    <span class="error-message" style="color:red">{{ $message }}</span>
-                                                    @enderror
-                                                </td> --}}
-                                                    <td>
-                                                        @if ($i == $cont - 1)
-                                                            <button type="button" class="btn btn-success btn-icon"
-                                                                wire:click="aumentarUbicacion"
-                                                                tabindex="18">+</button>
-                                                        @else
-                                                            <button type="button" class="btn btn-danger btn-icon"
-                                                                wire:click="reducirUbicacion"
-                                                                tabindex="18">-</button>
-                                                        @endif
-                                                    </td>
+                                                    
                                                 </tr>
                                             @endfor
                                         </tbody>
@@ -379,17 +367,7 @@
                             </div><!-- Col -->
                         </div><!-- Row -->
                         <div class="row form-group">
-                            {{-- <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">14</div> NOMBRE DE EDIFICACION
-                                    </label>
-                                    <input type="text" class="form-control" placeholder="" name="nomb_edificacion" wire:model="nomb_edificacion" onkeydown="return /[a-z]/i.test(event.key)" maxlength="100" tabindex="19">
-                                    @error('nomb_edificacion')
-                                    <span class="error-message" style="color:red">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div><!-- Col --> --}}
+                            
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
@@ -417,7 +395,7 @@
                                 <div class="mb-3">
                                     <div wire:ignore>
                                         <label class="form-label d-inline-flex">
-                                            <div class="divcuadrorequired">14</div> CODIGO URBANO
+                                            <div class="divcuadrorequired">14</div> CÓDIGO URBANO
                                         </label>
                                         <select class="form-select insumo_id" id="hab_urbana_id" name="hab_urbana_id"
                                             data-width="100%" wire:model="tipoHabi" tabindex="21">
@@ -440,7 +418,7 @@
                             <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadrorequired">15</div> NOMBRE DE LA HABILITACION URBANA
+                                        <div class="divcuadrorequired">15</div> NOMBRE DE LA HABILITACIÓN URBANA
                                     </label>
                                     <input type="text" class="form-control" name="nomb_hab_urba" readonly
                                         placeholder="Nombre Habilitacion Urbana" wire:model="nomb_hab_urba"
@@ -557,7 +535,7 @@
                                 <div class="mb-3">
                                     <div wire:ignore>
                                         <label class="form-label d-inline-flex">
-                                            <div class="divcuadrorequired">42</div> CODIGO DE USO
+                                            <div class="divcuadrorequired">42</div> CÓDIGO DE USO
                                         </label>
                                         <select class="form-select" data-width="100%" data-live-search="true"
                                             name="codi_uso" id="codi_uso" wire:model="codi_uso" tabindex="29">
@@ -573,17 +551,7 @@
                                     @enderror
                                 </div>
                             </div><!-- Col -->
-                            {{-- <div class="col-md-3">
-                                <div class="mb-3">
-                                    <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">44</div> ESTRUCTURACION
-                                    </label>
-                                    <input type="text" class="form-control" placeholder="Estructuracion" name="estructuracion" wire:model="estructuracion" tabindex="30">
-                                    @error('estructuracion')
-                                    <span class="error-message" style="color:red">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div><!-- Col --> --}}
+                            
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
@@ -695,37 +663,7 @@
                                         @enderror
                                     </div><!-- Col -->
                                 </div>
-                                {{-- <div class="col-md-3">
-                                    <div class="mb-3">
-                                        <label class="form-label d-inline-flex">
-                                            <div class="divcuadro">48</div>MEDIDA SEGUN TITULO
-                                        </label>
-                                    </div><!-- Col -->
-                                    <div class="mb-3">
-                                        <input type="text" class="form-control" placeholder="" name="fren_titulo" wire:model="fren_titulo" oninput="this.value = this.value.replace(/[^0-9.,; ]/g, '').replace(/(\.*?)\*/g, '$1');" maxlength="200" tabindex="35">
-                                        @error('fren_titulo')
-                                        <span class="error-message" style="color:red">{{ $message }}</span>
-                                        @enderror
-                                    </div><!-- Col -->
-                                    <div class="mb-3">
-                                        <input type="text" class="form-control" placeholder="" name="dere_titulo" wire:model="dere_titulo" oninput="this.value = this.value.replace(/[^0-9.,; ]/g, '').replace(/(\.*?)\*/g, '$1');" maxlength="200" tabindex="39">
-                                        @error('dere_titulo')
-                                        <span class="error-message" style="color:red">{{ $message }}</span>
-                                        @enderror
-                                    </div><!-- Col -->
-                                    <div class="mb-3">
-                                        <input type="text" class="form-control" placeholder="" name="izqu_titulo" wire:model="izqu_titulo" oninput="this.value = this.value.replace(/[^0-9.,; ]/g, '').replace(/(\.*?)\*/g, '$1');" maxlength="200" tabindex="43">
-                                        @error('izqu_titulo')
-                                        <span class="error-message" style="color:red">{{ $message }}</span>
-                                        @enderror
-                                    </div><!-- Col -->
-                                    <div class="mb-3">
-                                        <input type="text" class="form-control" placeholder="" name="fond_titulo" wire:model="fond_titulo" oninput="this.value = this.value.replace(/[^0-9.,; ]/g, '').replace(/(\.*?)\*/g, '$1');" maxlength="200" tabindex="47">
-                                        @error('fond_titulo')
-                                        <span class="error-message" style="color:red">{{ $message }}</span>
-                                        @enderror
-                                    </div><!-- Col -->
-                                </div> --}}
+                                
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label d-inline-flex">
@@ -765,37 +703,8 @@
                                         @enderror
                                     </div><!-- Col -->
                                 </div>
-                                {{-- <div class="col-md-3">
-                                    <div class="mb-3">
-                                        <label class="form-label d-inline-flex">
-                                            <div class="divcuadro">66</div> COLIDANCIAS SEGUN TITULO
-                                        </label>
-                                    </div><!-- Col -->
-                                    <div class="mb-3">
-                                        <input type="text" class="form-control" placeholder="" name="fren_colinda_titulo" wire:model="fren_colinda_titulo" maxlength="200" tabindex="37">
-                                        @error('fren_colinda_titulo')
-                                        <span class="error-message" style="color:red">{{ $message }}</span>
-                                        @enderror
-                                    </div><!-- Col -->
-                                    <div class="mb-3">
-                                        <input type="text" class="form-control" placeholder="" name="dere_colinda_titulo" wire:model="dere_colinda_titulo" maxlength="200" tabindex="41">
-                                        @error('dere_colinda_titulo')
-                                        <span class="error-message" style="color:red">{{ $message }}</span>
-                                        @enderror
-                                    </div><!-- Col -->
-                                    <div class="mb-3">
-                                        <input type="text" class="form-control" placeholder="" name="izqu_colinda_titulo" wire:model="izqu_colinda_titulo" maxlength="200" tabindex="45">
-                                        @error('izqu_colinda_titulo')
-                                        <span class="error-message" style="color:red">{{ $message }}</span>
-                                        @enderror
-                                    </div><!-- Col -->
-                                    <div class="mb-3">
-                                        <input type="text" class="form-control" placeholder="" name="fond_colinda_titulo" wire:model="fond_colinda_titulo" maxlength="200" tabindex="49">
-                                        @error('fond_colinda_titulo')
-                                        <span class="error-message" style="color:red">{{ $message }}</span>
-                                        @enderror
-                                    </div><!-- Col -->
-                                </div> --}}
+                                
+                                
                             </div>
                         </div><!-- Row -->
                         <div class="row form-group">
@@ -829,7 +738,7 @@
                             <div class="lineatoggle">
                                 <div>
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">51</div> TELEFONO
+                                        <div class="divcuadro">51</div> TELÉFONO
                                     </label>
                                 </div>
                                 <div style="padding-left: 10px;">
@@ -842,7 +751,7 @@
                             <div class="lineatoggle">
                                 <div>
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">52</div> DESAGÛE
+                                        <div class="divcuadro">52</div> DESAGÜE
                                     </label>
                                 </div>
                                 <div style="padding-left: 10px;">
@@ -881,7 +790,7 @@
                             <div class="lineatoggle">
                                 <div>
                                     <label class="form-label d-inline-flex" style="width: 250px;">
-                                        <div class="divcuadro">55</div> CONEXION TV POR CABLE O CABLE SATELITAL
+                                        <div class="divcuadro">55</div> CONEXIÓN TV POR CABLE O CABLE SATELITAL
                                     </label>
                                 </div>
                                 <div style="padding-left: 10px;">
@@ -899,7 +808,28 @@
                                 <div class="table-responsive">
                                     <table id="vias" class="table">
                                         <thead>
-                                            <tr>
+                                            <tr>                                                
+                                                <th>
+                                                    @if ($codi_uso == '070101')
+                                                    @else                                                        
+                                                        @if ($cont2 == 0)
+                                                            <button type="button" class="btn btn-success btn-icon"
+                                                                    wire:click="aumentarConstruccion"
+                                                                    wire:loading.attr="disabled"
+                                                                    wire:target="aumentarConstruccion"
+                                                                    tabindex="57">+
+                                                            </button>
+                                                        @endif
+                                                        @if ($cont2 == 1)
+                                                            <button type="button" class="btn btn-danger btn-icon"
+                                                                    wire:click="reducirConstruccion({{ 0 }})"
+                                                                    wire:loading.attr="disabled"
+                                                                    wire:target="reducirConstruccion"
+                                                                    tabindex="57">-
+                                                            </button>
+                                                        @endif
+                                                    @endif
+                                                </th>
                                                 <th><label class="form-label d-inline-flex">
                                                         <div class="divcuadro">301</div> BLOQUE
                                                     </label></th>
@@ -945,27 +875,29 @@
                                                 <th><label class="form-label d-inline-flex">
                                                         <div class="divcuadro">69</div> UCA
                                                     </label></th>
-                                                <th>
-
-                                                    @if ($codi_uso == '070101')
-                                                    @else
-                                                        @if ($cont2 > 0)
-                                                            <button type="button" class="btn btn-danger btn-icon"
-                                                                wire:click="reducirConstruccion"
-                                                                tabindex="57">-</button>
-                                                        @else
-                                                            <button type="button" class="btn btn-success btn-icon"
-                                                                wire:click="aumentarConstruccion"
-                                                                tabindex="57">+</button>
-                                                        @endif
-                                                    @endif
-
-                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @for ($i = 0; $i < $cont2; $i++)
                                                 <tr>
+                                                    <td>
+                                                        @if ($i == $cont2 - 1)
+                                                            <button type="button" class="btn btn-success btn-icon"
+                                                                    wire:click="aumentarConstruccion"
+                                                                    wire:loading.attr="disabled"
+                                                                    wire:target="aumentarConstruccion"
+                                                                    tabindex="57">+
+                                                            </button>
+                                                        @endif
+                                                        @if ($i <= $cont2 - 2)
+                                                            <button type="button" class="btn btn-danger btn-icon"
+                                                                    wire:click="reducirConstruccion({{ $i }})"
+                                                                    wire:loading.attr="disabled"
+                                                                    wire:target="reducirConstruccion"
+                                                                    tabindex="57">-
+                                                            </button>
+                                                        @endif
+                                                    </td>
                                                     <td>
                                                         <input type="text" class="form-control" name="bloque[]"
                                                             placeholder="Bloque" id="bloque.{{ $i }}"
@@ -1150,18 +1082,7 @@
                                                             <span class="error-message"
                                                                 style="color:red">{{ $message }}</span>
                                                         @enderror
-                                                    </td>
-
-                                                    <td>
-
-
-
-                                                        @if ($i == $cont2 - 1)
-                                                            <button type="button" class="btn btn-success btn-icon"
-                                                                wire:click="aumentarConstruccion"
-                                                                tabindex="57">+</button>
-                                                        @endif
-                                                    </td>
+                                                    </td>                                                    
                                                 </tr>
                                             @endfor
                                         </tbody>
@@ -1178,7 +1099,7 @@
                                         <thead>
                                             <tr>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">71</div> CODIGO
+                                                        <div class="divcuadro">71</div> CÓDIGO
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
                                                         <div class="divcuadro">57</div> FECHA
@@ -1213,10 +1134,14 @@
                                                 <th>
                                                     @if ($cont3 > 0)
                                                         <button type="button" class="btn btn-danger btn-icon"
-                                                            wire:click="reducirObras" tabindex="58">-</button>
+                                                                wire:click="reducirObras"
+                                                                wire:loading.attr="disabled"
+                                                                tabindex="58">-</button>
                                                     @else
                                                         <button type="button" class="btn btn-success btn-icon"
-                                                            wire:click="aumentarObras" tabindex="58">+</button>
+                                                                wire:click="aumentarObras"
+                                                                wire:loading.attr="disabled"
+                                                                tabindex="58">+</button>
                                                     @endif
                                                 </th>
                                             </tr>
@@ -1311,25 +1236,8 @@
                                                             <span class="error-message"
                                                                 style="color:red">{{ $message }}</span>
                                                         @enderror
-                                                    </td>
-                                                    {{-- <td>
-                                                    <input type="text" class="form-control" name="dime_largo[]" placeholder="D. largo" id="dime_largo.{{$i}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="7" wire:model.defer="dime_largo.{{$i}}" tabindex="58">
-                                                    @error('dime_largo.' . $i)
-                                                    <span class="error-message" style="color:red">{{ $message }}</span>
-                                                    @enderror
-                                                </td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="dime_ancho[]" placeholder="D. ancho" id="dime_ancho.{{$i}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="7" wire:model.defer="dime_ancho.{{$i}}" tabindex="58">
-                                                    @error('dime_ancho.' . $i)
-                                                    <span class="error-message" style="color:red">{{ $message }}</span>
-                                                    @enderror
-                                                </td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="dime_alto[]" placeholder="D. alto" id="dime_alto.{{$i}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="7" wire:model.defer="dime_alto.{{$i}}" tabindex="58">
-                                                    @error('dime_alto.' . $i)
-                                                    <span class="error-message" style="color:red">{{ $message }}</span>
-                                                    @enderror
-                                                </td> --}}
+                                                    </td>                                                    
+                                                    
                                                     <td>
                                                         <input type="text" class="form-control"
                                                             name="inst_prod_total[]" placeholder="PRODUCTO TOTAL"
@@ -1374,14 +1282,12 @@
                                                         @enderror
                                                     </td>
                                                     <td>
-
-
                                                         @if ($i == $cont3 - 1)
                                                             <button type="button" class="btn btn-success btn-icon"
-                                                                wire:click="aumentarObras" tabindex="58">+</button>
+                                                                    wire:click="aumentarObras"
+                                                                    wire:loading.attr="disabled"
+                                                                    tabindex="58">+</button>
                                                         @endif
-
-
                                                     </td>
                                                 </tr>
                                             @endfor
@@ -1417,13 +1323,15 @@
                                                     @if ($edifica == '99')
                                                         @if ($cont4 > 0)
                                                             <button type="button" class="btn btn-danger btn-icon"
-                                                                wire:click="reducirEdificios"
-                                                                tabindex="59">-</button>
+                                                                    wire:click="reducirEdificios"
+                                                                    wire:loading.attr="disabled"
+                                                                    tabindex="59">-</button>
                                                         @else
                                                             <button type="button" class="btn btn-success btn-icon"
-                                                                wire:click="aumentarEdificios"
-                                                                tabindex="59">+</button>
-                                                        @endif
+                                                                    wire:click="aumentarEdificios"
+                                                                    wire:loading.attr="disabled"
+                                                                    tabindex="59">+</button>
+                                                        @endif                                                
                                                     @endif
                                                 </th>
                                             </tr>
@@ -1489,10 +1397,12 @@
                                                     </td>
                                                     <td>
 
-                                                        @if ($i == $cont4 - 1)
+                                                        @if ($i == $cont4 - 1)                                                            
                                                             <button type="button" class="btn btn-success btn-icon"
                                                                 wire:click="aumentarEdificios"
-                                                                tabindex="60">+</button>
+                                                                wire:loading.attr="disabled"
+                                                                tabindex="60">+
+                                                            </button>
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -1536,7 +1446,7 @@
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">EN ÁREA PÚBLICA</label>
                                     <input type="text" id="en_area_publica" class="form-control"
-                                        placeholder="EN AREA PUBLICA" name="en_area_publica"
+                                        placeholder="EN ÁREA PÚBLICA" name="en_area_publica"
                                         wire:model="en_area_publica" maxlength="8" tabindex="63">
                                     @error('en_area_publica')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
@@ -1547,7 +1457,7 @@
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">EN ÁREA INTANGIBLE</label>
                                     <input type="text" id="en_area_intangible" class="form-control"
-                                        placeholder="EN AREA INTANGIBLE" name="en_area_intangible"
+                                        placeholder="EN ÁREA INTANGIBLE" name="en_area_intangible"
                                         wire:model="en_area_intangible"
                                         oninput="this.value = this.value.replace(/[^0-9,.]/g, '').replace(/(\..*?)\..*/g, '$1');"
                                         maxlength="8" tabindex="64">
@@ -1587,13 +1497,17 @@
                                                         <div class="divcuadro">132</div> AOIC
                                                     </label></th>
                                                 <th>
-                                                    @if ($edifica != '99')
+                                                    @if ($edifica != '99')                                                    
                                                         @if ($cont5 > 0)
                                                             <button type="button" class="btn btn-success btn-icon"
-                                                                wire:click="aumentarRecap" tabindex="65">+</button>
+                                                                    wire:click="aumentarRecap"
+                                                                    wire:loading.attr="disabled"
+                                                                    tabindex="65">+</button>
                                                         @else
                                                             <button type="button" class="btn btn-success btn-icon"
-                                                                wire:click="aumentarRecap" tabindex="65">+</button>
+                                                                    wire:click="aumentarRecap"
+                                                                    wire:loading.attr="disabled"
+                                                                    tabindex="65">+</button>
                                                         @endif
                                                     @endif
                                                 </th>
@@ -1694,11 +1608,10 @@
                                                         @enderror
                                                     </td>
                                                     <td>
-
                                                         <button type="button" class="btn btn-danger btn-icon"
-                                                            wire:click="reducirRecap({{ $i }})">-</button>
-
-
+                                                            wire:click="reducirRecap({{ $i }})"
+                                                            wire:loading.attr="disabled">-
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             @endfor
@@ -1707,49 +1620,6 @@
                                 </div>
                             </div><!-- Col -->
                         </div><!-- Row -->
-
-                        {{-- <div class="row form-group">
-                            <h4 class="mb-4"> DOCUMENTOS Y DATOS REGISTRALES</h4>
-                            <label class="form-label d-inline-flex">REGISTROS NOTARIAL DE LA ESCRITURA PUBLICA</label>
-
-                            <div class="col-md-4 mb-3">
-                                <div wire:ignore>
-                                    <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">101</div>NOMBRE DE LA NOTARIA
-                                    </label>
-                                    <select class="form-select" data-width="100%" data-live-search="true" name="rbcnotaria" wire:model="rbcnotaria" tabindex="134">
-                                        <option value="">SELECCIONE</option>
-                                        @foreach ($notarias as $notaria)
-                                        <option value="{{$notaria->id_notaria}}">{{$notaria->nomb_notaria}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                @error('rbcnotaria')
-                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label class="form-label d-inline-flex">
-                                    <div class="divcuadro">102</div> KARDEX
-                                </label>
-                                <input type="text" class="form-control" name="rbckardex" wire:model="rbckardex" tabindex="134">
-                                @error('rbckardex')
-                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label class="form-label d-inline-flex">
-                                    <div class="divcuadro">103</div>FECHA DE ESCRITURA
-                                </label>
-
-                                <input type="date" class="form-control" name="rbcfechaesc" placeholder="FECHA" id="rbcfechaesc" wire:model="rbcfechaesc" tabindex="134">
-                                @error('rbcfechaesc')
-                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div> --}}
-
-
                         <div class="row form-group">
                             <h4 class="mb-1"> DOCUMENTOS Y DATOS REGISTRALES</h4>
                             <h4 class="mb-5"> INSCRIPCION DEL PREDIO CATASTRAL</h4>
@@ -1828,7 +1698,7 @@
                             <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">84</div>DECLARATORIA DE FABRICA
+                                        <div class="divcuadro">84</div>DECLARATORIA DE FÁBRICA
                                     </label>
                                     <select class="form-select" id="codi_decla_fabrica"
                                         aria-label="Default select example" name="codi_decla_fabrica"
@@ -1847,7 +1717,7 @@
                             <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">85</div>AS. INSC. DE FABRICA
+                                        <div class="divcuadro">85</div>AS. INSC. DE FÁBRICA
                                     </label>
                                     <input type="text" id="asie_fabrica" class="form-control"
                                         name="asie_fabrica" maxlength="18" wire:model="asie_fabrica"
@@ -2085,8 +1955,656 @@
                             </div>
                         </div><!-- Row -->
                         <div class="modal-footer">
+                            <div class="row w-100">
+                                <div class="col-12 w-100">
+                                    <div class="row w-100">
+                                        @error('numeficha')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('nume_ficha_lote')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('nume_ficha_lote2')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('cuc')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('dpto')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('prov')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('dist')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('sector')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('mzna')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('lote')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('edifica')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('entrada')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('piso')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('unidad')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('dc')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('codi_cont_rentas')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('codi_pred_rentas')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @for ($i = 0; $i < $cont; $i++)
+                                            @error('tipoVia.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('tipopuerta.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('nume_muni.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('cond_nume.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+                                        @endfor
+
+                                        @error('tipo_edificacion')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('tipoHabi')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('nomb_hab_urba')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('zona_dist')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('mzna_dist')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('lote_dist')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('sub_lote_dist')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('clasificacion')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('cont_en')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('codi_uso')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('zonificacion')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('area_declarada')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('area_verificada1')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('fren_campo')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('dere_campo')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('izqu_campo')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('fond_campo')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('fren_colinda_campo')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('dere_colinda_campo')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('izqu_colinda_campo')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('fond_colinda_campo')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+                                        @for ($i = 0; $i < $cont2; $i++)
+                                            @error('bloque.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('num_piso.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('fecha.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('mep.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('ecs.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('ecc.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('estr_muro_col.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('estr_techo.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('acab_piso.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('acab_puerta_ven.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('acab_revest.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('acab_bano.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('inst_elect_sanita.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('area_verificada.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('uca.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+                                        @endfor
+                                        @for ($i = 0; $i < $cont3; $i++)
+                                            @error('codiinstalacion.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('inst_fecha.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('inst_mep.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('inst_ecs.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('inst_ecc.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('inst_prod_total.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('inst_uni_med.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('inst_uca.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+                                        @endfor
+                                        @for ($i = 0; $i < $cont4; $i++)
+                                            @error('edificiobbc.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('porcentaje.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('atc.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('acc.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('aoic.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+                                        @endfor
+                                        @error('en_colindante')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('en_jardin_aislamiento')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('en_area_publica')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('en_area_intangible')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+                                        @for ($i = 0; $i < $cont5; $i++)
+                                            @error('rbcedifica.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('rbcentrada.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('rbcnume_piso.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('rbcunidad.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('rbctotalporcentaje.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('rbctotalatc.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('rbctotalacc.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+
+                                            @error('rbctotalaoic.' . $i)
+                                            <div class="col-3">
+                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                            </div>
+                                            @enderror
+                                        @endfor
+                                        @error('tipo_partida')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('nume_partida')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('fojas')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('asiento')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('fecha_inscripcion')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('codi_decla_fabrica')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('asie_fabrica')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('fecha_fabrica')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('cond_declarante')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('esta_llenado')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('mantenimiento')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('observacion')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('numdocumentodeclarante')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('nombres_declarante')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('apellido_paterno_declarante')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('apellido_materno_declarante')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('fecha_declarante')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('supervisor')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('fecha_supervision')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('tecnico')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('fecha_levantamiento')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('verificador')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('nume_registro')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror
+
+                                        @error('fecha_verificacion')
+                                        <div class="col-3">
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        </div>
+                                        @enderror                                        
+                                    </div>
+                                </div>
+                            </div>
+
                             <button type="button" class="btn btn-primary"
-                                wire:click.prevent="register">Guardar</button>
+                                wire:click.prevent="register"
+                                wire:loading.attr="disabled">Guardar
+                            </button>
                         </div>
                     </div>
                 </div>

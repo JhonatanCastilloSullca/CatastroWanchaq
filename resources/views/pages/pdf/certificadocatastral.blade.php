@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>INFORME TECNICO CATASTRAL</title>
+    <title>INFORME TÉCNICO CATASTRAL</title>
     <style>
         body {
             background-color: #FFF;
@@ -315,7 +315,7 @@
         <div style="width: 265px;float:left;" class=" bn">
             <div style="width: 265px;height: 16px;float:left;" class="">
                 <div class="texto fz10 lh14">
-                    CUADRO TECNICO
+                    CUADRO TÉCNICO
                 </div>
             </div>
             <div style="width: 265px;height: 32px;float:left;" class="bn ">

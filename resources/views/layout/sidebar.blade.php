@@ -116,13 +116,21 @@
                                         Vias
                                     </a>
                                 </li>
-                                <li class="nav-item ">
-                                    <a href="{{ url('mantenimiento/tablacodigo') }}"
-                                        class="nav-link {{ active_class(['mantenimiento/tablacodigo']) }}">
-                                        Codigos de Tabla
-                                    </a>
-                                </li>
                             @endcan
+                            
+                            <li class="nav-item ">
+                                <a href="{{ url('mantenimiento/tablacodigo') }}"
+                                    class="nav-link {{ active_class(['mantenimiento/tablacodigo']) }}">
+                                    Codigos de Tabla
+                                </a>
+                            </li>
+                            
+                            <li class="nav-item ">
+                                <a href="{{ url('mantenimiento/codigoinstalacion') }}"
+                                    class="nav-link {{ active_class(['mantenimiento/codigoinstalacion']) }}">
+                                    Codigos de Instalación
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

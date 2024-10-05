@@ -166,7 +166,7 @@
                         <div class="col-md-3">
                             <div class="mb-3">
                                 <div wire:ignore>
-                                    <label class="form-label d-inline-flex" ><div class="divcuadroinvi"></div>  CODIGO</label>
+                                    <label class="form-label d-inline-flex" ><div class="divcuadroinvi"></div>  CÓDIGO</label>
                                     <input type="text" class="form-control" placeholder="" name="cod_monumento" id="cod_monumento" wire:model="cod_monumento" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="15">
                                     @error('cod_monumento')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
@@ -517,7 +517,7 @@
                                     <option value="01">01 TOMO</option>
                                     <option value="02">02 FICHA</option>
                                     <option value="03">03 PART. ELECTRONICA</option>
-                                    <option value="04">04 CODIGO DEL PREDIO</option>
+                                    <option value="04">04 CÓDIGO DEL PREDIO</option>
                                 </select>
                                 @error('tipo_partida')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
@@ -1337,7 +1337,7 @@
                                     <option value="01">01 TOMO</option>
                                     <option value="02">02 FICHA</option>
                                     <option value="03">03 PART. ELECTRONICA</option>
-                                    <option value="04">04 CODIGO DEL PREDIO</option>
+                                    <option value="04">04 CÓDIGO DEL PREDIO</option>
                                 </select>
                                 @error('tipo_partida1')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
@@ -1446,7 +1446,7 @@
                                         <tr >
                                             <th><label class="form-label d-inline-flex" > T. DOCUMENTO</label></th>
                                             <th><label class="form-label d-inline-flex" > N° DOCUMENTO</label></th>
-                                            <th><label class="form-label d-inline-flex" > CODIGO DEL CONTRIBUYENTE</label></th>
+                                            <th><label class="form-label d-inline-flex" > CÓDIGO DEL CONTRIBUYENTE</label></th>
                                             <th><label class="form-label d-inline-flex" > NOMBRES</label></th>
                                             <th><label class="form-label d-inline-flex" > APELLIDO PATERNO</label></th>
                                             <th><label class="form-label d-inline-flex" > APELLIDO MATERNO</label></th>
@@ -1490,7 +1490,7 @@
                                                 @enderror
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control"  name="codi_contribuye[]" placeholder="CODIGO DE CONTRIBUYENTE" id="codi_contribuye{{$i}}" wire:model="codi_contribuye.{{$i}}"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  maxlength="18">
+                                                <input type="text" class="form-control"  name="codi_contribuye[]" placeholder="CÓDIGO DE CONTRIBUYENTE" id="codi_contribuye{{$i}}" wire:model="codi_contribuye.{{$i}}"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  maxlength="18">
                                                 @error('codi_contribuye.'.$i)
                                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                                 @enderror

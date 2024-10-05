@@ -473,7 +473,7 @@
                             <div class="mb-3">
                                 <div wire:ignore>
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadrorequired">42</div> CODIGO DE USO
+                                        <div class="divcuadrorequired">42</div> CÓDIGO DE USO
                                     </label>
                                     <select class="form-select" data-width="100%" data-live-search="true" name="codi_uso" id="codi_uso" wire:model="codi_uso" tabindex="70">
                                         <option value="">SELECCIONE</option>

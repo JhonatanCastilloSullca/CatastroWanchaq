@@ -272,7 +272,7 @@
                         <div class="col-md-2">
                             <div class="mb-3">
                                 <div wire:ignore>
-                                    <label class="form-label d-inline-flex" > <div class="divcuadrorequired">18</div> CODIGO URBANO</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadrorequired">18</div> CÓDIGO URBANO</label>
                                     <select  class="form-select insumo_id" id="hab_urbana_id" name="hab_urbana_id" data-width="100%" wire:model="tipoHabi" tabindex="21">
                                         <option value="">Seleccione</option>
                                         @foreach($hab_urbanas as $hab_urbana)
@@ -285,7 +285,7 @@
                         </div><!-- Col -->
                         <div class="col-md-3">
                             <div class="mb-3">
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">19</div> NOMBRE DE LA HABILITACION URBANA</label>
+                                <label class="form-label d-inline-flex" > <div class="divcuadro">19</div> NOMBRE DE LA HABILITACIÓN URBANA</label>
                                 <input type="text" class="form-control" name="nomb_hab_urba" readonly placeholder="Nombre Habilitacion Urbana" wire:model="nomb_hab_urba" tabindex="22">
                                 <span class="text-danger">@error('nomb_hab_urba'){{$message}}@enderror</span>
                             </div>
@@ -359,7 +359,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <div wire:ignore>
-                                    <label class="form-label d-inline-flex" > <div class="divcuadrorequired">56</div> CODIGO DE USO</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadrorequired">56</div> CÓDIGO DE USO</label>
                                     <select class="form-select"  data-width="100%" data-live-search="true" name="codi_uso" id="codi_uso" wire:model="codi_uso" tabindex="29">
                                         <option value="" >SELECCIONE</option>
                                         @foreach($usos as $uso)
@@ -588,7 +588,7 @@
                         </div>
                         <div class="lineatoggle">
                             <div>
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">69</div> TELEFONO</label>
+                                <label class="form-label d-inline-flex" > <div class="divcuadro">69</div> TELÉFONO</label>
                             </div>
                             <div style="padding-left: 10px;">
                                 <div class="form-check form-switch mb-2">
@@ -598,7 +598,7 @@
                         </div>
                         <div class="lineatoggle">
                             <div>
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">70</div> DESAGÛE</label>
+                                <label class="form-label d-inline-flex" > <div class="divcuadro">70</div> DESAGÜE</label>
                             </div>
                             <div style="padding-left: 10px;">
                                 <div class="form-check form-switch mb-2">
@@ -628,7 +628,7 @@
                         </div>
                         <div class="lineatoggle">
                             <div>
-                                <label class="form-label d-inline-flex" style="width: 250px;"> <div class="divcuadro">73</div> CONEXION TV POR CABLE O CABLE SATELITAL</label>
+                                <label class="form-label d-inline-flex" style="width: 250px;"> <div class="divcuadro">73</div> CONEXIÓN TV POR CABLE O CABLE SATELITAL</label>
                             </div>
                             <div style="padding-left: 10px;">
                                 <div class="form-check form-switch mb-2">
@@ -816,7 +816,7 @@
                                 <table id="vias" class="table">
                                     <thead>
                                         <tr >
-                                            <th><label class="form-label d-inline-flex" > <div class="divcuadro">90</div> CODIGO</label></th>
+                                            <th><label class="form-label d-inline-flex" > <div class="divcuadro">90</div> CÓDIGO</label></th>
                                             <th><label class="form-label d-inline-flex" > <div class="divcuadro">75</div> FECHA</label></th>
                                             <th><label class="form-label d-inline-flex" > <div class="divcuadro">76</div> MEP</label></th>
                                             <th><label class="form-label d-inline-flex" > <div class="divcuadro">77</div> ECS</label></th>
@@ -1034,7 +1034,7 @@
                         <div class="col-md-3">
                             <div class="mb-3">
                                 <label class="form-label d-inline-flex" >EN ÁREA PÚBLICA</label>
-                                <input type="text" id="en_area_publica" class="form-control" placeholder="EN AREA PUBLICA" name="en_area_publica" wire:model="en_area_publica" maxlength="8" tabindex="133">
+                                <input type="text" id="en_area_publica" class="form-control" placeholder="EN ÁREA PÚBLICA" name="en_area_publica" wire:model="en_area_publica" maxlength="8" tabindex="133">
                                 @error('en_area_publica')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
@@ -1052,7 +1052,7 @@
                         <div class="col-md-3">
                             <div class="mb-3">
                                 <label class="form-label d-inline-flex" >EN ÁREA INTANGIBLE</label>
-                                <input type="text" id="en_area_intangible" class="form-control" placeholder="EN AREA INTANGIBLE" name="en_area_intangible" wire:model="en_area_intangible" oninput="this.value = this.value.replace(/[^0-9,]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="8" tabindex="135">
+                                <input type="text" id="en_area_intangible" class="form-control" placeholder="EN ÁREA INTANGIBLE" name="en_area_intangible" wire:model="en_area_intangible" oninput="this.value = this.value.replace(/[^0-9,]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="8" tabindex="135">
                                 @error('en_area_intangible')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
@@ -1249,7 +1249,7 @@
                         </div><!-- Col -->
                         <div class="col-md-3">
                             <div class="mb-3">
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">109</div>DECLARATORIA DE FABRICA</label>
+                                <label class="form-label d-inline-flex" > <div class="divcuadro">109</div>DECLARATORIA DE FÁBRICA</label>
                                 <select class="form-select" id="codi_decla_fabrica" aria-label="Default select example" name="codi_decla_fabrica" wire:model="codi_decla_fabrica" tabindex="129">
                                     <option value="">Seleccione</option>
                                     @foreach(\App\Models\TablaCodigo::where('id_tabla','=','DFB')->orderby('codigo','asc')->get() as $tablacodigo)
@@ -1263,7 +1263,7 @@
                         </div><!-- Col -->
                         <div class="col-md-3">
                             <div class="mb-3">
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">110</div>AS. INSC. DE FABRICA </label>
+                                <label class="form-label d-inline-flex" > <div class="divcuadro">110</div>AS. INSC. DE FÁBRICA </label>
                                 <input type="text" id="asie_fabrica" class="form-control" name="asie_fabrica" maxlength="18" wire:model="asie_fabrica" tabindex="130">
                                 @error('asie_fabrica')
                                     <span class="error-message" style="color:red">{{ $message }}</span>

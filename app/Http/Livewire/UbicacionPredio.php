@@ -25,7 +25,7 @@ class UbicacionPredio extends Component
 
     public function mount()
     {
-        $this->hab_urbanas=HabUrbana::all();
+        $this->hab_urbanas = HabUrbana::orderBy('codi_hab_urba', 'asc')->get();
     }
 
     public function updatedtipoHabi( $id)

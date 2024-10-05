@@ -4,7 +4,7 @@
         <div class="col-md-2">
             <div class="mb-3">
                 <div wire:ignore>
-                    <label class="form-label d-inline-flex" > <div class="divcuadro">14</div> CODIGO URBANO</label>
+                    <label class="form-label d-inline-flex" > <div class="divcuadro">14</div> CÓDIGO URBANO</label>
                     <select class="form-select insumo_id" id="hab_urbana_id" name="hab_urbana_id" data-width="100%" wire:model="tipoHabi">
                         <option value="0">Seleccione</option>
                         @foreach($hab_urbanas as $hab_urbana)
@@ -17,7 +17,7 @@
         </div><!-- Col -->
         <div class="col-md-3">
             <div class="mb-3">
-                <label class="form-label d-inline-flex" > <div class="divcuadro">15</div> NOMBRE DE LA HABILITACION URBANA</label>
+                <label class="form-label d-inline-flex" > <div class="divcuadro">15</div> NOMBRE DE LA HABILITACIÓN URBANA</label>
                 <input type="text" class="form-control" name="nomb_hab_urba" readonly placeholder="Nombre Habilitacion Urbana" wire:model="nomb_hab_urba">
                 <span class="text-danger">@error('nomb_hab_urba'){{$message}}@enderror</span>
             </div>
@@ -116,7 +116,7 @@
                                         <option value="" {{ old('cond_nume') == '' ? 'selected' : '' }}>SELECCIONE</option>
                                         <option value="01" {{ old('cond_nume') == '01' ? 'selected' : '' }}>GENERADO POR LA MUNICIPALIDAD</option>
                                         <option value="02" {{ old('cond_nume') == '02' ? 'selected' : '' }}>AUTOGENERADO POR EL TITULAR CATASTRAL</option>
-                                        <option value="03" {{ old('cond_nume') == '03' ? 'selected' : '' }}>GENERADO POR EL TECNICO CATASTRAL</option>
+                                        <option value="03" {{ old('cond_nume') == '03' ? 'selected' : '' }}>GENERADO POR EL TÉCNICO CATASTRAL</option>
                                         <option value="04" {{ old('cond_nume') == '04' ? 'selected' : '' }}>SIN NUMERO</option>
                                     </select>
                                     @error('cond_nume.'.$i)

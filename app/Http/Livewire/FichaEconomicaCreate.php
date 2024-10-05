@@ -54,9 +54,9 @@ class FichaEconomicaCreate extends Component
     public $razon_social;
     public $cond_conductor;
 
-    public $deparamentoconductor = '08';
-    public $provinciaconductor = '01';
-    public $distritoconductor = '08';
+    public $deparamentoconductor = '';
+    public $provinciaconductor = '';
+    public $distritoconductor = '';
     public $telefonoconductor;
     public $anexoconductor;
     public $faxconductor;

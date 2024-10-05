@@ -211,7 +211,8 @@
                                         </div>
                                         <button type="button" class="btn btn-primary btn-icon mt-3"
                                                 wire:click="calcularDC"
-                                                wire:loading.attr="disabled">
+                                                wire:loading.attr="disabled"
+                                                tabindex="15">
                                             <i class="mdi mdi-calculator"></i> 
                                         </button>
 
@@ -419,7 +420,7 @@
                                         <div class="divcuadro">13</div> N° DE INTERIOR
                                     </label>
                                     <input type="text" class="form-control" placeholder="" name="nume_interior"
-                                        wire:model="nume_interior" maxlength="4" t abindex="25">
+                                        wire:model="nume_interior" maxlength="4" tabindex="25">
                                     @error('nume_interior')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
@@ -431,7 +432,7 @@
                                 <div class="mb-3">
                                     <div wire:ignore>
                                         <label class="form-label d-inline-flex">
-                                            <div class="divcuadrorequired">14</div> CODIGO URBANO
+                                            <div class="divcuadrorequired">14</div> CÓDIGO URBANO
                                         </label>
                                         <select class="form-select insumo_id" id="hab_urbana_id" name="hab_urbana_id"
                                             data-width="100%" wire:model="tipoHabi" tabindex="26">
@@ -454,7 +455,7 @@
                             <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadrorequired">15</div> NOMBRE DE LA HABILITACION URBANA
+                                        <div class="divcuadrorequired">15</div> NOMBRE DE LA HABILITACIÓN URBANA
                                     </label>
                                     <input type="text" class="form-control" name="nomb_hab_urba" readonly
                                         placeholder="Nombre Habilitacion Urbana" wire:model="nomb_hab_urba"
@@ -792,7 +793,7 @@
                                 <div class="mb-3">
                                     <div wire:ignore>
                                         <label class="form-label d-inline-flex">
-                                            <div class="divcuadrorequired">30</div> UBICACION
+                                            <div class="divcuadrorequired">30</div> UBICACIÓN
                                         </label>
                                         <select class="form-select" data-width="100%" data-live-search="true"
                                             name="ubicacionpersona" id="ubicacionpersona"
@@ -929,7 +930,7 @@
                             <div class="col-md-2">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">14</div> CODIGO URBANO
+                                        <div class="divcuadro">14</div> CÓDIGO URBANO
                                     </label>
                                     <input type="text" class="form-control" placeholder=""
                                         name="codigohurbanootros" wire:model="codigohurbanootros" tabindex="56"
@@ -942,7 +943,7 @@
                             <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">15</div> NOMBRE DE LA HABILITACION URBANA
+                                        <div class="divcuadro">15</div> NOMBRE DE LA HABILITACIÓN URBANA
                                     </label>
                                     <input type="text" class="form-control" placeholder=""
                                         name="nombrehhurbanaotros" wire:model="nombrehhurbanaotros" tabindex="57"
@@ -1005,7 +1006,7 @@
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">34</div> TELEFONO
+                                        <div class="divcuadro">34</div> TELÉFONO
                                     </label>
                                     <input type="text" class="form-control" placeholder=""
                                         name="telefonodomicilio"
@@ -1031,7 +1032,7 @@
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">36</div> CORREO ELECTRONICO
+                                        <div class="divcuadro">36</div> CORREO ELECTRÓNICO
                                     </label>
                                     <input type="text" class="form-control" placeholder="" name="emaildomicilio"
                                         maxlength="100" wire:model="emaildomicilio" tabindex="64">
@@ -1139,7 +1140,7 @@
                                 <div class="mb-3">
                                     <div wire:ignore>
                                         <label class="form-label d-inline-flex">
-                                            <div class="divcuadrorequired">42</div> CODIGO DE USO
+                                            <div class="divcuadrorequired">42</div> CÓDIGO DE USO
                                         </label>
                                         <select class="form-select" data-width="100%" data-live-search="true"
                                             name="codi_uso" id="codi_uso" wire:model="codi_uso" tabindex="70">
@@ -1164,21 +1165,10 @@
                                         name="zonificacion" id="zonificacion" wire:model="zonificacion"
                                         tabindex="71">
                                         <option value="">SELECCIONE</option>
-                                        <option value="C-7">C-7 COMERCIO ZONAL</option>
-                                        <option value="I1-R5">I1-R5 VIVIENDA TALLER DE ALTA DENSIDAD</option>
-                                        <option value="E1">E1 EDUCACION BASICA</option>
-                                        <option value="R-5">R-5 RESIDENCIAL DE DENSIDAD MEDIA</option>
-                                        <option value="OU">OU OTROS USOS</option>
-                                        <option value="C-5">C-5 COMERCIO ESPECIALIZADO</option>
-                                        <option value="ZRP1">ZRP1 ZONA DE RECREACION BARRIAL</option>
-                                        <option value="E2">E2 EDUCACION SUPERIOR TECNOLOGICO</option>
-                                        <option value="C-3">C-3 COMERCIO VECINAL</option>
-                                        <option value="R-4">R-4 RESIDENCIAL DE DENSIDAD MEDIA</option>
-                                        <option value="H1">H1 POSTA MEDICA</option>
-                                        <option value="ZAM-CH">ZAM-CH AREA DE AMORTIGUAMIENTO</option>
-                                        <option value="MERCADO">MERCADO MERCADO</option>
-                                        <option value="CH">CH CENTRO HISTORICO</option>
-                                        <option value="AP">AP</option>
+                                        @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'ZON')->orderby('codigo', 'asc')->get() as $tablacodigo)
+                                            <option value="{{ $tablacodigo->codigo }}">
+                                                {{ $tablacodigo->desc_codigo }}</option>
+                                        @endforeach
                                     </select>
                                     @error('zonificacion')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
@@ -1346,7 +1336,7 @@
                             <div class="lineatoggle">
                                 <div>
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">51</div> TELEFONO
+                                        <div class="divcuadro">51</div> TELÉFONO
                                     </label>
                                 </div>
                                 <div style="padding-left: 10px;">
@@ -1359,7 +1349,7 @@
                             <div class="lineatoggle">
                                 <div>
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">52</div> DESAGÛE
+                                        <div class="divcuadro">52</div> DESAGÜE
                                     </label>
                                 </div>
                                 <div style="padding-left: 10px;">
@@ -1398,7 +1388,7 @@
                             <div class="lineatoggle">
                                 <div>
                                     <label class="form-label d-inline-flex" style="width: 250px;">
-                                        <div class="divcuadro">55</div> CONEXION TV POR CABLE O CABLE SATELITAL
+                                        <div class="divcuadro">55</div> CONEXIÓN TV POR CABLE O CABLE SATELITAL
                                     </label>
                                 </div>
                                 <div style="padding-left: 10px;">
@@ -1788,7 +1778,7 @@
                                                     @endif
                                                 </th>
                                                 <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">71</div> CODIGO
+                                                        <div class="divcuadro">71</div> CÓDIGO
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
                                                         <div class="divcuadro">57</div> FECHA
@@ -2182,7 +2172,7 @@
                             <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">84</div>DECLARATORIA DE FABRICA
+                                        <div class="divcuadro">84</div>DECLARATORIA DE FÁBRICA
                                     </label>
                                     <select class="form-select" id="codi_decla_fabrica"
                                         aria-label="Default select example" name="codi_decla_fabrica"
@@ -2204,7 +2194,7 @@
                             <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">85</div>AS. INSC. DE FABRICA
+                                        <div class="divcuadro">85</div>AS. INSC. DE FÁBRICA
                                     </label>
                                     <input type="text" id="asie_fabrica" class="form-control"
                                         name="asie_fabrica" maxlength="18" wire:model="asie_fabrica"
@@ -2249,7 +2239,7 @@
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">EN ÁREA PÚBLICA</label>
                                     <input type="text" id="en_area_publica" class="form-control"
-                                        placeholder="EN AREA PUBLICA" name="en_area_publica"
+                                        placeholder="EN ÁREA PÚBLICA" name="en_area_publica"
                                         wire:model="en_area_publica"
                                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
                                         maxlength="8" tabindex="133">
@@ -2275,7 +2265,7 @@
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">EN ÁREA INTANGIBLE</label>
                                     <input type="text" id="en_area_intangible" class="form-control"
-                                        placeholder="EN AREA INTANGIBLE" name="en_area_intangible"
+                                        placeholder="EN ÁREA INTANGIBLE" name="en_area_intangible"
                                         wire:model="en_area_intangible"
                                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
                                         maxlength="8" tabindex="135">
@@ -2356,7 +2346,7 @@
                                             maxlength="3" tabindex="139">
                                         @error('nume_familias')
                                             <span class="error-message" style="color:red">{{ $message }}</span>
-                                        @enderror"
+                                        @enderror
                                     </div>
                                 </div><!-- Col -->
                                 <div class="col-md-2">
@@ -2413,7 +2403,7 @@
                                                 </th>
                                                 <th><label class="form-label d-inline-flex"> T. DOCUMENTO</label></th>
                                                 <th><label class="form-label d-inline-flex"> N° DOCUMENTO</label></th>
-                                                <th><label class="form-label d-inline-flex"> CODIGO DEL
+                                                <th><label class="form-label d-inline-flex"> CÓDIGO DEL
                                                         CONTRIBUYENTE</label></th>
                                                 <th><label class="form-label d-inline-flex"> NOMBRES</label></th>
                                                 <th><label class="form-label d-inline-flex"> APELLIDO PATERNO</label>
@@ -2481,7 +2471,7 @@
                                                     <td>
                                                         <input type="text" class="form-control"
                                                             name="codi_contribuye[]"
-                                                            placeholder="CODIGO DE CONTRIBUYENTE"
+                                                            placeholder="CÓDIGO DE CONTRIBUYENTE"
                                                             id="codi_contribuye{{ $i }}"
                                                             wire:model="codi_contribuye.{{ $i }}"
                                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
@@ -2705,7 +2695,8 @@
                                         @error('numeficha')
                                             <div class="col-3">
                                                 <span class="error-message"
-                                                    style="color:red">{{ $message }}</span>
+                                                    style="color:red">{{ $message }}
+                                                </span>
                                             </div>
                                         @enderror
                                         @error('nume_ficha_lote')

@@ -33,14 +33,14 @@
             <div class="row">
               <div class="mb-3 col-md-5" >
                 <label class="form-label">Codigo de Usuario</label>
-                <input class="form-control" name="codi_usuario" readonly value="{{$codigo}}">      
+                <input class="form-control no-transform" name="codi_usuario" readonly value="{{$codigo}}">      
                 @error('codi_usuario')
                   <span class="error-message" style="color:red">{{ $message }}</span>
                 @enderror      
               </div>
               <div class="mb-3 col-md-7">
                 <label for="nroDocumento" class="form-label">Nombres</label>
-                <input type="text" name="nombres" class="form-control" placeholder="Nombres" >
+                <input type="text" name="nombres" class="form-control no-transform" placeholder="Nombres" >
                 @error('nombres')
                   <span class="error-message" style="color:red">{{ $message }}</span>
                 @enderror                
@@ -49,21 +49,21 @@
             <div class="row">
               <div class="mb-3 col-md-4">
                 <label for="nroDocumento" class="form-label">Apellido Paterno</label>
-                <input type="text" name="ape_paterno" class="form-control" placeholder="Apellido Paterno" >
+                <input type="text" name="ape_paterno" class="form-control no-transform" placeholder="Apellido Paterno" >
                 @error('ape_paterno')
                   <span class="error-message" style="color:red">{{ $message }}</span>
                 @enderror                
               </div>
               <div class="mb-3 col-md-4">
                 <label for="nombres" class="form-label">Apellido Materno</label>
-                <input type="text" name="ape_materno" class="form-control" placeholder="Apellido Materno" >   
+                <input type="text" name="ape_materno" class="form-control no-transform" placeholder="Apellido Materno" >   
                 @error('ape_materno')
                   <span class="error-message" style="color:red">{{ $message }}</span>
                 @enderror             
               </div>
               <div class="mb-3 col-md-4">
                 <label for="aPaterno" class="form-label">Email</label>
-                <input type="text" name="email" class="form-control" placeholder="Email" >
+                <input type="text" name="email" class="form-control no-transform" placeholder="Email" >
                 @error('email')
                   <span class="error-message" style="color:red">{{ $message }}</span>
                 @enderror 
@@ -72,14 +72,14 @@
             <div class="row">
               <div class="mb-3 col-md-6">
                 <label for="usuario" class="form-label">Usuario</label>
-                <input type="text" name="usuario" class="form-control" placeholder="Usuario" >
+                <input type="text" name="usuario" class="form-control no-transform" placeholder="Usuario" >
                 @error('usuario')
                   <span class="error-message" style="color:red">{{ $message }}</span>
                 @enderror 
               </div>
               <div class="mb-3 col-md-6">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" name="password" class="form-control" placeholder="Password" >
+                <input type="password" name="password" class="form-control no-transform" placeholder="Password" >
                 @error('password')
                   <span class="error-message" style="color:red">{{ $message }}</span>
                 @enderror 

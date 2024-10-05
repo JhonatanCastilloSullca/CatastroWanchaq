@@ -309,7 +309,7 @@
                         01
                     </div>
                     <div class="texto h-14 fz8 lh14">
-                        CODIGO UNICO CATASTRAL - CUC
+                        CÓDIGO UNICO CATASTRAL - CUC
                     </div>
                     <div class="texto-input m-0auto lh16">
                         s
@@ -322,7 +322,7 @@
                         02
                     </div>
                     <div class="  h-14 fz8 lh14">
-                        CODIGO DE REFERENCIA CATASTRAL
+                        CÓDIGO DE REFERENCIA CATASTRAL
                     </div>
                     <div class="texto-input bn lh16">
                         <div class="fondoclaro left bn" style="width: 105px;">
@@ -441,7 +441,7 @@
                             04
                         </div>
                         <div class="texto h-14 fz8 lh14">
-                            CODIGO PREDIAL DE RENTAS
+                            CÓDIGO PREDIAL DE RENTAS
                         </div>
                         <div class="texto-input m-0auto lh16">
 

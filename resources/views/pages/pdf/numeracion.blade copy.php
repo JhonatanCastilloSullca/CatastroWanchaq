@@ -299,7 +299,7 @@
             <!-- fila 03-->
             <div style="width: 427px;height:16px;margin: auto; border:none">
                 <div class="texto fz10">
-                    <b> CODIGO DE REFERENCIA CATASTRAL</b>
+                    <b> CÓDIGO DE REFERENCIA CATASTRAL</b>
                 </div>
                 <div style="width: 106px;height: 16px;float:left;border:none;" class="bgfdc">
                     <div style="width: 106px;height: 8px;float:left;">

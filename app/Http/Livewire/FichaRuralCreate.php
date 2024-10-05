@@ -243,13 +243,14 @@ class FichaRuralCreate extends Component
 
     public function mount()
     {
-        $this->sectores_sel = Sectore::orderBy('codi_sector')->get();
-        $this->tecnicos=Persona::where('tipo_funcion',3)->get();
-        $this->supervisores=Persona::where('tipo_funcion',2)->get();
-        $this->verificadores=Persona::where('tipo_funcion',4)->get();
-        $this->departamentos=Ubiges::where('cod_pro','00')->where('codi_dis','00')->get();
-        $this->provincias=Ubiges::where('cod_pro','!=','00')->where('codi_dis','00')->get();
-        $this->distritos=Ubiges::where('codi_dis','!=','00')->get();
+        $this->sectores_sel = Sectore::orderBy('codi_sector', 'asc')->get();
+        $this->tecnicos = Persona::where('tipo_funcion', 3)->orderBy('nume_doc', 'asc')->get();
+        $this->supervisores = Persona::where('tipo_funcion', 2)->orderBy('nume_doc', 'asc')->get();
+        $this->verificadores = Persona::where('tipo_funcion', 4)->orderBy('nume_doc', 'asc')->get();
+        $this->departamentos = Ubiges::where('cod_pro', '00')->where('codi_dis', '00')->orderBy('descri', 'asc')->get();
+        $this->provincias = Ubiges::where('cod_pro', '!=', '00')->where('codi_dis', '00')->orderBy('descri', 'asc')->get();
+        $this->distritos = Ubiges::where('codi_dis', '!=', '00')->orderBy('descri', 'asc')->get();
+
     }
     /* CONSTRUCCIONES */
 

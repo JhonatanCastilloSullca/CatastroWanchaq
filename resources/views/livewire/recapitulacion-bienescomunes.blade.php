@@ -133,7 +133,7 @@
                 <option value="1" {{ old('mantenimiento') == '1' ? 'selected' : '' }}>SELECCIONE</option>
                 <option value="2" {{ old('mantenimiento') == '2' ? 'selected' : '' }}>CONFORMIDAD DE OBRA</option>
                 <option value="3" {{ old('mantenimiento') == '3' ? 'selected' : '' }}>LICENCIA DE CONSTRUCCION</option>
-                <option value="4" {{ old('mantenimiento') == '4' ? 'selected' : '' }}>DECLARATORIA DE FABRICA</option>
+                <option value="4" {{ old('mantenimiento') == '4' ? 'selected' : '' }}>DECLARATORIA DE FÁBRICA</option>
             </select>
             @error('mantenimiento')
                 <span class="error-message" style="color:red">{{ $message }}</span>
@@ -180,7 +180,7 @@
                         <option value="1" {{ old('rbctipopartidaregistral') == '1' ? 'selected' : '' }}>TOMO</option>
                         <option value="2" {{ old('rbctipopartidaregistral') == '2' ? 'selected' : '' }}>FICHAS</option>
                         <option value="3" {{ old('rbctipopartidaregistral') == '3' ? 'selected' : '' }}>PART. ELECTRONICA</option>
-                        <option value="4" {{ old('rbctipopartidaregistral') == '4' ? 'selected' : '' }}>CODIGO DE PREDIO</option>
+                        <option value="4" {{ old('rbctipopartidaregistral') == '4' ? 'selected' : '' }}>CÓDIGO DE PREDIO</option>
                     </select>
                     @error('rbctipopartidaregistral')
                         <span class="error-message" style="color:red">{{ $message }}</span>

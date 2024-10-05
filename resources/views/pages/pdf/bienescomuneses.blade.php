@@ -381,7 +381,7 @@
                 07
             </div>
             <div class="texto fz8 lh14">
-                CODIGO DE VIA
+                CÓDIGO DE VIA
             </div>
 
         </div>
@@ -644,7 +644,7 @@
                 18
             </div>
             <div class="texto fz8 lh14">
-                CODIGO HU
+                CÓDIGO HU
             </div>
         </div>
         <div style="width: 222px;height: 16px;float:left;" class="fondoclaro">
@@ -652,7 +652,7 @@
                 19
             </div>
             <div class="texto fz8 lh14">
-                NOMBRE DE LA HABILITACION URBANA
+                NOMBRE DE LA HABILITACIÓN URBANA
             </div>
         </div>
         <div style="width: 130px;height: 16px;float:left;" class="fondoclaro">
@@ -959,7 +959,7 @@
                 56
             </div>
             <div class="texto fz8 lh14">
-                CODIGO DE USO
+                CÓDIGO DE USO
             </div>
         </div>
         <div style="width: 348.9PX;height: 16px;float:left;" class="fondoclaro">
@@ -1174,7 +1174,7 @@
                 69
             </div>
             <div class="texto fz8 lh14">
-                TELEFONO
+                TELÉFONO
             </div>
         </div>
         <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14">
@@ -1218,7 +1218,7 @@
                 73
             </div>
             <div class="texto" style="font-size:5px;">
-                CONEXION A TV POR CABLE<BR>O CABLE SATELITAL
+                CONEXIÓN A TV POR CABLE<BR>O CABLE SATELITAL
             </div>
         </div>
         <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14">
@@ -1553,7 +1553,7 @@
                 </div>
                 <div style="width: 143px;height: 11px;float:left;">
                     <div class="texto fz6 lh8">
-                        02 EN JARDIN DE AISLAMIENTO
+                        02 EN JARDÍN DE AISLAMIENTO
                     </div>
                 </div>
                 <div style="width: 138px;height: 11px;float:left;">
@@ -1631,7 +1631,7 @@
                 90
             </div>
             <div class="texto fz8 lh14">
-                CODIGO
+                CÓDIGO
             </div>
         </div>
         <div style="width: 307px;height: 32px;float:left;">
@@ -2483,7 +2483,7 @@
                 122
             </div>
             <div class="texto fz8 lh14">
-                FIRMA DEL TECNICO CATASTRAL
+                FIRMA DEL TÉCNICO CATASTRAL
             </div>
         </div>
         <div style="width: 178px;height: 70px;float:left;">

@@ -561,7 +561,7 @@ class FichaIndividualRentasEdit extends Component
         $this->manzanas = Manzana::all();
         $this->vias = Via::all();
     }
-    /* EMPIEZA CODIGO REFERENCIAL */
+    /* EMPIEZA CÓDIGO REFERENCIAL */
     public function updatedsector($id_sector)
     {
         $this->mostrardc();
@@ -630,7 +630,7 @@ class FichaIndividualRentasEdit extends Component
         $this->dc = ($this->dpto + $this->prov + $this->dist + $this->sector + $this->mzna + $this->lote + $this->edifica + $this->entrada + $this->piso + $this->unidad) % 9;
     }
 
-    /* TERMINA CODIGO REFERENCIAL */
+    /* TERMINA CÓDIGO REFERENCIAL */
 
     /* UBICACION DEL PREDIO */
     public function updatedtipoHabi($id)

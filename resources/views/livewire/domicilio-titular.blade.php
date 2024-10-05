@@ -96,7 +96,7 @@
     <div class="row form-group">
         <div class="col-md-2">
             <div class="mb-3">
-                <label class="form-label d-inline-flex" > <div class="divcuadro">14</div> CODIGO URBANO</label>
+                <label class="form-label d-inline-flex" > <div class="divcuadro">14</div> CÓDIGO URBANO</label>
                 <input type="text" class="form-control" placeholder="" name="codigohurbanootros">
                 @error('codigohurbanootros')
                     <span class="error-message" style="color:red">{{ $message }}</span>
@@ -105,7 +105,7 @@
         </div><!-- Col -->
         <div class="col-md-3">
             <div class="mb-3">
-                <label class="form-label d-inline-flex" > <div class="divcuadro">15</div> NOMBRE DE LA HABILITACION URBANA</label>
+                <label class="form-label d-inline-flex" > <div class="divcuadro">15</div> NOMBRE DE LA HABILITACIÓN URBANA</label>
                 <input type="text" class="form-control" placeholder="" name="nombrehhurbanaotros">
                 @error('nombrehhurbanaotros')
                     <span class="error-message" style="color:red">{{ $message }}</span>

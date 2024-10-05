@@ -11,15 +11,22 @@ use DB;
 class TablaCodigoController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
-        $tablas=Tabla::all();
-        $tablacodigos=TablaCodigo::all();
-        $i=0;
+        $tablas = Tabla::all(); 
+        $tabla2 = $request->input('buscarTabla'); 
 
+        
+        if (empty($tabla2) || $tabla2 == '0') {
+            $tablacodigos = TablaCodigo::all();
+        } else {
+            $tablacodigos = TablaCodigo::where('id_tabla', $tabla2)->get();
+        }
 
-        return view('pages.tablacodigo.index',compact('tablas','tablacodigos','i'));
+        $i = 0;
+        return view('pages.tablacodigo.index', compact('tabla2', 'tablas', 'tablacodigos', 'i'));
     }
+
     public function store(Request $request)
     {
         $request->validate([

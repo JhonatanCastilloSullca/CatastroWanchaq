@@ -60,6 +60,7 @@ class User extends Authenticatable  implements AuditableContract
         'fecha_cese',
         'imagen',
         'estado',
+        'session_id',
     ];
 
 

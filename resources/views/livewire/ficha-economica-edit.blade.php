@@ -317,7 +317,7 @@
                             </div><!-- Col -->
                             <div class="col-md-2">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex" > <div class="divcuadro">42</div> TELEFONO</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadro">42</div> TELÉFONO</label>
                                     <input type="text" class="form-control" placeholder=""  name="telefonoconductor" wire:model="telefonoconductor" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="10">
                                     @error('telefonoconductor')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
@@ -411,7 +411,7 @@
                         <div class="row form-group">
                             <div class="col-md-2">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex" > <div class="divcuadro">18</div> CODIGO URBANO</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadro">18</div> CÓDIGO URBANO</label>
                                     <input type="text" class="form-control" placeholder="" name="codigohurbanoconductor" wire:model="codigohurbanoconductor" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="4">
                                     @error('codigohurbanoconductor')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
@@ -420,7 +420,7 @@
                             </div><!-- Col -->
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex" > <div class="divcuadro">19</div> NOMBRE DE LA HABILITACION URBANA</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadro">19</div> NOMBRE DE LA HABILITACIÓN URBANA</label>
                                     <input type="text" class="form-control" placeholder="" name="nombrehhurbanaconductor" wire:model="nombrehhurbanaconductor" maxlength="100">
                                     @error('nombrehhurbanaconductor')
                                         <span class="error-message" style="color:red">{{ $message }}</span>

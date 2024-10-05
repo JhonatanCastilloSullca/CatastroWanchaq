@@ -268,18 +268,18 @@ class FichaIndividualCreate extends Component
 
     public function mount()
     {
-        $this->usos = Uso::orderBy('codi_uso')->get();
-        $this->tecnicos = Persona::where('tipo_funcion', 3)->get();
-        $this->supervisores = Persona::where('tipo_funcion', 2)->get();
-        $this->verificadores = Persona::where('tipo_funcion', 4)->get();
-        $this->sectores = Sectore::orderBy('codi_sector')->get();
-        $this->hab_urbanas = HabUrbana::orderBy('codi_hab_urba')->get();
-        $this->vias = Via::orderBy('codi_via')->get();
-        $this->unicats = Unicat::all();
-        $this->codigosinstalacion = CodigoInstalacion::orderBy('codi_instalacion')->get();
-        $this->departamentos = Ubiges::where('cod_pro', '00')->where('codi_dis', '00')->get();
-        $this->provincias = Ubiges::where('cod_pro', '!=', '00')->where('codi_dis', '00')->get();
-        $this->distritos = Ubiges::where('codi_dis', '!=', '00')->get();
+        $this->usos = Uso::orderBy('codi_uso', 'asc')->get();
+        $this->tecnicos = Persona::where('tipo_funcion', 3)->orderBy('nume_doc', 'asc')->get();
+        $this->supervisores = Persona::where('tipo_funcion', 2)->orderBy('nume_doc', 'asc')->get();
+        $this->verificadores = Persona::where('tipo_funcion', 4)->orderBy('nume_doc', 'asc')->get();
+        $this->sectores = Sectore::orderBy('codi_sector', 'asc')->get();
+        $this->hab_urbanas = HabUrbana::orderBy('codi_hab_urba', 'asc')->get();
+        $this->vias = Via::orderBy('codi_via', 'asc')->get();
+        $this->unicats = Unicat::orderBy('id_uni_cat', 'asc')->get();
+        $this->codigosinstalacion = CodigoInstalacion::orderBy('codi_instalacion', 'asc')->get();
+        $this->departamentos = Ubiges::where('cod_pro', '00')->where('codi_dis', '00')->orderBy('descri', 'asc')->get();
+        $this->provincias = Ubiges::where('cod_pro', '!=', '00')->where('codi_dis', '00')->orderBy('descri', 'asc')->get();
+        $this->distritos = Ubiges::where('codi_dis', '!=', '00')->orderBy('descri', 'asc')->get();
         for ($i = 0; $i < $this->cont; $i++) {
             $this->tipoVianombre[$i] = "";
             $this->tipoViatipo[$i] = "";
@@ -289,7 +289,7 @@ class FichaIndividualCreate extends Component
         $this->ape_paterno1 = "";
         $this->ape_materno1 = "";
     }
-    /* EMPIEZA CODIGO REFERENCIAL */
+    /* EMPIEZA CÓDIGO REFERENCIAL */
 
 
     public function mostrardc()
@@ -386,7 +386,7 @@ class FichaIndividualCreate extends Component
     //     $this->dc=($this->dpto+$this->prov+$this->dist+$this->sector+$this->mzna+$this->lote+$this->edifica+$this->entrada+$this->piso+$this->unidad)%9;
     // }
 
-    /* TERMINA CODIGO REFERENCIAL */
+    /* TERMINA CÓDIGO REFERENCIAL */
 
     /* UBICACION DEL PREDIO */
 

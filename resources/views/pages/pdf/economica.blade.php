@@ -611,7 +611,7 @@
             34
           </div>
           <div class="texto fz8 lh14">
-            TELEFONO
+            TELÉFONO
           </div>
         </div>
         <div style="width: 60px;height: 16px;float:left;" class="fondoclaro">
@@ -627,7 +627,7 @@
             36
           </div>
           <div class="texto fz8 lh14">
-            CORREO ELECTRONICO
+            CORREO ELECTRÓNICO
           </div>
         </div>
       </div>
@@ -697,7 +697,7 @@
             05
           </div>
           <div class="texto fz8 lh14">
-            CODIGO DE VIA
+            CÓDIGO DE VIA
           </div>
         </div>
 
@@ -790,7 +790,7 @@
             14
           </div>
           <div class="texto fz8 lh14">
-            CODIGO DE HU
+            CÓDIGO DE HU
           </div>
         </div>
 
@@ -799,7 +799,7 @@
             15
           </div>
           <div class="texto fz8 lh14">
-            NOMBRE DE LA HABILITACION URBANA
+            NOMBRE DE LA HABILITACIÓN URBANA
           </div>
         </div>
 
@@ -900,7 +900,7 @@
               143
             </div>
             <div class="texto fz6 lh7">
-              CODIGO<BR>ACTIVIDAD
+              CÓDIGO<BR>ACTIVIDAD
             </div>
           </div>
           <div style="width: 310PX;height: 16px;float:left;" class="fondoclaro">
@@ -1451,7 +1451,7 @@
             96
           </div>
           <div class="texto fz8 lh14">
-            FIRMA DEL TECNICO CATASTRAL
+            FIRMA DEL TÉCNICO CATASTRAL
           </div>
         </div>
         <div style="width: 178px;height: 70px;float:left;">

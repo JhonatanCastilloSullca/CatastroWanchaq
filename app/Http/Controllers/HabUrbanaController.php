@@ -44,8 +44,9 @@ class HabUrbanaController extends Controller
     }
     public function update(Request $request)
     {
+        // dd($request);
         $ubigeo=Institucion::first();
-        $haburbana=HabUrbana::where('codi_hab_urba',$request->id_haburbana)->first();
+        $haburbana=HabUrbana::where('id_hab_urba',$request->id_haburbana)->first();
         $id=$haburbana->id_hab_urba;
         $requ=\Validator::make($request->all(), [
             'grup_urba'     => 'nullable|max:100',

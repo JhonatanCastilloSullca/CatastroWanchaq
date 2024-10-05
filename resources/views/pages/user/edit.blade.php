@@ -39,21 +39,21 @@
             <div class="row">
               <div class="mb-3 col-md-4">
                 <label for="nombres" class="form-label">Nombre</label>
-                <input type="text" name="nombres" class="form-control" value="{{$user->nombres}}" >
+                <input type="text" name="nombres" class="form-control no-transform" value="{{$user->nombres}}" >
                 @error('nombres')
                   <span class="error-message" style="color:red">{{ $message }}</span>
                 @enderror
               </div>
               <div class="mb-3 col-md-4">
                 <label for="aPaterno" class="form-label">Apellido Paterno</label>
-                <input type="text" name="ape_paterno" class="form-control" value="{{$user->ape_paterno}}" >
+                <input type="text" name="ape_paterno" class="form-control no-transform" value="{{$user->ape_paterno}}" >
                 @error('ape_paterno')
                   <span class="error-message" style="color:red">{{ $message }}</span>
                 @enderror
               </div>
               <div class="mb-3 col-md-4">
                 <label for="aMaterno" class="form-label">Apellido Materno</label>
-                <input type="text" name="ape_materno" class="form-control" value="{{$user->ape_materno}}" >
+                <input type="text" name="ape_materno" class="form-control no-transform" value="{{$user->ape_materno}}" >
                 @error('ape_materno')
                   <span class="error-message" style="color:red">{{ $message }}</span>
                 @enderror
@@ -62,14 +62,14 @@
             <div class="row">
               <div class="mb-3 col-md-6">
                 <label for="usuario" class="form-label">Usuario</label>
-                <input type="text" name="usuario" class="form-control" value="{{$user->usuario}}" >
+                <input type="text" name="usuario" class="form-control no-transform" value="{{$user->usuario}}" >
                 @error('usuario')
                   <span class="error-message" style="color:red">{{ $message }}</span>
                 @enderror
               </div>
               <div class="mb-3 col-md-6">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" name="password" class="form-control" >
+                <input type="password" name="password" class="form-control no-transform" >
                 @error('password')
                   <span class="error-message" style="color:red">{{ $message }}</span>
                 @enderror
@@ -78,7 +78,7 @@
             <div class="row">
               <div class="mb-3 col-md-4">
                 <label for="uc" class="form-label">Email</label>
-                <input type="text" name="email" class="form-control" value="{{$user->email}}" >
+                <input type="text" name="email" class="form-control no-transform" value="{{$user->email}}" >
                 @error('email')
                   <span class="error-message" style="color:red">{{ $message }}</span>
                 @enderror

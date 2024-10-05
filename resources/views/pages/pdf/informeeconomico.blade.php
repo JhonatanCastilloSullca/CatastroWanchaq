@@ -278,7 +278,7 @@
             <div style="width: 473px;height:16px;margin: auto; padding-top:5px;padding-bottom:5px; margin-bottom:5px; "
                 class="bgfdc">
                 <div class="texto fz14 lh14">
-                    <b>INFORME TECNICO CATASTRAL GERENCIA DE ADMINISTRACION TRIBUTARIA</b>
+                    <b>INFORME TÉCNICO CATASTRAL GERENCIA DE ADMINISTRACION TRIBUTARIA</b>
                 </div>
             </div>
 
@@ -287,7 +287,7 @@
             <!-- fila 03-->
             <div style="width: 427px;height:16px;margin: auto; border:none">
                 <div class="texto fz10">
-                    <b> CODIGO DE REFERENCIA CATASTRAL</b>
+                    <b> CÓDIGO DE REFERENCIA CATASTRAL</b>
                 </div>
                 <div style="width: 106px;height: 16px;float:left;border:none;" class="bgfdc">
                     <div style="width: 106px;height: 8px;float:left;">
@@ -567,7 +567,7 @@
 
             <div style="width: 90PX;height:20px;float:left;" class="bgfdc">
                 <div class="texto fz8 lh8">
-                    CODIGO DE <BR> ACTIVIDAD
+                    CÓDIGO DE <BR> ACTIVIDAD
                 </div>
             </div>
             <div style="width: 308PX;height:20px;float:left;" class="bgfdc">
@@ -613,7 +613,7 @@
         <div style="width: 716px;height:28px;float:left;" class="">
             <div style="width: 67px;height: 28px;float:left;" class="bgfdc">
                 <div class="texto fz8 lh10">
-                    CODIGO TIPO DE ANUNCIO
+                    CÓDIGO TIPO DE ANUNCIO
                 </div>
             </div>
             <div style="width: 210;height: 28px;float:left;" class="bgfdc">

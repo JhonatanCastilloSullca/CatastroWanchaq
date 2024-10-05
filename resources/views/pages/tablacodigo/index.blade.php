@@ -15,6 +15,25 @@
         <div class="card-body">
             <div class="row">
             <h4 class="mb-3">Listado de Codigos de tabla</h4>
+            {!!Form::open(array('url'=>'mantenimiento/tablacodigo','method'=>'GET','autocomplete'=>'off','role'=>'search'))!!}
+
+            <div class="d-flex gap-2">
+                <div class="col-md-3">
+                    <select class="form-control" id="buscarTabla" name="buscarTabla"  data-live-search="true">
+                        <option value="0" {{ $tabla2 == '0' ? 'selected' : '' }} >TODOS</option>
+                        @foreach($tablas as $tab)
+                            <option value="{{$tab?->id_tabla}}" {{ $tabla2 == $tab?->id_tabla ? 'selected' : '' }} >{{$tab?->id_tabla}} {{$tab?->desc_tabla}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <button type="submit"  id="buscar" class="btn btn-primary"><i data-feather="search"></i> Buscar</button>
+                    </div>
+                </div>
+            </div>
+            {{Form::close()}}
+
             <div class="mb-5">
                 @can('vias.create')
                 <button type="button" class="btn btn-primary mb-2 mb-md-0 " data-bs-toggle="modal" data-bs-target="#Agregar">

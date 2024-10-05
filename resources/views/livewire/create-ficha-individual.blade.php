@@ -230,7 +230,7 @@
                     <div class="col-md-12">
                         <div class="mb-3">
                             <label class="form-label d-inline-flex" style="color: red;">
-                                <div class="divcuadro">6</div> UNIDAD ACUMULADA A CODIGO PREDIAL DE RENTAS
+                                <div class="divcuadro">6</div> UNIDAD ACUMULADA A CÓDIGO PREDIAL DE RENTAS
                             </label>
                             <input type="text" class="form-control" placeholder="" wire:model="unid_acum_rentas">
                             @error('unid_acum_rentas')
@@ -322,7 +322,7 @@
                     <div class="col-md-2">
                         <div class="mb-3">
                             <label class="form-label d-inline-flex">
-                                <div class="divcuadro">14</div> CODIGO URBANO
+                                <div class="divcuadro">14</div> CÓDIGO URBANO
                             </label>
                             <input type="text" class="form-control" placeholder="">
                         </div>
@@ -330,7 +330,7 @@
                     <div class="col-md-4">
                         <div class="mb-3">
                             <label class="form-label d-inline-flex">
-                                <div class="divcuadro">15</div> NOMBRE DE LA HABILITACION URBANA
+                                <div class="divcuadro">15</div> NOMBRE DE LA HABILITACIÓN URBANA
                             </label>
                             <input type="text" class="form-control" placeholder="">
                         </div>
@@ -544,7 +544,7 @@
                     <div class="col-md-2">
                         <div class="mb-3">
                             <label class="form-label d-inline-flex">
-                                <div class="divcuadro">14</div> CODIGO URBANO
+                                <div class="divcuadro">14</div> CÓDIGO URBANO
                             </label>
                             <input type="text" class="form-control" placeholder="">
                         </div>
@@ -552,7 +552,7 @@
                     <div class="col-md-4">
                         <div class="mb-3">
                             <label class="form-label d-inline-flex">
-                                <div class="divcuadro">15</div> NOMBRE DE LA HABILITACION URBANA
+                                <div class="divcuadro">15</div> NOMBRE DE LA HABILITACIÓN URBANA
                             </label>
                             <input type="text" class="form-control" placeholder="">
                         </div>
@@ -595,7 +595,7 @@
                     <div class="col-md-4">
                         <div class="mb-3">
                             <label class="form-label d-inline-flex">
-                                <div class="divcuadro">34</div> TELEFONO
+                                <div class="divcuadro">34</div> TELÉFONO
                             </label>
                             <input type="text" class="form-control" placeholder="">
                         </div>
@@ -611,7 +611,7 @@
                     <div class="col-md-5">
                         <div class="mb-3">
                             <label class="form-label d-inline-flex">
-                                <div class="divcuadro">36</div> CORREO ELECTRONICO
+                                <div class="divcuadro">36</div> CORREO ELECTRÓNICO
                             </label>
                             <input type="text" class="form-control" placeholder="">
                         </div>
@@ -669,7 +669,7 @@
                     <div class="col-md-2">
                         <div class="mb-3">
                             <label class="form-label d-inline-flex">
-                                <div class="divcuadro">42</div> CODIGO DE USO
+                                <div class="divcuadro">42</div> CÓDIGO DE USO
                             </label>
                             <input type="text" class="form-control" placeholder="">
                         </div>
@@ -711,7 +711,7 @@
                     <div class="col-md-2">
                         <div class="mb-3">
                             <label class="form-label d-inline-flex">
-                                <div class="divcuadro">42</div> CODIGO DE USO
+                                <div class="divcuadro">42</div> CÓDIGO DE USO
                             </label>
                             <input type="text" class="form-control" placeholder="">
                         </div>
@@ -797,7 +797,7 @@
                     <div class="col-md-1">
                         <div class="mb-3">
                             <label class="form-label d-inline-flex">
-                                <div class="divcuadro">51</div> TELEFONO
+                                <div class="divcuadro">51</div> TELÉFONO
                             </label>
                             <input type="text" class="form-control" placeholder="">
                         </div>
@@ -805,7 +805,7 @@
                     <div class="col-md-1">
                         <div class="mb-3">
                             <label class="form-label d-inline-flex">
-                                <div class="divcuadro">52</div> DESAGÛE
+                                <div class="divcuadro">52</div> DESAGÜE
                             </label>
                             <input type="text" class="form-control" placeholder="">
                         </div>
@@ -829,7 +829,7 @@
                     <div class="col-md-1">
                         <div class="mb-3">
                             <label class="form-label d-inline-flex">
-                                <div class="divcuadro">55</div> CONEXION TV POR CABLE O CABLE SATELITAL
+                                <div class="divcuadro">55</div> CONEXIÓN TV POR CABLE O CABLE SATELITAL
                             </label>
                             <input type="text" class="form-control" placeholder="">
                         </div>
@@ -1015,7 +1015,7 @@
                     <div class="col-md-3">
                         <div class="mb-3">
                             <label class="form-label d-inline-flex">
-                                <div class="divcuadro">71</div>CODIGO
+                                <div class="divcuadro">71</div>CÓDIGO
                             </label>
                             <input type="text" class="form-control">
                         </div>
@@ -1215,7 +1215,7 @@
                     <div class="col-md-3">
                         <div class="mb-3">
                             <label class="form-label d-inline-flex">
-                                <div class="divcuadro">84</div>DECLARATORIA DE FABRICA
+                                <div class="divcuadro">84</div>DECLARATORIA DE FÁBRICA
                             </label>
                             <input type="text" class="form-control">
                         </div>
@@ -1223,7 +1223,7 @@
                     <div class="col-md-3">
                         <div class="mb-3">
                             <label class="form-label d-inline-flex">
-                                <div class="divcuadro">85</div>AS. INSC. DE FABRICA
+                                <div class="divcuadro">85</div>AS. INSC. DE FÁBRICA
                             </label>
                             <input type="text" class="form-control">
                         </div>
@@ -1253,7 +1253,7 @@
                     </div><!-- Col -->
                     <div class="col-md-3">
                         <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="EN AREA PUBLICA">
+                            <input type="text" class="form-control" placeholder="EN ÁREA PÚBLICA">
                         </div>
                     </div><!-- Col -->
                     <div class="col-md-3">
@@ -1263,7 +1263,7 @@
                     </div><!-- Col -->
                     <div class="col-md-3">
                         <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="EN AREA INTANGIBLE">
+                            <input type="text" class="form-control" placeholder="EN ÁREA INTANGIBLE">
                         </div>
                     </div><!-- Col -->
                 </div><!-- Row -->
@@ -1294,7 +1294,7 @@
                     </div><!-- Col -->
                     <div class="col-md-3">
                         <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="CODIGO DEL CONTRIBUYENTE">
+                            <input type="text" class="form-control" placeholder="CÓDIGO DEL CONTRIBUYENTE">
                         </div>
                     </div><!-- Col -->
                 </div><!-- Row -->

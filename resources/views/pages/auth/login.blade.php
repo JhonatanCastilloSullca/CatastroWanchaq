@@ -21,16 +21,16 @@
                                     {{ csrf_field() }}
                                     <div class="mb-3">
                                         <label for="userEmail" class="form-label">Usuario</label>
-                                        <input type="text" class="form-control" id="userEmail" placeholder="Usuario"
-                                            name="usuario">
+                                        <input type="text" class="form-control no-transform" id="userEmail" placeholder="Usuario"
+                                            name="usuario" >
                                         @error('usuario')
                                             <span class="error-message" style="color:red">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="userPassword" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="userPassword"
-                                            autocomplete="current-password" placeholder="Password" name="password">
+                                        <input type="password" class="form-control no-transform" id="userPassword"
+                                            autocomplete="current-password" placeholder="Password" name="password" >
                                         @error('password')
                                             <span class="error-message" style="color:red">{{ $message }}</span>
                                         @enderror

@@ -174,7 +174,7 @@ class UsosSeeder extends Seeder
             ['codi_uso'=> '050301'	,'desc_uso'=>'TERMINAL MARÍTIMO'],
             ['codi_uso'=> '050302'	,'desc_uso'=>'TERMINAL AEREO'],
             ['codi_uso'=> '050311'	,'desc_uso'=>'SERVICIO RELACIONADO AL TRANSPORTE AEREO'],
-            ['codi_uso'=> '050402'	,'desc_uso'=>'TELEFONO'],
+            ['codi_uso'=> '050402'	,'desc_uso'=>'TELÉFONO'],
             ['codi_uso'=> '050404'	,'desc_uso'=>'TELEGRAFO'],
             ['codi_uso'=> '050407'	,'desc_uso'=>'VIA SATELITE'],
             ['codi_uso'=> '050408'	,'desc_uso'=>'TELEX'],

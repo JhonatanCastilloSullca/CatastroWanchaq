@@ -666,7 +666,7 @@
                     <div class="row form-group">
                         <div class="col-md-4">
                             <div class="mb-3">
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">44</div> TELEFONO</label>
+                                <label class="form-label d-inline-flex" > <div class="divcuadro">44</div> TELÉFONO</label>
                                 <input type="text" class="form-control" placeholder="" name="telefonodomicilio" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..?)\../g, '$1');" maxlength="10" wire:model="telefonodomicilio">
                                 @error('telefonodomicilio')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
@@ -684,7 +684,7 @@
                         </div><!-- Col -->
                         <div class="col-md-4">
                             <div class="mb-3">
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">46</div> CORREO ELECTRONICO</label>
+                                <label class="form-label d-inline-flex" > <div class="divcuadro">46</div> CORREO ELECTRÓNICO</label>
                                 <input type="text" class="form-control" placeholder="" name="emaildomicilio" maxlength="100" wire:model="emaildomicilio">
                                 @error('emaildomicilio')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
@@ -755,7 +755,7 @@
                                 <select class="form-select"  data-width="100%" data-live-search="true" name="ins_reg_publ" id="ins_reg_publ" wire:model="ins_reg_publ" >
                                     <option value=""  >SELECCIONE</option>
                                     <option value="01">01 PARTIDA ELECTRONICA</option>
-                                    <option value="02">02 CODIGO DE PREDIO</option>
+                                    <option value="02">02 CÓDIGO DE PREDIO</option>
                                     <option value="03">03 FICHA</option>
                                     <option value="04">04 TOMO / FOLIO</option>
                                     <option value="05">05 ANTECEDENTE REGISTRAL</option>
@@ -1480,7 +1480,7 @@
                     <div class="row form-group mb-3">
                         <h4 class="mb-3">DESCRIPCIÓN DEL PREDIO</h4>
                         <div class="col-md-6">
-                            <label class="form-label d-inline-flex" > <div class="divcuadrorequired">80</div>CODIGO DE USO</label>
+                            <label class="form-label d-inline-flex" > <div class="divcuadrorequired">80</div>CÓDIGO DE USO</label>
                             <div wire:ignore>
                                 <select class="form-select"  data-live-search="true" name="codi_uso" id="codi_uso" wire:model="codi_uso" >
                                     <option value=""  >SELECCIONE</option>

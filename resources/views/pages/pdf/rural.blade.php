@@ -1209,7 +1209,7 @@
             44
           </div>
           <div class="texto fz8 lh14">
-            TELEFONO
+            TELÉFONO
           </div>
         </div>
         <div style="width: 71px;height: 16px;float:left;" class="texto2 fz8 lh14">
@@ -1240,7 +1240,7 @@
             46
           </div>
           <div class="texto fz8 lh14">
-            CORREO ELECTRONICO
+            CORREO ELECTRÓNICO
           </div>
         </div>
         <div style="width: 301px;height: 16px;float:left;" class="texto2 fz8 lh14">
@@ -1265,7 +1265,7 @@
             47
           </div>
           <div class="texto fz8 lh14">
-            CODIGO
+            CÓDIGO
           </div>
         </div>
         <div style="width: 18px;height: 16px;float:left;" class="texto2 fz8 lh14">
@@ -1537,7 +1537,7 @@
               01
             </div>
             <div class="texto fz6 lh12">
-              CODIGO
+              CÓDIGO
             </div>
           </div>
           <div style="width: 104px;height: 16px;float:left;" class="fondoclarito">
@@ -1545,7 +1545,7 @@
               02
             </div>
             <div class="texto fz6 lh12">
-              CODIGO DE PREDIO
+              CÓDIGO DE PREDIO
             </div>
           </div>
           <div style="width: 104px;height: 16px;float:left;" class="fondoclarito">
@@ -2892,7 +2892,7 @@
           80
         </div>
         <div class="texto fz8 lh14">
-          CODIGO DE USO
+          CÓDIGO DE USO
         </div>
       </div>
       <div style="width: 18px;height: 16px;float:left;" class="texto2 fz8 lh14">
@@ -3699,7 +3699,7 @@
             96
           </div>
           <div class="texto fz8 lh14">
-            FIRMA DEL TECNICO CATASTRAL
+            FIRMA DEL TÉCNICO CATASTRAL
           </div>
         </div>
         <div style="width: 178px;height: 70px;float:left;">

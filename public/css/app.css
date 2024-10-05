@@ -28147,3 +28147,9 @@ textarea:focus {
 .w-65{
 	width: 65px !important;
 }
+input, label, td{
+	text-transform: uppercase !important;
+}
+.no-transform{
+	text-transform: none !important;
+}

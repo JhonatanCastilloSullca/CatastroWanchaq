@@ -475,7 +475,7 @@
                         <div class="col-md-2">
                             <div class="mb-3">
                                 <label class="form-label d-inline-flex">
-                                    <div class="divcuadro">34</div> TELEFONO
+                                    <div class="divcuadro">34</div> TELÉFONO
                                 </label>
                                 <input type="text" class="form-control" placeholder="" name="telefonoconductor[]"
                                     wire:model="telefonoconductor.{{ $i }}"
@@ -600,7 +600,7 @@
                         <div class="col-md-2">
                             <div class="mb-3">
                                 <label class="form-label d-inline-flex">
-                                    <div class="divcuadro">14</div> CODIGO DE HU
+                                    <div class="divcuadro">14</div> CÓDIGO DE HU
                                 </label>
                                 <input type="text" class="form-control" placeholder=""
                                     name="codigohurbanoconductor[]"
@@ -615,7 +615,7 @@
                         <div class="col-md-3">
                             <div class="mb-3">
                                 <label class="form-label d-inline-flex">
-                                    <div class="divcuadro">15</div> NOMBRE DE LA HABILITACION URBANA
+                                    <div class="divcuadro">15</div> NOMBRE DE LA HABILITACIÓN URBANA
                                 </label>
                                 <input type="text" class="form-control" placeholder=""
                                     name="nombrehhurbanaconductor[]"

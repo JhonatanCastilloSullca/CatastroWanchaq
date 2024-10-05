@@ -1040,7 +1040,7 @@
             </div>
             <div style="width: 77.9PX;height: 16px;float:left;" class="fondoclarito bn">
                 <div class="texto tc fz6 lh12">
-                  04 CODIGO DE PREDIO
+                  04 CÓDIGO DE PREDIO
                 </div>
             </div>
 
@@ -2433,7 +2433,7 @@
             </div>
             <div style="width: 77.9PX;height: 16px;float:left;" class="fondoclarito bn">
                 <div class="texto tc fz6 lh12">
-                  04 CODIGO DE PREDIO
+                  04 CÓDIGO DE PREDIO
                 </div>
             </div>
 
@@ -2553,7 +2553,7 @@
         </div>
         <div style="width: 143px;height: 16px;float:left;" class="fondoclaro">
           <div class="texto fz8 lh14">
-            CODIGO DEL CONTRIBUYENTE
+            CÓDIGO DEL CONTRIBUYENTE
           </div>
         </div>
         <!--foreach-->
@@ -2778,7 +2778,7 @@
             122
           </div>
           <div class="texto fz8 lh14">
-            FIRMA DEL TECNICO CATASTRAL
+            FIRMA DEL TÉCNICO CATASTRAL
           </div>
         </div>
         <div style="width: 178px;height: 70px;float:left;">

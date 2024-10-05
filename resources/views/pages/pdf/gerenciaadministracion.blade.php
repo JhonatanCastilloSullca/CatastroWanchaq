@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>INFORME TECNICO CATASTRAL</title>
+    <title>INFORME TÉCNICO CATASTRAL</title>
     <style>
         body {
             background-color: #FFF;
@@ -278,7 +278,7 @@
             <div style="width: 473px;height:16px;margin: auto; padding-top:5px;padding-bottom:5px; margin-bottom:5px; "
                 class="bgfdc">
                 <div class="texto fz14 lh14">
-                    <b>INFORME TECNICO CATASTRAL GERENCIA DE ADMINISTRACION TRIBUTARIA</b>
+                    <b>INFORME TÉCNICO CATASTRAL GERENCIA DE ADMINISTRACION TRIBUTARIA</b>
                 </div>
             </div>
 
@@ -287,7 +287,7 @@
             <!-- fila 03-->
             <div style="width: 427px;height:16px;margin: auto; border:none">
                 <div class="texto fz10">
-                    <b> CODIGO DE REFERENCIA CATASTRAL</b>
+                    <b> CÓDIGO DE REFERENCIA CATASTRAL</b>
                 </div>
                 <div style="width: 106px;height: 16px;float:left;border:none;" class="bgfdc">
                     <div style="width: 106px;height: 8px;float:left;">
@@ -739,7 +739,7 @@
 
             <div style="width: 7px;height: 28px;float:left;">
                 <div class="texto fz10 lh20">
-                    CODIGO
+                    CÓDIGO
                 </div>
             </div>
             <div style="width: 170.9px;height: 28px;float:left;">

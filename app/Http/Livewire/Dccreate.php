@@ -25,7 +25,7 @@ class Dccreate extends Component
 
     public function mount()
     {
-        $this->sectores=Sectore::all();
+        $this->sectores = Sectore::orderBy('codi_sector', 'asc')->get();
     }
 
     public function updatedsector($id_sector)
