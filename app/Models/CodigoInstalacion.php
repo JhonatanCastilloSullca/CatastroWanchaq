@@ -16,6 +16,7 @@ class CodigoInstalacion extends Authenticatable implements AuditableContract
 
     protected $table = 'tf_codigos_instalaciones';
     protected $fillable = [
+        'codi_instalacion',
         'desc_instalacion',
         'material',
         'unidad',

@@ -29,16 +29,13 @@ class ReporteController extends Controller
     public function __construct()
     {
         $this->middleware('can:reporte.index')->only('reportelista');
-
         $this->middleware('can:impresion.verficha')->only('verficha');
         $this->middleware('can:impresion.verfichainformativa')->only('verfichainformativa');
         $this->middleware('can:impresion.vercertificado')->only('vercertificado');
         $this->middleware('can:impresion.veradministracion')->only('veradministracion');
         $this->middleware('can:impresion.verinformativaeconomica')->only('verinformativaeconomica');
         $this->middleware('can:impresion.vercnumeracion')->only('vercnumeracion');
-
         $this->middleware('can:reporte.reportepersona')->only('reportepersona');
-
         $this->middleware('can:reporte.reportefechas')->only('reportefechas');
         $this->middleware('can:reporte.fichapuerta')->only('fichapuerta');
         $this->middleware('can:reporte.fichapredio')->only('fichapredio');
@@ -55,7 +52,6 @@ class ReporteController extends Controller
     {
         $sectores = Sectore::all();
         $manzanas = Manzana::all();
-
         $sector2 = $request->buscarSector;
         $manzana2 = $request->buscarManzana;
         if ($request->buscarFicha != "") {
@@ -65,9 +61,6 @@ class ReporteController extends Controller
         }
         $crc = $request->buscarcrc;
         $cuc = $request->buscarcuc;
-
-
-
         $tipoficha = $request->buscarTipo;
         $ficha = Ficha::where('activo', 'LIKE', '%%')->orderBy('nume_ficha', 'asc');
 
@@ -89,8 +82,6 @@ class ReporteController extends Controller
                 $query->where('cuc','like',"%$cuc%");
             });
         }
-
-
         if ($request->buscarcrc != "") {
             $buscarubigeo = substr($crc, 0, 6);
             $buscarsector = substr($crc, 6, 2);
@@ -101,7 +92,6 @@ class ReporteController extends Controller
             $buscarpiso = substr($crc, 18, 2);
             $buscarunidad = substr($crc, 20, 3);
             $buscardc = substr($crc, 23, 1);
-
             if ($buscarubigeo != "") {
                 $ficha = $ficha->whereHas('unicat', function($query) use ($buscarubigeo){
                     $query->whereHas('edificacion', function($query) use ($buscarubigeo){
@@ -117,7 +107,6 @@ class ReporteController extends Controller
                     });
                 });
             }
-
             if ($buscarsector != "") {
                 $ficha = $ficha->whereHas('unicat', function($query) use ($buscarsector){
                     $query->whereHas('edificacion', function($query) use ($buscarsector){
@@ -131,7 +120,6 @@ class ReporteController extends Controller
                     });
                 });
             }
-
             if ($buscarmanzana != "") {
                 $ficha = $ficha->whereHas('unicat', function($query) use ($buscarmanzana){
                     $query->whereHas('edificacion', function($query) use ($buscarmanzana){
@@ -143,7 +131,6 @@ class ReporteController extends Controller
                     });
                 });
             }
-
             if ($buscarlote != "") {
                 $ficha = $ficha->whereHas('unicat', function($query) use ($buscarlote){
                     $query->whereHas('edificacion', function($query) use ($buscarlote){
@@ -153,7 +140,6 @@ class ReporteController extends Controller
                     });
                 });
             }
-
             if ($buscaredifica != "") {
                 $ficha = $ficha->whereHas('unicat', function($query) use ($buscaredifica){
                     $query->whereHas('edificacion', function($query) use ($buscaredifica){
@@ -166,13 +152,11 @@ class ReporteController extends Controller
                     $query->where('codi_entrada','=',$buscarentrada);
                 });
             }
-
             if ($buscarpiso != "") {
                 $ficha = $ficha->whereHas('unicat', function($query) use ($buscarpiso){
                     $query->where('codi_piso','=',$buscarpiso);
                 });
             }
-
             if ($buscarunidad != "") {
                 $ficha = $ficha->whereHas('unicat', function($query) use ($buscarunidad){
                     $query->where('codi_unidad','=',$buscarunidad);
@@ -185,14 +169,12 @@ class ReporteController extends Controller
         if ($request->buscarTipo != 0) {
             $ficha = $ficha->where('tipo_ficha', '=', $tipoficha);
         }
-        $ficha = $ficha->get();
+        $ficha = $ficha->orderby('nume_ficha')->get();
         $numero = count($ficha);
         $total = 0;
-
         if ($request->buscarSector == '' && $request->buscarManzana == '' && $request->buscarFicha == '' && $request->buscarTipo == '') {
             $ficha = [];
         }
-
         return view('pages.reporte.index', compact('crc','cuc','sectores', 'manzanas', 'numero', 'ficha2', 'ficha', 'sector2', 'manzana2', 'tipoficha'));
     }
 
@@ -208,9 +190,6 @@ class ReporteController extends Controller
                 $this->fichaIndividuales($sector2, $manzana2, $tipoficha);
             }
         }
-
-
-
         return view('pages.reporte.fichasmasivas', compact('sectores', 'manzanas', 'sector2', 'manzana2', 'tipoficha'));
     }
 
@@ -227,7 +206,6 @@ class ReporteController extends Controller
             'margin_footer' => 10,
         ]);
         $logos = Institucion::first();
-
         switch ($tipo_ficha) {
             case ('01'):
                 $fichas = Ficha::with('unicat')->with('unicat.edificacion')->with('unicat.edificacion.lote')->with('unicat.edificacion.lote.hab_urbana')->with('unicat.edificacion.lote.manzana')
@@ -274,9 +252,6 @@ class ReporteController extends Controller
             default:
                 $html = \View::make('pages.pdf.individuales', compact('sector', 'fichas', 'logos'));
         }
-
-
-
         $html = $html->render();
         $mpdf->WriteHTML($html);
         $mpdf->Output($fileName, 'D');
@@ -286,7 +261,6 @@ class ReporteController extends Controller
     {
         $sectores = Sectore::orderby('codi_sector')->get();
         $manzanas = Manzana::orderby('codi_mzna')->get();
-
         $sector2 = $request->buscarSector;
         $manzana2 = $request->buscarManzana;
         if ($request->buscarFicha != "") {
@@ -294,8 +268,6 @@ class ReporteController extends Controller
         } else {
             $ficha2 = $request->buscarFicha;
         }
-
-
         $ficha = Ficha::where('activo', 'LIKE', '%%');
         if ($request->buscarSector != '0') {
             $ficha = $ficha->whereHas('lote.manzana', function ($query) use ($sector2) {
@@ -311,10 +283,8 @@ class ReporteController extends Controller
             $ficha = $ficha->where('nume_ficha', '=', $ficha2);
         }
         $ficha = $ficha->where('tipo_ficha', '=', '01');
-
-        $ficha = $ficha->get();
+        $ficha = $ficha->orderby('nume_ficha')->get();
         $total = 0;
-
         return view('pages.reporte.verficha', compact('sectores', 'ficha2', 'manzanas', 'ficha', 'sector2', 'manzana2'));
     }
 
@@ -322,7 +292,6 @@ class ReporteController extends Controller
     {
         $sectores = Sectore::orderby('codi_sector')->get();
         $manzanas = Manzana::orderby('codi_mzna')->get();
-
         $sector2 = $request->buscarSector;
         $manzana2 = $request->buscarManzana;
         if ($request->buscarFicha != "") {
@@ -330,8 +299,6 @@ class ReporteController extends Controller
         } else {
             $ficha2 = $request->buscarFicha;
         }
-
-
         $ficha = Ficha::where('activo', 'LIKE', '%%');
         if ($request->buscarSector != '0') {
             $ficha = $ficha->whereHas('lote.manzana', function ($query) use ($sector2) {
@@ -348,9 +315,8 @@ class ReporteController extends Controller
         }
         $ficha = $ficha->where('tipo_ficha', '=', '02');
 
-        $ficha = $ficha->get();
+        $ficha = $ficha->orderby('nume_ficha')->get();
         $total = 0;
-
         return view('pages.reporte.verfichacotitular', compact('sectores', 'ficha2', 'manzanas', 'ficha', 'sector2', 'manzana2'));
     }
 
@@ -358,7 +324,6 @@ class ReporteController extends Controller
     {
         $sectores = Sectore::orderby('codi_sector')->get();
         $manzanas = Manzana::orderby('codi_mzna')->get();
-
         $sector2 = $request->buscarSector;
         $manzana2 = $request->buscarManzana;
         if ($request->buscarFicha != "") {
@@ -366,8 +331,6 @@ class ReporteController extends Controller
         } else {
             $ficha2 = $request->buscarFicha;
         }
-
-
         $ficha = Ficha::where('activo', 'LIKE', '%%');
         if ($request->buscarSector != '0') {
             $ficha = $ficha->whereHas('lote.manzana', function ($query) use ($sector2) {
@@ -383,10 +346,8 @@ class ReporteController extends Controller
             $ficha = $ficha->where('nume_ficha', '=', $ficha2);
         }
         $ficha = $ficha->where('tipo_ficha', '=', '03');
-
-        $ficha = $ficha->get();
+        $ficha = $ficha->orderby('nume_ficha')->get();
         $total = 0;
-
         return view('pages.reporte.verfichaeconomicas', compact('sectores', 'ficha2', 'manzanas', 'ficha', 'sector2', 'manzana2'));
     }
 
@@ -394,7 +355,6 @@ class ReporteController extends Controller
     {
         $sectores = Sectore::orderby('codi_sector')->get();
         $manzanas = Manzana::orderby('codi_mzna')->get();
-
         $sector2 = $request->buscarSector;
         $manzana2 = $request->buscarManzana;
         if ($request->buscarFicha != "") {
@@ -402,8 +362,6 @@ class ReporteController extends Controller
         } else {
             $ficha2 = $request->buscarFicha;
         }
-
-
         $ficha = Ficha::where('activo', 'LIKE', '%%');
         if ($request->buscarSector != '0') {
             $ficha = $ficha->whereHas('lote.manzana', function ($query) use ($sector2) {
@@ -419,18 +377,14 @@ class ReporteController extends Controller
             $ficha = $ficha->where('nume_ficha', '=', $ficha2);
         }
         $ficha = $ficha->where('tipo_ficha', '=', '04');
-
-        $ficha = $ficha->get();
+        $ficha = $ficha->orderby('nume_ficha')->get();
         $total = 0;
-
         return view('pages.reporte.verfichabc', compact('sectores', 'ficha2', 'manzanas', 'ficha', 'sector2', 'manzana2'));
     }
-
     public function verfichainformativa(Request $request)
     {
         $sectores = Sectore::orderby('codi_sector')->get();
         $manzanas = Manzana::orderby('codi_mzna')->get();
-
         $sector2 = $request->buscarSector;
         $manzana2 = $request->buscarManzana;
         if ($request->buscarFicha != "") {
@@ -438,8 +392,6 @@ class ReporteController extends Controller
         } else {
             $ficha2 = $request->buscarFicha;
         }
-
-
         $ficha = Ficha::where('activo', 'LIKE', '%%');
         if ($request->buscarSector != '0') {
             $ficha = $ficha->whereHas('lote.manzana', function ($query) use ($sector2) {
@@ -455,10 +407,8 @@ class ReporteController extends Controller
             $ficha = $ficha->where('nume_ficha', '=', $ficha2);
         }
         $ficha = $ficha->where('tipo_ficha', '=', '01');
-
-        $ficha = $ficha->get();
+        $ficha = $ficha->orderby('nume_ficha')->get();
         $total = 0;
-
         return view('pages.reporte.verfichainformativa', compact('sectores', 'ficha2', 'manzanas', 'ficha', 'sector2', 'manzana2'));
     }
 
@@ -470,7 +420,6 @@ class ReporteController extends Controller
     {
         $sectores = Sectore::orderby('codi_sector')->get();
         $manzanas = Manzana::orderby('codi_mzna')->get();
-
         $sector2 = $request->buscarSector;
         $manzana2 = $request->buscarManzana;
         if ($request->buscarFicha != "") {
@@ -478,7 +427,6 @@ class ReporteController extends Controller
         } else {
             $ficha2 = $request->buscarFicha;
         }
-
         $ficha = Ficha::where('activo', 'LIKE', '%%');
         if ($request->buscarSector != '0') {
             $ficha = $ficha->whereHas('lote.manzana', function ($query) use ($sector2) {
@@ -494,10 +442,8 @@ class ReporteController extends Controller
             $ficha = $ficha->where('nume_ficha', '=', $ficha2);
         }
         $ficha = $ficha->where('tipo_ficha', '=', '01');
-
-        $ficha = $ficha->get();
+        $ficha = $ficha->orderby('nume_ficha')->get();
         $total = 0;
-
         return view('pages.reporte.vercertificado', compact('sectores', 'ficha2', 'manzanas', 'ficha', 'sector2', 'manzana2'));
     }
 
@@ -513,7 +459,6 @@ class ReporteController extends Controller
         } else {
             $ficha2 = $request->buscarFicha;
         }
-
         $ficha = Ficha::where('activo', 'LIKE', '%%');
         if ($request->buscarSector != '0') {
             $ficha = $ficha->whereHas('lote.manzana', function ($query) use ($sector2) {
@@ -529,10 +474,8 @@ class ReporteController extends Controller
             $ficha = $ficha->where('nume_ficha', '=', $ficha2);
         }
         $ficha = $ficha->where('tipo_ficha', '=', '01');
-
-        $ficha = $ficha->get();
+        $ficha = $ficha->orderby('nume_ficha')->get();
         $total = 0;
-
         return view('pages.reporte.veradministracion', compact('sectores', 'manzanas', 'ficha2', 'ficha', 'sector2', 'manzana2'));
     }
 
@@ -562,10 +505,8 @@ class ReporteController extends Controller
         if ($request->buscarFicha != "") {
             $ficha = $ficha->where('nume_ficha', '=', $ficha2);
         }
-
-        $ficha = $ficha->get();
+        $ficha = $ficha->orderby('nume_ficha')->get();
         $total = 0;
-
         return view('pages.reporte.verinformativaeconomica', compact('sectores', 'ficha2', 'manzanas', 'ficha', 'sector2', 'manzana2'));
     }
 
@@ -597,7 +538,7 @@ class ReporteController extends Controller
         }
         $ficha = $ficha->where('tipo_ficha', '=', '01');
 
-        $ficha = $ficha->get();
+        $ficha = $ficha->orderby('nume_ficha')->get();
         $total = 0;
 
         return view('pages.reporte.vercnumeracion', compact('sectores', 'ficha2', 'manzanas', 'ficha', 'sector2', 'manzana2'));
@@ -618,7 +559,7 @@ class ReporteController extends Controller
                 $query->where('id_persona', '=', $titular2);
             });
         }
-        $ficha = $ficha->get();
+        $ficha = $ficha->orderby('nume_ficha')->get();
         $numero = count($ficha);
         $total = 0;
         if ($request->buscarTitular == '') {
@@ -720,7 +661,7 @@ class ReporteController extends Controller
         if ($request->buscarUsuario != '') {
             $ficha = $ficha->where('id_usuario', '=', $usuario2);
         }
-        $ficha = $ficha->get();
+        $ficha = $ficha->orderby('nume_ficha')->get();
 
         if ($request->buscarUsuario == "" && $request->buscarFechaInicio == "" && $request->buscarFechaFin == "") {
             $numero = 0;
@@ -748,7 +689,7 @@ class ReporteController extends Controller
         if ($request->buscarUsuario != '') {
             $ficha = $ficha->where('id_usuario', '=', $usuario2);
         }
-        $ficha = $ficha->get();
+        $ficha = $ficha->orderby('nume_ficha')->get();
         $numero = count($ficha);
         $total = 0;
         $fechafin = date("Y-m-d", strtotime($fechafin . "- 1 days"));
@@ -771,7 +712,7 @@ class ReporteController extends Controller
             ->whereDate('fecha_grabado', '<=', $fechafin);
 
         }
-        $ficha = $ficha->get();
+        $ficha = $ficha->orderby('nume_ficha')->get();
         $numero = count($ficha);
         $total = 0;
         $i = 0;
@@ -859,7 +800,7 @@ class ReporteController extends Controller
         }
         $ficha = $ficha->where('tipo_ficha', '=', '01');
 
-        $ficha = $ficha->get();
+        $ficha = $ficha->orderby('nume_ficha')->get();
         $numero = count($ficha);
         $total = 0;
         return view('pages.reporte.fichapuerta', compact('sectores', 'ficha2', 'puertas', 'puerta2', 'manzanas', 'ficha', 'sector2', 'manzana2', 'numero'));
@@ -894,7 +835,7 @@ class ReporteController extends Controller
         }
 
 
-        $ficha = $ficha->get();
+        $ficha = $ficha->orderby('nume_ficha')->get();
         $numero = count($ficha);
         $total = 0;
         return view('pages.reporte.fichapredio', compact('sectores', 'clasificacion', 'clasificacion2', 'manzanas', 'ficha', 'sector2', 'manzana2', 'numero'));
@@ -935,7 +876,7 @@ class ReporteController extends Controller
         }
 
 
-        $ficha = $ficha->get();
+        $ficha = $ficha->orderby('nume_ficha')->get();
         $numero = count($ficha);
         $total = 0;
         return view('pages.reporte.fichaconstrucciones', compact('sectores', 'construccion', 'construccion2', 'manzanas', 'ficha', 'sector2', 'manzana2', 'numero'));
@@ -1140,7 +1081,7 @@ class ReporteController extends Controller
 
 
 
-        $ficha = $ficha->get();
+        $ficha = $ficha->orderby('nume_ficha')->get();
         $numero = count($ficha);
         $total = 0;
         return view('pages.reporte.fichaantiguedad', compact('sectores', 'manzanas', 'antiguedad2', 'ficha', 'sector2', 'manzana2', 'numero'));
@@ -1167,7 +1108,7 @@ class ReporteController extends Controller
         }
 
 
-        $ficha = $ficha->get();
+        $ficha = $ficha->orderby('nume_ficha')->get();
         $numero = count($ficha);
         $total = 0;
         return view('pages.reporte.fichaanexo', compact('sectores', 'manzanas', 'ficha', 'sector2', 'manzana2', 'numero'));
@@ -1194,7 +1135,7 @@ class ReporteController extends Controller
             });
         }
 
-        $ficha = $ficha->get();
+        $ficha = $ficha->orderby('nume_ficha')->get();
         $numero = count($ficha);
         $total = 0;
         if ($request->buscarSector == '' && $request->buscarActividad == "") {
@@ -1248,7 +1189,7 @@ class ReporteController extends Controller
             });
         }
 
-        $ficha = $ficha->get();
+        $ficha = $ficha->orderby('nume_ficha')->get();
         $numero = count($ficha);
         $total = 0;
         return view('pages.reporte.reportefirmas', compact('verificadors', 'verificado2', 'supervisors', 'supervisor2', 'tecnicos', 'tecnico2', 'declarantes', 'declarante2', 'ficha', 'numero'));
@@ -1289,7 +1230,7 @@ class ReporteController extends Controller
         if ($request->buscarCondicion != '0') {
             $ficha = $ficha->where('cond_declarante', '=', $condicion2);
         }
-        $ficha = $ficha->get();
+        $ficha = $ficha->orderby('nume_ficha')->get();
         $numero = count($ficha);
         $total = 0;
         return view('pages.reporte.condiciondeclarante', compact('condicion2', 'tipoficha2', 'ficha', 'numero'));

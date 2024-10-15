@@ -14,8 +14,8 @@ class LoginController extends Controller
         return view('pages.auth.login');
     }
 
-    public function login(Request $request){
-
+    public function login(Request $request)
+    {
         $request->validate([
             'usuario' => 'required|string',
             'password' => 'required|string',
@@ -25,7 +25,9 @@ class LoginController extends Controller
         $user = User::where('usuario', $request->usuario)->first();
 
         if ($user && $user->session_id) {
-            return back()->withErrors(['usuario' => 'Ya hay una sesión activa para este usuario.']);
+            \Session::getHandler()->destroy($user->session_id);
+            $user->session_id = null;
+            $user->save();
         }
         if (Auth::attempt($credentials)) {
             if (Auth::user()->estado == 1) {
@@ -38,9 +40,11 @@ class LoginController extends Controller
                 return back()->withErrors(['usuario' => 'El usuario no está activo.']);
             }
         }
+
         return back()->withErrors(['usuario' => trans('auth.failed')])
-        ->withInput(request(['usuario']));
+            ->withInput($request->only('usuario'));
     }
+
     public function logout(Request $request){
         $user = Auth::user();
         if ($user) {

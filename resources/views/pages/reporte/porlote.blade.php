@@ -11,7 +11,7 @@
         </div>
         <div class="card-body">
             <div class="row">
-            <h4 class="mb-3">Buscar Ficha Catastral</h4>
+            <h4 class="mb-3">Reporte de cantidad por lote</h4>
             {!!Form::open(array('url'=>'reporte/porlote','method'=>'GET','autocomplete'=>'off','role'=>'search'))!!}
             <div class="form-group row">
                 <div class="col-md-1" style="padding-top: 10px">

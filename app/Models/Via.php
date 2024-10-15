@@ -17,7 +17,7 @@ class Via extends Authenticatable  implements AuditableContract
         'nomb_via' => 'required|max:100',
         'tipo_via' => 'required|max:100',
         'codi_via' => 'required|unique:tf_vias|max:6',
-        'fecha_via' => 'nullable|date',
+        'fecha_via'=> 'nullable|date',
     ];
     protected $table = 'tf_vias';
 

@@ -66,6 +66,7 @@
                             <th>Nº Ficha</th>
                             <th>Sector</th>
                             <th>Manzana</th>
+                            <th>Lote</th>
                             <th>Fecha</th>
                             <th>F. Bien Cultural</th>
                         </tr>
@@ -76,6 +77,7 @@
                                 <td>{{$ficha->nume_ficha}}</td>
                                 <td>{{$ficha->lote->manzana->sectore->nomb_sector}}</td>
                                 <td>{{$ficha->lote->manzana->codi_mzna}}</td>
+                                <td>{{$ficha?->lote?->codi_lote}}</td>
                                 <td>{{date("d/m/Y", strtotime($ficha->fecha_grabado))}}</td>
                                 <td>
                                     <a href="{{ route('ficha.createbiencultural',$ficha) }}">

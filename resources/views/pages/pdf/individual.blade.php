@@ -194,6 +194,10 @@
         .bn {
             border: none !important;
         }
+        .color-azul
+        {
+            color: #0011ff;
+        }
     </style>
 
 </head>
@@ -747,23 +751,23 @@
     <!-- 14 al 19-->
     <!-- 18 AL 23-->
     <div style="width: 716px;height:16px;margin: auto;">
-        <div style="width: 111px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 111px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->unicat?->edificacion?->lote?->hab_urbana?->codi_hab_urba }}
         </div>
-        <div style="width: 222px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 222px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->unicat?->edificacion?->lote?->hab_urbana?->tipo_hab_urba }}
             {{ $ficha?->unicat?->edificacion?->lote?->hab_urbana?->nomb_hab_urba }}
         </div>
-        <div style="width: 130px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 130px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->unicat?->edificacion?->lote?->zona_dist }}
         </div>
-        <div style="width: 93px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 93px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->unicat?->edificacion?->lote?->mzna_dist }}
         </div>
-        <div style="width: 80px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 80px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->unicat?->edificacion?->lote?->lote_dist }}
         </div>
-        <div style="width: 74px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 74px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->unicat?->edificacion?->lote?->sub_lote_dist }}
         </div>
     </div>
@@ -2406,13 +2410,13 @@
         </div>
     </div>
     <div style="width: 716px;height:16px;margin: auto;">
-        <div style="width: 103px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 103px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->fichaindividual?->uso?->codi_uso }}
         </div>
-        <div style="width: 480PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 480PX;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->fichaindividual?->uso?->desc_uso }}
         </div>
-        <div style="width: 130px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 130px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->unicat?->edificacion?->lote?->zonificacion }}
         </div>
     </div>

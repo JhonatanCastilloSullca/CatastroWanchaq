@@ -11,7 +11,7 @@
             </div>
             <div class="card-body">
                 <div class="row mb-3">
-                    <h4 class="mb-3">Buscar Ficha Catastral</h4>
+                    <h4 class="mb-3">Reporte por dia de llenado</h4>
                     {!!Form::open(array('url'=>'reporte/llenadoficha','method'=>'GET','autocomplete'=>'off','role'=>'search'))!!}
                     <div class="form-group row">
                         

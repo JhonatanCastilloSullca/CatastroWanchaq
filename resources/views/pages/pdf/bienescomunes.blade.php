@@ -213,6 +213,10 @@
         #pagebreak1 {
             page-break-after: always;
         }
+        .color-azul
+        {
+            color: #0011ff;
+        }
     </style>
 </head>
 

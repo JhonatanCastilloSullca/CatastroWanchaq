@@ -131,7 +131,7 @@ class FichaCotitularidadController extends Controller
         if ($request->buscarFicha != "") {
             $ficha = $ficha->where('nume_ficha', '=', $ficha2);
         }
-        $ficha = $ficha->get();
+        $ficha = $ficha->orderby('nume_ficha')->get();
         $total = 0;
 
         if ($request->buscarSector == '' && $request->buscarManzana == '' && $request->buscarFicha == '') {

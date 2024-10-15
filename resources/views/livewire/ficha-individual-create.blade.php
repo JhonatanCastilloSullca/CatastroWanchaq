@@ -535,7 +535,7 @@
                                 <div class="mb-3">
                                     <div wire:ignore>
                                         <label class="form-label d-inline-flex">
-                                            <div class="divcuadrorequired">20</div> TIPO DE TITULAR
+                                            <div class="divcuadro">20</div> TIPO DE TITULAR
                                         </label>
                                         <select class="form-select" data-width="100%" data-live-search="true"
                                             name="tipo_persona" id="tipo_persona" wire:model="tipoTitular"
@@ -1159,7 +1159,7 @@
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadrorequired">44</div> ZONIFICACION
+                                        <div class="divcuadro">44</div> ZONIFICACION
                                     </label>
                                     <select class="form-select" data-width="100%" data-live-search="true"
                                         name="zonificacion" id="zonificacion" wire:model="zonificacion"

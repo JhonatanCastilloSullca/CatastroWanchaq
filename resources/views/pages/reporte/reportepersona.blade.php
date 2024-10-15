@@ -13,7 +13,7 @@
         </div>
         <div class="card-body">
             <div class="row">
-            <h4 class="mb-3">Buscar Ficha Catastral</h4>
+            <h4 class="mb-3">Reporte por Titular</h4>
             {!!Form::open(array('url'=>'reporte/reportepersona','method'=>'GET','autocomplete'=>'off','role'=>'search'))!!}
             <div class="form-group row">
                 <div class="col-md-1" style="padding-top: 10px">
@@ -58,6 +58,7 @@
                             <th>Nº Ficha</th>
                             <th>Sector</th>
                             <th>Manzana</th>
+                            <th>Lote</th>
                             <th>Fecha</th>
                             <th>Tipo Ficha</th>
                             <th>Ver Ficha</th>
@@ -70,6 +71,7 @@
                                 <td>{{$ficha->nume_ficha}}</td>
                                 <td>{{$ficha->lote->manzana->sectore->nomb_sector}}</td>
                                 <td>{{$ficha->lote->manzana->codi_mzna}}</td>
+                                <td>{{$ficha?->lote?->codi_lote}}</td>
                                 <td>{{date("d/m/Y", strtotime($ficha->fecha_grabado))}}</td>
                                 <td>
                                 @if($ficha->tipo_ficha==01)

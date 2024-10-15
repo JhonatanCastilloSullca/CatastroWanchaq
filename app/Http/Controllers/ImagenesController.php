@@ -40,7 +40,7 @@ class ImagenesController extends Controller
             });
         }
 
-        $ficha = $ficha->get();
+        $ficha = $ficha->orderby('nume_ficha')->get();
         $ficha = $ficha->unique('id_lote');
         $total = 0;
 
