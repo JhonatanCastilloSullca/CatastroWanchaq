@@ -28,9 +28,9 @@
                                         @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <label for="userPassword" class="form-label">Password</label>
+                                        <label for="userPassword" class="form-label">Contraseña</label>
                                         <input type="password" class="form-control no-transform" id="userPassword"
-                                            autocomplete="current-password" placeholder="Password" name="password" >
+                                            autocomplete="current-password" placeholder="Contraseña" name="password" >
                                         @error('password')
                                             <span class="error-message" style="color:red">{{ $message }}</span>
                                         @enderror

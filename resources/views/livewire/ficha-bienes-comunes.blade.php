@@ -6,7 +6,6 @@
                 <div class="card-body">
                     <div class="row">
                         <h3 class="mb-4">Ficha Catastral Urbana Bienes Comunes</h3>
-
                         <div class="row form-group">
                             <h4 class="mb-4"> DATOS GENERALES</h4>
                             <div class="col-md-3">
@@ -61,8 +60,6 @@
                                 </div>
                             </div><!-- Col -->                            
                         </div><!-- Row -->
-
-
                         <div class="row  form-group">
                             <div class="col-md-12">
                                 <div class="mb-3">
@@ -240,7 +237,6 @@
                                 </div>
                             </div><!-- Col -->
                         </div><!-- Row -->
-
                         <div class="row form-group">
                             <h4 class="mb-4"> UBICACION DEL PREDIO CATASTRAL</h4>
                             <div class="col-md-12 mb-3">
@@ -366,8 +362,7 @@
                                 </div>
                             </div><!-- Col -->
                         </div><!-- Row -->
-                        <div class="row form-group">
-                            
+                        <div class="row form-group">                            
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
@@ -387,8 +382,6 @@
                                     @enderror
                                 </div>
                             </div><!-- Col -->
-
-
                         </div><!-- Row -->
                         <div class="row form-group">
                             <div class="col-md-2">

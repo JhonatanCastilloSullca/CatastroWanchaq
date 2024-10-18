@@ -849,26 +849,54 @@ class FichaIndividualEdit extends Component
         $this->cont2++;
     }
 
-    public function reducirConstruccion()
+    public function reducirConstruccion($value)
     {
+        $this->cont2--;
 
-        if ($this->cont2 > 0) {
-            $this->cont2--;
-            array_splice($this->bloque, $this->cont2);
-            array_splice($this->num_piso, $this->cont2);
-            array_splice($this->fecha, $this->cont2);
-            array_splice($this->mep, $this->cont2);
-            array_splice($this->ecs, $this->cont2);
-            array_splice($this->ecc, $this->cont2);
-            array_splice($this->estr_muro_col, $this->cont2);
-            array_splice($this->estr_techo, $this->cont2);
-            array_splice($this->acab_piso, $this->cont2);
-            array_splice($this->acab_puerta_ven, $this->cont2);
-            array_splice($this->acab_revest, $this->cont2);
-            array_splice($this->acab_bano, $this->cont2);
-            array_splice($this->inst_elect_sanita, $this->cont2);
-            array_splice($this->area_verificada, $this->cont2);
-            array_splice($this->uca, $this->cont2);
+        if (is_array($this->bloque)) {
+            array_splice($this->bloque, $value, 1);
+        }
+        if (is_array($this->num_piso)) {
+            array_splice($this->num_piso, $value, 1);
+        }
+        if (is_array($this->fecha)) {
+            array_splice($this->fecha, $value, 1);
+        }
+        if (is_array($this->mep)) {
+            array_splice($this->mep, $value, 1);
+        }
+        if (is_array($this->ecs)) {
+            array_splice($this->ecs, $value, 1);
+        }
+        if (is_array($this->ecc)) {
+            array_splice($this->ecc, $value, 1);
+        }
+        if (is_array($this->estr_muro_col)) {
+            array_splice($this->estr_muro_col, $value, 1);
+        }
+        if (is_array($this->estr_techo)) {
+            array_splice($this->estr_techo, $value, 1);
+        }
+        if (is_array($this->acab_piso)) {
+            array_splice($this->acab_piso, $value, 1);
+        }
+        if (is_array($this->acab_puerta_ven)) {
+            array_splice($this->acab_puerta_ven, $value, 1);
+        }
+        if (is_array($this->acab_revest)) {
+            array_splice($this->acab_revest, $value, 1);
+        }
+        if (is_array($this->acab_bano)) {
+            array_splice($this->acab_bano, $value, 1);
+        }
+        if (is_array($this->inst_elect_sanita)) {
+            array_splice($this->inst_elect_sanita, $value, 1);
+        }
+        if (is_array($this->area_verificada)) {
+            array_splice($this->area_verificada, $value, 1);
+        }
+        if (is_array($this->uca)) {
+            array_splice($this->uca, $value, 1);
         }
     }
 
@@ -881,20 +909,33 @@ class FichaIndividualEdit extends Component
         $this->cont3++;
     }
 
-    public function reducirObras()
+    public function reducirObras($value) 
     {
+        $this->cont3--;
 
-
-        if ($this->cont3 > 0) {
-            $this->cont3--;
-            array_splice($this->codi_instalacion, $this->cont3);
-            array_splice($this->inst_fecha, $this->cont3);
-            array_splice($this->inst_mep, $this->cont3);
-            array_splice($this->inst_ecs, $this->cont3);
-            array_splice($this->inst_ecc, $this->cont3);
-            array_splice($this->inst_prod_total, $this->cont3);
-            array_splice($this->inst_uni_med, $this->cont3);
-            array_splice($this->inst_uca, $this->cont3);
+        if (is_array($this->codi_instalacion)) {
+            array_splice($this->codi_instalacion, $value, 1);
+        }
+        if (is_array($this->inst_fecha)) {
+            array_splice($this->inst_fecha, $value, 1);
+        }
+        if (is_array($this->inst_mep)) {
+            array_splice($this->inst_mep, $value, 1);
+        }
+        if (is_array($this->inst_ecs)) {
+            array_splice($this->inst_ecs, $value, 1);
+        }
+        if (is_array($this->inst_ecc)) {
+            array_splice($this->inst_ecc, $value, 1);
+        }
+        if (is_array($this->inst_prod_total)) {
+            array_splice($this->inst_prod_total, $value, 1);
+        }
+        if (is_array($this->inst_uni_med)) {
+            array_splice($this->inst_uni_med, $value, 1);
+        }
+        if (is_array($this->inst_uca)) {
+            array_splice($this->inst_uca, $value, 1);
         }
     }
 
@@ -907,15 +948,24 @@ class FichaIndividualEdit extends Component
         $this->cont4++;
     }
 
-    public function reducirDocumentos()
+    public function reducirDocumentos($value)
     {
+        $this->cont4--;
 
-        if ($this->cont4 > 0) {
-            $this->cont4--;
-            array_splice($this->tipo_dococumento, $this->cont4);
-            array_splice($this->nume_documento, $this->cont4);
-            array_splice($this->fecha_dococumento, $this->cont4);
-            array_splice($this->area_autorizadadocumento, $this->cont4);
+        if (is_array($this->tipo_dococumento)) {
+            array_splice($this->tipo_dococumento, $value, 1);
+        }
+        if (is_array($this->nume_documento)) {
+            array_splice($this->nume_documento, $value, 1);
+        }
+        if (is_array($this->fecha_dococumento)) {
+            array_splice($this->fecha_dococumento, $value, 1);
+        }
+        if (is_array($this->area_autorizadadocumento)) {
+            array_splice($this->area_autorizadadocumento, $value, 1);
+        }
+        if (is_array($this->url_doc)) {
+            array_splice($this->url_doc, $value, 1);
         }
     }
     /* DOCUMENTOS ADJUNTOS */
@@ -1051,9 +1101,28 @@ class FichaIndividualEdit extends Component
         $this->cont5++;
     }
 
-    public function reducirinformacion()
+    public function reducirinformacion($value)
     {
         $this->cont5--;
+
+        if (is_array($this->tipolitigante)) {
+            array_splice($this->tipolitigante, $value, 1);
+        }
+        if (is_array($this->numedoc)) {
+            array_splice($this->numedoc, $value, 1);
+        }
+        if (is_array($this->codi_contribuye)) {
+            array_splice($this->codi_contribuye, $value, 1);
+        }
+        if (is_array($this->nombres)) {
+            array_splice($this->nombres, $value, 1);
+        }
+        if (is_array($this->ape_paterno)) {
+            array_splice($this->ape_paterno, $value, 1);
+        }
+        if (is_array($this->ape_materno)) {
+            array_splice($this->ape_materno, $value, 1);
+        }
     }
 
     /* INFORMACION COMPLEMENTARIA */

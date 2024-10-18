@@ -52,6 +52,7 @@ class FichaEconomicaEdit extends Component
     public $unidad;
     public $dc;
     public $tipoConductor;
+    public $requiredtipoConductor;
     public $nomb_comercial;
     public $tipo_doc1;
     public $numedoc1;
@@ -1214,6 +1215,15 @@ class FichaEconomicaEdit extends Component
         }else{
             $this->razon_social=$persona['nombre'];
             $this->numedoc3=$ruc;
+        }
+    }
+    public function updatedtipoConductor($value)
+    {
+        if ($value == 1) {
+            $this-> requiredtipoConductor = 1;
+        }
+        elseif ($value == 2) {
+            $this-> requiredtipoConductor = 2;
         }
     }
 
