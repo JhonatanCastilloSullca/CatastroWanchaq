@@ -32,6 +32,7 @@ Route::group(['middleware'=>['auth']], function () {
     Route::resource('user', App\Http\Controllers\UserController::class)->names('user');
 
     Route::resource('roles', App\Http\Controllers\RoleController::class)->except('show')->names('roles');
+    Route::post('subidamasiva', 'App\Http\Controllers\ViaController@subidamasiva')->name('manzana.subidamasiva');
 
     Route::resource('mantenimiento/manzana', App\Http\Controllers\ManzanaController::class)->except('show,edit,create')->names('manzana');
     Route::resource('mantenimiento/tablacodigo', App\Http\Controllers\TablaCodigoController::class)->except('show,edit,create')->names('tablacodigo');

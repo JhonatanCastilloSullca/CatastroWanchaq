@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\ViasImport;
 use App\Models\Via;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\HabUrbana;
 use App\Models\Institucion;
 use Illuminate\Validation\Rule;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ViaController extends Controller
 {
@@ -97,4 +99,10 @@ class ViaController extends Controller
         return view('pages.vias.edit',compact('hab_urbanas','via', 'hab_urbanas_vias'));
     }
 
+    public function subidamasiva(Request $request)
+    {
+        Excel::import(new ViasImport(),$request->archivo);
+        return redirect()->route('vias.index')
+            ->with('success', 'Archivo agregado Correctamente.');
+    }
 }

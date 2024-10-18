@@ -17,11 +17,14 @@
           <div class="mb-5">
             <a href="{{route('vias.create')}}">
               @can('vias.create')
-              <button type="button" class="btn btn-primary mb-2 mb-md-0 ">
+              <button type="button" class="btn btn-primary mb-2 me-2 mb-md-0 ">
                 <i data-feather="user-plus"></i><b> &nbsp; Crear Via</b>
               </button>
               @endcan
             </a>
+            <button type="button" class="btn btn-primary mb-2 mb-md-0 " data-bs-toggle="modal" data-bs-target="#subidaMasiva">
+              <i data-feather="file-plus"></i><b> &nbsp; Subir Via</b>
+            </button>
           </div>
           @if ($message = Session::get('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -75,6 +78,30 @@
             </table>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="subidaMasiva" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >Subir archivo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="{{route('manzana.subidamasiva')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+          {{csrf_field()}}
+          <div class="mb-3">
+            <label for="recipient-name" class="form-label">Archivo:</label>
+            <input type="file" name="archivo" id="archivo" class="form-control" required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
