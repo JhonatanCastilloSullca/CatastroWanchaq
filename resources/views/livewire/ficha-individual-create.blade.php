@@ -876,13 +876,18 @@
                                     </label>
                                     <select class="form-select tipoviaotros" id="tipoviaotros" name="tipoviaotros"
                                         data-width="100%" wire:model="tipoviaotros" tabindex="52">
-                                        <option value="AA.HH.">AA.HH.</option>
-                                        <option value="ASOC.">ASOC.</option>
-                                        <option value="CP.">CP.</option>
-                                        <option value="HU.PR.">HU.PR.</option>
-                                        <option value="URB.">URB.</option>
-                                        <option value="PRLG.">PRLG.</option>
-                                        <option value="S/T">S/T</option>
+                                        
+
+                                        <option value="AV">AVENIDA</option>
+                                        <option value="CA">CALLE</option>
+                                        <option value="JR">JIRON</option>
+                                        <option value="PJE">PASAJE</option>
+                                        <option value="AL">ALAMEDA</option>
+                                        <option value="CTRA">CARRETERA</option>
+                                        <option value="PRLG">PROLONGACION</option>
+                                        <option value="PS">PASEO</option>
+                                        <option value="ML">MALECON</option>
+                                        <option value="CAM">CAMINO</option>
 
                                     </select>
                                     @error('tipoviaotros')
@@ -2590,7 +2595,7 @@
 
                                 <label class="form-label d-inline-flex"> FECHA</label>
                                 <input type="date" class="form-control" name="fecha_declarante"
-                                    wire:model="fecha_declarante" tabindex="154">
+                                    wire:model="fecha_declarante" tabindex="154" max="{{ date('Y-m-d') }}">
                                 @error('fecha_declarante')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
@@ -2614,7 +2619,7 @@
                                 @enderror
                                 <label class="form-label d-inline-flex"> FECHA</label>
                                 <input type="date" class="form-control" name="fecha_supervision"
-                                    wire:model="fecha_supervision" tabindex="156">
+                                    wire:model="fecha_supervision" tabindex="156" max="{{ date('Y-m-d') }}">
                                 @error('fecha_supervision')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
@@ -2637,7 +2642,7 @@
                                 @enderror
                                 <label class="form-label d-inline-flex"> FECHA</label>
                                 <input type="date" class="form-control" name="fecha_levantamiento"
-                                    wire:model="fecha_levantamiento" tabindex="158">
+                                    wire:model="fecha_levantamiento" tabindex="158" max="{{ date('Y-m-d') }}">
                                 @error('fecha_levantamiento')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
@@ -2667,7 +2672,7 @@
                                 @enderror
                                 <label class="form-label d-inline-flex"> FECHA</label>
                                 <input type="date" class="form-control" name="fecha_verificacion"
-                                    wire:model="fecha_verificacion" tabindex="161">
+                                    wire:model="fecha_verificacion" tabindex="161" max="{{ date('Y-m-d') }}">
                                 @error('fecha_verificacion')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror

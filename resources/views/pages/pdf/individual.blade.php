@@ -570,52 +570,52 @@
     <!-- LEYENDA TIPO VIA TIPO PUERTA-->
     <div style="width: 716px;height:41px;margin: auto;" class="fondoclarito">
         <div style="width: 185px;height: 41px;float:left;">
-            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:center;">
+            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:left;">
                 AV. AVENIDA
             </div>
-            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:center;">
+            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:left;">
                 OTRA CARRERA
             </div>
-            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:center;">
+            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:left;">
                 CA. CALLE
             </div>
-            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:center;">
+            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:left;">
                 PRLG. PROLONGACION
             </div>
-            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:center;">
+            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:left;">
                 JR. JIRON
             </div>
-            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:center;">
+            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:left;">
                 PS. PASEO
             </div>
-            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:center;">
+            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:left;">
                 PJE. PASAJE
             </div>
-            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:center;">
+            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:left;">
                 ML. MALECON
             </div>
-            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:center;">
+            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:left;">
                 AL. ALAMEDA
             </div>
-            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:center;">
+            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:left;">
                 CAM. CAMINO
             </div>
         </div>
         <div style="width: 135px;height: 41px;float:left;">
 
-            <div style="width: 100%;height: 7PX; font-size:7PX;float:left;border:none;text-align:center;">
+            <div style="width: 100%;height: 7PX; font-size:7PX;float:left;border:none;text-align:left;">
                 <div style="border:none;width:70%;float:left;">PRINCIPAL</div>
                 <div style="border:none;width:25%;float:right;">P</div>
             </div>
-            <div style="width: 100%;height: 7PX; font-size:7PX;float:left;border:none;text-align:center;">
+            <div style="width: 100%;height: 7PX; font-size:7PX;float:left;border:none;text-align:left;">
                 <div style="border:none;width:70%;float:left;">SECUNDARIA</div>
                 <div style="border:none;width:25%;float:right;">S</div>
             </div>
-            <div style="width: 100%;height: 7PX; font-size:7PX;float:left;border:none;text-align:center;">
+            <div style="width: 100%;height: 7PX; font-size:7PX;float:left;border:none;text-align:left;">
                 <div style="border:none;width:70%;float:left;">GARAGE </div>
                 <div style="border:none;width:25%;float:right;">G </div>
             </div>
-            <div style="width: 100%;height: 7PX; font-size:7PX;float:left;border:none;text-align:center;">
+            <div style="width: 100%;height: 7PX; font-size:7PX;float:left;border:none;text-align:left;">
                 <div style="border:none;width:70%;float:left;">ESTACIONAMIENTO</div>
                 <div style="border:none;width:25%;float:right;">E</div>
             </div>
@@ -623,38 +623,38 @@
         </div>
         <div style="width: 131px;height: 41px;float:left;">
 
-            <div style="width: 100%;height: 7PX; font-size:7PX;float:left;border:none;text-align:center;">
+            <div style="width: 100%;height: 7PX; font-size:7PX;float:left;border:none;text-align:left;">
                 <div style="border:none;width:25%;float:left;">01</div>
                 <div style="border:none;width:70%;float:right;">GENERADO POR MUNIC.</div>
             </div>
-            <div style="width: 100%;height: 7PX; font-size:7PX;float:left;border:none;text-align:center;">
+            <div style="width: 100%;height: 7PX; font-size:7PX;float:left;border:none;text-align:left;">
                 <div style="border:none;width:25%;float:left;">02</div>
                 <div style="border:none;width:70%;float:right;">AUT. GEN. POR EL TIT CAT.</div>
             </div>
-            <div style="width: 100%;height: 7PX; font-size:7PX;float:left;border:none;text-align:center;">
+            <div style="width: 100%;height: 7PX; font-size:7PX;float:left;border:none;text-align:left;">
                 <div style="border:none;width:25%;float:left;">03 </div>
                 <div style="border:none;width:70%;float:right;">GEN. POR EL TEC. CAT.</div>
             </div>
-            <div style="width: 100%;height: 7PX; font-size:7PX;float:left;border:none;text-align:center;">
+            <div style="width: 100%;height: 7PX; font-size:7PX;float:left;border:none;text-align:left;">
                 <div style="border:none;width:25%;float:left;">04</div>
                 <div style="border:none;width:70%;float:right;">SIN NUMERO</div>
             </div>
         </div>
         <div style="width: 106px;height: 41px;float:left;">
 
-            <div style="width: 100%;height: 7PX; font-size:7PX;float:left;border:none;text-align:center;">
+            <div style="width: 100%;height: 7PX; font-size:7PX;float:left;border:none;text-align:left;">
                 <div style="border:none;width:25%;float:left;">01</div>
                 <div style="border:none;width:70%;float:right;">BLOCK</div>
             </div>
-            <div style="width: 100%;height: 7PX; font-size:7PX;float:left;border:none;text-align:center;">
+            <div style="width: 100%;height: 7PX; font-size:7PX;float:left;border:none;text-align:left;">
                 <div style="border:none;width:25%;float:left;">02</div>
                 <div style="border:none;width:70%;float:right;">CASA / CHALET</div>
             </div>
-            <div style="width: 100%;height: 7PX; font-size:7PX;float:left;border:none;text-align:center;">
+            <div style="width: 100%;height: 7PX; font-size:7PX;float:left;border:none;text-align:left;">
                 <div style="border:none;width:25%;float:left;">03 </div>
                 <div style="border:none;width:70%;float:right;">EDIFICIO</div>
             </div>
-            <div style="width: 100%;height: 7PX; font-size:7PX;float:left;border:none;text-align:center;">
+            <div style="width: 100%;height: 7PX; font-size:7PX;float:left;border:none;text-align:left;">
                 <div style="border:none;width:25%;float:left;">04</div>
                 <div style="border:none;width:70%;float:right;">PABELLON</div>
             </div>
@@ -662,34 +662,34 @@
         </div>
         <div style="width: 154px;height: 41px;float:left;">
 
-            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:center;">
+            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:left;">
                 01 DEPARTAMENTO
             </div>
-            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:center;">
+            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:left;">
                 06 TENDAL
             </div>
-            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:center;">
+            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:left;">
                 02 CASA / CHALET
             </div>
-            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:center;">
+            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:left;">
                 07 TIENDA
             </div>
-            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:center;">
+            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:left;">
                 03 OFICINA
             </div>
-            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:center;">
+            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:left;">
                 08 PUERTO
             </div>
-            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:center;">
+            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:left;">
                 04 ESTACIONAMIENTO
             </div>
-            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:center;">
+            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:left;">
                 09 STAND
             </div>
-            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:center;">
+            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:left;">
                 05 DEPOSITO
             </div>
-            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:center;">
+            <div style="width: 50%;height: 6px; font-size:6px;float:left;border:none;text-align:left;">
                 10 OTROS
             </div>
 

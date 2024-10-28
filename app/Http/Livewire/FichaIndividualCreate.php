@@ -269,7 +269,7 @@ class FichaIndividualCreate extends Component
     public function mount()
     {
         $this->usos = Uso::orderBy('codi_uso', 'asc')->get();
-        $this->tecnicos = Persona::where('tipo_funcion', 3)->orderBy('nume_doc', 'asc')->get();
+        $this->tecnicos = Persona::where('tipo_funcion', 3)->orderBy('nombres', 'asc')->get();
         $this->supervisores = Persona::where('tipo_funcion', 2)->orderBy('nume_doc', 'asc')->get();
         $this->verificadores = Persona::where('tipo_funcion', 4)->orderBy('nume_doc', 'asc')->get();
         $this->sectores = Sectore::orderBy('codi_sector', 'asc')->get();
