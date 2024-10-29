@@ -102,4 +102,21 @@ class SectoreController extends Controller
             return redirect()->back()->with('success','Sectore Eliminado Correctamente!');
         }
     }
+    public function eliminar(Request $request)
+    {
+        $sectore= Sectore::findOrFail($request->id_sectore_2);
+        
+        if($sectore->manzanas()->count() == 0)
+        {
+            $sectore->delete();
+        }
+        else
+        {
+
+            return redirect()->back()->with('error','Sectore no se ha Eliminado!');
+        }
+        return redirect()->back()->with('success','Sectore Eliminado Correctamente!');
+
+        
+    }
 }

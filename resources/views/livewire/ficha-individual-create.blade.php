@@ -29,9 +29,10 @@
                             </div><!-- Col -->
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex"> NUMERO DE FICHAS POR LOTE</label>
+                                    
                                     <div class="row form-group">
                                         <div class="col-md-6">
+                                            <label class="form-label d-inline-flex"> Nro Fichas</label>
                                             <input type="text" class="form-control" placeholder=""
                                                 name="nume_ficha_lote" wire:model="nume_ficha_lote"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
@@ -41,6 +42,7 @@
                                             @enderror
                                         </div>
                                         <div class="col-md-6">
+                                            <label class="form-label d-inline-flex"> Total Fichas</label>
                                             <input type="text" class="form-control" placeholder=""
                                                 name="nume_ficha_lote2" wire:model="nume_ficha_lote2"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
@@ -316,11 +318,14 @@
                                                         @enderror
                                                     </td>
                                                     <td>
-                                                        {{ $tipoViatipo[$i] }}
+                                                        <input type="text" class="form-control" name="tipoViatipo[]" readonly
+                                                               placeholder="Tipo de Vía" wire:model="tipoViatipo.{{ $i }}">
                                                     </td>
                                                     <td>
-                                                        {{ $tipoVianombre[$i] }}
+                                                        <input type="text" class="form-control" name="tipoVianombre[]" readonly
+                                                               placeholder="Nombre de la Vía" wire:model="tipoVianombre.{{ $i }}">
                                                     </td>
+                                                    
                                                     <td>
                                                         <select class="form-select" data-width="100%"
                                                             data-live-search="true" name="tipo_puerta[]"
@@ -1414,24 +1419,14 @@
                                         <thead>
                                             <tr>
                                                 <th>
-                                                    @if ($codi_uso == '070101')
-                                                    @else     
-                                                        @if ($cont2 == 0)
-                                                            <button type="button" class="btn btn-success btn-icon"
+                                                    @if ($codi_uso == '070101' )
+                                                    @else    
+                                                    <button type="button" class="btn btn-success btn-icon"
                                                                     wire:click="aumentarConstruccion"
                                                                     wire:loading.attr="disabled"
                                                                     wire:target="aumentarConstruccion"
                                                                     tabindex="90">+
                                                             </button>
-                                                        @endif
-                                                        @if ($cont2 == 1)
-                                                            <button type="button" class="btn btn-danger btn-icon"
-                                                                    wire:click="reducirConstruccion({{ 0 }})"
-                                                                    wire:loading.attr="disabled"
-                                                                    wire:target="reducirConstruccion"
-                                                                    tabindex="90">-
-                                                            </button>
-                                                        @endif
                                                     @endif
                                                 </th>
                                                 <th><label class="form-label d-inline-flex">
@@ -1485,22 +1480,12 @@
                                             @for ($i = 0; $i < $cont2; $i++)
                                                 <tr>
                                                     <td>
-                                                        @if ($i == $cont2 - 1)
-                                                            <button type="button" class="btn btn-success btn-icon"
-                                                                    wire:click="aumentarConstruccion"
-                                                                    wire:loading.attr="disabled"
-                                                                    wire:target="aumentarConstruccion"
-                                                                    tabindex="109">+
-                                                            </button>
-                                                        @endif
-                                                        @if ($i <= $cont2 - 2)
-                                                            <button type="button" class="btn btn-danger btn-icon"
+                                                        <button type="button" class="btn btn-danger btn-icon"
                                                                     wire:click="reducirConstruccion({{ $i }})"
                                                                     wire:loading.attr="disabled"
                                                                     wire:target="reducirConstruccion"
                                                                     tabindex="109">-
                                                             </button>
-                                                        @endif
                                                     </td>
                                                     <td>
                                                         <input type="text" class="form-control" name="bloque[]"
@@ -1587,7 +1572,7 @@
                                                         <input type="text" class="form-control"
                                                             name="estr_muro_col[]" placeholder="MUROS"
                                                             wire:model.defer="estr_muro_col.{{ $i }}"
-                                                            onkeydown="return /[a-z. ;]/i.test(event.key)"
+                                                            onkeydown="return /[a-i. ;]/i.test(event.key)"
                                                             maxlength="1" tabindex="90">
                                                         @error('estr_muro_col.' . $i)
                                                             <span class="error-message"
@@ -1598,7 +1583,7 @@
                                                         <input type="text" class="form-control "
                                                             name="estr_techo[]" placeholder="TECHOS"
                                                             wire:model.defer="estr_techo.{{ $i }}"
-                                                            onkeydown="return /[a-z. ;]/i.test(event.key)"
+                                                            onkeydown="return /[a-i. ;]/i.test(event.key)"
                                                             maxlength="1" tabindex="90">
                                                         @error('estr_techo.' . $i)
                                                             <span class="error-message"
@@ -1609,7 +1594,7 @@
                                                         <input type="text" class="form-control "
                                                             name="acab_piso[]" placeholder="PISOS"
                                                             wire:model.defer="acab_piso.{{ $i }}"
-                                                            onkeydown="return /[a-z. ;]/i.test(event.key)"
+                                                            onkeydown="return /[a-i. ;]/i.test(event.key)"
                                                             maxlength="1" tabindex="90">
                                                         @error('acab_piso.' . $i)
                                                             <span class="error-message"
@@ -1620,7 +1605,7 @@
                                                         <input type="text" class="form-control "
                                                             name="acab_puerta_ven[]" placeholder="P. Y V."
                                                             wire:model.defer="acab_puerta_ven.{{ $i }}"
-                                                            onkeydown="return /[a-z. ;]/i.test(event.key)"
+                                                            onkeydown="return /[a-i. ;]/i.test(event.key)"
                                                             maxlength="1" tabindex="90">
                                                         @error('acab_puerta_ven.' . $i)
                                                             <span class="error-message"
@@ -1631,7 +1616,7 @@
                                                         <input type="text" class="form-control "
                                                             name="acab_revest[]" placeholder="REVEST."
                                                             wire:model.defer="acab_revest.{{ $i }}"
-                                                            onkeydown="return /[a-z. ;]/i.test(event.key)"
+                                                            onkeydown="return /[a-i. ;]/i.test(event.key)"
                                                             maxlength="1" tabindex="90">
                                                         @error('acab_revest.' . $i)
                                                             <span class="error-message"
@@ -1642,7 +1627,7 @@
                                                         <input type="text" class="form-control "
                                                             name="acab_bano[]" placeholder="BAÑOS"
                                                             wire:model.defer="acab_bano.{{ $i }}"
-                                                            onkeydown="return /[a-z. ;]/i.test(event.key)"
+                                                            onkeydown="return /[a-i. ;]/i.test(event.key)"
                                                             maxlength="1" tabindex="90">
                                                         @error('acab_bano.' . $i)
                                                             <span class="error-message"
@@ -1653,7 +1638,7 @@
                                                         <input type="text" class="form-control "
                                                             name="inst_elect_sanita[]" placeholder="INST. E."
                                                             wire:model.defer="inst_elect_sanita.{{ $i }}"
-                                                            onkeydown="return /[a-z. ;]/i.test(event.key)"
+                                                            onkeydown="return /[a-i. ;]/i.test(event.key)"
                                                             maxlength="1" tabindex="90">
                                                         @error('inst_elect_sanita.' . $i)
                                                             <span class="error-message"
@@ -1765,22 +1750,12 @@
                                             <tr>
                                                 
                                                 <th>
-                                                    @if ($cont3 == 0)
                                                         <button type="button" class="btn btn-success btn-icon"
                                                                 wire:click="aumentarObras"
                                                                 wire:loading.attr="disabled"
                                                                 wire:target="aumentarObras"
                                                                 tabindex="108">+
                                                         </button>
-                                                    @endif
-                                                    @if ($cont3 == 1)
-                                                        <button type="button" class="btn btn-danger btn-icon"
-                                                                wire:click="reducirObras({{ 0 }})"
-                                                                wire:loading.attr="disabled"
-                                                                wire:target="reducirObras"
-                                                                tabindex="109">-
-                                                        </button>
-                                                    @endif
                                                 </th>
                                                 <th><label class="form-label d-inline-flex">
                                                         <div class="divcuadro">71</div> CÓDIGO
@@ -1812,22 +1787,12 @@
                                             @for ($i = 0; $i < $cont3; $i++)
                                                 <tr>                                                    
                                                     <td>
-                                                        @if ($i == $cont3 - 1)
-                                                            <button type="button" class="btn btn-success btn-icon"
-                                                                    wire:click="aumentarObras"
-                                                                    wire:loading.attr="disabled"
-                                                                    wire:target="aumentarObras"
-                                                                    tabindex="109">+
-                                                            </button>
-                                                        @endif
-                                                        @if ($i <= $cont3 - 2)
                                                             <button type="button" class="btn btn-danger btn-icon"
                                                                     wire:click="reducirObras({{ $i }})"
                                                                     wire:loading.attr="disabled"
                                                                     wire:target="reducirObras"
                                                                     tabindex="109">-
                                                             </button>
-                                                        @endif
                                                     </td>
                                                     <td>
                                                         <select class="form-select" data-width="100%"
@@ -1969,7 +1934,7 @@
                             </div><!-- Col -->
                         </div><!-- Row -->
                         <!-- Construcciones -->
-                        <!-- Documentos -->
+                        <!-- | -->
                         <div class="row form-group">
                             <h4 class="mb-4"> DOCUMENTOS</h4>
                             <div class="col-md-12 mb-5">
@@ -1978,22 +1943,12 @@
                                         <thead>
                                             <tr>
                                                 <th>
-                                                    @if ($cont4 == 0)
-                                                        <button type="button" class="btn btn-success btn-icon"
+                                                    <button type="button" class="btn btn-success btn-icon"
                                                                 wire:click="aumentarDocumentos"
                                                                 wire:loading.attr="disabled"
                                                                 wire:target="aumentarDocumentos"
                                                                 tabindex="119">+
                                                         </button>
-                                                    @endif
-                                                    @if ($cont4 == 1)
-                                                        <button type="button" class="btn btn-danger btn-icon"
-                                                                wire:click="reducirDocumentos({{ 0 }})"
-                                                                wire:loading.attr="disabled"
-                                                                wire:target="reducirDocumentos"
-                                                                tabindex="119">-
-                                                        </button>
-                                                    @endif
                                                 </th>
                                                 <th><label class="form-label d-inline-flex">
                                                         <div class="divcuadro">75</div>TIPO DOC.
@@ -2015,22 +1970,12 @@
                                             @for ($i = 0; $i < $cont4; $i++)
                                                 <tr>
                                                     <td>
-                                                        @if ($i == $cont4 - 1)
-                                                            <button type="button" class="btn btn-success btn-icon"
-                                                                    wire:click="aumentarDocumentos"
-                                                                    wire:loading.attr="disabled"
-                                                                    wire:target="aumentarDocumentos"
-                                                                    tabindex="109">+
-                                                            </button>
-                                                        @endif
-                                                        @if ($i <= $cont4 - 2)
-                                                            <button type="button" class="btn btn-danger btn-icon"
+                                                        <button type="button" class="btn btn-danger btn-icon"
                                                                     wire:click="reducirDocumentos({{ $i }})"
                                                                     wire:loading.attr="disabled"
                                                                     wire:target="reducirDocumentos"
                                                                     tabindex="109">-
                                                             </button>
-                                                        @endif
                                                     </td>
                                                     <td>
                                                         <select class="form-select" data-width="100%"
@@ -2389,22 +2334,12 @@
                                         <thead>
                                             <tr>
                                                 <th>
-                                                    @if ($cont5 == 0)
-                                                        <button type="button" class="btn btn-success btn-icon"
+                                                    <button type="button" class="btn btn-success btn-icon"
                                                                 wire:click="aumentarinformacion"
                                                                 wire:loading.attr="disabled"
                                                                 wire:target="aumentarinformacion"
                                                                 tabindex="141">+
                                                         </button>
-                                                    @endif
-                                                    @if ($cont5 == 1)
-                                                        <button type="button" class="btn btn-danger btn-icon"
-                                                                wire:click="reducirinformacion({{0}})"
-                                                                wire:loading.attr="disabled"
-                                                                wire:target="reducirinformacion"
-                                                                tabindex="14">-
-                                                        </button>
-                                                    @endif
                                                 </th>
                                                 <th><label class="form-label d-inline-flex"> T. DOCUMENTO</label></th>
                                                 <th><label class="form-label d-inline-flex"> N° DOCUMENTO</label></th>
@@ -2421,22 +2356,12 @@
                                             @for ($i = 0; $i < $cont5; $i++)
                                                 <tr>
                                                     <td>
-                                                        @if ($i == $cont5 - 1)
-                                                            <button type="button" class="btn btn-success btn-icon"
-                                                                    wire:click="aumentarinformacion"
-                                                                    wire:loading.attr="disabled"
-                                                                    wire:target="aumentarinformacion"
-                                                                    tabindex="142">+
-                                                            </button>
-                                                        @endif
-                                                        @if ($i <= $cont5 - 2)
-                                                            <button type="button" class="btn btn-danger btn-icon"
+                                                        <button type="button" class="btn btn-danger btn-icon"
                                                                     wire:click="reducirinformacion({{ $i }})"
                                                                     wire:loading.attr="disabled"
                                                                     wire:target="reducirinformacion"
                                                                     tabindex="142">-
                                                             </button>
-                                                        @endif
                                                     </td>
                                                     <td>
                                                         <select class="form-select" data-width="100%"

@@ -14,7 +14,7 @@ class Sectore extends Authenticatable implements AuditableContract
     protected $table = 'tf_sectores';
 
     static $rules = [
-        'codi_sector' => 'required',
+        'codi_sector' => 'required|unique:tf_sectores,codi_sector',
         'nomb_sector' => 'required|max:20',
         'fichaindividual' => 'nullable|numeric',
         'fichacotitular' => 'nullable|numeric',

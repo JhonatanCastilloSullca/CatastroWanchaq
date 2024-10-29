@@ -90,6 +90,8 @@ Route::group(['middleware'=>['auth']], function () {
     Route::get('/ficha/editindividual/{fichaanterior}', 'App\Http\Controllers\FichaController@editindividual')->name('ficha.editindividual');
     Route::get('/ficha/editrentasindividual/{fichaanterior}', 'App\Http\Controllers\FichaController@editrentasindividual')->name('ficha.editrentasindividual');
     Route::get('/ficha/destroyindividual/{fichaanterior}', 'App\Http\Controllers\FichaController@destroyindividual')->name('ficha.destroyindividual');
+    Route::post('mantenimiento/sectore/eliminar/{sectore}', 'App\Http\Controllers\SectoreController@eliminar')->name('sectore.eliminar');
+    
 
     Route::get('/ficha/fichacotitulariadadcreate/{ficha}', 'App\Http\Controllers\FichaCotitularidadController@fichacotitulariadadcreate')->name('ficha.fichacotitulariadadcreate');
     Route::get('/ficha/indexcotitular', 'App\Http\Controllers\FichaCotitularidadController@indexcotitular')->name('ficha.indexcotitular');
