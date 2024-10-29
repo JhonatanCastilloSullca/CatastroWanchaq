@@ -2561,7 +2561,7 @@
 
                                 <label class="form-label d-inline-flex"> FECHA</label>
                                 <input type="date" class="form-control" name="fecha_declarante"
-                                    wire:model="fecha_declarante" tabindex="154">
+                                    wire:model="fecha_declarante" tabindex="154" max="{{ date('Y-m-d') }}">
                                 @error('fecha_declarante')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
@@ -2585,7 +2585,7 @@
                                 @enderror
                                 <label class="form-label d-inline-flex"> FECHA</label>
                                 <input type="date" class="form-control" name="fecha_supervision"
-                                    wire:model="fecha_supervision" tabindex="156">
+                                    wire:model="fecha_supervision" tabindex="156" max="{{ date('Y-m-d') }}">
                                 @error('fecha_supervision')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
@@ -2608,7 +2608,7 @@
                                 @enderror
                                 <label class="form-label d-inline-flex"> FECHA</label>
                                 <input type="date" class="form-control" name="fecha_levantamiento"
-                                    wire:model="fecha_levantamiento" tabindex="158">
+                                    wire:model="fecha_levantamiento" tabindex="158" max="{{ date('Y-m-d') }}">
                                 @error('fecha_levantamiento')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
@@ -2637,7 +2637,7 @@
                                 @enderror
                                 <label class="form-label d-inline-flex"> FECHA</label>
                                 <input type="date" class="form-control" name="fecha_verificacion"
-                                    wire:model="fecha_verificacion" tabindex="161">
+                                    wire:model="fecha_verificacion" tabindex="161" max="{{ date('Y-m-d') }}">
                                 @error('fecha_verificacion')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
