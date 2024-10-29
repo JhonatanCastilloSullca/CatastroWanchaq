@@ -28,8 +28,7 @@
                                 </div>
                             </div><!-- Col -->
                             <div class="col-md-3">
-                                <div class="mb-3">
-                                    
+                                <div class="mb-3">                                    
                                     <div class="row form-group">
                                         <div class="col-md-6">
                                             <label class="form-label d-inline-flex"> Nro Fichas</label>

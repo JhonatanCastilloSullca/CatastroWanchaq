@@ -37,10 +37,10 @@
               <thead>
                 <tr >
                   <th>Numero</th>
-                  <th>Nombre</th>
-                  <th>Tipo</th>
                   <th>Codigo</th>
-                  <th>Ubigeo</th>
+                  <th>Tipo</th>
+                  <th>Nombre</th>
+                  <th>Fecha</th>
                   <th>Habilitaciones Urbana</th>
                   <th></th>
                 </tr>
@@ -49,10 +49,10 @@
                 @foreach($vias as $via)
                 <tr>
                   <td>{{++$i}}</td>
-                  <td>{{$via->nomb_via}}</td>
-                  <td>{{$via->tipo_via}}</td>
                   <td>{{$via->codi_via}}</td>
-                  <td>{{$via->id_ubi_geo}}</td>
+                  <td>{{$via->tipo_via}}</td>
+                  <td>{{$via->nomb_via}}</td>
+                  <td>{{$via->fecha_via}}</td>
                   <td style="min-width: 50px;max-width: 50px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
                     @foreach($via->hab_urbanas as $urbana)
                       {{$urbana->nomb_hab_urba}},

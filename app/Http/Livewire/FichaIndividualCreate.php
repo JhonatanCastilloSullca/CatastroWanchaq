@@ -2574,4 +2574,18 @@ class FichaIndividualCreate extends Component
     {
         $this->unidad = str_pad($value, 3, '0', STR_PAD_LEFT);
     }
+    public function updatedNumeFichaLote($value)
+    {
+        if (!empty($this->nume_ficha_lote2) && $value > $this->nume_ficha_lote2) {
+            $this->nume_ficha_lote = ''; // Vacía el campo si el valor es mayor al segundo campo
+        }
+    }
+
+    public function updatedNumeFichaLote2($value)
+    {
+        if (!empty($this->nume_ficha_lote) && $this->nume_ficha_lote > $value) {
+            $this->nume_ficha_lote = ''; // Vacía el primer campo si el segundo es menor
+        }
+    }
+
 }
