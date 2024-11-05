@@ -276,7 +276,6 @@ class UsosSeeder extends Seeder
             ['codi_uso'=> '070402'	,'desc_uso'=>'TERRENO CONSTRUCCION PARCIAL'],
             ['codi_uso'=> '080101'	,'desc_uso'=>'CON CONSTRUCCION'],
             ['codi_uso'=> '090101'	,'desc_uso'=>'CASA HABITACION'],
-            ['codi_uso'=> '110101'	,'desc_uso'=>'CASA HABITACION CON ACTIVIDAD ECONOMICA'],
               
         ];
         foreach ($usos as $uso) {

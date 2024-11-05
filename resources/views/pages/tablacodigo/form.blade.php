@@ -15,6 +15,7 @@
 <div class="mb-3">
     <label for="recipient-name" class="form-label">Codigo:</label>
     <input type="text" class="form-control codigo" id="codigo" name="codigo" value="{{old('codigo')}}">
+    <input type="hidden" class="form-control codigo" id="codigo2" name="codigo2" value="{{old('codigo2')}}">
     @error('codigo')
         <span class="error-message" style="color:red">{{ $message }}</span>
     @enderror

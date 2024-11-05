@@ -1,7 +1,7 @@
 <div class="card">
 <form id="contact" method="POST" class="forms-sample" enctype="multipart/form-data">
     {{csrf_field()}}
-    <div class="card-body">
+    <div class="card-body" style="background-color: #fff8e4">
         <div class="row">
             <div class="row form-group">
             <h4 class="mb-4"> DATOS GENERALES</h4>
@@ -153,7 +153,7 @@
                     <div class="col-md-3">
                         <div class="mb-2">
                             <label class="form-label d-inline-flex" > <div class="divcuadro">04</div> COD CONTRIBUYENTE</label>
-                            <input type="text" class="form-control" name="codi_contribuyente[]" placeholder="Nro de cotitular" wire:model="codi_contribuyente.{{$i}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="10">
+                            <input type="text" class="form-control" name="codi_contribuyente[]" placeholder="Nro de cotitular" wire:model="codi_contribuyente.{{$i}}"  maxlength="10">
                             <span class="text-danger">@error('codi_contribuyente.'.$i){{$message}}@enderror</span>
                         </div>
                     </div><!-- Col -->

@@ -66,7 +66,7 @@ class TablaCodigoController extends Controller
         ]);
         DB::table('tf_tablas_codigos')
         ->where('id_tabla', $request->id_tablacodigos)
-        ->where('codigo', $request->codigo)
+        ->where('codigo', $request->codigo2)
         ->update([
             'desc_codigo' => $request->desc_codigo,
             'id_tabla' => $request->id_tablacodigos,

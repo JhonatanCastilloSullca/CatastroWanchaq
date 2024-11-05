@@ -599,16 +599,22 @@ class FichaBienComunEdit extends Component
 
     }
 
-    public function reducirUbicacion()
+    public function reducirUbicacion($value)
     {
         $this->cont--;
-        array_splice($this->tipoVia, $this->cont);
-        array_splice($this->tipopuerta, $this->cont);
-        array_splice($this->nume_muni, $this->cont);
-        array_splice($this->cond_nume, $this->cont);
-        array_splice($this->nume_certificacion, $this->cont);
-
-
+        if (is_array($this->tipoVia)) {
+            array_splice($this->tipoVia, $value, 1);
+        }
+        if (is_array($this->tipopuerta)) {
+            array_splice($this->tipopuerta, $value, 1);
+        }
+        if (is_array($this->nume_muni)) {
+            array_splice($this->nume_muni, $value, 1);
+        }
+        if (is_array($this->cond_nume)) {
+            array_splice($this->cond_nume, $value, 1);
+        }
+        
     }
 
     /* UBICACION DEL PREDIO */
@@ -622,31 +628,52 @@ class FichaBienComunEdit extends Component
 
     public function reducirConstruccion()
     {
-
-        if($this->cont2 > 0){
-            $this->cont2--;
-            array_splice($this->num_piso, $this->cont2);
-            array_splice($this->bloque, $this->cont2);
-            array_splice($this->fecha, $this->cont2);
-            array_splice($this->mep, $this->cont2);
-            array_splice($this->ecs, $this->cont2);
-            array_splice($this->ecc, $this->cont2);
-            array_splice($this->estr_muro_col, $this->cont2);
-            array_splice($this->estr_techo, $this->cont2);
-            array_splice($this->acab_piso, $this->cont2);
-            array_splice($this->acab_puerta_ven, $this->cont2);
-            array_splice($this->acab_revest, $this->cont2);
-            array_splice($this->acab_bano, $this->cont2);
-            array_splice($this->inst_elect_sanita, $this->cont2);
-            array_splice($this->area_verificada, $this->cont2);
-            array_splice($this->uca, $this->cont2);
+        $this->cont2--;        
+        if (is_array($this->bloque)) {
+            array_splice($this->bloque, $value, 1);
         }
-
-
-
-
-
-
+        if (is_array($this->num_piso)) {
+            array_splice($this->num_piso, $value, 1);
+        }
+        if (is_array($this->fecha)) {
+            array_splice($this->fecha, $value, 1);
+        }
+        if (is_array($this->mep)) {
+            array_splice($this->mep, $value, 1);
+        }
+        if (is_array($this->ecs)) {
+            array_splice($this->ecs, $value, 1);
+        }
+        if (is_array($this->ecc)) {
+            array_splice($this->ecc, $value, 1);
+        }
+        if (is_array($this->estr_muro_col)) {
+            array_splice($this->estr_muro_col, $value, 1);
+        }
+        if (is_array($this->estr_techo)) {
+            array_splice($this->estr_techo, $value, 1);
+        }
+        if (is_array($this->acab_piso)) {
+            array_splice($this->acab_piso, $value, 1);
+        }
+        if (is_array($this->acab_puerta_ven)) {
+            array_splice($this->acab_puerta_ven, $value, 1);
+        }
+        if (is_array($this->acab_revest)) {
+            array_splice($this->acab_revest, $value, 1);
+        }
+        if (is_array($this->acab_bano)) {
+            array_splice($this->acab_bano, $value, 1);
+        }
+        if (is_array($this->inst_elect_sanita)) {
+            array_splice($this->inst_elect_sanita, $value, 1);
+        }
+        if (is_array($this->area_verificada)) {
+            array_splice($this->area_verificada, $value, 1);
+        }
+        if (is_array($this->uca)) {
+            array_splice($this->uca, $value, 1);
+        }
     }
 
     /* CONSTRUCCIONES */
@@ -658,29 +685,33 @@ class FichaBienComunEdit extends Component
         $this->cont3++;
     }
 
-    public function reducirObras()
+    public function reducirObras($value)
     {
-
-
-        if($this->cont3 > 0){
-            $this->cont3--;
-
-        array_splice($this->codiinstalacion, $this->cont3);
-        array_splice($this->inst_fecha, $this->cont3);
-        array_splice($this->inst_mep, $this->cont3);
-        array_splice($this->inst_ecs, $this->cont3);
-        array_splice($this->inst_ecc, $this->cont3);
-        array_splice($this->dime_largo, $this->cont3);
-        array_splice($this->dime_ancho, $this->cont3);
-        array_splice($this->dime_alto, $this->cont3);
-        array_splice($this->inst_prod_total, $this->cont3);
-        array_splice($this->inst_uni_med, $this->cont3);
-        array_splice($this->inst_uca, $this->cont3);
+        $this->cont3--;
+        if (is_array($this->codiinstalacion)) {
+            array_splice($this->codiinstalacion, $value, 1);
         }
-
-
-
-
+        if (is_array($this->inst_fecha)) {
+            array_splice($this->inst_fecha, $value, 1);
+        }
+        if (is_array($this->inst_mep)) {
+            array_splice($this->inst_mep, $value, 1);
+        }
+        if (is_array($this->inst_ecs)) {
+            array_splice($this->inst_ecs, $value, 1);
+        }
+        if (is_array($this->inst_ecc)) {
+            array_splice($this->inst_ecc, $value, 1);
+        }
+        if (is_array($this->inst_prod_total)) {
+            array_splice($this->inst_prod_total, $value, 1);
+        }
+        if (is_array($this->inst_uni_med)) {
+            array_splice($this->inst_uni_med, $value, 1);
+        }
+        if (is_array($this->inst_uca)) {
+            array_splice($this->inst_uca, $value, 1);
+        }
     }
 
     /* OBRAS COMPLEMENTARIAS */
@@ -690,15 +721,23 @@ class FichaBienComunEdit extends Component
         $this->cont4++;
     }
 
-    public function reducirEdificios()
+    public function reducirEdificios($value)
     {
-        if($this->cont4 > 0){
-            $this->cont4--;
-        array_splice($this->edificiobbc, $this->cont4);
-        array_splice($this->porcentaje, $this->cont4);
-        array_splice($this->atc, $this->cont4);
-        array_splice($this->acc, $this->cont4);
-        array_splice($this->aoic, $this->cont4);
+        $this->cont4--;
+        if (is_array($this->edificiobbc)) {
+            array_splice($this->edificiobbc, $value, 1);
+        }
+        if (is_array($this->porcentaje)) {
+            array_splice($this->porcentaje, $value, 1);
+        }
+        if (is_array($this->atc)) {
+            array_splice($this->atc, $value, 1);
+        }
+        if (is_array($this->acc)) {
+            array_splice($this->acc, $value, 1);
+        }
+        if (is_array($this->aoic)) {
+            array_splice($this->aoic, $value, 1);
         }
     }
 
@@ -757,6 +796,7 @@ class FichaBienComunEdit extends Component
 
     public function reducirRecap($i)
     {
+
         if($this->cont5 > 0){
             $this->cont5--;
             array_splice($this->rbcedifica, $i,1);

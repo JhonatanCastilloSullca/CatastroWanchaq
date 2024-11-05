@@ -372,6 +372,58 @@ class FichaEconomicaEdit extends Component
                 Rule::unique('tf_fichas_economicas', 'nume_ficha')?->ignore($id, 'id_ficha')],
         ]);
     }
+    public function updatedpredareaverif(){
+        $this->pred_area_verif = ($this->pred_area_verif === "") ? 0 : $this->pred_area_verif;
+        $this->viap_area_verif = ($this->viap_area_verif === "") ? 0 : $this->viap_area_verif;
+        $this->bc_area_verif = ($this->bc_area_verif === "") ? 0 : $this->bc_area_verif;
+
+        $total = $this->pred_area_verif + $this->viap_area_verif + $this->bc_area_verif;
+        $this->totalverificada=$total;
+    }
+    public function updatedviapareaverif(){
+
+        $this->pred_area_verif = ($this->pred_area_verif === "") ? 0 : $this->pred_area_verif;
+        $this->viap_area_verif = ($this->viap_area_verif === "") ? 0 : $this->viap_area_verif;
+        $this->bc_area_verif = ($this->bc_area_verif === "") ? 0 : $this->bc_area_verif;
+        $total = $this->pred_area_verif + $this->viap_area_verif + $this->bc_area_verif;
+        $this->totalverificada=$total;
+    }
+    public function updatedbcareaverif(){
+
+        $this->pred_area_verif = ($this->pred_area_verif === "") ? 0 : $this->pred_area_verif;
+        $this->viap_area_verif = ($this->viap_area_verif === "") ? 0 : $this->viap_area_verif;
+        $this->bc_area_verif = ($this->bc_area_verif === "") ? 0 : $this->bc_area_verif;
+        $total = $this->pred_area_verif + $this->viap_area_verif + $this->bc_area_verif;
+        $this->totalverificada=$total;
+    }
+
+    public function updatedpredareaautor(){
+
+
+        $this->pred_area_autor = ($this->pred_area_autor === "") ? 0 : $this->pred_area_autor;
+        $this->viap_area_autor = ($this->viap_area_autor === "") ? 0 : $this->viap_area_autor;
+        $this->bc_area_autor = ($this->bc_area_autor === "") ? 0 : $this->bc_area_autor;
+
+        $total = $this->pred_area_autor + $this->viap_area_autor + $this->bc_area_autor;
+        $this->totalautor=$total;
+    }
+    public function updatedviapareaautor(){
+
+        $this->pred_area_autor = ($this->pred_area_autor === "") ? 0 : $this->pred_area_autor;
+        $this->viap_area_autor = ($this->viap_area_autor === "") ? 0 : $this->viap_area_autor;
+        $this->bc_area_autor = ($this->bc_area_autor === "") ? 0 : $this->bc_area_autor;
+        $total = $this->pred_area_autor + $this->viap_area_autor + $this->bc_area_autor;
+        $this->totalautor=$total;
+    }
+    public function updatedbcareaautor(){
+
+        $this->pred_area_autor = ($this->pred_area_autor === "") ? 0 : $this->pred_area_autor;
+        $this->viap_area_autor = ($this->viap_area_autor === "") ? 0 : $this->viap_area_autor;
+        $this->bc_area_autor = ($this->bc_area_autor === "") ? 0 : $this->bc_area_autor;
+        $total = $this->pred_area_autor + $this->viap_area_autor + $this->bc_area_autor;
+        $this->totalautor=$total;
+    }
+
 
     public function register()
     {
@@ -1123,10 +1175,13 @@ class FichaEconomicaEdit extends Component
         $this->cont1++;
     }
 
-    public function reducirAutorizacionMunicipal()
-    {
+    public function reducirAutorizacionMunicipal($i)
+    {        
         $this->cont1--;
-        array_splice($this->codi_actividad, $this->cont1, $this->cont1);
+
+            if (is_array($this->codi_actividad)) {
+                array_splice($this->codi_actividad, $i, 1);
+            }
     }
 
 
@@ -1135,21 +1190,34 @@ class FichaEconomicaEdit extends Component
         $this->cont2++;
     }
 
-    public function reducirAutorizacionAnuncio()
+    public function reducirAutorizacionAnuncio($i)
     {
-
-        if($this->cont2 > 0){
-            $this->cont2--;
-            array_splice($this->codianuncio, $this->cont2);
-            array_splice($this->nume_lados, $this->cont2);
-            array_splice($this->area_autorizada, $this->cont2);
-            array_splice($this->area_verificada, $this->cont2);
-            array_splice($this->nume_expediente1, $this->cont2);
-            array_splice($this->nume_licencia1, $this->cont2);
-            array_splice($this->fecha_expedicion1, $this->cont2);
-            array_splice($this->fecha_vencimiento1, $this->cont2);
-
+        $this->cont2--;
+        if (is_array($this->codianuncio)) {
+            array_splice($this->codianuncio, $i, 1);
         }
+        if (is_array($this->nume_lados)) {
+            array_splice($this->nume_lados, $i, 1);
+        }
+        if (is_array($this->area_autorizada)) {
+            array_splice($this->area_autorizada, $i, 1);
+        }
+        if (is_array($this->area_verificada)) {
+            array_splice($this->area_verificada, $i, 1);
+        }
+        if (is_array($this->nume_expediente1)) {
+            array_splice($this->nume_expediente1, $i, 1);
+        }
+        if (is_array($this->nume_licencia1)) {
+            array_splice($this->nume_licencia1, $i, 1);
+        }
+        if (is_array($this->fecha_expedicion1)) {
+            array_splice($this->fecha_expedicion1, $i, 1);
+        }
+        if (is_array($this->fecha_vencimiento1)) {
+            array_splice($this->fecha_vencimiento1, $i, 1);
+        }
+
     }
 
     public function updatednumedoc1()

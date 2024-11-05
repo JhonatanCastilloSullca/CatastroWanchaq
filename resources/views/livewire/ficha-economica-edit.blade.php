@@ -3,7 +3,7 @@
     {{csrf_field()}}
     <div class="col-md-12 grid-margin stretch-card" >
         <div class="card">
-            <div class="card-body">
+            <div class="card-body" style="background-color: #f5ffe4">
                 <div class="row">
                     <h3 class="mb-4">Ficha Catastral Urbana Economica</h3>
                     <div class="row form-group">
@@ -347,7 +347,15 @@
                             <div class="col-md-2">
                                 <div class="mb-">
                                     <label class="form-label d-inline-flex" > <div class="divcuadro">06</div> T. VIA</label>
-                                    <input type="text" class="form-control" placeholder="" name="tipoviaconductor" wire:model="tipoviaconductor" maxlength="5">
+                                    
+                                    <select class="form-select tipoviaconductor" id="tipoviaconductor" name="tipoviaconductor" data-width="100%" wire:model="tipoviaconductor" tabindex="5">
+                                    <option value="">SELECCIONE</option>
+                                        @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'VIA')->orderby('codigo', 'asc')->get() as $tablacodigo)
+                                            <option value="{{ $tablacodigo->codigo }}">
+                                                {{ $tablacodigo->codigo }}
+                                                {{ $tablacodigo->desc_codigo }}</option>
+                                        @endforeach
+                                    </select>
                                     @error('tipoviaconductor')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
@@ -460,13 +468,8 @@
                                         <thead>
                                             <tr >
                                                 <th><label class="form-label d-inline-flex" > <div class="divcuadrorequired">143</div>COD. ACTIVIDAD</label></th>
-
                                                 <th>
-                                                @if($cont1>0)
-                                                    <button type="button" class="btn btn-danger btn-icon" wire:click="reducirAutorizacionMunicipal">-</button>
-                                                @else
-                                                    <button type="button" class="btn btn-success btn-icon" wire:click="aumentarAutorizacionMunicipal">+</button>
-                                                @endif
+                                                    <button type="button" class="btn btn-success btn-icon" wire:loading.attr="disabled" wire:click="aumentarAutorizacionMunicipal">+</button>
                                                 </th>
                                             </tr>
                                         </thead>
@@ -485,9 +488,7 @@
                                                     @enderror
                                                 </td>
                                                 <td>
-                                                    @if($i==$cont1-1)
-                                                        <button type="button" class="btn btn-success btn-icon" wire:click="aumentarAutorizacionMunicipal" tabindex="90">+</button>
-                                                    @endif
+                                                    <button type="button" class="btn btn-danger btn-icon" wire:loading.attr="disabled" wire:click="reducirAutorizacionMunicipal({{ $i }})">-</button>
                                                 </td>
                                             </tr>
                                             @endfor
@@ -556,6 +557,15 @@
                                             <span class="error-message" style="color:red">{{ $message }}</span>
                                         @enderror
                                     </div>
+                                    <div class="col-md-3 mb-2">
+                                        <p class="form-label d-inline-flex" >TOTAL</p>
+                                    </div>
+                                    <div class="col-md-5 mb-2">
+                                        <input type="text" class="form-control" name="total1" wire:model="totalautor" readonly>
+                                    </div>
+                                    <div class="col-md-4 mb-2">
+                                        <input type="text" class="form-control" name="total2" wire:model="totalverificada" readonly>
+                                    </div>
 
                                     <!--AQUI FALTAN NAMES-->
 
@@ -621,6 +631,9 @@
                                     <table id="vias" class="table" style="font-size:10px;">
                                         <thead>
                                             <tr >
+                                                <th>
+                                                    <button type="button" class="btn btn-success btn-icon" wire:loading.attr="disabled" wire:click="aumentarAutorizacionAnuncio" tabindex="90">+</button>
+                                                </th>
                                                 <th style="width:10px"><label class="form-label d-inline-flex" > <div class="divcuadro">152</div>CÓD. TIPO ANUNCIO</label></th>
                                                 <th><label class="form-label d-inline-flex" > <div class="divcuadro">154</div>Nº LADOS</label></th>
                                                 <th><label class="form-label d-inline-flex" > <div class="divcuadro">155</div>AREA AUTORIZADA DEL ANUNCIO (M2)</label></th>
@@ -629,19 +642,16 @@
                                                 <th><label class="form-label d-inline-flex" > <div class="divcuadro">158</div>Nº LICENCIA</label></th>
                                                 <th><label class="form-label d-inline-flex" > <div class="divcuadro">159</div>F. EXPEDICION</label></th>
                                                 <th><label class="form-label d-inline-flex" > <div class="divcuadro">160</div>Fº VENCIMIENTO</label></th>
-                                                <th>
-                                                    @if($cont2>0)
-                                                        <button type="button" class="btn btn-danger btn-icon" wire:click="reducirAutorizacionAnuncio">-</button>
-                                                    @else
-                                                        <button type="button" class="btn btn-success btn-icon" wire:click="aumentarAutorizacionAnuncio" tabindex="90">+</button>
-                                                    @endif
-                                                </th>
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @for($i=0;$i<$cont2;$i++)
                                             <tr >
                                                 <!-- JALAR SELECT CODI ANUNCIO -->
+                                                <td>
+                                                    <button type="button" class="btn btn-danger btn-icon" wire:loading.attr="disabled" wire:click="reducirAutorizacionAnuncio({{ $i }})">-</button>
+                                                </td>
                                                 <td>
                                                     <select  type="text" class="form-select" data-width="100%" data-live-search="true" name="codi_anuncio[]" id="codi_anuncio.{{$i}}" wire:model="codianuncio.{{$i}}">
                                                         <option value="">Seleccione</option>
@@ -694,12 +704,7 @@
                                                     @error('fecha_vencimiento.'.$i)
                                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                                     @enderror
-                                                </td>
-                                                <td>
-                                                    @if($i==$cont2-1)
-                                                    <button type="button" class="btn btn-success btn-icon" wire:click="aumentarAutorizacionAnuncio" tabindex="90">+</button>
-                                                    @endif
-                                                </td>
+                                                </td>                                                
                                             </tr>
                                             @endfor
                                         </tbody>
