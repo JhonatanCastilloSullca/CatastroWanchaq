@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Archivo;
 use Livewire\Component;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\Client\RequestException;
@@ -34,6 +35,7 @@ use App\Models\Titular;
 use App\Models\Edificaciones;
 use Carbon\Carbon;
 use DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Livewire\WithFileUploads;
 
@@ -261,6 +263,18 @@ class FichaIndividualEdit extends Component
     public $imagen_plano;
     public $nuevaImagen;
     public $nuevaImagenPlano;
+    public $imagenFicha1;
+    public $nuevaimagenFicha1;
+    public $imagenFicha2;
+    public $nuevaimagenFicha2;
+    public $imagenFicha3;
+    public $nuevaimagenFicha3;
+    public $pdfplano;
+    public $nuevapdfplano;
+    public $pdfsunarp;
+    public $nuevapdfsunarp;
+    public $pdfrentas;
+    public $nuevapdfrentas;
 
 
 
@@ -493,10 +507,6 @@ class FichaIndividualEdit extends Component
             }
         }
 
-
-
-
-
         $this->en_colindante = $fichaanterior?->fichaindividual?->en_colindante;
         $this->en_area_publica = $fichaanterior?->fichaindividual?->en_area_publica;
         $this->en_jardin_aislamiento = $fichaanterior?->fichaindividual?->en_jardin_aislamiento;
@@ -570,6 +580,43 @@ class FichaIndividualEdit extends Component
             $this->imagen_plano = 'sin_foto.png';
         }
 
+        if ($this->fichaanterior->archivo?->imagen1) {
+            $this->imagenFicha1 = $this->fichaanterior->archivo->imagen1;
+        } else {
+            $this->imagenFicha1 = '';
+        }
+
+        if ($this->fichaanterior->archivo?->imagen2) {
+            $this->imagenFicha2 = $this->fichaanterior->archivo->imagen2;
+        } else {
+            $this->imagenFicha2 = '';
+        }
+
+
+        if ($this->fichaanterior->archivo?->imagen3) {
+            $this->imagenFicha3 = $this->fichaanterior->archivo->imagen3;
+        } else {
+            $this->imagenFicha3 = '';
+        }
+
+
+        if ($this->fichaanterior->archivo?->plano) {
+            $this->pdfplano = $this->fichaanterior->archivo->plano;
+        } else {
+            $this->pdfplano = '';
+        }
+
+        if ($this->fichaanterior->archivo?->sunarp) {
+            $this->pdfsunarp = $this->fichaanterior->archivo->sunarp;
+        } else {
+            $this->pdfsunarp = '';
+        }
+
+        if ($this->fichaanterior->archivo?->rentas) {
+            $this->pdfrentas = $this->fichaanterior->archivo->rentas;
+        } else {
+            $this->pdfrentas = '';
+        }
 
 
         $this->fichaanterior = $fichaanterior;
@@ -1491,6 +1538,7 @@ class FichaIndividualEdit extends Component
             }
             $fechaanterior = $this->fichaanterior->fecha_grabado;
             $usuario = $this->fichaanterior->id_usuario;
+            $this->fichaanterior->archivo?->delete();
             $this->fichaanterior->delete();
 
 
@@ -2087,9 +2135,7 @@ class FichaIndividualEdit extends Component
                 $rutaImagen = $this->nuevaImagen->storeAs('img/imageneslotes', $nombreImagen);
 
                 // Corregir la rotación de la imagen si es necesario
-                Image::make('storage/' . $rutaImagen)->orientate()->fit(1600, 1200, function ($constraint) {
-                    $constraint->upsize();
-                })->save('storage/' . $rutaImagen, null, 'jpg');
+                Image::make('storage/' . $rutaImagen)->orientate()->save('storage/' . $rutaImagen, null, 'jpg');
 
                 $fichaindividual->imagen_lote = $nombreImagen;
             } else {
@@ -2100,9 +2146,7 @@ class FichaIndividualEdit extends Component
                 $nombreImagen = $ficha->id_ficha . '.' . $this->nuevaImagenPlano->getClientOriginalExtension();
                 $rutaImagen = $this->nuevaImagenPlano->storeAs('img/imagenesplanos', $nombreImagen);
                 // Corregir la rotación de la imagen si es necesario
-                Image::make('storage/' . $rutaImagen)->orientate()->fit(1600, 1200, function ($constraint) {
-                    $constraint->upsize();
-                })->save('storage/' . $rutaImagen, null, 'jpg');
+                Image::make('storage/' . $rutaImagen)->orientate()->save('storage/' . $rutaImagen, null, 'jpg');
                 $fichaindividual->imagen_plano = $nombreImagen;
             } else {
                 $fichaindividual->imagen_plano = $this->imagen_plano;
@@ -2110,6 +2154,105 @@ class FichaIndividualEdit extends Component
 
 
             $fichaindividual->save();
+
+            $archivo = Archivo::where('id_ficha',$ficha->id_ficha)->first();
+            if(!$archivo){
+                $archivo = new Archivo();
+                $archivo->id_ficha = $ficha->id_ficha;
+                $archivo->save();
+            }
+
+            if ($this->nuevaimagenFicha1) {
+                $nombrerecibo = $ficha->id_ficha.'-2.'.$this->nuevaimagenFicha1->getClientOriginalExtension();
+                $ruta = '\img\archivos/';
+                if (Storage::exists($ruta . $nombrerecibo)) {
+                    Storage::delete($ruta . $nombrerecibo);
+                }
+                $nuevaRuta = $this->nuevaimagenFicha1->storeAs($ruta, $nombrerecibo);
+
+                // Actualizar el registro en la base de datos
+                $archivo->imagen1 = $nombrerecibo;
+                $archivo->save();
+            }else{
+                $archivo->imagen1 = $this->imagenFicha1;
+                $archivo->save();
+            }
+
+            if ($this->nuevaimagenFicha2) {
+                $nombrerecibo = $ficha->id_ficha.'-2.'.$this->nuevaimagenFicha2->getClientOriginalExtension();
+                $ruta = '\img\archivos/';
+                if (Storage::exists($ruta . $nombrerecibo)) {
+                    Storage::delete($ruta . $nombrerecibo);
+                }
+                $nuevaRuta = $this->nuevaimagenFicha2->storeAs($ruta, $nombrerecibo);
+
+                // Actualizar el registro en la base de datos
+                $archivo->imagen2 = $nombrerecibo;
+                $archivo->save();
+            }else{
+                $archivo->imagen2 = $this->imagenFicha2;
+                $archivo->save();
+            }
+            if ($this->nuevaimagenFicha3) {
+                $nombrerecibo = $ficha->id_ficha.'-2.'.$this->nuevaimagenFicha3->getClientOriginalExtension();
+                $ruta = '\img\archivos/';
+                if (Storage::exists($ruta . $nombrerecibo)) {
+                    Storage::delete($ruta . $nombrerecibo);
+                }
+                $nuevaRuta = $this->nuevaimagenFicha3->storeAs($ruta, $nombrerecibo);
+
+                // Actualizar el registro en la base de datos
+                $archivo->imagen2 = $nombrerecibo;
+                $archivo->imagen3();
+            }else{
+                $archivo->imagen3 = $this->imagenFicha3;
+                $archivo->save();
+            }
+            if ($this->nuevapdfplano) {
+                $nombrerecibo = $ficha->id_ficha.'-2.'.$this->nuevapdfplano->getClientOriginalExtension();
+                $ruta = '\img\archivos/';
+                if (Storage::exists($ruta . $nombrerecibo)) {
+                    Storage::delete($ruta . $nombrerecibo);
+                }
+                $nuevaRuta = $this->nuevapdfplano->storeAs($ruta, $nombrerecibo);
+
+                // Actualizar el registro en la base de datos
+                $archivo->plano = $nombrerecibo;
+                $archivo->imagen3();
+            }else{
+                $archivo->plano = $this->pdfplano;
+                $archivo->save();
+            }
+            if ($this->nuevapdfsunarp) {
+                $nombrerecibo = $ficha->id_ficha.'-2.'.$this->nuevapdfsunarp->getClientOriginalExtension();
+                $ruta = '\img\archivos/';
+                if (Storage::exists($ruta . $nombrerecibo)) {
+                    Storage::delete($ruta . $nombrerecibo);
+                }
+                $nuevaRuta = $this->nuevapdfsunarp->storeAs($ruta, $nombrerecibo);
+
+                // Actualizar el registro en la base de datos
+                $archivo->sunarp = $nombrerecibo;
+                $archivo->imagen3();
+            }else{
+                $archivo->sunarp = $this->pdfsunarp;
+                $archivo->save();
+            }
+            if ($this->nuevapdfrentas) {
+                $nombrerecibo = $ficha->id_ficha.'-2.'.$this->nuevapdfrentas->getClientOriginalExtension();
+                $ruta = '\img\archivos/';
+                if (Storage::exists($ruta . $nombrerecibo)) {
+                    Storage::delete($ruta . $nombrerecibo);
+                }
+                $nuevaRuta = $this->nuevapdfrentas->storeAs($ruta, $nombrerecibo);
+
+                // Actualizar el registro en la base de datos
+                $archivo->rentas = $nombrerecibo;
+                $archivo->save();
+            }else{
+                $archivo->rentas = $this->pdfrentas;
+                $archivo->save();
+            }
 
             $lindero = new Lindero();
             $lindero->id_ficha = $ficha->id_ficha;

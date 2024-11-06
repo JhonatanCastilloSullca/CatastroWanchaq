@@ -70,50 +70,50 @@ class ImagenesController extends Controller
             $archivo->save();
         }
         if ($request->hasFile('fachada')) {
-            $nombrerecibo = $request->id_ficha.$request->file('fachada')->getClientOriginalExtension();
+            $nombrerecibo = $request->id_ficha.'.'.$request->file('fachada')->getClientOriginalExtension();
             $ruta = $request->file('fachada')->storeAs('\img\imageneslotes/', $nombrerecibo);
             $fichaindividual->imagen_lote = $nombrerecibo;
             $fichaindividual->save();
         }
         if ($request->hasFile('plano')) {
-            $nombrerecibo = $request->id_ficha.'-mapa'.$request->file('plano')->getClientOriginalExtension();
+            $nombrerecibo = $request->id_ficha.'-mapa.'.$request->file('plano')->getClientOriginalExtension();
             $ruta = $request->file('plano')->storeAs('\img\imagenesplanos/', $nombrerecibo);
             $fichaindividual->imagen_plano = $nombrerecibo;
             $fichaindividual->save();
         }
         if ($request->hasFile('imagen1')) {
-            $nombrerecibo = $request->id_ficha.'-1'.$request->file('imagen1')->getClientOriginalExtension();
+            $nombrerecibo = $request->id_ficha.'-1.'.$request->file('imagen1')->getClientOriginalExtension();
             $ruta = $request->file('imagen1')->storeAs('\img\archivos/', $nombrerecibo);
             
             $archivo->imagen1 = $nombrerecibo;
             $archivo->save();
         }
         if ($request->hasFile('imagen2')) {
-            $nombrerecibo = $request->id_ficha.'-2'.$request->file('imagen2')->getClientOriginalExtension();
+            $nombrerecibo = $request->id_ficha.'-2.'.$request->file('imagen2')->getClientOriginalExtension();
             $ruta = $request->file('imagen2')->storeAs('\img\archivos/', $nombrerecibo);
             $archivo->imagen2 = $nombrerecibo;
             $archivo->save();
         }
         if ($request->hasFile('imagen3')) {
-            $nombrerecibo = $request->id_ficha.'-1'.$request->file('imagen3')->getClientOriginalExtension();
+            $nombrerecibo = $request->id_ficha.'-3.'.$request->file('imagen3')->getClientOriginalExtension();
             $ruta = $request->file('imagen3')->storeAs('\img\archivos/', $nombrerecibo);
             $archivo->imagen3 = $nombrerecibo;
             $archivo->save();
         }
         if ($request->hasFile('pdfplano')) {
-            $nombrerecibo = $request->id_ficha.'-plano'.$request->file('pdfplano')->getClientOriginalExtension();
+            $nombrerecibo = $request->id_ficha.'-plano.'.$request->file('pdfplano')->getClientOriginalExtension();
             $ruta = $request->file('pdfplano')->storeAs('\img\archivos/', $nombrerecibo);
             $archivo->plano = $nombrerecibo;
             $archivo->save();
         }
         if ($request->hasFile('pdfsunarp')) {
-            $nombrerecibo = $request->id_ficha.'-sunarp'.$request->file('pdfsunarp')->getClientOriginalExtension();
+            $nombrerecibo = $request->id_ficha.'-sunarp.'.$request->file('pdfsunarp')->getClientOriginalExtension();
             $ruta = $request->file('pdfsunarp')->storeAs('\img\archivos/', $nombrerecibo);
             $archivo->sunarp = $nombrerecibo;
             $archivo->save();
         }
         if ($request->hasFile('pdfrentas')) {
-            $nombrerecibo = $request->id_ficha.'-rentas'.$request->file('pdfrentas')->getClientOriginalExtension();
+            $nombrerecibo = $request->id_ficha.'-rentas.'.$request->file('pdfrentas')->getClientOriginalExtension();
             $ruta = $request->file('pdfrentas')->storeAs('\img\archivos/', $nombrerecibo);
             $archivo->rentas = $nombrerecibo;
             $archivo->save();

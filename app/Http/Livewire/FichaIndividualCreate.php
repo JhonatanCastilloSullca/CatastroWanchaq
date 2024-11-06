@@ -2104,7 +2104,7 @@ class FichaIndividualCreate extends Component
             }
 
             if ($this->imagenFicha1) {
-                $nombrerecibo = $ficha->id_ficha.'-1'.$this->imagenFicha1->getClientOriginalExtension();
+                $nombrerecibo = $ficha->id_ficha.'-1.'.$this->imagenFicha1->getClientOriginalExtension();
                 $ruta = $this->imagenFicha1->storeAs('\img\archivos/', $nombrerecibo);
                 
                 $archivo->imagen1 = $nombrerecibo;
@@ -2112,31 +2112,31 @@ class FichaIndividualCreate extends Component
             }
 
             if ($this->imagenFicha2) {
-                $nombrerecibo = $ficha->id_ficha.'-2'.$this->imagenFicha2->getClientOriginalExtension();
+                $nombrerecibo = $ficha->id_ficha.'-2.'.$this->imagenFicha2->getClientOriginalExtension();
                 $ruta = $this->imagenFicha2->storeAs('\img\archivos/', $nombrerecibo);
                 $archivo->imagen2 = $nombrerecibo;
                 $archivo->save();
             }
             if ($this->imagenFicha3) {
-                $nombrerecibo = $ficha->id_ficha.'-1'.$this->imagenFicha3->getClientOriginalExtension();
+                $nombrerecibo = $ficha->id_ficha.'-3.'.$this->imagenFicha3->getClientOriginalExtension();
                 $ruta = $this->imagenFicha3->storeAs('\img\archivos/', $nombrerecibo);
                 $archivo->imagen3 = $nombrerecibo;
                 $archivo->save();
             }
             if ($this->pdfplano) {
-                $nombrerecibo = $ficha->id_ficha.'-plano'.$this->pdfplano->getClientOriginalExtension();
+                $nombrerecibo = $ficha->id_ficha.'-plano.'.$this->pdfplano->getClientOriginalExtension();
                 $ruta = $this->pdfplano->storeAs('\img\archivos/', $nombrerecibo);
                 $archivo->plano = $nombrerecibo;
                 $archivo->save();
             }
             if ($this->pdfsunarp) {
-                $nombrerecibo = $ficha->id_ficha.'-sunarp'.$this->pdfsunarp->getClientOriginalExtension();
+                $nombrerecibo = $ficha->id_ficha.'-sunarp.'.$this->pdfsunarp->getClientOriginalExtension();
                 $ruta = $this->pdfsunarp->storeAs('\img\archivos/', $nombrerecibo);
                 $archivo->sunarp = $nombrerecibo;
                 $archivo->save();
             }
             if ($this->pdfrentas) {
-                $nombrerecibo = $ficha->id_ficha.'-rentas'.$this->pdfrentas->getClientOriginalExtension();
+                $nombrerecibo = $ficha->id_ficha.'-rentas.'.$this->pdfrentas->getClientOriginalExtension();
                 $ruta = $this->pdfrentas->storeAs('\img\archivos/', $nombrerecibo);
                 $archivo->rentas = $nombrerecibo;
                 $archivo->save();

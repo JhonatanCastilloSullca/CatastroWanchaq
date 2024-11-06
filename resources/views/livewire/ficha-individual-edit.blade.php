@@ -2594,6 +2594,90 @@
                                         alt="Imagen de lote" width="200" height="150">
                                 </div>
                             </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label d-inline-flex">
+                                    IMAGEN 1
+                                </label>
+                                <input type="file" class="form-control"
+                                    name="nuevaimagenFicha1" id="nuevaimagenFicha1" wire:model.defer="nuevaimagenFicha1">
+                            </div>
+                            <div class="col-md-1" wire:ignore>
+                                @if($imagenFicha1)
+                                    <a class="btn btn-success btn-icon" href="{{asset('storage/img/archivos/'.$imagenFicha1)}}"  target="_blank"id="imagenpdfplano">
+                                        <i data-feather="image"></i>
+                                    </a>
+                                @endif
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label d-inline-flex">
+                                    IMAGEN 2
+                                </label>
+                                <input type="file" class="form-control"
+                                    name="nuevaimagenFicha2" id="nuevaimagenFicha2" wire:model.defer="nuevaimagenFicha2">
+                            </div>
+                            <div class="col-md-1" wire:ignore>
+                                @if($imagenFicha2)
+                                    <a class="btn btn-success btn-icon" href="{{asset('storage/img/archivos/'.$imagenFicha2)}}"  target="_blank"id="imagenpdfplano">
+                                        <i data-feather="image"></i>
+                                    </a>
+                                @endif
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label d-inline-flex">
+                                    IMAGEN 3
+                                </label>
+                                <input type="file" class="form-control"
+                                    name="nuevaimagenFicha3" id="nuevaimagenFicha3" wire:model.defer="nuevaimagenFicha3">
+                            </div>
+                            <div class="col-md-1" wire:ignore>
+                                @if($imagenFicha2)
+                                    <a class="btn btn-success btn-icon" href="{{asset('storage/img/archivos/'.$imagenFicha3)}}"  target="_blank"id="imagenpdfplano">
+                                        <i data-feather="image"></i>
+                                    </a>
+                                @endif
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label d-inline-flex">
+                                    PDF PLANO
+                                </label>
+                                <input type="file" class="form-control"
+                                    name="nuevapdfplano" id="nuevapdfplano" wire:model.defer="nuevapdfplano">
+                            </div>
+                            <div class="col-md-1" wire:ignore>
+                                @if($pdfplano)
+                                    <a class="btn btn-success btn-icon" href="{{asset('storage/img/archivos/'.$pdfplano)}}"  target="_blank"id="imagenpdfplano">
+                                        <i data-feather="image"></i>
+                                    </a>
+                                @endif
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label d-inline-flex">
+                                    PDF SUNARP
+                                </label>
+                                <input type="file" class="form-control"
+                                    name="nuevapdfsunarp" id="nuevapdfsunarp" wire:model.defer="nuevapdfsunarp">
+                            </div>
+                            <div class="col-md-1" wire:ignore>
+                                @if($pdfsunarp)
+                                    <a class="btn btn-success btn-icon" href="{{asset('storage/img/archivos/'.$pdfsunarp)}}"  target="_blank"id="imagenpdfplano">
+                                        <i data-feather="image"></i>
+                                    </a>
+                                @endif
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label d-inline-flex">
+                                    PDF RENTAS
+                                </label>
+                                <input type="file" class="form-control"
+                                    name="nuevapdfrentas" id="nuevapdfrentas" wire:model.defer="nuevapdfrentas">
+                            </div>
+                            <div class="col-md-1" wire:ignore>
+                                @if($pdfrentas)
+                                    <a class="btn btn-success btn-icon" href="{{asset('storage/img/archivos/'.$pdfrentas)}}"  target="_blank"id="imagenpdfplano">
+                                        <i data-feather="image"></i>
+                                    </a>
+                                @endif
+                            </div>
                         </div><!-- Row -->
 
                         <div class="modal-footer">
