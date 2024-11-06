@@ -2591,7 +2591,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label d-inline-flex">
-                                    IMAGEN LOTE
+                                    IMAGEN FACHADA
                                 </label>
                                 <input type="file" accept="image/jpeg, image/png" class="form-control"
                                     name="imagen_lote" id="imagen_lote" wire:model.defer="imagen_lote">

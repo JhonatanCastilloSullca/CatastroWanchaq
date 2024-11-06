@@ -170,7 +170,7 @@ class FichaBienesCulturales extends Component
     public function mount(Ficha $fichaanterior)
     {
         $this->fichaanterior = $fichaanterior;
-        $this->tecnicos = Persona::where('tipo_funcion', 3)->get();
+        $this->tecnicos = Persona::where('tipo_funcion', 3)->orderBy('nombres', 'asc')->get();
         $this->supervisores = Persona::where('tipo_funcion', 2)->get();
         $this->verificadores = Persona::where('tipo_funcion', 4)->get();
     }
@@ -1182,6 +1182,19 @@ class FichaBienesCulturales extends Component
             $this->nume_registro = "";
         } else {
             $this->nume_registro = $this->verificador2->nregistro;
+        }
+    }
+    public function updatedNumeFichaLote($value)
+    {
+        if (!empty($this->nume_ficha_lote2) && $value > $this->nume_ficha_lote2) {
+            $this->nume_ficha_lote = ''; // Vacía el campo si el valor es mayor al segundo campo
+        }
+    }
+
+    public function updatedNumeFichaLote2($value)
+    {
+        if (!empty($this->nume_ficha_lote) && $this->nume_ficha_lote > $value) {
+            $this->nume_ficha_lote = ''; // Vacía el primer campo si el segundo es menor
         }
     }
 }

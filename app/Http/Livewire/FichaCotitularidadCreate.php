@@ -97,7 +97,7 @@ class FichaCotitularidadCreate extends Component
     public function mount(Ficha $fichaanterior, $total)
     {
         $this->usos = Uso::all();
-        $this->tecnicos = Persona::where('tipo_funcion', 3)->get();
+        $this->tecnicos = Persona::where('tipo_funcion', 3)->orderBy('nombres', 'asc')->get();
         $this->supervisores = Persona::where('tipo_funcion', 2)->get();
         $this->verificadores = Persona::where('tipo_funcion', 4)->get();
         $this->fichaanterior = $fichaanterior;
@@ -1197,6 +1197,19 @@ class FichaCotitularidadCreate extends Component
 
         return redirect()->route('ficha.fichacreateotra', $ficha)
             ->with('success', 'Ficha Cotitularidad Agregado Correctamente.');
+    }
+    public function updatedNumeFichaLote($value)
+    {
+        if (!empty($this->nume_ficha_lote2) && $value > $this->nume_ficha_lote2) {
+            $this->nume_ficha_lote = ''; 
+        }
+    }
+
+    public function updatedNumeFichaLote2($value)
+    {
+        if (!empty($this->nume_ficha_lote) && $this->nume_ficha_lote > $value) {
+            $this->nume_ficha_lote = ''; 
+        }
     }
 
 
