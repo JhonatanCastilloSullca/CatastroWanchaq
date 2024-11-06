@@ -466,7 +466,7 @@
             @endphp
 
             <li class="nav-item">
-                <a href="{{ $isLocal ? 'http://192.168.1.16:81' : 'http://209.45.78.210:9101' }}" target="_blank" class="nav-link">
+                <a href="{{ $isLocal ? 'http://209.45.78.210:9101' : 'http://192.168.1.16:81'  }}" target="_blank" class="nav-link">
                     <i class="link-icon mdi mdi-google-maps"></i>
                     <span class="link-title">Visor de Mapas</span>
                 </a>
