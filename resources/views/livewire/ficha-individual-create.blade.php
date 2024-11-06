@@ -468,7 +468,7 @@
                                     </label>
                                     <input type="text" class="form-control" name="zona_dist"
                                         wire:model="zona_dist" placeholder="Zona, Sector, Etapa"
-                                        onkeydown="return /[a-z. ;]/i.test(event.key)" tabindex="28" maxlength="15">
+                                        tabindex="28" maxlength="15">
                                     <span class="text-danger">
                                         @error('zona_dist')
                                             {{ $message }}
@@ -2591,7 +2591,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label d-inline-flex">
-                                    IMAGEN LOTE
+                                    IMAGEN FACHADA
                                 </label>
                                 <input type="file" accept="image/jpeg, image/png" class="form-control"
                                     name="imagen_lote" id="imagen_lote" wire:model.defer="imagen_lote">

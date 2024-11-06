@@ -309,7 +309,7 @@ class TablaCodigosSeeder extends Seeder
             ['codigo'=>'00'	        ,'id_tabla'=>'TPC'	,'desc_codigo'=>'ADMINISTRADOR'],
             ['codigo'=>'4.18'	    ,'id_tabla'=>'CDP'	,'desc_codigo'=>'OTROS'],
             ['codigo'=>'07'	        ,'id_tabla'=>'CDE'	,'desc_codigo'=>'ENCARGADO'],
-            ['codigo'=>'08'	        ,'id_tabla'=>'UCA'	,'desc_codigo'=>'EN ZONA DE RIESGO'],
+            ['codigo'=>'08'	        ,'id_tabla'=>'UCA'	,'desc_codigo'=>'OTROS'],
             ['codigo'=>'01'	        ,'id_tabla'=>'CEF'	,'desc_codigo'=>'GOBIERNO CENTRAL'],
             ['codigo'=>'02'	        ,'id_tabla'=>'CEF'	,'desc_codigo'=>'GOBIERNO LOCAL'],
             ['codigo'=>'03'	        ,'id_tabla'=>'CEF'	,'desc_codigo'=>'GOBIERNO REGIONAL'],
@@ -369,8 +369,8 @@ class TablaCodigosSeeder extends Seeder
             ['codigo'=>'06'	        ,'id_tabla'=>'MEP'	,'desc_codigo'=>'POLICARBONATO'],
             ['codigo'=>'07'	        ,'id_tabla'=>'MEP'	,'desc_codigo'=>'OTROS'],
             ['codigo'=>'08'	        ,'id_tabla'=>'DOC'	,'desc_codigo'=>'OTROS'],
-            ['codigo'=>'09'	        ,'id_tabla'=>'DOC'	,'desc_codigo'=>'LIBRETA MILITAR'],
-            ['codigo'=>'06'	        ,'id_tabla'=>'TPJ'	,'desc_codigo'=>'GOBIERNO'],
+            
+
             ['codigo'=>'05'	        ,'id_tabla'=>'TPJ'	,'desc_codigo'=>'OTROS'],
             ['codigo'=>'13'	        ,'id_tabla'=>'PEN'	,'desc_codigo'=>'OTROS'],
             ['codigo'=>'08'	        ,'id_tabla'=>'CDE'	,'desc_codigo'=>'POSEEDOR'],

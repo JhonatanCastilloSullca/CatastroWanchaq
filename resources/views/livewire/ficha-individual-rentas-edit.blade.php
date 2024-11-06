@@ -340,7 +340,7 @@
                                     <label class="form-label d-inline-flex">
                                         <div class="divcuadro">16</div> ZONA/SECTOR/ETAPA
                                     </label>
-                                    <input type="text" class="form-control" name="zona_dist" wire:model="zona_dist" placeholder="Zona, Sector, Etapa" onkeydown="return /[a-z]/i.test(event.key)" tabindex="28">
+                                    <input type="text" class="form-control" name="zona_dist" wire:model="zona_dist" placeholder="Zona, Sector, Etapa" tabindex="28">
                                     <span class="text-danger">@error('zona_dist'){{$message}}@enderror</span>
                                 </div>
                             </div><!-- Col -->

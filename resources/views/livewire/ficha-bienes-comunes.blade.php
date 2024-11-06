@@ -428,7 +428,7 @@
                                     </label>
                                     <input type="text" class="form-control" name="zona_dist"
                                         wire:model="zona_dist" placeholder="Zona, Sector, Etapa"
-                                        onkeydown="return /[a-z. ;]/i.test(event.key)" tabindex="23" maxlength="15">
+                                        tabindex="23" maxlength="15">
                                     <span class="text-danger">
                                         @error('zona_dist')
                                             {{ $message }}
