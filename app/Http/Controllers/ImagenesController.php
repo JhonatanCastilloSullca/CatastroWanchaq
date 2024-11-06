@@ -78,7 +78,7 @@ class ImagenesController extends Controller
         if ($request->hasFile('plano')) {
             $nombrerecibo = $request->id_ficha.'-mapa'.$request->file('plano')->getClientOriginalExtension();
             $ruta = $request->file('plano')->storeAs('\img\imagenesplanos/', $nombrerecibo);
-            $fichaindividual->imagen_lote = $nombrerecibo;
+            $fichaindividual->imagen_plano = $nombrerecibo;
             $fichaindividual->save();
         }
         if ($request->hasFile('imagen1')) {
