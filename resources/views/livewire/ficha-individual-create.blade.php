@@ -2603,6 +2603,48 @@
                                 <input type="file" accept="image/jpeg, image/png" class="form-control"
                                     name="imagen_plano" id="imagen_plano" wire:model.defer="imagen_plano">
                             </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label d-inline-flex">
+                                    IMAGEN 1
+                                </label>
+                                <input type="file" class="form-control"
+                                    name="imagenFicha1" id="imagenFicha1" wire:model.defer="imagenFicha1">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label d-inline-flex">
+                                    IMAGEN 2
+                                </label>
+                                <input type="file" class="form-control"
+                                    name="imagenFicha2" id="imagenFicha2" wire:model.defer="imagenFicha2">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label d-inline-flex">
+                                    IMAGEN 3
+                                </label>
+                                <input type="file" class="form-control"
+                                    name="imagenFicha3" id="imagenFicha3" wire:model.defer="imagenFicha3">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label d-inline-flex">
+                                    PDF PLANO
+                                </label>
+                                <input type="file" class="form-control"
+                                    name="pdfplano" id="pdfplano" wire:model.defer="pdfplano">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label d-inline-flex">
+                                    PDF SUNARP
+                                </label>
+                                <input type="file" class="form-control"
+                                    name="pdfsunarp" id="pdfsunarp" wire:model.defer="pdfsunarp">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label d-inline-flex">
+                                    PDF RENTAS
+                                </label>
+                                <input type="file" class="form-control"
+                                    name="pdfrentas" id="pdfrentas" wire:model.defer="pdfrentas">
+                            </div>
                         </div><!-- Row -->
 
                         <div class="modal-footer">

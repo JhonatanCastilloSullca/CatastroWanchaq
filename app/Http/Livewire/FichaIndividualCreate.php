@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Archivo;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\Client\RequestException;
 use Livewire\Component;
@@ -264,6 +265,12 @@ class FichaIndividualCreate extends Component
 
     public $imagen_lote;
     public $imagen_plano;
+    public $imagenFicha1;
+    public $imagenFicha2;
+    public $imagenFicha3;
+    public $pdfplano;
+    public $pdfsunarp;
+    public $pdfrentas;
 
 
     public function mount()
@@ -2074,9 +2081,7 @@ class FichaIndividualCreate extends Component
             if ($this->imagen_lote) {
                 $nombreImagen = $ficha->id_ficha . '.' . $this->imagen_lote->getClientOriginalExtension();
                 $rutaImagen = $this->imagen_lote->storeAs('img/imageneslotes', $nombreImagen);
-                Image::make('storage/' . $rutaImagen)->orientate()->fit(1600, 1200, function ($constraint) {
-                    $constraint->upsize();
-                })->save('storage/' . $rutaImagen, null, 'jpg');
+                Image::make('storage/' . $rutaImagen)->orientate()->save('storage/' . $rutaImagen, null, 'jpg');
                 $fichaindividual->imagen_lote = $nombreImagen;
             } else {
                 $fichaindividual->imagen_lote = 'sin_foto.png';
@@ -2084,14 +2089,58 @@ class FichaIndividualCreate extends Component
             if ($this->imagen_plano) {
                 $nombreImagen2 = $ficha->id_ficha . '.' . $this->imagen_plano->getClientOriginalExtension();
                 $rutaImagen2 = $this->imagen_plano->storeAs('img/imagenesplanos', $nombreImagen2);
-                Image::make('storage/' . $rutaImagen2)->orientate()->fit(1600, 1200, function ($constraint) {
-                    $constraint->upsize();
-                })->save('storage/' . $rutaImagen2, null, 'jpg');
+                Image::make('storage/' . $rutaImagen2)->orientate()->save('storage/' . $rutaImagen2, null, 'jpg');
                 $fichaindividual->imagen_plano = $nombreImagen2;
             } else {
                 $fichaindividual->imagen_plano = 'imagen_plano.png';
             }
             $fichaindividual->save();
+
+            $archivo = Archivo::where('id_ficha',$ficha->id_ficha)->first();
+            if(!$archivo){
+                $archivo = new Archivo();
+                $archivo->id_ficha = $ficha->id_ficha;
+                $archivo->save();
+            }
+
+            if ($this->imagenFicha1) {
+                $nombrerecibo = $ficha->id_ficha.'-1'.$this->imagenFicha1->getClientOriginalExtension();
+                $ruta = $this->imagenFicha1->storeAs('\img\archivos/', $nombrerecibo);
+                
+                $archivo->imagen1 = $nombrerecibo;
+                $archivo->save();
+            }
+
+            if ($this->imagenFicha2) {
+                $nombrerecibo = $ficha->id_ficha.'-2'.$this->imagenFicha2->getClientOriginalExtension();
+                $ruta = $this->imagenFicha2->storeAs('\img\archivos/', $nombrerecibo);
+                $archivo->imagen2 = $nombrerecibo;
+                $archivo->save();
+            }
+            if ($this->imagenFicha3) {
+                $nombrerecibo = $ficha->id_ficha.'-1'.$this->imagenFicha3->getClientOriginalExtension();
+                $ruta = $this->imagenFicha3->storeAs('\img\archivos/', $nombrerecibo);
+                $archivo->imagen3 = $nombrerecibo;
+                $archivo->save();
+            }
+            if ($this->pdfplano) {
+                $nombrerecibo = $ficha->id_ficha.'-plano'.$this->pdfplano->getClientOriginalExtension();
+                $ruta = $this->pdfplano->storeAs('\img\archivos/', $nombrerecibo);
+                $archivo->plano = $nombrerecibo;
+                $archivo->save();
+            }
+            if ($this->pdfsunarp) {
+                $nombrerecibo = $ficha->id_ficha.'-sunarp'.$this->pdfsunarp->getClientOriginalExtension();
+                $ruta = $this->pdfsunarp->storeAs('\img\archivos/', $nombrerecibo);
+                $archivo->sunarp = $nombrerecibo;
+                $archivo->save();
+            }
+            if ($this->pdfrentas) {
+                $nombrerecibo = $ficha->id_ficha.'-rentas'.$this->pdfrentas->getClientOriginalExtension();
+                $ruta = $this->pdfrentas->storeAs('\img\archivos/', $nombrerecibo);
+                $archivo->rentas = $nombrerecibo;
+                $archivo->save();
+            }
 
             $lindero = new Lindero();
             $lindero->id_ficha = $ficha->id_ficha;
