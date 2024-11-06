@@ -1061,14 +1061,15 @@ class FichaIndividualCreate extends Component
                     'nombres_declarante'            => 'nullable|max:150',
                     'apellido_paterno_declarante'   => 'nullable|max:50',
                     'apellido_materno_declarante'   => 'nullable|max:50',
-                    'fecha_declarante'              => 'nullable|date',
                     'supervisor'                    => 'nullable',
-                    'fecha_supervision'             => 'nullable|date',
                     'tecnico'                       => 'required',
-                    'fecha_levantamiento'           => 'required|date',
                     'verificador'                   => 'nullable',
                     'nume_registro'                 => 'nullable|max:10',
-                    'fecha_verificacion'            => 'nullable|date',
+
+                    'fecha_declarante'              => 'nullable|date|before_or_equal:today',
+                    'fecha_supervision'             => 'nullable|date|before_or_equal:today',
+                    'fecha_levantamiento'           => 'required|date|before_or_equal:today',
+                    'fecha_verificacion'            => 'nullable|date|before_or_equal:today',
                     'codi_uso'                      => 'required',
 
                 ]);
@@ -1183,7 +1184,7 @@ class FichaIndividualCreate extends Component
                         'supervisor'                    => 'nullable',
                         'fecha_supervision'             => 'nullable|date',
                         'tecnico'                       => 'required',
-                        'fecha_levantamiento'           => 'required|date',
+                        'fecha_levantamiento'           => 'required|date|before_or_equal:today',
                         'verificador'                   => 'nullable',
                         'nume_registro'                 => 'nullable|max:10',
                         'fecha_verificacion'            => 'nullable|date',
@@ -1267,7 +1268,7 @@ class FichaIndividualCreate extends Component
                         'supervisor'                    => 'nullable',
                         'fecha_supervision'             => 'nullable|date',
                         'tecnico'                       => 'required',
-                        'fecha_levantamiento'           => 'required|date',
+                        'fecha_levantamiento'           => 'required|date|before_or_equal:today',
                         'verificador'                   => 'nullable',
                         'nume_registro'                 => 'nullable|max:10',
                         'fecha_verificacion'            => 'nullable|date',
@@ -2595,8 +2596,14 @@ class FichaIndividualCreate extends Component
     public function updatedcodigoviaotros($value)
     {
         $hab_urba_find = Via::where('codi_via', $value)->first();
-        $this->tipoviaotros = $hab_urba_find->tipo_via;
-        $this->nombreviaotros = $hab_urba_find->nomb_via;
+        if ($hab_urba_find == null) {
+            $this->tipoviaotros = "";
+            $this->nombreviaotros = "";
+        } else {
+
+            $this->tipoviaotros = $hab_urba_find->tipo_via;
+            $this->nombreviaotros = $hab_urba_find->nomb_via;
+        }
     }
 
     public function buscarpuerta($cont, $idpuerta, $idlote)
