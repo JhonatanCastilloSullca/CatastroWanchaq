@@ -458,11 +458,9 @@
             @endcan
             @can('visormapas')
             @php
-                // Obtener la URL base del servidor actual
                 $host = request()->getHost();
 
-                // Determinar la URL en función de si el host es una IP local o pública
-                $isLocal = in_array($host, ['localhost', '192.168.1.16']); // Agrega aquí cualquier otra IP local
+                $isLocal = in_array($host, ['localhost', '192.168.1.16']);
                 $mapsUrl = $isLocal ? 'http://192.168.1.16:81' : 'http://209.45.78.210:9101';
             @endphp
 
