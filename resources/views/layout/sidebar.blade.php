@@ -457,8 +457,16 @@
                 </li>
             @endcan
             @can('visormapas')
+            @php
+                // Obtiene la IP de la solicitud
+                $ipAddress = request()->ip();
+                
+                // Determina si la IP es local o no
+                $isLocal = in_array($ipAddress, ['127.0.0.1', '::1', '192.168.1.1']); // Agrega aquí otras IPs locales según tu configuración
+            @endphp
+
             <li class="nav-item">
-                <a href="http://209.45.78.210:9101/" target="_blank" class="nav-link">
+                <a href="{{ $isLocal ? 'http://192.168.1.16:81' : 'http://209.45.78.210:9101' }}" target="_blank" class="nav-link">
                     <i class="link-icon mdi mdi-google-maps"></i>
                     <span class="link-title">Visor de Mapas</span>
                 </a>
