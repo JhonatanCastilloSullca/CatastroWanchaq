@@ -9,7 +9,10 @@ use Illuminate\Support\Facades\Redirect;
 use App\Models\HabUrbana;
 use App\Models\Institucion;
 use Illuminate\Validation\Rule;
+use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\TablaCodigo;
+
 
 class ViaController extends Controller
 {
@@ -32,6 +35,7 @@ class ViaController extends Controller
 
     public function store(Request $request)
     {
+        $mytime = Carbon::now('America/Lima');
         request()->validate(Via::$rules);
         $ubigeo=Institucion::first();
         $via=new Via();
@@ -40,6 +44,8 @@ class ViaController extends Controller
         $via->tipo_via=strtoupper($request->tipo_via);
         $via->codi_via=str_pad($request->codi_via,6,'0',STR_PAD_LEFT);
         $via->id_ubi_geo=str_pad($ubigeo->id_institucion,6,'0',STR_PAD_LEFT);
+        $via->fecha_via = $mytime->toDateString();
+
         $via->estado=1;
         $via->save();
 

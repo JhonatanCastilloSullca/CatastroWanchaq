@@ -26,16 +26,10 @@
                         <div class="mb-3 col-md-4">
                             <label for="recipient-name" class="form-label">Tipo de Via:</label>
                             <select class="form-select"  data-width="100%" data-live-search="true" name="tipo_via" id="tipo_via" >
-                                <option value="AV" {{ old('tipo_via') == 'AV' ? 'selected' : '' }}>AV</option>
-                                <option value="CA" {{ old('tipo_via') == 'CA' ? 'selected' : '' }}>CA</option>
-                                <option value="JR" {{ old('tipo_via') == 'JR' ? 'selected' : '' }}>JR</option>
-                                <option value="PJE" {{ old('tipo_via') == 'PJE' ? 'selected' : '' }}>PJE</option>
-                                <option value="AL" {{ old('tipo_via') == 'AL' ? 'selected' : '' }}>AL</option>
-                                <option value="CTRA" {{ old('tipo_via') == 'CTRA' ? 'selected' : '' }}>CTRA</option>
-                                <option value="PRLG" {{ old('tipo_via') == 'PRLG' ? 'selected' : '' }}>PRLG</option>
-                                <option value="PS" {{ old('tipo_via') == 'PS' ? 'selected' : '' }}>PS</option>
-                                <option value="ML" {{ old('tipo_via') == 'ML' ? 'selected' : '' }}>ML</option>
-                                <option value="CAM" {{ old('tipo_via') == 'CAM' ? 'selected' : '' }}>CAM</option>
+                                @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'HUR')->orderby('codigo', 'asc')->get() as $tablacodigo)
+                                    <option value="{{ $tablacodigo->codigo }}">
+                                        {{ $tablacodigo->desc_codigo }}</option>
+                                @endforeach
                             </select>
                             @error('tipo_via')
                                 <span class="error-message" style="color:red">{{ $message }}</span>

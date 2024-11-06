@@ -208,7 +208,7 @@
             <div class="textotop">
                 NÚMERO DE FICHA
             </div>
-            <div class="texto fz8 lh14">
+            <div class="texto fz8 lh14 color-azul">
                 {{ $ficha?->nume_ficha }}
             </div>
         </div>
@@ -220,7 +220,7 @@
             </div>
             <div style="width: 150px;height: 8px;float:right;border:none;" class="fondoclaro">
                 <div style="width: 150px;height: 8px;float:left;" class="fondoclaro">
-                    <div class="texto fz8 lh14">
+                    <div class="texto fz8 lh14 color-azul">
                         {{ $ficha?->nume_ficha_lote }}
                     </div>
                 </div>
@@ -252,7 +252,7 @@
             </div>
             <div style="width: 230px;height:16px;margin: auto;">
                 <div style="width: 230px;height: 16px;float:left;">
-                    <div class="texto fz8 lh14">
+                    <div class="texto fz8 lh14 color-azul">
                         {{ $ficha?->unicat?->cuc }}
                     </div>
 
@@ -340,42 +340,42 @@
                 </div>
             </div>
             <!-- fila 04-->
-            <div style="width: 427px;height:16px;margin: auto;">
+            <div style="width: 427px;height:16px;margin: auto; " class="color-azul">
                 <div style="width: 106px;height: 16px;float:left;border:none;">
                     <div style="width: 106px;height: 16px;float:left;border:none;">
-                        <div style="width: 34px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                        <div style="width: 34px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                             08
                         </div>
-                        <div style="width: 34px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                        <div style="width: 34px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                             01
                         </div>
-                        <div style="width: 34.9px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                        <div style="width: 34.9px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                             08
                         </div>
                     </div>
                 </div>
-                <div style="width: 35px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                <div style="width: 35px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                     {{ $ficha?->unicat?->edificacion?->lote?->manzana?->sectore?->codi_sector }}
                 </div>
-                <div style="width: 53px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                <div style="width: 53px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                     {{ $ficha?->unicat?->edificacion?->lote?->manzana?->codi_mzna }}
                 </div>
-                <div style="width: 51px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                <div style="width: 51px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                     {{ $ficha?->unicat?->edificacion?->lote?->codi_lote }}
                 </div>
-                <div style="width: 35px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                <div style="width: 35px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                     {{ $ficha?->unicat?->edificacion?->codi_edificacion }}
                 </div>
-                <div style="width: 34px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                <div style="width: 34px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                     {{ $ficha?->unicat?->codi_entrada }}
                 </div>
-                <div style="width: 35px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                <div style="width: 35px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                     {{ $ficha?->unicat?->codi_piso }}
                 </div>
-                <div style="width: 52px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                <div style="width: 52px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                     {{ $ficha?->unicat?->codi_unidad }}
                 </div>
-                <div style="width: 17.9px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                <div style="width: 17.9px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                     {{ $ficha?->dc }}
                 </div>
             </div>
@@ -398,11 +398,11 @@
                     </div>
                 </div>
             </div>
-            <div style="width: 427px;height:16px;margin: auto;">
-                <div style="width: 212px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 427px;height:16px;margin: auto;" class="color-azul">
+                <div style="width: 212px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                     {{ $ficha?->unicat?->codi_cont_rentas }}
                 </div>
-                <div style="width: 212.9px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                <div style="width: 212.9px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                     {{ $ficha?->unicat?->codi_pred_rentas }}
                 </div>
             </div>
@@ -489,23 +489,23 @@
     </div>
     <!-- INTERIOR 05 AL 10-->
     @foreach ($ficha?->puertas as $puerta)
-        <div style="width: 716px;height:16px;margin: auto;">
-            <div style="width: 123px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 716px;height:16px;margin: auto;" class="color-azul">
+            <div style="width: 123px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $puerta?->via?->codi_via }}
             </div>
-            <div style="width: 71px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 71px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $puerta?->via?->tipo_via }}
             </div>
-            <div style="width: 320px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 320px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $puerta?->via?->nomb_via }}
             </div>
-            <div style="width: 74px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 74px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $puerta?->tipo_puerta }}
             </div>
-            <div style="width: 76px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 76px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $puerta?->nume_muni }}
             </div>
-            <div style="width: 46px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 46px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $puerta?->cond_nume }}
             </div>
         </div>
@@ -521,7 +521,7 @@
                 TIPO DE EDIFICACION
             </div>
         </div>
-        <div style="width: 138PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 138PX;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul color-azul">
             {{ $ficha?->unicat?->edificacion?->tipo_edificacion }}
         </div>
         <div style="width: 123px;height: 16px;float:left;" class="fondoclaro">
@@ -532,7 +532,7 @@
                 TIPO DE INTERIOR
             </div>
         </div>
-        <div style="width: 101px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 101px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul color-azul">
             {{ $ficha?->unicat?->tipo_interior }}
         </div>
         <div style="width: 123px;height: 16px;float:left;" class="fondoclaro">
@@ -543,7 +543,7 @@
                 N° INTERIOR
             </div>
         </div>
-        <div style="width: 101.9PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 101.9PX;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul color-azul">
             {{ $ficha?->unicat?->nume_interior }}
         </div>
     </div>
@@ -751,23 +751,23 @@
     <!-- 14 al 19-->
     <!-- 18 AL 23-->
     <div style="width: 716px;height:16px;margin: auto;">
-        <div style="width: 111px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
+        <div style="width: 111px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul color-azul">
             {{ $ficha?->unicat?->edificacion?->lote?->hab_urbana?->codi_hab_urba }}
         </div>
-        <div style="width: 222px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
+        <div style="width: 222px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul color-azul">
             {{ $ficha?->unicat?->edificacion?->lote?->hab_urbana?->tipo_hab_urba }}
             {{ $ficha?->unicat?->edificacion?->lote?->hab_urbana?->nomb_hab_urba }}
         </div>
-        <div style="width: 130px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
+        <div style="width: 130px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul color-azul">
             {{ $ficha?->unicat?->edificacion?->lote?->zona_dist }}
         </div>
-        <div style="width: 93px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
+        <div style="width: 93px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul color-azul">
             {{ $ficha?->unicat?->edificacion?->lote?->mzna_dist }}
         </div>
-        <div style="width: 80px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
+        <div style="width: 80px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul color-azul">
             {{ $ficha?->unicat?->edificacion?->lote?->lote_dist }}
         </div>
-        <div style="width: 74px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
+        <div style="width: 74px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul color-azul">
             {{ $ficha?->unicat?->edificacion?->lote?->sub_lote_dist }}
         </div>
     </div>
@@ -788,7 +788,7 @@
                 TIPO DE TITULAR
             </div>
         </div>
-        <div style="width: 19px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 19px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul color-azul">
             @if ($ficha?->titular != '')
                 {{ $ficha?->titular?->persona?->tipo_persona }}
             @endif
@@ -813,7 +813,7 @@
                 ESTADO CIVIL
             </div>
         </div>
-        <div style="width: 19px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 19px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul color-azul">
             @if ($ficha?->titular != '')
                 {{ $ficha?->titular?->esta_civil }}
             @endif
@@ -860,7 +860,7 @@
                             TIPO DOC. IDENTIDAD
                         </div>
                     </div>
-                    <div style="width: 18px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                    <div style="width: 18px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul color-azul">
                         {{ $titular?->persona?->tipo_doc }}
                     </div>
                     <div style="width: 53px;height: 16px;float:left;" class="fondoclaro">
@@ -871,7 +871,7 @@
                             N° DOC
                         </div>
                     </div>
-                    <div style="width: 182px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                    <div style="width: 182px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul color-azul">
                         {{ $titular?->persona?->nume_doc }}
                     </div>
                     <div style="width: 93px;height: 16px;float:left;" class="fondoclaro">
@@ -882,7 +882,7 @@
                             NOMBRES
                         </div>
                     </div>
-                    <div style="width: 264px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                    <div style="width: 264px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul color-azul">
                         {{ $titular?->persona?->nombres }}
                     </div>
 
@@ -912,11 +912,11 @@
                 </div>
                 <div style="width: 716px;height:16px;margin: auto;">
                     <div style="width: 357px;text-align:center;height: 16px;float:left;line-height: normal;"
-                        class="texto2 fz8 lh14">
+                        class="texto2 fz8 lh14 color-azul color-azul">
                         {{ $titular?->persona?->ape_paterno }}
                     </div>
                     <div style="width: 357px;text-align:center;height: 16px;float:left;line-height: normal;"
-                        class="texto2 fz8 lh14">
+                        class="texto2 fz8 lh14 color-azul color-azul">
                         {{ $titular?->persona?->ape_materno }}
                     </div>
                 </div>
@@ -932,7 +932,7 @@
                         TIPO DOC. IDENTIDAD
                     </div>
                 </div>
-                <div style="width: 18px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                <div style="width: 18px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
                 </div>
                 <div style="width: 53px;height: 16px;float:left;" class="fondoclaro">
@@ -1046,7 +1046,7 @@
                             N° DE RUC
                         </div>
                     </div>
-                    <div style="width: 206px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                    <div style="width: 206px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                         {{ $titular?->persona?->nume_doc }}
                     </div>
                     <div style="width: 94px;height: 16px;float:left;" class="fondoclaro">
@@ -1057,7 +1057,7 @@
                             RAZON SOCIAL
                         </div>
                     </div>
-                    <div style="width: 301px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                    <div style="width: 301px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                         {{ $titular?->persona?->razon_social }}
                     </div>
                 </div>
@@ -1074,7 +1074,7 @@
                             PERSONA JURIDICA
                         </div>
                     </div>
-                    <div style="width: 19px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                    <div style="width: 19px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                         {{ $titular?->persona?->tipo_persona_juridica }}
                     </div>
 
@@ -1116,7 +1116,7 @@
                         N° DE RUC
                     </div>
                 </div>
-                <div style="width: 206px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                <div style="width: 206px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
                 </div>
                 <div style="width: 94px;height: 16px;float:left;" class="fondoclaro">
@@ -1127,7 +1127,7 @@
                         RAZON SOCIAL
                     </div>
                 </div>
-                <div style="width: 301px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                <div style="width: 301px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
                 </div>
             </div>
@@ -1144,7 +1144,7 @@
                         PERSONA JURIDICA
                     </div>
                 </div>
-                <div style="width: 19px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                <div style="width: 19px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
                 </div>
 
@@ -1195,7 +1195,7 @@
                         UBICACION
                     </div>
                 </div>
-                <div style="width: 19px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                <div style="width: 19px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                     @if ($ficha?->domiciliotitular != '')
                         {{ $ficha?->domiciliotitular?->ubicacion }}
                     @endif
@@ -1238,7 +1238,7 @@
                         DEPARTAMENTO
                     </div>
                 </div>
-                <div style="width: 106px;height: 16px;float:right;" class="texto2 fz8 lh14">
+                <div style="width: 106px;height: 16px;float:right;" class="texto2 fz8 lh14 color-azul">
                     @if (isset($ficha?->domiciliotitular))
                         @if ($ficha?->domiciliotitular != '')
                             @foreach ($ficha?->domiciliotitular?->distritos as $distrito)
@@ -1252,7 +1252,7 @@
                         @endif
                     @endif
                 </div>
-                <div style="width: 107px;height: 16px;float:right;" class="texto2 fz8 lh14">
+                <div style="width: 107px;height: 16px;float:right;" class="texto2 fz8 lh14 color-azul">
                     @if (isset($ficha?->domiciliotitular))
                         @if ($ficha?->domiciliotitular != '')
                             @foreach ($ficha?->domiciliotitular?->provincias as $provincia)
@@ -1267,7 +1267,7 @@
                     @endif
 
                 </div>
-                <div style="width: 107px;height: 16px;float:right;" class="texto2 fz8 lh14">
+                <div style="width: 107px;height: 16px;float:right;" class="texto2 fz8 lh14 color-azul">
                     @if (isset($ficha?->domiciliotitular?->departamento))
                         @if ($ficha?->domiciliotitular?->departamento != '')
                             {{ $ficha?->domiciliotitular?->departamento?->descri }}
@@ -1334,31 +1334,31 @@
         </div>
 
         <div style="width: 716px;height:16px;margin: auto;">
-            <div style="width: 122px ;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 122px ;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 @if ($ficha?->domiciliotitular != '')
                     {{ $ficha?->domiciliotitular?->codi_via }}
                 @endif
             </div>
 
-            <div style="width: 87px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 87px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 @if ($ficha?->domiciliotitular != '')
                     {{ $ficha?->domiciliotitular?->tipo_via }}
                 @endif
             </div>
 
-            <div style="width: 370px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 370px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 @if ($ficha?->domiciliotitular != '')
                     {{ $ficha?->domiciliotitular?->nomb_via }}
                 @endif
             </div>
 
-            <div style="width: 70px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 70px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 @if ($ficha?->domiciliotitular != '')
                     {{ $ficha?->domiciliotitular?->nume_muni }}
                 @endif
             </div>
 
-            <div style="width: 62px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 62px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 @if ($ficha?->domiciliotitular != '')
                     {{ $ficha?->domiciliotitular?->nume_interior }}
                 @endif
@@ -1426,37 +1426,37 @@
         </div>
         <!-- 34 AL 36-->
         <div style="width: 716px;height:16px;margin: auto;">
-            <div style="width: 111px ;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 111px ;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 @if ($ficha?->domiciliotitular != '')
                     {{ $ficha?->domiciliotitular?->codi_hab_urba }}
                 @endif
             </div>
 
-            <div style="width: 224px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 224px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 @if ($ficha?->domiciliotitular != '')
                     {{ $ficha?->domiciliotitular?->nomb_hab_urba }}
                 @endif
             </div>
 
-            <div style="width: 130px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 130px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 @if ($ficha?->domiciliotitular != '')
                     {{ $ficha?->domiciliotitular?->sector }}
                 @endif
             </div>
 
-            <div style="width: 93px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 93px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 @if ($ficha?->domiciliotitular != '')
                     {{ $ficha?->domiciliotitular?->mzna }}
                 @endif
             </div>
 
-            <div style="width: 81px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 81px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 @if ($ficha?->domiciliotitular != '')
                     {{ $ficha?->domiciliotitular?->lote }}
                 @endif
             </div>
 
-            <div style="width: 71px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 71px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 @if ($ficha?->domiciliotitular != '')
                     {{ $ficha?->domiciliotitular?->sublote }}
                 @endif
@@ -1474,7 +1474,7 @@
                     TELÉFONO
                 </div>
             </div>
-            <div style="width: 71px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 71px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $ficha?->titular?->telf }}
             </div>
             <div style="width: 61px;height: 16px;float:left;" class="fondoclaro">
@@ -1485,7 +1485,7 @@
                     ANEXO
                 </div>
             </div>
-            <div style="width: 55px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 55px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $ficha?->titular?->anexo }}
             </div>
             <div style="width: 126px;height: 16px;float:left;" class="fondoclaro">
@@ -1496,7 +1496,7 @@
                     CORREO ELECTRÓNICO
                 </div>
             </div>
-            <div style="width: 301px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 301px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $ficha?->titular?->email }}
             </div>
         </div>
@@ -1511,7 +1511,7 @@
                     TIPO DOC. IDENTIDAD
                 </div>
             </div>
-            <div style="width: 18px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 18px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
             </div>
             <div style="width: 53px;height: 16px;float:left;" class="fondoclaro">
@@ -1622,7 +1622,7 @@
                     N° DE RUC
                 </div>
             </div>
-            <div style="width: 206px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 206px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
             </div>
             <div style="width: 94px;height: 16px;float:left;" class="fondoclaro">
@@ -1633,7 +1633,7 @@
                     RAZON SOCIAL
                 </div>
             </div>
-            <div style="width: 301px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 301px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
             </div>
         </div>
@@ -1650,7 +1650,7 @@
                     PERSONA JURIDICA
                 </div>
             </div>
-            <div style="width: 19px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 19px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
             </div>
 
@@ -1700,7 +1700,7 @@
                         UBICACION
                     </div>
                 </div>
-                <div style="width: 19px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                <div style="width: 19px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
                 </div>
                 <div style="width: 114px;height: 16px;float:left;" class="fondoclarito">
@@ -1741,13 +1741,13 @@
                         DEPARTAMENTO
                     </div>
                 </div>
-                <div style="width: 107px;height: 16px;float:right;" class="texto2 fz8 lh14">
+                <div style="width: 107px;height: 16px;float:right;" class="texto2 fz8 lh14 color-azul">
 
                 </div>
-                <div style="width: 107px;height: 16px;float:right;" class="texto2 fz8 lh14">
+                <div style="width: 107px;height: 16px;float:right;" class="texto2 fz8 lh14 color-azul">
 
                 </div>
-                <div style="width: 106px;height: 16px;float:right;" class="texto2 fz8 lh14">
+                <div style="width: 106px;height: 16px;float:right;" class="texto2 fz8 lh14 color-azul">
 
                 </div>
             </div>
@@ -1810,23 +1810,23 @@
         </div>
 
         <div style="width: 716px;height:16px;margin: auto;">
-            <div style="width: 122px ;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 122px ;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
             </div>
 
-            <div style="width: 87px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 87px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
             </div>
 
-            <div style="width: 370px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 370px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
             </div>
 
-            <div style="width: 70px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 70px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
             </div>
 
-            <div style="width: 62px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 62px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
             </div>
         </div>
@@ -1892,27 +1892,27 @@
         </div>
         <!-- 34 AL 36-->
         <div style="width: 716px;height:16px;margin: auto;">
-            <div style="width: 111px ;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 111px ;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
             </div>
 
-            <div style="width: 224px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 224px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
             </div>
 
-            <div style="width: 130px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 130px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
             </div>
 
-            <div style="width: 93px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 93px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
             </div>
 
-            <div style="width: 81px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 81px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
             </div>
 
-            <div style="width: 71px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 71px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
             </div>
         </div>
@@ -1928,7 +1928,7 @@
                     TELÉFONO
                 </div>
             </div>
-            <div style="width: 71px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 71px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
             </div>
             <div style="width: 61px;height: 16px;float:left;" class="fondoclaro">
@@ -1939,7 +1939,7 @@
                     ANEXO
                 </div>
             </div>
-            <div style="width: 55px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 55px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
             </div>
             <div style="width: 126px;height: 16px;float:left;" class="fondoclaro">
@@ -1950,7 +1950,7 @@
                     CORREO ELECTRÓNICO
                 </div>
             </div>
-            <div style="width: 301px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 301px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
             </div>
         </div>
@@ -1980,7 +1980,7 @@
                 CONDICION DEL TITULAR
             </div>
         </div>
-        <div style="width: 19px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 19px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             @if ($ficha?->titular != '')
                 {{ $ficha?->titular?->cond_titular }}
             @else
@@ -2034,7 +2034,7 @@
                 38
             </div>
             <div style="background-color:#FFFFFF;color:#000000;width:15px;height:15px;border:none;float:right;"
-                class="texto2 fz8 lh14">
+                class="texto2 fz8 lh14 color-azul">
                 @if ($ficha?->titular != '')
                     {{ $ficha?->titular?->form_adquisicion }}
                 @endif
@@ -2129,7 +2129,7 @@
             </div>
 
         </div>
-        <div style="width: 68px;height: 32px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 68px;height: 32px;float:left;" class="texto2 fz8 lh14 color-azul">
 
             @if ($ficha?->titular != '')
                 @if ($ficha?->titular?->fecha_adquisicion != '')
@@ -2159,7 +2159,7 @@
                 CLASIFICACION DEL PREDIO
             </div>
         </div>
-        <div style="width: 19px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 19px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->fichaindividual?->clasificacion }}
         </div>
         <div style="width: 567px;height: 16px;float:left;border:none;" class="fondoclarito">
@@ -2305,7 +2305,7 @@
                 PREDIO CATASTRAL EN
             </div>
             <div style="background-color:#FFFFFF;color:#000000;width:17px;height:15px;border:none;float:right;"
-                class="texto2 fz8 lh14">
+                class="texto2 fz8 lh14 color-azul">
                 {{ $ficha?->fichaindividual?->cont_en }}
             </div>
         </div>
@@ -2410,13 +2410,13 @@
         </div>
     </div>
     <div style="width: 716px;height:16px;margin: auto;">
-        <div style="width: 103px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
+        <div style="width: 103px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul color-azul">
             {{ $ficha?->fichaindividual?->uso?->codi_uso }}
         </div>
-        <div style="width: 480PX;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
+        <div style="width: 480PX;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul color-azul">
             {{ $ficha?->fichaindividual?->uso?->desc_uso }}
         </div>
-        <div style="width: 130px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
+        <div style="width: 130px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul color-azul">
             {{ $ficha?->unicat?->edificacion?->lote?->zonificacion }}
         </div>
     </div>
@@ -2440,10 +2440,10 @@
         </div>
     </div>
     <div style="width: 716px;height:16px;margin: auto;">
-        <div style="width: 357px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 357px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->fichaindividual?->area_titulo }}
         </div>
-        <div style="width: 357px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 357px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->fichaindividual?->area_verificada }}
         </div>
     </div>
@@ -2473,10 +2473,10 @@
         <div class="fondoclaro" style="width: 142PX;height: 16px;float:left;">
             FRENTE
         </div>
-        <div style="width: 247PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 247PX;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->lindero?->fren_campo }}
         </div>
-        <div style="width: 324px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 324px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->lindero?->fren_colinda_campo }}
         </div>
     </div>
@@ -2484,10 +2484,10 @@
         <div class="fondoclaro" style="width: 142PX;height: 16px;float:left;">
             DERECHA
         </div>
-        <div style="width: 247PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 247PX;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->lindero?->dere_campo }}
         </div>
-        <div style="width: 324px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 324px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->lindero?->dere_colinda_campo }}
         </div>
     </div>
@@ -2495,10 +2495,10 @@
         <div class="fondoclaro" style="width: 142PX;height: 16px;float:left;">
             IZQUIERDA
         </div>
-        <div style="width: 247PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 247PX;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->lindero?->izqu_campo }}
         </div>
-        <div style="width: 324px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 324px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->lindero?->izqu_colinda_campo }}
         </div>
     </div>
@@ -2506,10 +2506,10 @@
         <div class="fondoclaro" style="width: 142PX;height: 16px;float:left;">
             FONDO
         </div>
-        <div style="width: 247PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 247PX;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->lindero?->fond_campo }}
         </div>
-        <div style="width: 324px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 324px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->lindero?->fond_colinda_campo }}
         </div>
     </div>
@@ -2532,7 +2532,7 @@
                 LUZ
             </div>
         </div>
-        <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->serviciobasico?->luz }}
         </div>
         <div style="width: 73px;height: 16px;float:left;" class="fondoclaro">
@@ -2543,7 +2543,7 @@
                 AGUA
             </div>
         </div>
-        <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->serviciobasico?->agua }}
         </div>
         <div style="width: 74px;height: 16px;float:left;" class="fondoclaro">
@@ -2554,7 +2554,7 @@
                 TELÉFONO
             </div>
         </div>
-        <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->serviciobasico?->telefono }}
         </div>
         <div style="width: 74px;height: 16px;float:left;" class="fondoclaro">
@@ -2565,7 +2565,7 @@
                 DESAGÜE
             </div>
         </div>
-        <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->serviciobasico?->desague }}
         </div>
         <div style="width: 62px;height: 16px;float:left;" class="fondoclaro">
@@ -2576,7 +2576,7 @@
                 GAS
             </div>
         </div>
-        <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->serviciobasico?->gas }}
         </div>
         <div style="width: 74px;height: 16px;float:left;" class="fondoclaro">
@@ -2587,7 +2587,7 @@
                 INTERNET
             </div>
         </div>
-        <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->serviciobasico?->internet }}
         </div>
         <div style="width: 115px;height: 16px;float:left;" class="fondoclaro">
@@ -2598,7 +2598,7 @@
                 CONEXIÓN A TV POR CABLE<BR>O CABLE SATELITAL
             </div>
         </div>
-        <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->serviciobasico?->tvcable }}
         </div>
         <div style="width: 38px;height: 16px;float:left;border:none;" class="fondoclaro">
@@ -2810,59 +2810,59 @@
     <!--FOREACH CONSTRUCCIONES -->
     @foreach ($ficha?->construccions as $construccion)
         <div style="width: 716px;height:16px;margin: auto;">
-            <div style="width: 34px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 34px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $construccion?->bloque }}
             </div>
-            <div style="width: 45PX;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 45PX;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $construccion?->nume_piso }}
             </div>
-            <div style="width: 29px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 29px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 @if ($construccion?->fecha != '')
                     {{ date('m', strtotime($construccion?->fecha)) }}
                 @endif
 
             </div>
-            <div style="width: 29px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 29px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
                 @if ($construccion?->fecha != '')
                     {{ date('Y', strtotime($construccion?->fecha)) }}
                 @endif
             </div>
-            <div style="width: 36px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 36px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $construccion?->mep }}
             </div>
-            <div style="width: 36px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 36px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $construccion?->ecs }}
             </div>
-            <div style="width: 36px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 36px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $construccion?->ecc }}
             </div>
-            <div style="width: 44px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 44px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $construccion?->estr_muro_col }}
             </div>
-            <div style="width: 44px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 44px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $construccion?->estr_techo }}
             </div>
-            <div style="width: 49px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 49px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $construccion?->acab_piso }}
             </div>
-            <div style="width: 49px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 49px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $construccion?->acab_puerta_ven }}
             </div>
-            <div style="width: 49px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 49px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $construccion?->acab_revest }}
             </div>
-            <div style="width: 49px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 49px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $construccion?->acab_bano }}
             </div>
 
-            <div style="width: 50px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 50px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $construccion?->inst_elect_sanita }}
             </div>
-            <div style="width: 82px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 82px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $construccion?->area_verificada }}
             </div>
-            <div style="width: 39px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 39px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $construccion?->uca }}
             </div>
         </div>
@@ -3025,10 +3025,10 @@
                     TERRENO
                 </div>
             </div>
-            <div style="width: 54px;height: 18px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 54px;height: 18px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $ficha?->fichaindividual?->porc_bc_terr_legal }}
             </div>
-            <div style="width: 54px;height: 18px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 54px;height: 18px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $ficha?->fichaindividual?->porc_bc_terr_fisc }}
 
             </div>
@@ -3039,10 +3039,10 @@
                     CONSTRUC.
                 </div>
             </div>
-            <div style="width: 54px;height: 18px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 54px;height: 18px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $ficha?->fichaindividual?->porc_bc_const_legal }}
             </div>
-            <div style="width: 54px;height: 18px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 54px;height: 18px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $ficha?->fichaindividual?->porc_bc_const_fisc }}
             </div>
         </div>
@@ -3148,39 +3148,39 @@
     <!--FOREACH 71 - 69-->
     @foreach ($ficha?->instalacions as $instalacion)
         <div style="width: 716px;height:16px;margin: auto;">
-            <div style="width: 64px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 64px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $instalacion?->codiinstalacion?->codi_instalacion }}
             </div>
-            <div style="width: 307px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 307px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $instalacion?->codiinstalacion?->desc_instalacion }}
             </div>
-            <div style="width: 40px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 40px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
                 @if ($instalacion?->fecha != '')
                     {{ date('m', strtotime($instalacion?->fecha)) }}
                 @endif
             </div>
-            <div style="width: 41px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 41px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 @if ($instalacion?->fecha != '')
                     {{ date('Y', strtotime($instalacion?->fecha)) }}
                 @endif
             </div>
-            <div style="width: 32px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 32px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $instalacion?->mep }}
             </div>
-            <div style="width: 32px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 32px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $instalacion?->ecs }}
             </div>
-            <div style="width: 32px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 32px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $instalacion?->ecc }}
             </div>
-            <div style="width: 62px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 62px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $instalacion?->prod_total }}
             </div>
-            <div style="width: 62px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 62px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $instalacion?->uni_med }}
             </div>
-            <div style="width: 33.9px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 33.9px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $instalacion?->uca }}
             </div>
         </div>
@@ -3254,28 +3254,28 @@
     @foreach ($ficha?->documento_adjuntos as $documento)
         <!-- LEYENDA TIPO VIA TIPO PUERTA-->
         <div style="width: 716px;height:16px;margin: auto;">
-            <div style="width: 129px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 129px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $documento?->tipo_doc }}
             </div>
-            <div style="width: 273px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 273px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $documento?->nume_doc }}
             </div>
-            <div style="width: 56px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 56px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 @if ($documento?->fecha_doc != '')
                     {{ date('d', strtotime($documento?->fecha_doc)) }}
                 @endif
             </div>
-            <div style="width: 56px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 56px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 @if ($documento?->fecha_doc != '')
                     {{ date('m', strtotime($documento?->fecha_doc)) }}
                 @endif
             </div>
-            <div style="width: 56.9px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 56.9px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 @if ($documento?->fecha_doc != '')
                     {{ date('Y', strtotime($documento?->fecha_doc)) }}
                 @endif
             </div>
-            <div style="width: 139px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 139px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $documento?->area_autorizada }}
             </div>
         </div>
@@ -3474,45 +3474,45 @@
             </div>
         </div>
 
-        <div style="width: 16px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 16px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             @if ($ficha?->sunarp != '')
                 {{ $ficha?->sunarp?->tipo_partida }}
             @endif
         </div>
 
-        <div style="width: 100px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 100px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             @if ($ficha?->sunarp != '')
                 {{ $ficha?->sunarp?->nume_partida }}
             @endif
         </div>
 
-        <div style="width: 59px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 59px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             @if ($ficha?->sunarp != '')
                 {{ $ficha?->sunarp?->fojas }}
             @endif
         </div>
 
-        <div style="width: 61px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 61px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             @if ($ficha?->sunarp != '')
                 {{ $ficha?->sunarp?->asiento }}
             @endif
         </div>
 
-        <div style="width: 30px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 30px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             @if ($ficha?->sunarp != '')
                 @if ($ficha?->sunarp?->fecha_inscripcion != '')
                     {{ date('d', strtotime($ficha?->sunarp?->fecha_inscripcion)) }}
                 @endif
             @endif
         </div>
-        <div style="width: 36px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 36px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             @if ($ficha?->sunarp != '')
                 @if ($ficha?->sunarp?->fecha_inscripcion != '')
                     {{ date('m', strtotime($ficha?->sunarp?->fecha_inscripcion)) }}
                 @endif
             @endif
         </div>
-        <div style="width: 33px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 33px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             @if ($ficha?->sunarp != '')
                 @if ($ficha?->sunarp?->fecha_inscripcion != '')
                     {{ date('Y', strtotime($ficha?->sunarp?->fecha_inscripcion)) }}
@@ -3531,31 +3531,31 @@
                 </div>
             </div>
         </div>
-        <div style="width: 18px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 18px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             @if ($ficha?->sunarp != '')
                 {{ $ficha?->sunarp?->codi_decla_fabrica }}
             @endif
         </div>
-        <div style="width: 64px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 64px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             @if ($ficha?->sunarp != '')
                 {{ $ficha?->sunarp?->asie_fabrica }}
             @endif
         </div>
-        <div style="width: 30px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 30px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             @if ($ficha?->sunarp != '')
                 @if ($ficha?->sunarp?->fecha_fabrica != '')
                     {{ date('d', strtotime($ficha?->sunarp?->fecha_fabrica)) }}
                 @endif
             @endif
         </div>
-        <div style="width: 36px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 36px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             @if ($ficha?->sunarp != '')
                 @if ($ficha?->sunarp?->fecha_fabrica != '')
                     {{ date('m', strtotime($ficha?->sunarp?->fecha_fabrica)) }}
                 @endif
             @endif
         </div>
-        <div style="width: 32px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 32px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             @if ($ficha?->sunarp != '')
                 @if ($ficha?->sunarp?->fecha_fabrica != '')
                     {{ date('Y', strtotime($ficha?->sunarp?->fecha_fabrica)) }}
@@ -3586,7 +3586,7 @@
                 EN LOTE COLINDANTE
             </div>
         </div>
-        <div style="width: 63px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 63px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->fichaindividual?->en_colindante }}
         </div>
         <div style="width: 114px;height: 16px;float:left;" class="fondoclaro">
@@ -3594,7 +3594,7 @@
                 EN ÁREA PÚBLICA
             </div>
         </div>
-        <div style="width: 63px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 63px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->fichaindividual?->en_area_publica }}
         </div>
         <div style="width: 113px;height: 16px;float:left;" class="fondoclaro">
@@ -3602,7 +3602,7 @@
                 EN JARDÍN DE AISLAMIENTO
             </div>
         </div>
-        <div style="width: 64px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 64px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->fichaindividual?->en_jardin_aislamiento }}
         </div>
         <div style="width: 113px;height: 16px;float:left;" class="fondoclaro">
@@ -3610,7 +3610,7 @@
                 EN ÁREA INTANGIBLE
             </div>
         </div>
-        <div style="width: 65px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 65px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->fichaindividual?->en_area_intangible }}
         </div>
     </div>
@@ -3629,7 +3629,7 @@
                 CONDICION DEL DECLARANTE
             </div>
         </div>
-        <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->fichaindividual?->cond_declarante }}
         </div>
         <div style="width: 77px;height: 16px;float:left;" class="fondoclarito">
@@ -3696,32 +3696,32 @@
             <!--foreach-->
             @if ($ficha?->litigantes != '')
                 @foreach ($ficha?->litigantes as $litigante)
-                    <div style="width: 30px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                    <div style="width: 30px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                         {{ $litigante?->persona?->tipo_doc }}
                     </div>
-                    <div style="width: 73px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                    <div style="width: 73px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                         {{ $litigante?->persona?->nume_doc }}
                     </div>
-                    <div style="width: 209.9px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                    <div style="width: 209.9px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                         {{ $litigante?->persona?->nombres }} {{ $litigante?->persona?->ape_paterno }}
                         {{ $litigante?->persona?->ape_materno }}
                     </div>
-                    <div style="width: 83px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                    <div style="width: 83px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                         {{ $litigante?->codi_contribuye }}
                     </div>
                     <!--foreach-->
                 @endforeach
             @else
-                <div style="width: 30px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                <div style="width: 30px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
                 </div>
-                <div style="width: 73px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                <div style="width: 73px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
                 </div>
-                <div style="width: 209.9px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                <div style="width: 209.9px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
                 </div>
-                <div style="width: 83px;height: 16px;float:left;" class="texto2 fz8 lh14">
+                <div style="width: 83px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
 
                 </div>
                 <!--foreach-->
@@ -3740,7 +3740,7 @@
                     ESTADO DE LLENADO DE LA FICHA
                 </div>
             </div>
-            <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $ficha?->fichaindividual?->esta_llenado }}
             </div>
 
@@ -3775,7 +3775,7 @@
                     N° DE HABITANTE
                 </div>
             </div>
-            <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $ficha?->fichaindividual?->nume_habitantes }}
             </div>
 
@@ -3787,7 +3787,7 @@
                     N° DE FAMILIAS
                 </div>
             </div>
-            <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
                 {{ $ficha?->fichaindividual?->nume_familias }}
             </div>
         </div>
@@ -3805,7 +3805,7 @@
                 MANTENIMIENTO
             </div>
         </div>
-        <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 17px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->fichaindividual?->mantenimiento }}
         </div>
         <div style="width: 486px;height: 15px;float:left; " class="fondoclarito">
@@ -3840,7 +3840,7 @@
 
     <div style="width: 716px;height:16px;margin: auto;">
 
-        <div style="width: 716px;height: 45px;float:left;" class="texto2 fz8 lh14">
+        <div style="width: 716px;height: 45px;float:left;" class="texto2 fz8 lh14 color-azul">
             {{ $ficha?->fichaindividual?->observaciones }}
         </div>
     </div>

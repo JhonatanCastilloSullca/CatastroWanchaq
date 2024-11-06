@@ -379,10 +379,24 @@ class FichaBienesComunes extends Component
         $this->cont++;
 
     }
+   
 
-    public function reducirUbicacion()
+    public function reducirUbicacion($value)
     {
         $this->cont--;
+        if (is_array($this->tipoVia)) {
+            array_splice($this->tipoVia, $value, 1);
+        }
+        if (is_array($this->tipopuerta)) {
+            array_splice($this->tipopuerta, $value, 1);
+        }
+        if (is_array($this->nume_muni)) {
+            array_splice($this->nume_muni, $value, 1);
+        }
+        if (is_array($this->cond_nume)) {
+            array_splice($this->cond_nume, $value, 1);
+        }
+        
     }
 
     /* UBICACION DEL PREDIO */
@@ -453,9 +467,33 @@ class FichaBienesComunes extends Component
         $this->cont3++;
     }
 
-    public function reducirObras()
+    public function reducirObras($value)
     {
         $this->cont3--;
+        if (is_array($this->codiinstalacion)) {
+            array_splice($this->codiinstalacion, $value, 1);
+        }
+        if (is_array($this->inst_fecha)) {
+            array_splice($this->inst_fecha, $value, 1);
+        }
+        if (is_array($this->inst_mep)) {
+            array_splice($this->inst_mep, $value, 1);
+        }
+        if (is_array($this->inst_ecs)) {
+            array_splice($this->inst_ecs, $value, 1);
+        }
+        if (is_array($this->inst_ecc)) {
+            array_splice($this->inst_ecc, $value, 1);
+        }
+        if (is_array($this->inst_prod_total)) {
+            array_splice($this->inst_prod_total, $value, 1);
+        }
+        if (is_array($this->inst_uni_med)) {
+            array_splice($this->inst_uni_med, $value, 1);
+        }
+        if (is_array($this->inst_uca)) {
+            array_splice($this->inst_uca, $value, 1);
+        }
     }
 
     /* OBRAS COMPLEMENTARIAS */
@@ -465,9 +503,24 @@ class FichaBienesComunes extends Component
         $this->cont4++;
     }
 
-    public function reducirEdificios()
+    public function reducirEdificios($value)
     {
         $this->cont4--;
+        if (is_array($this->edificiobbc)) {
+            array_splice($this->edificiobbc, $value, 1);
+        }
+        if (is_array($this->porcentaje)) {
+            array_splice($this->porcentaje, $value, 1);
+        }
+        if (is_array($this->atc)) {
+            array_splice($this->atc, $value, 1);
+        }
+        if (is_array($this->acc)) {
+            array_splice($this->acc, $value, 1);
+        }
+        if (is_array($this->aoic)) {
+            array_splice($this->aoic, $value, 1);
+        }
     }
 
     /* RECAP EDIFICIOS */
@@ -1395,6 +1448,20 @@ class FichaBienesComunes extends Component
     public function updatededifica($value)
     {
         $this->edifica = str_pad($value, 2, '0', STR_PAD_LEFT);
+    }
+
+    public function updatedNumeFichaLote($value)
+    {
+        if (!empty($this->nume_ficha_lote2) && $value > $this->nume_ficha_lote2) {
+            $this->nume_ficha_lote = '';
+        }
+    }
+
+    public function updatedNumeFichaLote2($value)
+    {
+        if (!empty($this->nume_ficha_lote) && $this->nume_ficha_lote > $value) {
+            $this->nume_ficha_lote = '';
+        }
     }
     
 }

@@ -15,42 +15,42 @@
 <div class="mb-3">
     <label for="recipient-name" class="form-label">Fichas Individuales:</label>
     <input type="text" class="form-control fichaindividual" id="fichaindividual" name="fichaindividual" value="{{old('fichaindividual')}}">
-    @error('nomb_sector')
+    @error('fichaindividual')
         <span class="error-message" style="color:red">{{ $message }}</span>
     @enderror
 </div>
 <div class="mb-3">
     <label for="recipient-name" class="form-label">Fichas Cotitulares:</label>
     <input type="text" class="form-control fichacotitular" id="fichacotitular" name="fichacotitular" value="{{old('fichacotitular')}}">
-    @error('nomb_sector')
+    @error('fichacotitular')
         <span class="error-message" style="color:red">{{ $message }}</span>
     @enderror
 </div>
 <div class="mb-3">
     <label for="recipient-name" class="form-label">Fichas Economicas:</label>
     <input type="text" class="form-control fichaeconomica" id="fichaeconomica" name="fichaeconomica" value="{{old('fichaeconomica')}}">
-    @error('nomb_sector')
+    @error('fichaeconomica')
         <span class="error-message" style="color:red">{{ $message }}</span>
     @enderror
 </div>
 <div class="mb-3">
     <label for="recipient-name" class="form-label">Fichas de Bien comun:</label>
     <input type="text" class="form-control fichabiencomun" id="fichabiencomun" name="fichabiencomun" value="{{old('fichabiencomun')}}">
-    @error('nomb_sector')
+    @error('fichabiencomun')
         <span class="error-message" style="color:red">{{ $message }}</span>
     @enderror
 </div>
 <div class="mb-3">
     <label for="recipient-name" class="form-label">Fichas de Bien Cultural:</label>
     <input type="text" class="form-control fichacultural" id="fichacultural" name="fichacultural" value="{{old('fichacultural')}}">
-    @error('nomb_sector')
+    @error('fichacultural')
         <span class="error-message" style="color:red">{{ $message }}</span>
     @enderror
 </div>
 <div class="mb-3">
     <label for="recipient-name" class="form-label">Fichas Rurales:</label>
     <input type="text" class="form-control ficharural" id="ficharural" name="ficharural" value="{{old('ficharural')}}">
-    @error('nomb_sector')
+    @error('ficharural')
         <span class="error-message" style="color:red">{{ $message }}</span>
     @enderror
 </div>

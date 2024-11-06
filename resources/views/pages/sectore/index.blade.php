@@ -27,6 +27,13 @@
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"></button>
             </div>
           @endif
+          @if ($message = Session::get('error'))
+
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              {{ $message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"></button>
+            </div>
+          @endif
           <div class="table-responsive">
             <table id="especialidad" class="table">
               <thead>
@@ -66,6 +73,11 @@
                     @can('sectore.destroy')
                     <button type="button" class="btn btn-danger btn-icon" data-bs-toggle="modal" data-bs-target="#Eliminar" data-id="{{$sector->id_sector}}">
                       <i data-feather="trash-2"></i>
+                    </button>
+                    @endcan
+                    @can('sectore.destroy')
+                    <button type="button" class="btn btn-warning btn-icon" data-bs-toggle="modal" data-bs-target="#Destroy" data-id="{{$sector->id_sector}}">
+                      <i data-feather="alert-triangle"></i>
                     </button>
                     @endcan
                   </td>
@@ -126,6 +138,27 @@
       <div class="modal-body">
         <form action="{{route('sectore.destroy','test')}}" method="POST" autocomplete="off">
           {{method_field('delete')}}
+          {{csrf_field()}} 
+            <p>Estas seguro de cambiar el estado?</p>
+            <div class="modal-footer">
+              <input type="hidden" name="id_sectore_2" class="id_sectore_2">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-primary">Aceptar</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="Destroy" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >Cambiar Estado </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="{{route('sectore.eliminar','test')}}" method="POST" autocomplete="off">
           {{csrf_field()}} 
             <p>Estas seguro de cambiar el estado?</p>
             <div class="modal-footer">
@@ -205,6 +238,17 @@ editar.addEventListener('show.bs.modal', function (event) {
 });
 
 var eliminar = document.getElementById('Eliminar');
+
+eliminar.addEventListener('show.bs.modal', function (event) {
+  var button = event.relatedTarget
+
+  var id = button.getAttribute('data-id')
+
+  var idModal = eliminar.querySelector('.id_sectore_2')
+
+  idModal.value = id;
+});
+var eliminar = document.getElementById('Destroy');
 
 eliminar.addEventListener('show.bs.modal', function (event) {
   var button = event.relatedTarget

@@ -293,7 +293,8 @@
                     Gate::check('reporte.fichapredio') ||
                     Gate::check('reporte.fichaconstrucciones') ||
                     Gate::check('reporte.fichaantiguedad') ||
-                    Gate::check('reporte.actividadeconomica'))
+                    Gate::check('reporte.actividadeconomica') ||
+                    Gate::check('reporte.index'))
 
                 <li class="nav-item {{ active_class(['reporte/*']) }}">
                     <a class="nav-link" data-bs-toggle="collapse" href="#reporte" role="button"
@@ -457,7 +458,7 @@
             @endcan
             @can('visormapas')
             <li class="nav-item">
-                <a href="http://127.0.0.1:8080/visor_mpch/index.html" target="_blank" class="nav-link">
+                <a href="http://209.45.78.210:9101/" target="_blank" class="nav-link">
                     <i class="link-icon mdi mdi-google-maps"></i>
                     <span class="link-title">Visor de Mapas</span>
                 </a>

@@ -109,21 +109,21 @@
     </div>
 
     <div class="modal fade" id="Editar" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" >Editar Codigo de Tabla</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" >Editar Codigo de Tabla</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('tablacodigo.update','test')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                {{method_field('patch')}}
+                {{csrf_field()}}
+                @include('pages.tablacodigo.form')
+                </form>
+            </div>
+            </div>
         </div>
-        <div class="modal-body">
-            <form action="{{route('tablacodigo.update','test')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
-            {{method_field('patch')}}
-            {{csrf_field()}}
-            @include('pages.tablacodigo.form')
-            </form>
-        </div>
-        </div>
-    </div>
     </div>
 
     <div class="modal fade" id="Eliminar" tabindex="-1"  aria-hidden="true">
@@ -181,18 +181,23 @@
     editar.addEventListener('show.bs.modal', function (event) {
 
     var button = event.relatedTarget
-    var codigo = button.getAttribute('data-codigo')
-    var id_tabla = button.getAttribute('data-id_tabla')
-    var desc_codigo = button.getAttribute('data-desc_codigo')
+    var codigo = button.getAttribute('data-codigo');
+    var id_tabla = button.getAttribute('data-id_tabla');
+    var desc_codigo = button.getAttribute('data-desc_codigo');
 
-    var codigoModal = editar.querySelector('.codigo')
-    var id_tablaModal = editar.querySelector('.id_tablacodigos')
-    var desc_codigoModal = editar.querySelector('.desc_codigo')
+    // Selecciona los elementos en el modal
+    var codigoModal = editar.querySelector('#codigo');
+    var codigo2Modal = editar.querySelector('#codigo2');
+    var id_tablaModal = editar.querySelector('#id_tablacodigos');
+    var desc_codigoModal = editar.querySelector('#desc_codigo');
 
+    // Asigna el valor de data-codigo a ambos campos
+    if (codigoModal) codigoModal.value = codigo;
+    if (codigo2Modal) codigo2Modal.value = codigo;
 
-    codigoModal.value = codigo;
-    id_tablaModal.value = id_tabla;
-    desc_codigoModal.value = desc_codigo;
+    // Asigna los valores de id_tabla y desc_codigo si existen
+    if (id_tablaModal) id_tablaModal.value = id_tabla;
+    if (desc_codigoModal) desc_codigoModal.value = desc_codigo;
 
     });
     var eliminar = document.getElementById('Eliminar');

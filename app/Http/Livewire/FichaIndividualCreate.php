@@ -427,14 +427,29 @@ class FichaIndividualCreate extends Component
 
     public function reducirUbicacion($i)
     {
-        if ($this->cont > 0) {
+        if ($this->cont > 0) {           
+
+
             $this->cont--;
-            array_splice($this->tipoVia, $i, 1);
-            array_splice($this->tipopuerta, $i, 1);
-            array_splice($this->nume_muni, $i, 1);
-            array_splice($this->cond_nume, $i, 1);
-            array_splice($this->tipoViatipo, $i, 1);
-            array_splice($this->tipoVianombre, $i, 1);
+
+            if (is_array($this->tipoVia)) {
+                array_splice($this->tipoVia, $i, 1);
+            }
+            if (is_array($this->tipopuerta)) {
+                array_splice($this->tipopuerta, $i, 1);
+            }
+            if (is_array($this->nume_muni)) {
+                array_splice($this->nume_muni, $i, 1);
+            }
+            if (is_array($this->cond_nume)) {
+                array_splice($this->cond_nume, $i, 1);
+            }
+            if (is_array($this->tipoViatipo)) {
+                array_splice($this->tipoViatipo, $i, 1);
+            }
+            if (is_array($this->tipoVianombre)) {
+                array_splice($this->tipoVianombre, $i, 1);
+            }
         }
     }
 
@@ -2574,4 +2589,18 @@ class FichaIndividualCreate extends Component
     {
         $this->unidad = str_pad($value, 3, '0', STR_PAD_LEFT);
     }
+    public function updatedNumeFichaLote($value)
+    {
+        if (!empty($this->nume_ficha_lote2) && $value > $this->nume_ficha_lote2) {
+            $this->nume_ficha_lote = ''; // Vacía el campo si el valor es mayor al segundo campo
+        }
+    }
+
+    public function updatedNumeFichaLote2($value)
+    {
+        if (!empty($this->nume_ficha_lote) && $this->nume_ficha_lote > $value) {
+            $this->nume_ficha_lote = ''; // Vacía el primer campo si el segundo es menor
+        }
+    }
+
 }

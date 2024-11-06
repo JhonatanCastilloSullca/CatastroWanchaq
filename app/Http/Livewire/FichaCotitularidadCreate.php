@@ -314,7 +314,7 @@ class FichaCotitularidadCreate extends Component
                     'razon_social.' . $i          =>  'nullable|max:100',
 
                     'form_adquisicion.' . $i          =>  'nullable',
-                    'fecha_adquisicion.' . $i         =>  'required|date',
+                    'fecha_adquisicion.' . $i         =>  'nullable|date',
                     'condicion.' . $i         =>  'nullable',
                     'nume_resolucion.' . $i           =>  'nullable',
                     'fecha_inicio.' . $i          =>  'nullable',

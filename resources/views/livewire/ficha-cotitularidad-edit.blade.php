@@ -1,7 +1,7 @@
 <div class="card">
 <form id="contact" method="POST" class="forms-sample" enctype="multipart/form-data">
     {{csrf_field()}}
-    <div class="card-body">
+    <div class="card-body" style="background-color: #fff8e4">
         <div class="row">
             <div class="row form-group">
             <h4 class="mb-4"> DATOS GENERALES</h4>
@@ -153,7 +153,7 @@
                     <div class="col-md-3">
                         <div class="mb-2">
                             <label class="form-label d-inline-flex" > <div class="divcuadro">04</div> COD CONTRIBUYENTE</label>
-                            <input type="text" class="form-control" name="codi_contribuyente[]" placeholder="Nro de cotitular" wire:model="codi_contribuyente.{{$i}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="10">
+                            <input type="text" class="form-control" name="codi_contribuyente[]" placeholder="Nro de cotitular" wire:model="codi_contribuyente.{{$i}}"  maxlength="10">
                             <span class="text-danger">@error('codi_contribuyente.'.$i){{$message}}@enderror</span>
                         </div>
                     </div><!-- Col -->
@@ -576,7 +576,7 @@
 
 
                         <label class="form-label d-inline-flex" > FECHA</label>
-                        <input type="date" class="form-control" name="fecha_declarante" wire:model="fecha_declarante" >
+                        <input type="date" class="form-control" name="fecha_declarante" wire:model="fecha_declarante" max="{{ date('Y-m-d') }}" >
                         @error('fecha_declarante')
                             <span class="error-message" style="color:red">{{ $message }}</span>
                         @enderror
@@ -594,7 +594,7 @@
                         <span class="error-message" style="color:red">{{ $message }}</span>
                     @enderror
                     <label class="form-label d-inline-flex" > FECHA</label>
-                    <input type="date" class="form-control" name="fecha_supervision" wire:model="fecha_supervision" >
+                    <input type="date" class="form-control" name="fecha_supervision" wire:model="fecha_supervision" max="{{ date('Y-m-d') }}" >
                     @error('fecha_supervision')
                         <span class="error-message" style="color:red">{{ $message }}</span>
                     @enderror
@@ -611,7 +611,7 @@
                         <span class="error-message" style="color:red">{{ $message }}</span>
                     @enderror
                     <label class="form-label d-inline-flex" > FECHA</label>
-                    <input type="date" class="form-control" name="fecha_levantamiento" wire:model="fecha_levantamiento" >
+                    <input type="date" class="form-control" name="fecha_levantamiento" wire:model="fecha_levantamiento"  max="{{ date('Y-m-d') }}">
                     @error('fecha_levantamiento')
                         <span class="error-message" style="color:red">{{ $message }}</span>
                     @enderror
@@ -633,7 +633,7 @@
                         <span class="error-message" style="color:red">{{ $message }}</span>
                     @enderror
                     <label class="form-label d-inline-flex" > FECHA</label>
-                    <input type="date" class="form-control" name="fecha_verificacion" wire:model="fecha_verificacion" >
+                    <input type="date" class="form-control" name="fecha_verificacion" wire:model="fecha_verificacion"  max="{{ date('Y-m-d') }}">
                     @error('fecha_verificacion')
                         <span class="error-message" style="color:red">{{ $message }}</span>
                     @enderror

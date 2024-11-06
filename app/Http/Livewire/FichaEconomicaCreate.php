@@ -892,9 +892,14 @@ class FichaEconomicaCreate extends Component
         $this->cont1++;
     }
 
-    public function reducirAutorizacionMunicipal()
+    public function reducirAutorizacionMunicipal($i)
     {
+        
         $this->cont1--;
+
+            if (is_array($this->codi_actividad)) {
+                array_splice($this->codi_actividad, $i, 1);
+            }
     }
 
 
@@ -903,9 +908,34 @@ class FichaEconomicaCreate extends Component
         $this->cont2++;
     }
 
-    public function reducirAutorizacionAnuncio()
+    public function reducirAutorizacionAnuncio($i)
     {
         $this->cont2--;
+        if (is_array($this->codianuncio)) {
+            array_splice($this->codianuncio, $i, 1);
+        }
+        if (is_array($this->nume_lados)) {
+            array_splice($this->nume_lados, $i, 1);
+        }
+        if (is_array($this->area_autorizada)) {
+            array_splice($this->area_autorizada, $i, 1);
+        }
+        if (is_array($this->area_verificada)) {
+            array_splice($this->area_verificada, $i, 1);
+        }
+        if (is_array($this->nume_expediente1)) {
+            array_splice($this->nume_expediente1, $i, 1);
+        }
+        if (is_array($this->nume_licencia1)) {
+            array_splice($this->nume_licencia1, $i, 1);
+        }
+        if (is_array($this->fecha_expedicion1)) {
+            array_splice($this->fecha_expedicion1, $i, 1);
+        }
+        if (is_array($this->fecha_vencimiento1)) {
+            array_splice($this->fecha_vencimiento1, $i, 1);
+        }
+
     }
 
     public function updatednumedoc1()
