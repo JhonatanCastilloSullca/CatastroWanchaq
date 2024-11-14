@@ -194,8 +194,8 @@
         .bn {
             border: none !important;
         }
-        .color-azul
-        {
+
+        .color-azul {
             color: #0011ff;
         }
     </style>
@@ -2196,97 +2196,97 @@
     <!-- DESCRIPCION DEL BIEN COMUN-->
     <!-- LEYENDA TIPO VIA TIPO PUERTA-->
     <div style="width: 716px;height:10px;margin: auto;" class="fondoclarito">
-        <div  class="bn" style="width: 119px;height: 10px;float:left;">
-            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
+        <div class="bn" style="width: 119px;height: 10px;float:left;">
+            <div class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.1 CLÍNICA
             </div>
         </div>
-        <div  class="bn" style="width: 115px;height: 10px;float:left;">
-            <div class="bn"  style="font-size:5px;border:none;text-align:center;">
+        <div class="bn" style="width: 115px;height: 10px;float:left;">
+            <div class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.2 HOSPITAL
             </div>
         </div>
-        <div  class="bn" style="width: 119px;height: 10px;float:left;">
-            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
+        <div class="bn" style="width: 119px;height: 10px;float:left;">
+            <div class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.3 CINE, TEATRO
             </div>
         </div>
-        <div  class="bn" style="width: 119px;height: 10px;float:left;">
-            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
+        <div class="bn" style="width: 119px;height: 10px;float:left;">
+            <div class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.4 INDUSTRIA
             </div>
         </div>
-        <div  class="bn" style="width: 119px;height: 10px;float:left;">
-            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
+        <div class="bn" style="width: 119px;height: 10px;float:left;">
+            <div class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.5 TALLER
             </div>
         </div>
-        <div  class="bn" style="width: 119px;height: 10px;float:left;">
-            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
+        <div class="bn" style="width: 119px;height: 10px;float:left;">
+            <div class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.6 IGLESIA / TEMPLO
             </div>
         </div>
     </div>
     <div style="width: 716px;height:10px;margin: auto;" class="fondoclarito">
-        <div  class="bn" style="width: 119px;height: 10px;float:left;">
-            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
+        <div class="bn" style="width: 119px;height: 10px;float:left;">
+            <div class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.7 CENTRO DE ENSEÑANZA
             </div>
         </div>
-        <div  class="bn" style="width: 115px;height: 10px;float:left;">
-            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
+        <div class="bn" style="width: 115px;height: 10px;float:left;">
+            <div class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.8 SERVICIO DE COMIDA
             </div>
         </div>
-        <div  class="bn" style="width: 119px;height: 10px;float:left;">
-            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
+        <div class="bn" style="width: 119px;height: 10px;float:left;">
+            <div class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.9 PARQUE
             </div>
         </div>
-        <div  class="bn" style="width: 119px;height: 10px;float:left;">
-            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
+        <div class="bn" style="width: 119px;height: 10px;float:left;">
+            <div class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.10 CEMENTERIO
             </div>
         </div>
-        <div  class="bn" style="width: 119px;height: 10px;float:left;">
-            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
+        <div class="bn" style="width: 119px;height: 10px;float:left;">
+            <div class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.11 SUB ESTACIÓN
             </div>
         </div>
-        <div  class="bn" style="width: 119px;height: 10px;float:left;">
-            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
+        <div class="bn" style="width: 119px;height: 10px;float:left;">
+            <div class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.12 BANCO FINANCIERA
             </div>
         </div>
     </div>
     <div style="width: 716px;height:10px;margin: auto;" class="fondoclarito">
-        <div  class="bn" style="width: 119px;height: 10px;float:left;">
-            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
+        <div class="bn" style="width: 119px;height: 10px;float:left;">
+            <div class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.13 TERMINAL DE TRANSPORTE
             </div>
         </div>
-        <div  class="bn" style="width: 115px;height: 10px;float:left;">
-            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
+        <div class="bn" style="width: 115px;height: 10px;float:left;">
+            <div class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.14 MERCADO
             </div>
         </div>
-        <div  class="bn" style="width: 119px;height: 10px;float:left;">
-            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
+        <div class="bn" style="width: 119px;height: 10px;float:left;">
+            <div class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.15 CLUB SOCIAL
             </div>
         </div>
-        <div  class="bn" style="width: 119px;height: 10px;float:left;">
-            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
+        <div class="bn" style="width: 119px;height: 10px;float:left;">
+            <div class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.16 CLUB DE ESPARCIMIENTO
             </div>
         </div>
-        <div  class="bn" style="width: 119px;height: 10px;float:left;">
-            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
+        <div class="bn" style="width: 119px;height: 10px;float:left;">
+            <div class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.17 PLAYA DE ESTACIONAMIENTO
             </div>
         </div>
-        <div  class="bn" style="width: 119px;height: 10px;float:left;">
-            <div  class="bn" style="font-size:5px;border:none;text-align:center;">
+        <div class="bn" style="width: 119px;height: 10px;float:left;">
+            <div class="bn" style="font-size:5px;border:none;text-align:center;">
                 4.18 OTROS
             </div>
         </div>
@@ -3889,7 +3889,7 @@
                 </div>
             </div>
             <div style="width: 178px;height: 13px;float:left;">
-                <div class="texto ti pl15">
+                <div class="texto ti pl15 color-azul">
 
                     DNI: @if ($ficha?->verificador != '')
                         {{ $ficha?->verificador?->nume_doc }}
@@ -3900,7 +3900,7 @@
     </div>
     <div style="width: 716px;height:14px;margin: auto;">
         <div style="width: 178px;height: 14px;float:left;">
-            <div class="texto ti pl15">
+            <div class="texto ti pl15 color-azul">
                 DNI:@if ($ficha?->declarante != '')
                     {{ $ficha?->declarante?->nume_doc }}
                 @endif
@@ -3908,21 +3908,21 @@
 
         </div>
         <div style="width: 178px;height: 14px;float:left;">
-            <div class="texto ti pl15">
+            <div class="texto ti pl15 color-azul">
                 DNI: @if ($ficha?->supervisor != '')
                     {{ $ficha?->supervisor?->nume_doc }}
                 @endif
             </div>
         </div>
         <div style="width: 178px;height: 14px;float:left;">
-            <div class="texto ti pl15">
+            <div class="texto ti pl15 color-azul">
                 DNI: @if ($ficha?->tecnico != '')
                     {{ $ficha?->tecnico?->nume_doc }}
                 @endif
             </div>
         </div>
         <div style="width: 178px;height: 14px;float:left;">
-            <div class="texto ti pl15">
+            <div class="texto ti pl15 color-azul">
                 N° DE REGISTRO: {{ $ficha?->nume_registro }}
             </div>
 
@@ -3930,28 +3930,28 @@
     </div>
     <div style="width: 716px;height:14px;margin: auto;">
         <div style="width: 178px;height: 14px;float:left;">
-            <div class="texto ti pl15">
+            <div class="texto ti pl15 color-azul">
                 NOMBRES: @if ($ficha?->declarante != '')
                     {{ $ficha?->declarante?->nombres }}
                 @endif
             </div>
         </div>
         <div style="width: 178px;height: 14px;float:left;">
-            <div class="texto ti pl15">
+            <div class="texto ti pl15 color-azul">
                 NOMBRES: @if ($ficha?->supervisor != '')
                     {{ $ficha?->supervisor?->nombres }}
                 @endif
             </div>
         </div>
         <div style="width: 178px;height: 14px;float:left;">
-            <div class="texto ti pl15">
+            <div class="texto ti pl15 color-azul">
                 NOMBRES: @if ($ficha?->tecnico != '')
                     {{ $ficha?->tecnico?->nombres }}
                 @endif
             </div>
         </div>
         <div style="width: 178px;height: 14px;float:left;">
-            <div class="texto ti pl15">
+            <div class="texto ti pl15 color-azul">
                 NOMBRES: @if ($ficha?->verificador != '')
                     {{ $ficha?->verificador?->nombres }}
                 @endif
@@ -3960,28 +3960,28 @@
     </div>
     <div style="width: 716px;height:28px;margin: auto;">
         <div style="width: 178px;height: 28px;float:left;">
-            <div class="texto ti pl15">
+            <div class="texto ti pl15 color-azul">
                 APELLIDOS:@if ($ficha?->declarante != '')
                     {{ $ficha?->declarante?->ape_paterno }} {{ $ficha?->declarante?->ape_materno }}
                 @endif
             </div>
         </div>
         <div style="width: 178px;height: 28px;float:left;">
-            <div class="texto ti pl15">
+            <div class="texto ti pl15 color-azul">
                 APELLIDOS: @if ($ficha?->supervisor != '')
                     {{ $ficha?->supervisor?->ape_paterno }} {{ $ficha?->supervisor?->ape_materno }}
                 @endif
             </div>
         </div>
         <div style="width: 178px;height: 28px;float:left;">
-            <div class="texto ti pl15">
+            <div class="texto ti pl15 color-azul">
                 APELLIDOS: @if ($ficha?->tecnico != '')
                     {{ $ficha?->tecnico?->ape_paterno }} {{ $ficha?->tecnico?->ape_materno }}
                 @endif
             </div>
         </div>
         <div style="width: 178px;height: 28px;float:left;">
-            <div class="texto ti pl15">
+            <div class="texto ti pl15 color-azul">
                 APELLIDOS: @if ($ficha?->verificador != '')
                     {{ $ficha?->verificador?->ape_paterno }} {{ $ficha?->verificador?->ape_materno }}
                 @endif
@@ -3990,7 +3990,7 @@
     </div>
     <div style="width: 716px;height:14px;margin: auto;">
         <div style="width: 178px;height: 14px;float:left;">
-            <div class="texto ti pl15">
+            <div class="texto ti pl15 color-azul">
                 @if ($ficha?->fecha_declarante != '')
                     @if ($ficha?->fecha_declarante != '')
                         FECHA: {{ $ficha?->fecha_declarante }}
@@ -3999,7 +3999,7 @@
             </div>
         </div>
         <div style="width: 178px;height: 14px;float:left;">
-            <div class="texto ti pl15">
+            <div class="texto ti pl15 color-azul">
                 @if ($ficha?->fecha_supervision != '')
                     @if ($ficha?->fecha_supervision != '')
                         FECHA: {{ $ficha?->fecha_supervision }}
@@ -4008,7 +4008,7 @@
             </div>
         </div>
         <div style="width: 178px;height: 14px;float:left;">
-            <div class="texto ti pl15">
+            <div class="texto ti pl15 color-azul">
                 @if ($ficha?->fecha_levantamiento != '')
                     @if ($ficha?->fecha_levantamiento != '')
                         FECHA: {{ $ficha?->fecha_levantamiento }}
@@ -4017,7 +4017,7 @@
             </div>
         </div>
         <div style="width: 178px;height: 14px;float:left;">
-            <div class="texto ti pl15">
+            <div class="texto ti pl15 color-azul">
                 @if ($ficha?->fecha_verificacion != '')
                     @if ($ficha?->fecha_verificacion != '')
                         FECHA: {{ $ficha?->fecha_verificacion }}

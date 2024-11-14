@@ -45,9 +45,9 @@ class FichaIndividualRentasEdit extends Component
     public $nume_ficha_lote;
     public $nume_ficha_lote2;
     public $cuc;
-    public $dpto = 8;
-    public $prov = 8;
-    public $dist = 1;
+    public $dpto = '08';
+    public $prov = '01';
+    public $dist = '08';
     public $sector;
     public $mzna;
     public $lote;

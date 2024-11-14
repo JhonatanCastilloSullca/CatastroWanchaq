@@ -418,14 +418,15 @@
                                         <label class="form-label d-inline-flex">
                                             <div class="divcuadrorequired">14</div> CÓDIGO URBANO
                                         </label>
-                                        <select class="form-select insumo_id" id="hab_urbana_id" name="hab_urbana_id"
+                                        
+                                        <select class="form-select " id="hab_urbana_id" name="hab_urbana_id"
                                             data-width="100%" wire:model="tipoHabi" tabindex="26">
                                             <option value="">Seleccione</option>
                                             @foreach ($hab_urbanas as $hab_urbana)
                                                 <option
                                                     value="{{ str_pad($hab_urbana->id_hab_urba, 10, '0', STR_PAD_LEFT) }}">
-                                                    {{ $hab_urbana->codi_hab_urba }} {{ $hab_urbana->nomb_hab_urba }}
-                                                </option>
+                                                    {{ $hab_urbana->codi_hab_urba }} {{ $hab_urbana->tipo_hab_urba }}
+                                                    {{ $hab_urbana->nomb_hab_urba }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -458,7 +459,7 @@
                                     </label>
                                     <input type="text" class="form-control" name="zona_dist"
                                         wire:model="zona_dist" placeholder="Zona, Sector, Etapa"
-                                        onkeydown="return /[a-z]/i.test(event.key)" tabindex="28">
+                                        tabindex="28">
                                     <span class="text-danger">
                                         @error('zona_dist')
                                             {{ $message }}
@@ -926,6 +927,7 @@
                                     @error('codigohurbanootros')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
+                                    
                                 </div>
                             </div><!-- Col -->
                             <div class="col-md-3">
@@ -2594,90 +2596,6 @@
                                         alt="Imagen de lote" width="200" height="150">
                                 </div>
                             </div>
-                            <div class="col-md-3 mb-3">
-                                <label class="form-label d-inline-flex">
-                                    IMAGEN 1
-                                </label>
-                                <input type="file" class="form-control"
-                                    name="nuevaimagenFicha1" id="nuevaimagenFicha1" wire:model.defer="nuevaimagenFicha1">
-                            </div>
-                            <div class="col-md-1" wire:ignore>
-                                @if($imagenFicha1)
-                                    <a class="btn btn-success btn-icon" href="{{asset('storage/img/archivos/'.$imagenFicha1)}}"  target="_blank"id="imagenpdfplano">
-                                        <i data-feather="image"></i>
-                                    </a>
-                                @endif
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <label class="form-label d-inline-flex">
-                                    IMAGEN 2
-                                </label>
-                                <input type="file" class="form-control"
-                                    name="nuevaimagenFicha2" id="nuevaimagenFicha2" wire:model.defer="nuevaimagenFicha2">
-                            </div>
-                            <div class="col-md-1" wire:ignore>
-                                @if($imagenFicha2)
-                                    <a class="btn btn-success btn-icon" href="{{asset('storage/img/archivos/'.$imagenFicha2)}}"  target="_blank"id="imagenpdfplano">
-                                        <i data-feather="image"></i>
-                                    </a>
-                                @endif
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <label class="form-label d-inline-flex">
-                                    IMAGEN 3
-                                </label>
-                                <input type="file" class="form-control"
-                                    name="nuevaimagenFicha3" id="nuevaimagenFicha3" wire:model.defer="nuevaimagenFicha3">
-                            </div>
-                            <div class="col-md-1" wire:ignore>
-                                @if($imagenFicha2)
-                                    <a class="btn btn-success btn-icon" href="{{asset('storage/img/archivos/'.$imagenFicha3)}}"  target="_blank"id="imagenpdfplano">
-                                        <i data-feather="image"></i>
-                                    </a>
-                                @endif
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <label class="form-label d-inline-flex">
-                                    PDF PLANO
-                                </label>
-                                <input type="file" class="form-control"
-                                    name="nuevapdfplano" id="nuevapdfplano" wire:model.defer="nuevapdfplano">
-                            </div>
-                            <div class="col-md-1" wire:ignore>
-                                @if($pdfplano)
-                                    <a class="btn btn-success btn-icon" href="{{asset('storage/img/archivos/'.$pdfplano)}}"  target="_blank"id="imagenpdfplano">
-                                        <i data-feather="image"></i>
-                                    </a>
-                                @endif
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <label class="form-label d-inline-flex">
-                                    PDF SUNARP
-                                </label>
-                                <input type="file" class="form-control"
-                                    name="nuevapdfsunarp" id="nuevapdfsunarp" wire:model.defer="nuevapdfsunarp">
-                            </div>
-                            <div class="col-md-1" wire:ignore>
-                                @if($pdfsunarp)
-                                    <a class="btn btn-success btn-icon" href="{{asset('storage/img/archivos/'.$pdfsunarp)}}"  target="_blank"id="imagenpdfplano">
-                                        <i data-feather="image"></i>
-                                    </a>
-                                @endif
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <label class="form-label d-inline-flex">
-                                    PDF RENTAS
-                                </label>
-                                <input type="file" class="form-control"
-                                    name="nuevapdfrentas" id="nuevapdfrentas" wire:model.defer="nuevapdfrentas">
-                            </div>
-                            <div class="col-md-1" wire:ignore>
-                                @if($pdfrentas)
-                                    <a class="btn btn-success btn-icon" href="{{asset('storage/img/archivos/'.$pdfrentas)}}"  target="_blank"id="imagenpdfplano">
-                                        <i data-feather="image"></i>
-                                    </a>
-                                @endif
-                            </div>
                         </div><!-- Row -->
 
                         <div class="modal-footer">
@@ -3591,17 +3509,6 @@
 
 @push('custom-scripts')
     <script>
-        document.addEventListener('livewire:load', function() {
-            $('#hab_urbana_id').select2();
-            $('#hab_urbana_id').on('change', function() {
-                @this.set('tipoHabi', this.value);
-            });
-            $('#codi_uso').select2();
-            $('#codi_uso').on('change', function() {
-                @this.set('codi_uso', this.value);
-            });
-
-        })
     </script>
 
 

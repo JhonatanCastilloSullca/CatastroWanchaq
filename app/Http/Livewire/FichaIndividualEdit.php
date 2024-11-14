@@ -306,7 +306,8 @@ class FichaIndividualEdit extends Component
         $idhaburb = $fichaanterior?->lote?->id_hab_urba;
         $nomb_hab_urba1 = HabUrbana::where('id_hab_urba', '=', $idhaburb)?->first();
         $nomb_hab_urba2 = $nomb_hab_urba1?->nomb_hab_urba;
-        $this->nomb_hab_urba = $nomb_hab_urba2;
+        
+        $this->nomb_hab_urba = $nomb_hab_urba1->tipo_hab_urba.''.$nomb_hab_urba2;
 
         $this->zona_dist = $fichaanterior?->lote?->zona_dist;
         $this->mzna_dist = $fichaanterior?->lote?->mzna_dist;
@@ -734,14 +735,11 @@ class FichaIndividualEdit extends Component
     {
         $idbuscar = str_pad($id, 10, '0', STR_PAD_LEFT);
         $this->hab_urbana2 = HabUrbana::where('id_hab_urba', $idbuscar)->first();
-        for ($i = 0; $i < $this->cont; $i++) {
-            $this->tipoVianombre[$i] = "";
-            $this->tipoViatipo[$i] = "";
-        }
+
         if ($this->hab_urbana2 == "") {
             $this->nomb_hab_urba = "";
         } else {
-            $this->nomb_hab_urba = $this->hab_urbana2->nomb_hab_urba;
+            $this->nomb_hab_urba = $this->hab_urbana2->tipo_hab_urba . " " . $this->hab_urbana2->nomb_hab_urba;
         }
     }
 
