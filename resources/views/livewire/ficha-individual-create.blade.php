@@ -1,4 +1,4 @@
-<div class="row" >
+<div class="row">
     <form id="contact" method="POST" class="forms-sample" enctype="multipart/form-data" wire:submit.prevent="register">
         {{ csrf_field() }}
         <div class="col-md-12 grid-margin stretch-card">
@@ -21,7 +21,7 @@
                                 </div>
                             </div><!-- Col -->
                             <div class="col-md-3">
-                                <div class="mb-3">                                    
+                                <div class="mb-3">
                                     <div class="row form-group">
                                         <div class="col-md-6">
                                             <label class="form-label d-inline-flex"> Nro Fichas</label>
@@ -204,10 +204,8 @@
                                             </div>
                                         </div>
                                         <button type="button" class="btn btn-primary btn-icon mt-3"
-                                                wire:click="calcularDC"
-                                                wire:loading.attr="disabled"
-                                                tabindex="15">
-                                            <i class="mdi mdi-calculator"></i> 
+                                            wire:click="calcularDC" wire:loading.attr="disabled" tabindex="15">
+                                            <i class="mdi mdi-calculator"></i>
                                         </button>
 
                                     </div>
@@ -249,12 +247,10 @@
                                     <table id="vias" class="table">
                                         <thead>
                                             <tr>
-                                                <th>                                                    
+                                                <th>
                                                     <button type="button" class="btn btn-success btn-icon"
-                                                            wire:click="aumentarUbicacion"
-                                                            wire:loading.attr="disabled"
-                                                            wire:target="aumentarUbicacion"
-                                                            tabindex="18">+
+                                                        wire:click="aumentarUbicacion" wire:loading.attr="disabled"
+                                                        wire:target="aumentarUbicacion" tabindex="18">+
                                                     </button>
                                                 </th>
                                                 <th><label class="form-label d-inline-flex">
@@ -282,10 +278,9 @@
                                                 <tr>
                                                     <td>
                                                         <button type="button" class="btn btn-danger btn-icon"
-                                                                wire:click="reducirUbicacion({{ $i }})"
-                                                                wire:loading.attr="disabled"
-                                                                wire:target="reducirUbicacion"
-                                                                tabindex="18">-
+                                                            wire:click="reducirUbicacion({{ $i }})"
+                                                            wire:loading.attr="disabled"
+                                                            wire:target="reducirUbicacion" tabindex="18">-
                                                         </button>
                                                     </td>
                                                     <td>
@@ -307,14 +302,17 @@
                                                         @enderror
                                                     </td>
                                                     <td>
-                                                        <input type="text" class="form-control" name="tipoViatipo[]" readonly
-                                                               placeholder="Tipo de Vía" wire:model="tipoViatipo.{{ $i }}">
+                                                        <input type="text" class="form-control"
+                                                            name="tipoViatipo[]" readonly placeholder="Tipo de Vía"
+                                                            wire:model="tipoViatipo.{{ $i }}">
                                                     </td>
                                                     <td>
-                                                        <input type="text" class="form-control" name="tipoVianombre[]" readonly
-                                                               placeholder="Nombre de la Vía" wire:model="tipoVianombre.{{ $i }}">
+                                                        <input type="text" class="form-control"
+                                                            name="tipoVianombre[]" readonly
+                                                            placeholder="Nombre de la Vía"
+                                                            wire:model="tipoVianombre.{{ $i }}">
                                                     </td>
-                                                    
+
                                                     <td>
                                                         <select class="form-select" data-width="100%"
                                                             data-live-search="true" name="tipo_puerta[]"
@@ -467,8 +465,8 @@
                                         <div class="divcuadro">16</div> ZONA/SECTOR/ETAPA
                                     </label>
                                     <input type="text" class="form-control" name="zona_dist"
-                                        wire:model="zona_dist" placeholder="Zona, Sector, Etapa"
-                                        tabindex="28" maxlength="15">
+                                        wire:model="zona_dist" placeholder="Zona, Sector, Etapa" tabindex="28"
+                                        maxlength="15">
                                     <span class="text-danger">
                                         @error('zona_dist')
                                             {{ $message }}
@@ -870,7 +868,7 @@
                                     </label>
                                     <select class="form-select tipoviaotros" id="tipoviaotros" name="tipoviaotros"
                                         data-width="100%" wire:model="tipoviaotros" tabindex="52">
-                                        
+
                                         <option value="">SELECCIONE</option>
                                         @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'VIA')->orderby('codigo', 'asc')->get() as $tablacodigo)
                                             <option value="{{ $tablacodigo->codigo }}">
@@ -1118,11 +1116,10 @@
                                     <select class="form-select" data-width="100%" data-live-search="true"
                                         name="cont_en" id="cont_en" wire:model="cont_en" tabindex="69">
                                         <option value="">SELECCIONE</option>
-                                        
-                                        @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'PEN')
-                                            ->orderByRaw('CAST(codigo AS INTEGER) ASC')
-                                            ->get() as $tablacodigo)
-                                            <option value="{{ $tablacodigo->codigo }}">{{ $tablacodigo->codigo }} {{ $tablacodigo->desc_codigo }}</option>
+
+                                        @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'PEN')->orderByRaw('CAST(codigo AS INTEGER) ASC')->get() as $tablacodigo)
+                                            <option value="{{ $tablacodigo->codigo }}">{{ $tablacodigo->codigo }}
+                                                {{ $tablacodigo->desc_codigo }}</option>
                                         @endforeach
 
                                     </select>
@@ -1162,7 +1159,7 @@
                                         name="zonificacion" id="zonificacion" wire:model="zonificacion"
                                         tabindex="71">
                                         <option value="">SELECCIONE</option>
-                                        @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'ZON')->orderby('codigo', 'asc')->get() as $tablacodigo)
+                                        @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'ZON')->orderBy('desc_codigo', 'asc')->get() as $tablacodigo)
                                             <option value="{{ $tablacodigo->codigo }}">
                                                 {{ $tablacodigo->desc_codigo }}</option>
                                         @endforeach
@@ -1406,14 +1403,13 @@
                                         <thead>
                                             <tr>
                                                 <th>
-                                                    @if ($codi_uso == '070101' )
-                                                    @else    
-                                                    <button type="button" class="btn btn-success btn-icon"
+                                                    @if ($codi_uso == '070101')
+                                                    @else
+                                                        <button type="button" class="btn btn-success btn-icon"
                                                             wire:click="aumentarConstruccion"
                                                             wire:loading.attr="disabled"
-                                                            wire:target="aumentarConstruccion"
-                                                            tabindex="90">+
-                                                    </button>
+                                                            wire:target="aumentarConstruccion" tabindex="90">+
+                                                        </button>
                                                     @endif
                                                 </th>
                                                 <th><label class="form-label d-inline-flex">
@@ -1460,7 +1456,7 @@
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex">
                                                         <div class="divcuadro">69</div> UCA
-                                                    </label></th>                                                
+                                                    </label></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -1468,10 +1464,9 @@
                                                 <tr>
                                                     <td>
                                                         <button type="button" class="btn btn-danger btn-icon"
-                                                                wire:click="reducirConstruccion({{ $i }})"
-                                                                wire:loading.attr="disabled"
-                                                                wire:target="reducirConstruccion"
-                                                                tabindex="109">-
+                                                            wire:click="reducirConstruccion({{ $i }})"
+                                                            wire:loading.attr="disabled"
+                                                            wire:target="reducirConstruccion" tabindex="109">-
                                                         </button>
                                                     </td>
                                                     <td>
@@ -1659,7 +1654,7 @@
                                                             <span class="error-message"
                                                                 style="color:red">{{ $message }}</span>
                                                         @enderror
-                                                    </td>                                                    
+                                                    </td>
                                                 </tr>
                                             @endfor
                                         </tbody>
@@ -1735,13 +1730,11 @@
                                     <table id="vias" class="table">
                                         <thead>
                                             <tr>
-                                                
+
                                                 <th>
                                                     <button type="button" class="btn btn-success btn-icon"
-                                                        wire:click="aumentarObras"
-                                                        wire:loading.attr="disabled"
-                                                        wire:target="aumentarObras"
-                                                        tabindex="108">+
+                                                        wire:click="aumentarObras" wire:loading.attr="disabled"
+                                                        wire:target="aumentarObras" tabindex="108">+
                                                     </button>
                                                 </th>
                                                 <th><label class="form-label d-inline-flex">
@@ -1772,12 +1765,11 @@
                                         </thead>
                                         <tbody>
                                             @for ($i = 0; $i < $cont3; $i++)
-                                                <tr>                                                    
+                                                <tr>
                                                     <td>
                                                         <button type="button" class="btn btn-danger btn-icon"
                                                             wire:click="reducirObras({{ $i }})"
-                                                            wire:loading.attr="disabled"
-                                                            wire:target="reducirObras"
+                                                            wire:loading.attr="disabled" wire:target="reducirObras"
                                                             tabindex="109">-
                                                         </button>
                                                     </td>
@@ -1931,10 +1923,8 @@
                                             <tr>
                                                 <th>
                                                     <button type="button" class="btn btn-success btn-icon"
-                                                        wire:click="aumentarDocumentos"
-                                                        wire:loading.attr="disabled"
-                                                        wire:target="aumentarDocumentos"
-                                                        tabindex="119">+
+                                                        wire:click="aumentarDocumentos" wire:loading.attr="disabled"
+                                                        wire:target="aumentarDocumentos" tabindex="119">+
                                                     </button>
                                                 </th>
                                                 <th><label class="form-label d-inline-flex">
@@ -1950,7 +1940,7 @@
                                                         <div class="divcuadro">78</div>AREA AUTORIZADA
                                                     </label></th>
                                                 <th><label class="form-label d-inline-flex"> DOCUMENTO</label></th>
-                                                
+
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -1960,8 +1950,7 @@
                                                         <button type="button" class="btn btn-danger btn-icon"
                                                             wire:click="reducirDocumentos({{ $i }})"
                                                             wire:loading.attr="disabled"
-                                                            wire:target="reducirDocumentos"
-                                                            tabindex="109">-
+                                                            wire:target="reducirDocumentos" tabindex="109">-
                                                         </button>
                                                     </td>
                                                     <td>
@@ -2023,7 +2012,7 @@
                                                             name="url_doc.{{ $i }}"
                                                             id="url_doc.{{ $i }}"
                                                             wire:model.defer="url_doc.{{ $i }}">
-                                                    </td>                                                    
+                                                    </td>
                                                 </tr>
                                             @endfor
                                         </tbody>
@@ -2324,8 +2313,7 @@
                                                     <button type="button" class="btn btn-success btn-icon"
                                                         wire:click="aumentarinformacion"
                                                         wire:loading.attr="disabled"
-                                                        wire:target="aumentarinformacion"
-                                                        tabindex="141">+
+                                                        wire:target="aumentarinformacion" tabindex="141">+
                                                     </button>
                                                 </th>
                                                 <th><label class="form-label d-inline-flex"> T. DOCUMENTO</label></th>
@@ -2336,7 +2324,7 @@
                                                 <th><label class="form-label d-inline-flex"> APELLIDO PATERNO</label>
                                                 </th>
                                                 <th><label class="form-label d-inline-flex"> APELLIDO MATERNO</label>
-                                                </th>                                                
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -2346,8 +2334,7 @@
                                                         <button type="button" class="btn btn-danger btn-icon"
                                                             wire:click="reducirinformacion({{ $i }})"
                                                             wire:loading.attr="disabled"
-                                                            wire:target="reducirinformacion"
-                                                            tabindex="142">-
+                                                            wire:target="reducirinformacion" tabindex="142">-
                                                         </button>
                                                     </td>
                                                     <td>
@@ -2607,43 +2594,43 @@
                                 <label class="form-label d-inline-flex">
                                     IMAGEN 1
                                 </label>
-                                <input type="file" class="form-control"
-                                    name="imagenFicha1" id="imagenFicha1" wire:model.defer="imagenFicha1">
+                                <input type="file" class="form-control" name="imagenFicha1" id="imagenFicha1"
+                                    wire:model.defer="imagenFicha1">
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label class="form-label d-inline-flex">
                                     IMAGEN 2
                                 </label>
-                                <input type="file" class="form-control"
-                                    name="imagenFicha2" id="imagenFicha2" wire:model.defer="imagenFicha2">
+                                <input type="file" class="form-control" name="imagenFicha2" id="imagenFicha2"
+                                    wire:model.defer="imagenFicha2">
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label class="form-label d-inline-flex">
                                     IMAGEN 3
                                 </label>
-                                <input type="file" class="form-control"
-                                    name="imagenFicha3" id="imagenFicha3" wire:model.defer="imagenFicha3">
+                                <input type="file" class="form-control" name="imagenFicha3" id="imagenFicha3"
+                                    wire:model.defer="imagenFicha3">
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label class="form-label d-inline-flex">
                                     PDF PLANO
                                 </label>
-                                <input type="file" class="form-control"
-                                    name="pdfplano" id="pdfplano" wire:model.defer="pdfplano">
+                                <input type="file" class="form-control" name="pdfplano" id="pdfplano"
+                                    wire:model.defer="pdfplano">
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label class="form-label d-inline-flex">
                                     PDF SUNARP
                                 </label>
-                                <input type="file" class="form-control"
-                                    name="pdfsunarp" id="pdfsunarp" wire:model.defer="pdfsunarp">
+                                <input type="file" class="form-control" name="pdfsunarp" id="pdfsunarp"
+                                    wire:model.defer="pdfsunarp">
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label class="form-label d-inline-flex">
                                     PDF RENTAS
                                 </label>
-                                <input type="file" class="form-control"
-                                    name="pdfrentas" id="pdfrentas" wire:model.defer="pdfrentas">
+                                <input type="file" class="form-control" name="pdfrentas" id="pdfrentas"
+                                    wire:model.defer="pdfrentas">
                             </div>
                         </div><!-- Row -->
 
@@ -2653,8 +2640,7 @@
                                     <div class="row w-100">
                                         @error('numeficha')
                                             <div class="col-3">
-                                                <span class="error-message"
-                                                    style="color:red">{{ $message }}
+                                                <span class="error-message" style="color:red">{{ $message }}
                                                 </span>
                                             </div>
                                         @enderror
