@@ -1153,9 +1153,10 @@
                                     <select class="form-select" data-width="100%" data-live-search="true"
                                         name="zonificacion" id="zonificacion" wire:model="zonificacion"
                                         tabindex="71">
-                                        <option value="">SELECCIONE</option>
-                                        @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'ZON')->orderby('codigo', 'asc')->get() as $tablacodigo)
-                                            <option value="{{ $tablacodigo->codigo }}">{{ $tablacodigo->codigo }}
+                                        <option value="">SELECCIONE</option>                                        
+
+                                        @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'ZON')->orderBy('desc_codigo', 'asc')->get() as $tablacodigo)
+                                            <option value="{{ $tablacodigo->codigo }}">
                                                 {{ $tablacodigo->desc_codigo }}</option>
                                         @endforeach
                                     </select>
