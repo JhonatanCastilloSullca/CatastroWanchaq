@@ -36,7 +36,7 @@
                                         @enderror
                                     </div>
                                     <div>
-                                        <button type="submit" class="btn btn-primary me-2 mb-2 mb-md-0">Login</button>
+                                        <button type="submit" class="btn btn-primary me-2 mb-2 mb-md-0">Iniciar Sesión</button>
                                     </div>
                                 </form>
                             </div>

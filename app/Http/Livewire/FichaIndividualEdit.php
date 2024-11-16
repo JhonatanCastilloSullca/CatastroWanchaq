@@ -2140,15 +2140,38 @@ class FichaIndividualEdit extends Component
                 $fichaindividual->imagen_lote = $this->imagen_lote;
             }
 
-            if ($this->nuevaImagenPlano) {
-                $nombreImagen = $ficha->id_ficha . '.' . $this->nuevaImagenPlano->getClientOriginalExtension();
-                $rutaImagen = $this->nuevaImagenPlano->storeAs('img/imagenesplanos', $nombreImagen);
-                // Corregir la rotación de la imagen si es necesario
-                Image::make('storage/' . $rutaImagen)->orientate()->save('storage/' . $rutaImagen, null, 'jpg');
-                $fichaindividual->imagen_plano = $nombreImagen;
-            } else {
-                $fichaindividual->imagen_plano = $this->imagen_plano;
+            $connection = DB::connection('pgsqlgeo');
+            $extension = $connection->select("
+            SELECT ST_XMin(extent) || ',' ||
+                ST_YMin(extent) || ',' ||
+                ST_XMax(extent) || ',' ||
+                ST_YMax(extent) AS extension
+            FROM (
+                SELECT ST_Expand(ST_Extent(geom), 5) AS extent
+                FROM geo.tg_lote
+                WHERE id_lote= '" . $ficha->id_lote . "'
+                ) AS subconsulta;
+            ");
+            
+            $url = env('URL_MAP') . "/servicio/wms?service=WMS&request=GetMap&layers=lotes,id_lotes,vertices_lote,eje_via&styles=&format=image%2Fpng&transparent=false&version=1.1.1&width=450&height=400&srs=EPSG%3A32719&bbox=" . $extension[0]->extension . "&id=" . $ficha->id_lote;
+            $nombreArchivo = $ficha->id_ficha . '.jpg';
+            if($url){
+                $contenidoImagen = file_get_contents($url); 
+                Storage::disk('public')->put('img/imagenesplanos/' . $nombreArchivo, $contenidoImagen);
+                $fichaindividual->imagen_plano = $nombreArchivo;
+            }else{
+                $fichaindividual->imagen_plano = 'imagen_plano.png';
             }
+
+            // if ($this->nuevaImagenPlano) {
+            //     $nombreImagen = $ficha->id_ficha . '.' . $this->nuevaImagenPlano->getClientOriginalExtension();
+            //     $rutaImagen = $this->nuevaImagenPlano->storeAs('img/imagenesplanos', $nombreImagen);
+            //     // Corregir la rotación de la imagen si es necesario
+            //     Image::make('storage/' . $rutaImagen)->orientate()->save('storage/' . $rutaImagen, null, 'jpg');
+            //     $fichaindividual->imagen_plano = $nombreImagen;
+            // } else {
+            //     $fichaindividual->imagen_plano = $this->imagen_plano;
+            // }
 
 
             $fichaindividual->save();
@@ -2161,7 +2184,7 @@ class FichaIndividualEdit extends Component
             }
 
             if ($this->nuevaimagenFicha1) {
-                $nombrerecibo = $ficha->id_ficha.'-2.'.$this->nuevaimagenFicha1->getClientOriginalExtension();
+                $nombrerecibo = $ficha->id_ficha.'-1.'.$this->nuevaimagenFicha1->getClientOriginalExtension();
                 $ruta = '\img\archivos/';
                 if (Storage::exists($ruta . $nombrerecibo)) {
                     Storage::delete($ruta . $nombrerecibo);
@@ -2192,7 +2215,7 @@ class FichaIndividualEdit extends Component
                 $archivo->save();
             }
             if ($this->nuevaimagenFicha3) {
-                $nombrerecibo = $ficha->id_ficha.'-2.'.$this->nuevaimagenFicha3->getClientOriginalExtension();
+                $nombrerecibo = $ficha->id_ficha.'-3.'.$this->nuevaimagenFicha3->getClientOriginalExtension();
                 $ruta = '\img\archivos/';
                 if (Storage::exists($ruta . $nombrerecibo)) {
                     Storage::delete($ruta . $nombrerecibo);
@@ -2200,14 +2223,14 @@ class FichaIndividualEdit extends Component
                 $nuevaRuta = $this->nuevaimagenFicha3->storeAs($ruta, $nombrerecibo);
 
                 // Actualizar el registro en la base de datos
-                $archivo->imagen2 = $nombrerecibo;
-                $archivo->imagen3();
+                $archivo->imagen3 = $nombrerecibo;
+                $archivo->save();
             }else{
                 $archivo->imagen3 = $this->imagenFicha3;
                 $archivo->save();
             }
             if ($this->nuevapdfplano) {
-                $nombrerecibo = $ficha->id_ficha.'-2.'.$this->nuevapdfplano->getClientOriginalExtension();
+                $nombrerecibo = $ficha->id_ficha.'-plano.'.$this->nuevapdfplano->getClientOriginalExtension();
                 $ruta = '\img\archivos/';
                 if (Storage::exists($ruta . $nombrerecibo)) {
                     Storage::delete($ruta . $nombrerecibo);
@@ -2216,13 +2239,13 @@ class FichaIndividualEdit extends Component
 
                 // Actualizar el registro en la base de datos
                 $archivo->plano = $nombrerecibo;
-                $archivo->imagen3();
+                $archivo->save();
             }else{
                 $archivo->plano = $this->pdfplano;
                 $archivo->save();
             }
             if ($this->nuevapdfsunarp) {
-                $nombrerecibo = $ficha->id_ficha.'-2.'.$this->nuevapdfsunarp->getClientOriginalExtension();
+                $nombrerecibo = $ficha->id_ficha.'-sunarp.'.$this->nuevapdfsunarp->getClientOriginalExtension();
                 $ruta = '\img\archivos/';
                 if (Storage::exists($ruta . $nombrerecibo)) {
                     Storage::delete($ruta . $nombrerecibo);
@@ -2231,13 +2254,13 @@ class FichaIndividualEdit extends Component
 
                 // Actualizar el registro en la base de datos
                 $archivo->sunarp = $nombrerecibo;
-                $archivo->imagen3();
+                $archivo->save();
             }else{
                 $archivo->sunarp = $this->pdfsunarp;
                 $archivo->save();
             }
             if ($this->nuevapdfrentas) {
-                $nombrerecibo = $ficha->id_ficha.'-2.'.$this->nuevapdfrentas->getClientOriginalExtension();
+                $nombrerecibo = $ficha->id_ficha.'-rentas.'.$this->nuevapdfrentas->getClientOriginalExtension();
                 $ruta = '\img\archivos/';
                 if (Storage::exists($ruta . $nombrerecibo)) {
                     Storage::delete($ruta . $nombrerecibo);

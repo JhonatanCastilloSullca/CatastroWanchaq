@@ -36,6 +36,7 @@ use App\Models\Edificaciones;
 use App\Models\TablaCodigo;
 use Carbon\Carbon;
 use DB;
+use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
 
 class FichaIndividualCreate extends Component
@@ -2087,14 +2088,38 @@ class FichaIndividualCreate extends Component
             } else {
                 $fichaindividual->imagen_lote = 'sin_foto.png';
             }
-            if ($this->imagen_plano) {
-                $nombreImagen2 = $ficha->id_ficha . '.' . $this->imagen_plano->getClientOriginalExtension();
-                $rutaImagen2 = $this->imagen_plano->storeAs('img/imagenesplanos', $nombreImagen2);
-                Image::make('storage/' . $rutaImagen2)->orientate()->save('storage/' . $rutaImagen2, null, 'jpg');
-                $fichaindividual->imagen_plano = $nombreImagen2;
-            } else {
+            $connection = DB::connection('pgsqlgeo');
+            $extension = $connection->select("
+            SELECT ST_XMin(extent) || ',' ||
+                ST_YMin(extent) || ',' ||
+                ST_XMax(extent) || ',' ||
+                ST_YMax(extent) AS extension
+            FROM (
+                SELECT ST_Expand(ST_Extent(geom), 5) AS extent
+                FROM geo.tg_lote
+                WHERE id_lote= '" . $ficha->id_lote . "'
+                ) AS subconsulta;
+            ");
+            
+            $url = env('URL_MAP') . "/servicio/wms?service=WMS&request=GetMap&layers=lotes,id_lotes,vertices_lote&styles=&format=image%2Fpng&transparent=true&version=1.1.1&width=450&height=400&srs=EPSG%3A32718&bbox=" . $extension[0]->extension . "&id=" . $ficha->id_lote;
+            $nombreArchivo = $ficha->id_ficha . '.png';
+            
+            if($url){
+                $contenidoImagen = file_get_contents($url); 
+                Storage::disk('public')->put('img/imagenesplanos/' . $nombreArchivo, $contenidoImagen);
+                $fichaindividual->imagen_plano = $nombreArchivo;
+            }else{
                 $fichaindividual->imagen_plano = 'imagen_plano.png';
             }
+
+            // if ($this->imagen_plano) {
+            //     $nombreImagen2 = $ficha->id_ficha . '.' . $this->imagen_plano->getClientOriginalExtension();
+            //     $rutaImagen2 = $this->imagen_plano->storeAs('img/imagenesplanos', $nombreImagen2);
+            //     Image::make('storage/' . $rutaImagen2)->orientate()->save('storage/' . $rutaImagen2, null, 'jpg');
+            //     $fichaindividual->imagen_plano = $nombreImagen2;
+            // } else {
+            //     $fichaindividual->imagen_plano = 'imagen_plano.png';
+            // }
             $fichaindividual->save();
 
             $archivo = Archivo::where('id_ficha',$ficha->id_ficha)->first();

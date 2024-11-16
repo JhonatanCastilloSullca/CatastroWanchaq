@@ -1037,7 +1037,7 @@ class FichaController extends Controller
         ) AS subconsulta;
         ");
 
-        $url = env('URL_MAP') . "/servicio/wms?service=WMS&request=GetMap&layers=lotes,id_lotes,vertices_lote&styles=&format=image%2Fpng&transparent=true&version=1.1.1&width=450&height=400&srs=EPSG%3A32718&bbox=" . $extension[0]->extension . "&id=" . $ficha->ficha->id_lote;
+        $url = env('URL_MAP') . "/servicio/wms?service=WMS&request=GetMap&layers=lotes,id_lotes,vertices_lote&styles=&format=image%2Fpng&transparent=true&version=1.1.1&width=450&height=400&srs=EPSG%3A32719&bbox=" . $extension[0]->extension . "&id=" . $ficha->ficha->id_lote;
 
         $usos = Uso::orderBy('codi_uso')->get();
         $mpdf = new \Mpdf\Mpdf([

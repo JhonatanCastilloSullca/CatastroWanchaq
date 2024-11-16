@@ -2567,34 +2567,115 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-6 mb-3">
+                            <div class="col-md-5 mb-3">
                                 <label class="form-label d-inline-flex">
-                                    IMAGEN LOTE{{ $nuevaImagen }}
+                                    IMAGEN FACHADA
                                 </label>
-                                <div>
-                                    <label for="imagen_lote">Selecciona una nueva imagen:</label>
-                                    <input type="file" accept="image/jpeg, image/png" class="form-control"
-                                        name="imagen_lote" id="imagen_lote" wire:model="nuevaImagen">
-                                </div>
-                                <div>
-                                    <img src="{{ asset('storage/img/imageneslotes/' . $imagen_lote) }}"
-                                        alt="Imagen de lote" width="200" height="150">
-                                </div>
+                                <input type="file" accept="image/jpeg, image/png" class="form-control"
+                                    name="nuevaImagen" id="nuevaImagen" wire:model.defer="nuevaImagen">
                             </div>
-
-                            <div class="col-md-6 mb-3">
+                            <div class="col-md-1 mb-3" wire:ignore>
+                                @if($imagen_lote)
+                                    <a class="btn btn-success btn-icon" href="{{ asset('storage/img/imageneslotes/' . $imagen_lote) }}"  target="_blank"id="imagenimagen1">
+                                        <i data-feather="image"></i>
+                                    </a>
+                                @endif
+                            </div>
+                            <div class="col-md-5 mb-3">
                                 <label class="form-label d-inline-flex">
-                                    IMAGEN LOTE{{ $nuevaImagenPlano }}
+                                    IMAGEN PLANO
                                 </label>
-                                <div>
-                                    <label for="imagen_plano">Selecciona una nueva imagen:</label>
-                                    <input type="file" accept="image/jpeg, image/png" class="form-control"
-                                        name="imagen_plano" id="imagen_plano" wire:model="nuevaImagenPlano">
-                                </div>
-                                <div>
-                                    <img src="{{ asset('storage/img/imagenesplanos/' . $imagen_plano) }}"
-                                        alt="Imagen de lote" width="200" height="150">
-                                </div>
+                            </div>
+                            <div class="col-md-1 mb-3" wire:ignore>
+                                @if($imagen_plano)
+                                    <a class="btn btn-success btn-icon" href="{{ asset('storage/img/imagenesplanos/' . $imagen_plano) }}"  target="_blank"id="imagenimagen1">
+                                        <i data-feather="image"></i>
+                                    </a>
+                                @endif
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label d-inline-flex">
+                                    IMAGEN 1
+                                </label>
+                                <input type="file" class="form-control" name="nuevaimagenFicha1" id="nuevaimagenFicha1"
+                                    wire:model.defer="nuevaimagenFicha1">
+                            </div>
+                            <div class="col-md-1 mb-3" wire:ignore>
+                                @if($imagenFicha1)
+                                    <a class="btn btn-success btn-icon" href="{{ asset('storage/img/archivos/' . $imagenFicha1) }}"  target="_blank"id="imagenimagen1">
+                                        <i data-feather="image"></i>
+                                    </a>
+                                @endif
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label d-inline-flex">
+                                    IMAGEN 2
+                                </label>
+                                <input type="file" class="form-control" name="nuevaimagenFicha2" id="nuevaimagenFicha2"
+                                    wire:model.defer="nuevaimagenFicha2">
+                            </div>
+                            <div class="col-md-1 mb-3" wire:ignore>
+                                @if($imagenFicha2)
+                                    <a class="btn btn-success btn-icon" href="{{ asset('storage/img/archivos/' . $imagenFicha2) }}"  target="_blank"id="imagenimagen1">
+                                        <i data-feather="image"></i>
+                                    </a>
+                                @endif
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label d-inline-flex">
+                                    IMAGEN 3
+                                </label>
+                                <input type="file" class="form-control" name="nuevaimagenFicha3" id="nuevaimagenFicha3"
+                                    wire:model.defer="nuevaimagenFicha3">
+                            </div>
+                            <div class="col-md-1 mb-3" wire:ignore>
+                                @if($imagenFicha3)
+                                    <a class="btn btn-success btn-icon" href="{{ asset('storage/img/archivos/' . $imagenFicha3) }}"  target="_blank"id="imagenimagen1">
+                                        <i data-feather="image"></i>
+                                    </a>
+                                @endif
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label d-inline-flex">
+                                    PDF PLANO
+                                </label>
+                                <input type="file" class="form-control" name="nuevapdfplano" id="nuevapdfplano"
+                                    wire:model.defer="nuevapdfplano">
+                            </div>
+                            <div class="col-md-1 mb-3" wire:ignore>
+                                @if($pdfplano)
+                                    <a class="btn btn-success btn-icon" href="{{ asset('storage/img/archivos/' . $pdfplano) }}"  target="_blank"id="imagenimagen1">
+                                        <i data-feather="image"></i>
+                                    </a>
+                                @endif
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label d-inline-flex">
+                                    PDF SUNARP
+                                </label>
+                                <input type="file" class="form-control" name="nuevapdfsunarp" id="nuevapdfsunarp"
+                                    wire:model.defer="nuevapdfsunarp">
+                            </div>
+                            <div class="col-md-1 mb-3" wire:ignore>
+                                @if($pdfsunarp)
+                                    <a class="btn btn-success btn-icon" href="{{ asset('storage/img/archivos/' . $pdfsunarp) }}"  target="_blank"id="imagenimagen1">
+                                        <i data-feather="image"></i>
+                                    </a>
+                                @endif
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label d-inline-flex">
+                                    PDF RENTAS
+                                </label>
+                                <input type="file" class="form-control" name="nuevapdfrentas" id="nuevapdfrentas"
+                                    wire:model.defer="nuevapdfrentas">
+                            </div>
+                            <div class="col-md-1 mb-3" wire:ignore>
+                                @if($pdfrentas)
+                                    <a class="btn btn-success btn-icon" href="{{ asset('storage/img/archivos/' . $pdfrentas) }}"  target="_blank"id="imagenimagen1">
+                                        <i data-feather="image"></i>
+                                    </a>
+                                @endif
                             </div>
                         </div><!-- Row -->
 
