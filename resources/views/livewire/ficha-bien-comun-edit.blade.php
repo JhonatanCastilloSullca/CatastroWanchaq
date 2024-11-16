@@ -901,7 +901,7 @@
                                                     @enderror
                                                 </td>
                                                 <td>
-                                                    <select class="form-select" data-width="100%"
+                                                    <select class="form-select w-65" data-width="100%"
                                                         data-live-search="true" name="mep.{{ $i }}"
                                                         id="mep.{{ $i }}"
                                                         wire:model="mep.{{ $i }}" tabindex="57">
@@ -918,7 +918,7 @@
                                                     @enderror
                                                 </td>
                                                 <td>
-                                                    <select class="form-select" data-width="100%"
+                                                    <select class="form-select w-65" data-width="100%"
                                                         data-live-search="true" name="ecs.{{ $i }}"
                                                         id="ecs.{{ $i }}"
                                                         wire:model="ecs.{{ $i }}" tabindex="57">
@@ -935,7 +935,7 @@
                                                     @enderror
                                                 </td>
                                                 <td>
-                                                    <select class="form-select" data-width="100%"
+                                                    <select class="form-select w-65" data-width="100%"
                                                         data-live-search="true" name="ecc.{{ $i }}"
                                                         id="ecc.{{ $i }}"
                                                         wire:model="ecc.{{ $i }}" tabindex="57">
@@ -955,7 +955,7 @@
                                                     <input type="text" class="form-control"
                                                         name="estr_muro_col[]" placeholder="MUROS"
                                                         wire:model="estr_muro_col.{{ $i }}"
-                                                        onkeydown="return /[a-z. ;]/i.test(event.key)"
+                                                        onkeydown="return /[a-i. ;]/i.test(event.key)"
                                                         maxlength="1" tabindex="57">
                                                     @error('estr_muro_col.' . $i)
                                                         <span class="error-message"
@@ -966,7 +966,7 @@
                                                     <input type="text" class="form-control"
                                                         name="estr_techo[]" placeholder="TECHOS"
                                                         wire:model="estr_techo.{{ $i }}"
-                                                        onkeydown="return /[a-z. ;]/i.test(event.key)"
+                                                        onkeydown="return /[a-i. ;]/i.test(event.key)"
                                                         maxlength="1" tabindex="57">
                                                     @error('estr_techo.' . $i)
                                                         <span class="error-message"
@@ -977,7 +977,7 @@
                                                     <input type="text" class="form-control" name="acab_piso[]"
                                                         placeholder="PISOS"
                                                         wire:model="acab_piso.{{ $i }}"
-                                                        onkeydown="return /[a-z. ;]/i.test(event.key)"
+                                                        onkeydown="return /[a-i. ;]/i.test(event.key)"
                                                         maxlength="1" tabindex="57">
                                                     @error('acab_piso.' . $i)
                                                         <span class="error-message"
@@ -988,7 +988,7 @@
                                                     <input type="text" class="form-control"
                                                         name="acab_puerta_ven[]" placeholder="P. Y V."
                                                         wire:model="acab_puerta_ven.{{ $i }}"
-                                                        onkeydown="return /[a-z. ;]/i.test(event.key)"
+                                                        onkeydown="return /[a-i. ;]/i.test(event.key)"
                                                         maxlength="1" tabindex="57">
                                                     @error('acab_puerta_ven.' . $i)
                                                         <span class="error-message"
@@ -999,7 +999,7 @@
                                                     <input type="text" class="form-control"
                                                         name="acab_revest[]" placeholder="REVEST."
                                                         wire:model="acab_revest.{{ $i }}"
-                                                        onkeydown="return /[a-z. ;]/i.test(event.key)"
+                                                        onkeydown="return /[a-i. ;]/i.test(event.key)"
                                                         maxlength="1" tabindex="57">
                                                     @error('acab_revest.' . $i)
                                                         <span class="error-message"
@@ -1010,7 +1010,7 @@
                                                     <input type="text" class="form-control" name="acab_bano[]"
                                                         placeholder="BAÑOS"
                                                         wire:model="acab_bano.{{ $i }}"
-                                                        onkeydown="return /[a-z. ;]/i.test(event.key)"
+                                                        onkeydown="return /[a-i. ;]/i.test(event.key)"
                                                         maxlength="1" tabindex="57">
                                                     @error('acab_bano.' . $i)
                                                         <span class="error-message"
@@ -1021,7 +1021,7 @@
                                                     <input type="text" class="form-control"
                                                         name="inst_elect_sanita[]" placeholder="INST. E."
                                                         wire:model="inst_elect_sanita.{{ $i }}"
-                                                        onkeydown="return /[a-z. ;]/i.test(event.key)"
+                                                        onkeydown="return /[a-i. ;]/i.test(event.key)"
                                                         maxlength="1" tabindex="57">
                                                     @error('inst_elect_sanita.' . $i)
                                                         <span class="error-message"
@@ -1078,17 +1078,39 @@
                                                     tabindex="58">+
                                                 </button>
                                             </th>
-                                            <th><label class="form-label d-inline-flex" > <div class="divcuadro">90</div> CÓDIGO</label></th>
-                                            <th><label class="form-label d-inline-flex" > <div class="divcuadro">75</div> FECHA</label></th>
-                                            <th><label class="form-label d-inline-flex" > <div class="divcuadro">76</div> MEP</label></th>
-                                            <th><label class="form-label d-inline-flex" > <div class="divcuadro">77</div> ECS</label></th>
-                                            <th><label class="form-label d-inline-flex" > <div class="divcuadro">78</div> ECC </label></th>
-                                            <th><label class="form-label d-inline-flex" > <div class="divcuadro">92</div> DIMENSIÓN LARGO </label></th>
-                                            <th><label class="form-label d-inline-flex" > <div class="divcuadro">93</div> DIMENSIÓN ANCHO </label></th>
-                                            <th><label class="form-label d-inline-flex" > <div class="divcuadro">94</div> DIMENSIÓN ALTO </label></th>
-                                            <th><label class="form-label d-inline-flex" > <div class="divcuadro">95</div> PRODUCTO TOTAL </label></th>
-                                            <th><label class="form-label d-inline-flex" > <div class="divcuadro">96</div> U. MEDIDA </label></th>
-                                            <th><label class="form-label d-inline-flex" > <div class="divcuadro">88</div> UCA </label></th>
+                                            <th><label class="form-label d-inline-flex">
+                                                <div class="divcuadro">71</div> CÓDIGO
+                                                </label></th>
+                                            <th><label class="form-label d-inline-flex">
+                                                    <div class="divcuadro">57</div> FECHA
+                                                </label></th>
+                                            <th><label class="form-label d-inline-flex">
+                                                    <div class="divcuadro">58</div> MEP
+                                                </label></th>
+                                            <th><label class="form-label d-inline-flex">
+                                                    <div class="divcuadro">59</div> ECS
+                                                </label></th>
+                                            <th><label class="form-label d-inline-flex">
+                                                    <div class="divcuadro">60</div> ECC
+                                                </label></th>
+                                            {{-- <th><label class="form-label d-inline-flex">
+                                                    <div class="divcuadro">92</div> DIMENSIÓN LARGO
+                                                </label></th>
+                                            <th><label class="form-label d-inline-flex">
+                                                    <div class="divcuadro">93</div> DIMENSIÓN ANCHO
+                                                </label></th>
+                                            <th><label class="form-label d-inline-flex">
+                                                    <div class="divcuadro">94</div> DIMENSIÓN ALTO
+                                                </label></th> --}}
+                                            <th><label class="form-label d-inline-flex">
+                                                    <div class="divcuadro">73</div> PRODUCTO TOTAL
+                                                </label></th>
+                                            <th><label class="form-label d-inline-flex">
+                                                    <div class="divcuadro">74</div> U. MEDIDA
+                                                </label></th>
+                                            <th><label class="form-label d-inline-flex">
+                                                    <div class="divcuadro">69</div> UCA
+                                                </label></th>
                                             
                                         </tr>
                                     </thead>
@@ -1104,10 +1126,18 @@
                                                 </button>
                                             </td>
                                             <td>
-                                                <select class="form-select"  data-width="100%" data-live-search="true" name="codiinstalacion.{{$i}}" id="codiinstalacion.{{$i}}" wire:model="codiinstalacion.{{$i}}" tabindex="109">
+                                                <select class="form-select" data-width="100%"
+                                                    data-live-search="true"
+                                                    name="codiinstalacion.{{ $i }}"
+                                                    id="codiinstalacion.{{ $i }}"
+                                                    wire:model="codiinstalacion.{{ $i }}"
+                                                    tabindex="58">
                                                     <option value="">SELECCIONE</option>
-                                                    @foreach($codigosinstalacion as $codigoin)
-                                                        <option value="{{$codigoin->codi_instalacion}}" >{{$codigoin->codi_instalacion}} {{$codigoin->desc_instalacion}} {{$codigoin->material}}</option>
+                                                    @foreach ($codigosinstalacion as $codigoin)
+                                                        <option value="{{ $codigoin->codi_instalacion }}">
+                                                            {{ $codigoin->codi_instalacion }}
+                                                            {{ $codigoin->desc_instalacion }}
+                                                            {{ $codigoin->material }}</option>
                                                     @endforeach
                                                 </select>
                                                 @error('codiinstalacion.'.$i)
@@ -1115,83 +1145,115 @@
                                                 @enderror
                                             </td>
                                             <td>
-                                                <input type="month" class="form-control" name="inst_fecha[]" placeholder="FECHA" id="inst-fecha.{{$i}}" wire:model="inst_fecha.{{$i}}" tabindex="109">
-                                                @error('inst_fecha.'.$i)
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                                <input type="month" class="form-control"
+                                                    name="inst_fecha[]" placeholder="FECHA"
+                                                    id="inst-fecha.{{ $i }}"
+                                                    wire:model.defer="inst_fecha.{{ $i }}"
+                                                    tabindex="58">
+                                                @error('inst_fecha.' . $i)
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
                                                 @enderror
                                             </td>
                                             <td>
-                                                <select class="form-select"  data-width="100%" data-live-search="true" name="inst_mep.{{$i}}" id="inst_mep.{{$i}}" wire:model="inst_mep.{{$i}}" tabindex="109">
-                                                    <option value="" >SELECCIONE</option>
-                                                    @foreach(\App\Models\TablaCodigo::where('id_tabla','=','MEP')->orderby('codigo','asc')->get() as $tablacodigo)
-                                                        <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
+                                                <select class="form-select w-65" data-width="100%"
+                                                    data-live-search="true"
+                                                    name="inst_mep.{{ $i }}"
+                                                    id="inst_mep.{{ $i }}"
+                                                    wire:model.defer="inst_mep.{{ $i }}"
+                                                    tabindex="58">
+                                                    <option value="">SELECCIONE</option>
+                                                    @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'MEP')->orderby('codigo', 'asc')->get() as $tablacodigo)
+                                                        <option value="{{ $tablacodigo->codigo }}">
+                                                            {{ $tablacodigo->codigo }}
+                                                            {{ $tablacodigo->desc_codigo }}</option>
                                                     @endforeach
                                                 </select>
-                                                @error('inst_mep.'.$i)
-                                                    <span class="error-message" style="color:red">{{ $message }}</span>
+                                                @error('inst_mep.' . $i)
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
                                                 @enderror
                                             </td>
                                             <td>
-                                                <select class="form-select"  data-width="100%" data-live-search="true" name="inst_ecs.{{$i}}" id="inst_ecs.{{$i}}" wire:model="inst_ecs.{{$i}}" tabindex="109">
-                                                    <option value="" >SELECCIONE</option>
-                                                    @foreach(\App\Models\TablaCodigo::where('id_tabla','=','ECS')->orderby('codigo','asc')->get() as $tablacodigo)
-                                                        <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
+                                                <select class="form-select w-65" data-width="100%"
+                                                    data-live-search="true"
+                                                    name="inst_ecs.{{ $i }}"
+                                                    id="inst_ecs.{{ $i }}"
+                                                    wire:model.defer="inst_ecs.{{ $i }}"
+                                                    tabindex="58">
+                                                    <option value="">SELECCIONE</option>
+                                                    @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'ECS')->orderby('codigo', 'asc')->get() as $tablacodigo)
+                                                        <option value="{{ $tablacodigo->codigo }}">
+                                                            {{ $tablacodigo->codigo }}
+                                                            {{ $tablacodigo->desc_codigo }}</option>
                                                     @endforeach
                                                 </select>
-                                                @error('inst_ecs.'.$i)
-                                                    <span class="error-message" style="color:red">{{ $message }}</span>
+                                                @error('inst_ecs.' . $i)
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
                                                 @enderror
                                             </td>
                                             <td>
-                                                <select class="form-select"  data-width="100%" data-live-search="true" name="inst_ecc.{{$i}}" id="inst_ecc.{{$i}}" wire:model="inst_ecc.{{$i}}" tabindex="109">
-                                                    <option value="" >SELECCIONE</option>
-                                                    @foreach(\App\Models\TablaCodigo::where('id_tabla','=','ECC')->orderby('codigo','asc')->get() as $tablacodigo)
-                                                        <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
+                                                <select class="form-select w-65" data-width="100%"
+                                                    data-live-search="true"
+                                                    name="inst_ecc.{{ $i }}"
+                                                    id="inst_ecc.{{ $i }}"
+                                                    wire:model.defer="inst_ecc.{{ $i }}"
+                                                    tabindex="58">
+                                                    <option value="">SELECCIONE</option>
+                                                    @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'ECC')->orderby('codigo', 'asc')->get() as $tablacodigo)
+                                                        <option value="{{ $tablacodigo->codigo }}">
+                                                            {{ $tablacodigo->codigo }}
+                                                            {{ $tablacodigo->desc_codigo }}</option>
                                                     @endforeach
                                                 </select>
-                                                @error('inst_ecc.'.$i)
-                                                    <span class="error-message" style="color:red">{{ $message }}</span>
+                                                @error('inst_ecc.' . $i)
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                @enderror
+                                            </td>                                                    
+                                            
+                                            <td>
+                                                <input type="text" class="form-control"
+                                                    name="inst_prod_total[]" placeholder="PRODUCTO TOTAL"
+                                                    id="inst-prod_total.{{ $i }}"
+                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                                    maxlength="8"
+                                                    wire:model.defer="inst_prod_total.{{ $i }}"
+                                                    tabindex="58">
+                                                @error('inst_prod_total.' . $i)
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
                                                 @enderror
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control" name="dime_largo[]" placeholder="D. largo" id="dime_largo.{{$i}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="7" wire:model="dime_largo.{{$i}}" tabindex="109">
-                                                @error('dime_largo.'.$i)
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
+                                                <input type="text" class="form-control"
+                                                    name="inst_uni_med[]" placeholder="U. MEDIDA"
+                                                    id="inst-uni_med.{{ $i }}" maxlength="2"
+                                                    wire:model.defer="inst_uni_med.{{ $i }}"
+                                                    tabindex="58">
+                                                @error('inst_uni_med.' . $i)
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
                                                 @enderror
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control" name="dime_ancho[]" placeholder="D. ancho" id="dime_ancho.{{$i}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="7" wire:model="dime_ancho.{{$i}}" tabindex="109">
-                                                @error('dime_ancho.'.$i)
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                                @enderror
-                                            </td>
-                                            <td>
-                                                <input type="text" class="form-control" name="dime_alto[]" placeholder="D. alto" id="dime_alto.{{$i}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="7" wire:model="dime_alto.{{$i}}" tabindex="109">
-                                                @error('dime_alto.'.$i)
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                                @enderror
-                                            </td>
-                                            <td>
-                                                <input type="text" class="form-control"  name="inst_prod_total[]" placeholder="PRODUCTO TOTAL" id="inst-prod_total.{{$i}}"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="8" wire:model="inst_prod_total.{{$i}}" tabindex="109">
-                                                @error('inst_prod_total.'.$i)
-                                                    <span class="error-message" style="color:red">{{ $message }}</span>
-                                                @enderror
-                                            </td>
-                                            <td>
-                                                <input type="text" class="form-control"  name="inst_uni_med[]" placeholder="U. MEDIDA" id="inst-uni_med.{{$i}}" maxlength="2"  wire:model="inst_uni_med.{{$i}}" tabindex="109">
-                                                @error('inst_uni_med.'.$i)
-                                                    <span class="error-message" style="color:red">{{ $message }}</span>
-                                                @enderror
-                                            </td>
-                                            <td>
-                                                <select class="form-select"  data-width="100%" data-live-search="true" name="inst_uca.{{$i}}" id="inst_uca.{{$i}}" wire:model="inst_uca.{{$i}}" tabindex="109">
-                                                    <option value="" >SELECCIONE</option>
-                                                    @foreach(\App\Models\TablaCodigo::where('id_tabla','=','UCA')->orderby('codigo','asc')->get() as $tablacodigo)
-                                                        <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
+                                                <select class="form-select" data-width="100%"
+                                                    data-live-search="true"
+                                                    name="inst_uca.{{ $i }}"
+                                                    id="inst_uca.{{ $i }}"
+                                                    wire:model.defer="inst_uca.{{ $i }}"
+                                                    tabindex="58">
+                                                    <option value="">SELECCIONE</option>
+                                                    @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'UCA')->orderby('codigo', 'asc')->get() as $tablacodigo)
+                                                        <option value="{{ $tablacodigo->codigo }}">
+                                                            {{ $tablacodigo->codigo }}
+                                                            {{ $tablacodigo->desc_codigo }}</option>
                                                     @endforeach
                                                 </select>
-                                                @error('inst_uca.'.$i)
-                                                    <span class="error-message" style="color:red">{{ $message }}</span>
+                                                @error('inst_uca.' . $i)
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
                                                 @enderror
                                             </td>
                                             
@@ -1415,50 +1477,20 @@
                     </div><!-- Row -->
 
                     <div class="row form-group">
-                    <h4 class="mb-4"> DOCUMENTOS Y DATOS REGISTRALES</h4>
-                    <label class="form-label d-inline-flex" >REGISTROS NOTARIAL DE LA ESCRITURA PUBLICA</label>
-
-                        <div class="col-md-4 mb-3">
-                            <div wire:ignore>
-                            <label class="form-label d-inline-flex" > <div class="divcuadro">101</div>NOMBRE DE LA NOTARIA</label>
-                                <select  class="form-select"  data-width="100%" data-live-search="true" name="rbcnotaria" wire:model="rbcnotaria">
-                                    <option value="" >SELECCIONE</option>
-                                    @foreach($notarias as $notaria)
-                                        <option value="{{$notaria->id_notaria}}" >{{$notaria->nomb_notaria}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            @error('rbcnotaria')
-                                <span class="error-message" style="color:red">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="col-md-4 mb-3">
-                        <label class="form-label d-inline-flex" ><div class="divcuadro">102</div> KARDEX</label>
-                            <input type="text" class="form-control" name="rbckardex" wire:model="rbckardex">
-                            @error('rbckardex')
-                                <span class="error-message" style="color:red">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="col-md-4 mb-3">
-                        <label class="form-label d-inline-flex" ><div class="divcuadro">103</div>FECHA DE ESCRITURA</label>
-
-                            <input type="date" class="form-control"  name="rbcfechaesc" placeholder="FECHA" id="rbcfechaesc" wire:model="rbcfechaesc">
-                            @error('rbcfechaesc')
-                                <span class="error-message" style="color:red">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
-
-
-                    <div class="row form-group">
-                    <h4 class="mb-5"> INSCRIPCION DEL PREDIO CATASTRAL</h4>
+                        <h4 class="mb-1"> DOCUMENTOS Y DATOS REGISTRALES</h4>
+                        <h4 class="mb-5"> INSCRIPCION DEL PREDIO CATASTRAL</h4>
                         <div class="col-md-3">
                             <div class="mb-3">
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">104</div>TIPO DE PARTIDA REGISTRAL</label>
-                                <select class="form-select" id="tipo_partida" aria-label="Default select example" name="tipo_partida" wire:model="tipo_partida" tabindex="124">
-                                <option value="" >SELECCIONE</option>
-                                    @foreach(\App\Models\TablaCodigo::where('id_tabla','=','TPA')->orderby('codigo','asc')->get() as $tablacodigo)
-                                        <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">79</div>TIPO DE PARTIDA REGISTRAL
+                                </label>
+                                <select class="form-select" id="tipo_partida"
+                                    aria-label="Default select example" name="tipo_partida"
+                                    wire:model="tipo_partida" tabindex="134">
+                                    <option value="">SELECCIONE</option>
+                                    @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'TPA')->orderby('codigo', 'asc')->get() as $tablacodigo)
+                                        <option value="{{ $tablacodigo->codigo }}">{{ $tablacodigo->codigo }}
+                                            {{ $tablacodigo->desc_codigo }}</option>
                                     @endforeach
 
 
@@ -1470,8 +1502,12 @@
                         </div><!-- Col -->
                         <div class="col-md-3">
                             <div class="mb-3">
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">105</div>NUMERO</label>
-                                <input type="text" id="nume_partida" class="form-control" name="nume_partida" maxlength="18" wire:model="nume_partida" tabindex="125">
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">80</div>NUMERO
+                                </label>
+                                <input type="text" id="nume_partida" class="form-control"
+                                    name="nume_partida" maxlength="18" wire:model="nume_partida"
+                                    tabindex="134">
                                 @error('nume_partida')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
@@ -1479,8 +1515,11 @@
                         </div><!-- Col -->
                         <div class="col-md-3">
                             <div class="mb-3">
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">106</div>FOJAS </label>
-                                <input type="text" id="fojas" class="form-control" name="fojas" maxlength="18" wire:model="fojas" tabindex="126">
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">81</div>FOJAS
+                                </label>
+                                <input type="text" id="fojas" class="form-control" name="fojas"
+                                    maxlength="18" wire:model="fojas" tabindex="134">
                                 @error('fojas')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
@@ -1488,8 +1527,11 @@
                         </div><!-- Col -->
                         <div class="col-md-3">
                             <div class="mb-3">
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">107</div>ASIENTO</label>
-                                <input type="text" id="asiento" class="form-control" name="asiento" maxlength="18" wire:model="asiento" tabindex="127">
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">82</div>ASIENTO
+                                </label>
+                                <input type="text" id="asiento" class="form-control" name="asiento"
+                                    maxlength="18" wire:model="asiento" tabindex="134">
                                 @error('asiento')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
@@ -1499,8 +1541,11 @@
                     <div class="row form-group">
                         <div class="col-md-3">
                             <div class="mb-3">
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">108</div>FECHA DE INSCRIPCION</label>
-                                <input type="date" id="fecha_inscripcion" class="form-control" name="fecha_inscripcion" wire:model="fecha_inscripcion" tabindex="128">
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">83</div>FECHA DE INSCRIPCION
+                                </label>
+                                <input type="date" id="fecha_inscripcion" class="form-control"
+                                    name="fecha_inscripcion" wire:model="fecha_inscripcion" tabindex="134">
                                 @error('fecha_inscripcion')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
@@ -1508,11 +1553,16 @@
                         </div><!-- Col -->
                         <div class="col-md-3">
                             <div class="mb-3">
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">109</div>DECLARATORIA DE FÁBRICA</label>
-                                <select class="form-select" id="codi_decla_fabrica" aria-label="Default select example" name="codi_decla_fabrica" wire:model="codi_decla_fabrica" tabindex="129">
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">84</div>DECLARATORIA DE FÁBRICA
+                                </label>
+                                <select class="form-select" id="codi_decla_fabrica"
+                                    aria-label="Default select example" name="codi_decla_fabrica"
+                                    wire:model="codi_decla_fabrica" tabindex="134">
                                     <option value="">Seleccione</option>
-                                    @foreach(\App\Models\TablaCodigo::where('id_tabla','=','DFB')->orderby('codigo','asc')->get() as $tablacodigo)
-                                        <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
+                                    @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'DFB')->orderby('codigo', 'asc')->get() as $tablacodigo)
+                                        <option value="{{ $tablacodigo->codigo }}">{{ $tablacodigo->codigo }}
+                                            {{ $tablacodigo->desc_codigo }}</option>
                                     @endforeach
                                 </select>
                                 @error('codi_decla_fabrica')
@@ -1522,8 +1572,12 @@
                         </div><!-- Col -->
                         <div class="col-md-3">
                             <div class="mb-3">
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">110</div>AS. INSC. DE FÁBRICA </label>
-                                <input type="text" id="asie_fabrica" class="form-control" name="asie_fabrica" maxlength="18" wire:model="asie_fabrica" tabindex="130">
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">85</div>AS. INSC. DE FÁBRICA
+                                </label>
+                                <input type="text" id="asie_fabrica" class="form-control"
+                                    name="asie_fabrica" maxlength="18" wire:model="asie_fabrica"
+                                    tabindex="134">
                                 @error('asie_fabrica')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
@@ -1531,8 +1585,11 @@
                         </div><!-- Col -->
                         <div class="col-md-3">
                             <div class="mb-3">
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">111</div>FECHA DE INSC. DE FABRICA</label>
-                                <input type="date" id="fecha_fabrica" class="form-control" name="fecha_fabrica" wire:model="fecha_fabrica" tabindex="131">
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">86</div>FECHA DE INSC. DE FABRICA
+                                </label>
+                                <input type="date" id="fecha_fabrica" class="form-control"
+                                    name="fecha_fabrica" wire:model="fecha_fabrica" tabindex="134">
                                 @error('fecha_fabrica')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror

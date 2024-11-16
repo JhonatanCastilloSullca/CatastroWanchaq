@@ -31,7 +31,7 @@
                                     @enderror
                                 </td>
                                 <td>
-                                    <input type="date" class="form-control"  name="atc[]" placeholder="FECHA" id="atc.{{$i}}" >
+                                    <input type="date" class="form-control"  name="atc[]" placeholder="FECHA" id="atc.{{$i}}" max="{{ date('Y-m-d') }}">
                                     @error('atc.'.$i)
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
@@ -68,7 +68,7 @@
                                     @enderror
                                 </td>
                                 <td>
-                                    <input type="date" class="form-control"  name="totalatc[]" placeholder="FECHA" id="totalatc.{{$i}}" >
+                                    <input type="date" class="form-control"  name="totalatc[]" placeholder="FECHA" id="totalatc.{{$i}}" max="{{ date('Y-m-d') }}">
                                     @error('totalatc.'.$i)
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror

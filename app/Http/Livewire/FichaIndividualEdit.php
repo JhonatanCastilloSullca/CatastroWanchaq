@@ -305,8 +305,7 @@ class FichaIndividualEdit extends Component
         $this->tipoHabi = str_pad($fichaanterior?->lote?->id_hab_urba, 10, '0', STR_PAD_LEFT);
         $idhaburb = $fichaanterior?->lote?->id_hab_urba;
         $nomb_hab_urba1 = HabUrbana::where('id_hab_urba', '=', $idhaburb)?->first();
-        $nomb_hab_urba2 = $nomb_hab_urba1?->nomb_hab_urba;
-        
+        $nomb_hab_urba2 = $nomb_hab_urba1?->nomb_hab_urba;        
         $this->nomb_hab_urba = $nomb_hab_urba1->tipo_hab_urba.''.$nomb_hab_urba2;
 
         $this->zona_dist = $fichaanterior?->lote?->zona_dist;
@@ -343,8 +342,8 @@ class FichaIndividualEdit extends Component
                 $this->ape_materno2 = $fichaanterior?->titulars[1]?->persona?->ape_materno;
             }
         }
-
-        if ($fichaanterior?->domiciliotitular != "") {
+        if ($fichaanterior?->domiciliotitular != "" || $fichaanterior?->domiciliotitular != NULL ) {
+            
             $this->ubicacionpersona = $fichaanterior?->domiciliotitular?->ubicacion;
             $this->codigoviaotros = $fichaanterior?->domiciliotitular?->codi_via;
             $this->tipoviaotros = $fichaanterior?->domiciliotitular?->tipo_via;
@@ -363,10 +362,12 @@ class FichaIndividualEdit extends Component
             $this->departamentootros = $fichaanterior?->domiciliotitular?->codi_dep;
             $this->provinciaotros = $fichaanterior?->domiciliotitular?->codi_pro;
             $this->distritootros = $fichaanterior?->domiciliotitular?->codi_dis;
+            // dd( $this->departamentootros, $this->provinciaotros, $this->distritootros);
         }
 
 
         $this->cont = count($fichaanterior?->puertas);
+        // dd($fichaanterior?->titular);
 
         foreach ($fichaanterior?->puertas as $i => $puerta) {
             $this->tipoVia[$i] = $puerta?->id_via;
@@ -389,7 +390,8 @@ class FichaIndividualEdit extends Component
         $this->clasificacion = $fichaanterior?->fichaindividual?->clasificacion;
         $this->cont_en = $fichaanterior?->fichaindividual?->cont_en;
         $this->codi_uso = $fichaanterior?->fichaindividual?->codi_uso;
-        $this->zonificacion = "";
+        
+        $this->zonificacion = $fichaanterior->lote->zonificacion;
         $this->area_declarada = $fichaanterior?->fichaindividual?->area_titulo;
         $this->area_titulo = $fichaanterior?->fichaindividual?->area_titulo;
         $this->area_verificada1 = $fichaanterior?->fichaindividual?->area_verificada;
@@ -623,9 +625,9 @@ class FichaIndividualEdit extends Component
         $this->fichaanterior = $fichaanterior;
 
         $this->usos = Uso::all();
-        $this->tecnicos = Persona::where('tipo_funcion', 3)?->get();
-        $this->supervisores = Persona::where('tipo_funcion', 2)?->get();
-        $this->verificadores = Persona::where('tipo_funcion', 4)?->get();
+        $this->tecnicos = Persona::where('tipo_funcion', 3)->orderBy('nombres', 'asc')->get();
+        $this->supervisores = Persona::where('tipo_funcion', 2)->orderBy('nombres', 'asc')->get();
+        $this->verificadores = Persona::where('tipo_funcion', 4)->orderBy('nombres', 'asc')->get();
         $this->sectores = Sectore::orderBy('codi_sector')->get();
         $this->hab_urbanas = HabUrbana::all();
         $this->codigosinstalacion = CodigoInstalacion::all();
@@ -905,6 +907,23 @@ class FichaIndividualEdit extends Component
 
     public function aumentarConstruccion()
     {
+        
+        $this->bloque[$this->cont2] = $this->bloque[0] ?? null;
+        $this->num_piso[$this->cont2] = $this->num_piso[0] ?? null;
+        $this->fecha[$this->cont2] = $this->fecha[0] ?? null;
+        $this->mep[$this->cont2] = $this->mep[0] ?? null;
+        $this->ecs[$this->cont2] = $this->ecs[0] ?? null;
+        $this->ecc[$this->cont2] = $this->ecc[0] ?? null;
+        $this->estr_muro_col[$this->cont2] = $this->estr_muro_col[0] ?? null;
+        $this->estr_techo[$this->cont2] = $this->estr_techo[0] ?? null;
+        $this->acab_piso[$this->cont2] = $this->acab_piso[0] ?? null;
+        $this->acab_puerta_ven[$this->cont2] = $this->acab_puerta_ven[0] ?? null;
+        $this->acab_revest[$this->cont2] = $this->acab_revest[0] ?? null;
+        $this->acab_bano[$this->cont2] = $this->acab_bano[0] ?? null;
+        $this->inst_elect_sanita[$this->cont2] = $this->inst_elect_sanita[0] ?? null;
+        $this->area_verificada[$this->cont2] = $this->area_verificada[0] ?? null;
+        $this->uca[$this->cont2] = $this->uca[0] ?? null;
+
         $this->cont2++;
     }
 
@@ -965,7 +984,26 @@ class FichaIndividualEdit extends Component
 
     public function aumentarObras()
     {
+        $this->codi_instalacion[$this->cont3] = $this->codi_instalacion[0] ?? null;
+        $this->inst_fecha[$this->cont3] = $this->inst_fecha[0] ?? null;
+        $this->inst_mep[$this->cont3] = $this->inst_mep[0] ?? null;
+        $this->inst_ecs[$this->cont3] = $this->inst_ecs[0] ?? null;
+        $this->inst_ecc[$this->cont3] = $this->inst_ecc[0] ?? null;
+        $this->inst_prod_total[$this->cont3] = $this->inst_prod_total[0] ?? null;
+        $this->inst_uni_med[$this->cont3] = $this->inst_uni_med[0] ?? null;
+        $this->inst_uca[$this->cont3] = $this->inst_uca[0] ?? null;        
         $this->cont3++;
+    }
+    public function updatedcodigohurbanootros($id)
+    {
+        $idbuscar = str_pad($id, 4, '0', STR_PAD_LEFT);
+        $this->hab_urbana2 = HabUrbana::where('codi_hab_urba', $idbuscar)->first();
+
+        if ($this->hab_urbana2 == "") {
+            $this->nombrehhurbanaotros = "";
+        } else {
+            $this->nombrehhurbanaotros = $this->hab_urbana2->tipo_hab_urba . " " . $this->hab_urbana2->nomb_hab_urba;
+        }
     }
 
     public function reducirObras($value) 
@@ -1077,6 +1115,7 @@ class FichaIndividualEdit extends Component
     public function updatedubicacionpersona($value)
     {
 
+        
         if ($value == "01") {
             for ($i = 0; $i < $this->cont; $i++) {
                 $this->validate([
@@ -1089,6 +1128,7 @@ class FichaIndividualEdit extends Component
             $this->departamentootros = "08";
             $this->provinciaotros = "01";
             $this->distritootros = "08";
+            
 
             foreach ($this->tipopuerta as $i => $tipovia) {
                 if ($tipovia == "P") {
@@ -1224,12 +1264,14 @@ class FichaIndividualEdit extends Component
 
     public function register()
     {
+        
         try {
             DB::beginTransaction();
             $ubigeo = Institucion::first();
             /*VALIDACIONES*/
             $id = $this->fichaanterior->fichaindividual->id_ficha;
             if ($this->condtitular != "05") {
+
                 $this->validate([
                     'nume_ficha'                    => ['required', 'max:7', Rule::unique('tf_fichas_individuales', 'nume_ficha')->ignore($id, 'id_ficha')],
                     'nume_ficha_lote'               => 'required|max:4',
@@ -1258,10 +1300,10 @@ class FichaIndividualEdit extends Component
                     'fecha_adquisicion'             => 'nullable',
 
 
-                    'ubicacionpersona'              => 'required',
-                    'departamentootros'             => 'required',
-                    'provinciaotros'                => 'required',
-                    'distritootros'                 => 'required',
+                    'ubicacionpersona'              => 'nullable',
+                    'departamentootros'             => 'nullable',
+                    'provinciaotros'                => 'nullable',
+                    'distritootros'                 => 'nullable',
                     'codigoviaotros'                => 'nullable|max:6',
                     'tipoviaotros'                  => 'nullable|max:5',
                     'nombreviaotros'                => 'nullable|max:100',
@@ -1767,6 +1809,8 @@ class FichaIndividualEdit extends Component
             }
 
             if ($this->condtitular != "05") {
+                
+
                 if ($this->tipoTitular == 1) {
                     $iddd = str_pad($this->numedoc1, 8, '0', STR_PAD_LEFT) . '11' . $this->tipo_doc1;
                     $buscarpersona2 = Persona::where('id_persona', $iddd)->first();
@@ -1852,6 +1896,7 @@ class FichaIndividualEdit extends Component
                         $titular->anexo = $this->anexodomicilio;
                         $titular->email = $this->emaildomicilio;
                         $titular->nume_titular = "TITULAR N° 1";
+                        
                         $titular->cond_titular = $this->condtitular;
                         $titular->save();
 
@@ -1899,6 +1944,7 @@ class FichaIndividualEdit extends Component
                         $titular->telf = $this->telefonodomicilio;
                         $titular->anexo = $this->anexodomicilio;
                         $titular->email = $this->emaildomicilio;
+                        
                         $titular->cond_titular = $this->condtitular;
                         $titular->save();
 
@@ -1950,6 +1996,7 @@ class FichaIndividualEdit extends Component
                         $titular->telf = $this->telefonodomicilio;
                         $titular->anexo = $this->anexodomicilio;
                         $titular->email = $this->emaildomicilio;
+                        
                         $titular->cond_titular = $this->condtitular;
                         $titular->save();
 
@@ -2002,6 +2049,7 @@ class FichaIndividualEdit extends Component
                         $titular->anexo = $this->anexodomicilio;
                         $titular->email = $this->emaildomicilio;
                         $titular->nume_titular = "TITULAR N° 2";
+                        
                         $titular->cond_titular = $this->condtitular;
                         $titular->save();
                     } else {
@@ -2037,6 +2085,7 @@ class FichaIndividualEdit extends Component
                         $titular->anexo = $this->anexodomicilio;
                         $titular->email = $this->emaildomicilio;
                         $titular->nume_titular = "TITULAR N° 2";
+                        
                         $titular->cond_titular = $this->condtitular;
                         $titular->save();
                     }

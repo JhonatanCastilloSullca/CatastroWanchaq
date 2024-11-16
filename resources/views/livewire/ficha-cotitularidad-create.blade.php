@@ -4,7 +4,6 @@
         <div class="card-body" style="background-color: #fff8e4">
             <div class="row">
                 <h3 class="mb-4">Ficha Catastral Urbana Cotitularidad</h3>
-
                 <div class="row form-group">
                     <h4 class="mb-4"> DATOS GENERALES</h4>
                     <div class="col-md-2">
@@ -362,7 +361,7 @@
                                     <div class="divcuadro">39</div> FECHA DE ADQUISICION
                                 </label>
                                 <input type="date" class="form-control" placeholder="" name="fecha_adquisicion[]"
-                                    wire:model="fecha_adquisicion.{{ $i }}">
+                                    wire:model="fecha_adquisicion.{{ $i }}" max="{{ date('Y-m-d') }}">
                                 @error('fecha_adquisicion.' . $i)
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror

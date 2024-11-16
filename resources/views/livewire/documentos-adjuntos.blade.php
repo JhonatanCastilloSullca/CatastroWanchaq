@@ -46,7 +46,7 @@
                                     @enderror
                                 </td>
                                 <td>
-                                    <input type="date" class="form-control"  name="fecha_doc[]" placeholder="FECHA" id="fecha_doc.{{$i}}" >
+                                    <input type="date" class="form-control"  name="fecha_doc[]" placeholder="FECHA" id="fecha_doc.{{$i}}" max="{{ date('Y-m-d') }}" >
                                     @error('fecha_doc.'.$i)
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror

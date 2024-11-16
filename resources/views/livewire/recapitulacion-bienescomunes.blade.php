@@ -60,7 +60,7 @@
                                     @enderror
                                 </td>
                                 <td>
-                                    <input type="date" class="form-control"  name="rbcatc[]" placeholder="FECHA" id="rbcatc.{{$i}}" >
+                                    <input type="date" class="form-control"  name="rbcatc[]" placeholder="FECHA" id="rbcatc.{{$i}}"  max="{{ date('Y-m-d') }}">
                                     @error('rbcatc.'.$i)
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
@@ -97,7 +97,7 @@
                                     @enderror
                                 </td>
                                 <td>
-                                    <input type="date" class="form-control"  name="rbctotalatc[]" placeholder="FECHA" id="rbctotalatc.{{$i}}" >
+                                    <input type="date" class="form-control"  name="rbctotalatc[]" placeholder="FECHA" id="rbctotalatc.{{$i}}"  max="{{ date('Y-m-d') }}">
                                     @error('rbctotalatc.'.$i)
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
@@ -161,7 +161,7 @@
             <div class="col-md-3 mb-3">
                 <label class="form-label d-inline-flex" >FECHA DE ESCRITURA</label>
 
-                <input type="date" class="form-control"  name="rbcfechaesc" placeholder="FECHA" id="rbcfechaesc" >
+                <input type="date" class="form-control"  name="rbcfechaesc" placeholder="FECHA" id="rbcfechaesc" max="{{ date('Y-m-d') }}">
                 @error('rbcfechaesc')
                     <span class="error-message" style="color:red">{{ $message }}</span>
                 @enderror
@@ -217,7 +217,7 @@
             <div class="col-md-3">
                 <div class="mb-3">
                     <label class="form-label d-inline-flex" > <div class="divcuadro">108</div> FECHA DE INSCRIPCION</label>
-                    <input type="date" class="form-control"  name="rbcfechainscpredio" placeholder="FECHA" id="rbcfechainscpredio" >
+                    <input type="date" class="form-control"  name="rbcfechainscpredio" placeholder="FECHA" id="rbcfechainscpredio" max="{{ date('Y-m-d') }}">
                     @error('rbcfechainscpredio')
                         <span class="error-message" style="color:red">{{ $message }}</span>
                     @enderror
@@ -249,7 +249,7 @@
             <div class="col-md-3">
                 <div class="mb-3">
                     <label class="form-label d-inline-flex" > <div class="divcuadro">111</div> FECHA INSC. DE FAB.</label>
-                    <input type="date" class="form-control"  name="rbcfechainscfab" placeholder="FECHA" id="rbcfechainscfab" >
+                    <input type="date" class="form-control"  name="rbcfechainscfab" placeholder="FECHA" id="rbcfechainscfab" max="{{ date('Y-m-d') }}">
                     @error('rbcfechainscfab')
                         <span class="error-message" style="color:red">{{ $message }}</span>
                     @enderror

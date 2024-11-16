@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Http;
 use App\Models\Ficha;
 use App\Models\Uso;
 use App\Models\Ubiges;
+use App\Models\HabUrbana;
 use App\Models\Persona;
 use Carbon\Carbon;
 use App\Models\FichaEconomica;
@@ -1058,6 +1059,17 @@ class FichaEconomicaCreate extends Component
     {
         if (!empty($this->nume_ficha_lote) && $this->nume_ficha_lote > $value) {
             $this->nume_ficha_lote = ''; 
+        }
+    }
+    public function updatedcodigohurbanoconductor($id)
+    {
+        $idbuscar = str_pad($id, 4, '0', STR_PAD_LEFT);
+        $this->hab_urbana2 = HabUrbana::where('codi_hab_urba', $idbuscar)->first();
+
+        if ($this->hab_urbana2 == "") {
+            $this->nombrehhurbanaconductor = "";
+        } else {
+            $this->nombrehhurbanaconductor = $this->hab_urbana2->tipo_hab_urba . " " . $this->hab_urbana2->nomb_hab_urba;
         }
     }
 }

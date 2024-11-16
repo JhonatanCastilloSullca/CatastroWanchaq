@@ -278,8 +278,8 @@ class FichaIndividualCreate extends Component
     {
         $this->usos = Uso::orderBy('codi_uso', 'asc')->get();
         $this->tecnicos = Persona::where('tipo_funcion', 3)->orderBy('nombres', 'asc')->get();
-        $this->supervisores = Persona::where('tipo_funcion', 2)->orderBy('nume_doc', 'asc')->get();
-        $this->verificadores = Persona::where('tipo_funcion', 4)->orderBy('nume_doc', 'asc')->get();
+        $this->supervisores = Persona::where('tipo_funcion', 2)->orderBy('nombres', 'asc')->get();
+        $this->verificadores = Persona::where('tipo_funcion', 4)->orderBy('nombres', 'asc')->get();
         $this->sectores = Sectore::orderBy('codi_sector', 'asc')->get();
         $this->hab_urbanas = HabUrbana::orderBy('codi_hab_urba', 'asc')->get();
         $this->vias = Via::orderBy('codi_via', 'asc')->get();
@@ -722,7 +722,23 @@ class FichaIndividualCreate extends Component
 
     public function aumentarConstruccion()
     {
+        $this->bloque[$this->cont2] = $this->bloque[0] ?? null;
+        $this->num_piso[$this->cont2] = $this->num_piso[0] ?? null;
+        $this->fecha[$this->cont2] = $this->fecha[0] ?? null;
+        $this->mep[$this->cont2] = $this->mep[0] ?? null;
+        $this->ecs[$this->cont2] = $this->ecs[0] ?? null;
+        $this->ecc[$this->cont2] = $this->ecc[0] ?? null;
+        $this->estr_muro_col[$this->cont2]  = $this->estr_muro_col[0] ?? null;
+        $this->estr_techo[$this->cont2] = $this->estr_techo[0] ?? null;
+        $this->acab_piso[$this->cont2]  = $this->acab_piso[0] ?? null;
+        $this->acab_puerta_ven[$this->cont2]    = $this->acab_puerta_ven[0] ?? null;
+        $this->acab_revest[$this->cont2]    = $this->acab_revest[0] ?? null;
+        $this->acab_bano[$this->cont2]  = $this->acab_bano[0] ?? null;
+        $this->inst_elect_sanita[$this->cont2]  = $this->inst_elect_sanita[0] ?? null;
+        $this->area_verificada[$this->cont2]    = $this->area_verificada[0] ?? null;
+        $this->uca[$this->cont2] = $this->uca[0] ?? null;
         $this->cont2++;
+        
     }
 
     public function reducirConstruccion($value)
@@ -782,7 +798,16 @@ class FichaIndividualCreate extends Component
     /* OBRAS COMPLEMENTARIAS */
 
     public function aumentarObras()
-    {
+    {               
+        $this->codi_instalacion[$this->cont3] = $this->codi_instalacion[0] ?? null;
+        $this->inst_fecha[$this->cont3] = $this->inst_fecha[0] ?? null;
+        $this->inst_mep[$this->cont3] = $this->inst_mep[0] ?? null;
+        $this->inst_ecs[$this->cont3] = $this->inst_ecs[0] ?? null;
+        $this->inst_ecc[$this->cont3] = $this->inst_ecc[0] ?? null;
+        $this->inst_prod_total[$this->cont3] = $this->inst_prod_total[0] ?? null;
+        $this->inst_uni_med[$this->cont3] = $this->inst_uni_med[0] ?? null;
+        $this->inst_uca[$this->cont3] = $this->inst_uca[0] ?? null;
+
         $this->cont3++;
     }
 

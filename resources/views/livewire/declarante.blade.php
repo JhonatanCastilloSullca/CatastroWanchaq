@@ -30,7 +30,7 @@
     </div>  
     <div class="col-md-2 mb-3">
         <label class="form-label d-inline-flex" > FECHA</label>
-        <input type="date" class="form-control" name="fecha_declarante">
+        <input type="date" class="form-control" name="fecha_declarante" max="{{ date('Y-m-d') }}">
         @error('fecha_declarante')
             <span class="error-message" style="color:red">{{ $message }}</span>
         @enderror

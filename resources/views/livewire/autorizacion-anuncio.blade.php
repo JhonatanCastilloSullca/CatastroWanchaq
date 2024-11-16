@@ -64,13 +64,13 @@
                                 @enderror
                             </td>
                             <td>
-                                <input type="date" class="form-control" name="fecha_expedicion1[]" id="fecha_expedicion1.{{$i}}">
+                                <input type="date" class="form-control" name="fecha_expedicion1[]" id="fecha_expedicion1.{{$i}}" max="{{ date('Y-m-d') }}">
                                 @error('fecha_expedicion.'.$i)
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
                             </td>
                             <td>
-                                <input type="date" class="form-control" name="fecha_vencimiento1[]" id="fecha_vencimiento1.{{$i}}">
+                                <input type="date" class="form-control" name="fecha_vencimiento1[]" id="fecha_vencimiento1.{{$i}}" max="{{ date('Y-m-d') }}">
                                 @error('fecha_vencimiento.'.$i)
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror

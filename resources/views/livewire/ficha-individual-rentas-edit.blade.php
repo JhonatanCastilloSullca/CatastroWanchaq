@@ -1230,7 +1230,7 @@
                                                     @enderror
                                                 </td>
                                                 <td>
-                                                    <select class="form-select" data-width="100%" data-live-search="true" name="mep.{{$i}}" id="mep.{{$i}}" wire:model="mep.{{$i}}" tabindex="91">
+                                                    <select class="form-select w-65" data-width="100%" data-live-search="true" name="mep.{{$i}}" id="mep.{{$i}}" wire:model="mep.{{$i}}" tabindex="91">
                                                         <option value="">SELECCIONE</option>
                                                         @foreach(\App\Models\TablaCodigo::where('id_tabla','=','MEP')->orderby('codigo','asc')->get() as $tablacodigo)
                                                         <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
@@ -1241,7 +1241,7 @@
                                                     @enderror
                                                 </td>
                                                 <td>
-                                                    <select class="form-select" data-width="100%" data-live-search="true" name="ecs.{{$i}}" id="ecs.{{$i}}" wire:model="ecs.{{$i}}" tabindex="92">
+                                                    <select class="form-select w-65" data-width="100%" data-live-search="true" name="ecs.{{$i}}" id="ecs.{{$i}}" wire:model="ecs.{{$i}}" tabindex="92">
                                                         <option value="">SELECCIONE</option>
                                                         @foreach(\App\Models\TablaCodigo::where('id_tabla','=','ECS')->orderby('codigo','asc')->get() as $tablacodigo)
                                                         <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
@@ -1252,7 +1252,7 @@
                                                     @enderror
                                                 </td>
                                                 <td>
-                                                    <select class="form-select" data-width="100%" data-live-search="true" name="ecc.{{$i}}" id="ecc.{{$i}}" wire:model="ecc.{{$i}}" tabindex="93">
+                                                    <select class="form-select w-65" data-width="100%" data-live-search="true" name="ecc.{{$i}}" id="ecc.{{$i}}" wire:model="ecc.{{$i}}" tabindex="93">
                                                         <option value="">SELECCIONE</option>
                                                         @foreach(\App\Models\TablaCodigo::where('id_tabla','=','ECC')->orderby('codigo','asc')->get() as $tablacodigo)
                                                         <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
@@ -1448,7 +1448,7 @@
                                                     @enderror
                                                 </td>
                                                 <td>
-                                                    <select class="form-select" data-width="100%" data-live-search="true" name="inst_mep.{{$i}}" id="inst_mep.{{$i}}" wire:model="inst_mep.{{$i}}" tabindex="111">
+                                                    <select class="form-select w-65" data-width="100%" data-live-search="true" name="inst_mep.{{$i}}" id="inst_mep.{{$i}}" wire:model="inst_mep.{{$i}}" tabindex="111">
                                                         <option value="">SELECCIONE</option>
                                                         @foreach(\App\Models\TablaCodigo::where('id_tabla','=','MEP')->orderby('codigo','asc')->get() as $tablacodigo)
                                                         <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
@@ -1459,7 +1459,7 @@
                                                     @enderror
                                                 </td>
                                                 <td>
-                                                    <select class="form-select" data-width="100%" data-live-search="true" name="inst_ecs.{{$i}}" id="inst_ecs.{{$i}}" wire:model="inst_ecs.{{$i}}" tabindex="112">
+                                                    <select class="form-select w-65" data-width="100%" data-live-search="true" name="inst_ecs.{{$i}}" id="inst_ecs.{{$i}}" wire:model="inst_ecs.{{$i}}" tabindex="112">
                                                         <option value="">SELECCIONE</option>
                                                         @foreach(\App\Models\TablaCodigo::where('id_tabla','=','ECS')->orderby('codigo','asc')->get() as $tablacodigo)
                                                         <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
@@ -1470,7 +1470,7 @@
                                                     @enderror
                                                 </td>
                                                 <td>
-                                                    <select class="form-select" data-width="100%" data-live-search="true" name="inst_ecc.{{$i}}" id="inst_ecc.{{$i}}" wire:model="inst_ecc.{{$i}}" tabindex="113">
+                                                    <select class="form-select w-65" data-width="100%" data-live-search="true" name="inst_ecc.{{$i}}" id="inst_ecc.{{$i}}" wire:model="inst_ecc.{{$i}}" tabindex="113">
                                                         <option value="">SELECCIONE</option>
                                                         @foreach(\App\Models\TablaCodigo::where('id_tabla','=','ECC')->orderby('codigo','asc')->get() as $tablacodigo)
                                                         <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
