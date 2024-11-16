@@ -402,7 +402,7 @@
                             <div class="col-md-2">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex" > <div class="divcuadro">14</div> CÓDIGO URBANO</label>
-                                    <input type="text" class="form-control" placeholder="" name="codigohurbanoconductor" wire:model="codigohurbanoconductor" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="4">
+                                    <input type="text" class="form-control" placeholder="" name="codigohurbanoconductor" wire:model.lazy="codigohurbanoconductor" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="4">
                                     @error('codigohurbanoconductor')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
@@ -599,13 +599,13 @@
                                         <label class="form-label d-inline-flex" > <div class="divcuadro">150</div>F. VENCIMIENTO</label>
                                     </div>
                                     <div class="col-md-6 mb-2">
-                                        <input type="date" class="form-control" name="fecha_expedicion" wire:model="fecha_expedicion">
+                                        <input type="date" class="form-control" name="fecha_expedicion" wire:model="fecha_expedicion" max="{{ date('Y-m-d') }}">
                                         @error('fecha_expedicion')
                                             <span class="error-message" style="color:red">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="col-md-6 mb-2">
-                                        <input type="date" class="form-control" name="fecha_vencimiento" wire:model="fecha_vencimiento">
+                                        <input type="date" class="form-control" name="fecha_vencimiento" wire:model="fecha_vencimiento" max="{{ date('Y-m-d') }}">
                                         @error('fecha_vencimiento')
                                             <span class="error-message" style="color:red">{{ $message }}</span>
                                         @enderror
@@ -614,7 +614,7 @@
                                         <label class="form-label d-inline-flex" > <div class="divcuadro">150</div>INICIO DE ACTIVIDAD</labep>
                                     </div>
                                     <div class="col-md-6 mb-2">
-                                        <input type="date" class="form-control" name="inic_actividad" wire:model="inic_actividad">
+                                        <input type="date" class="form-control" name="inic_actividad" wire:model="inic_actividad" max="{{ date('Y-m-d') }}">
                                         @error('inic_actividad')
                                             <span class="error-message" style="color:red">{{ $message }}</span>
                                         @enderror
@@ -694,13 +694,13 @@
                                                     @enderror
                                                 </td>
                                                 <td>
-                                                    <input type="date" class="form-control" name="fecha_expedicion1[]" id="fecha_expedicion1.{{$i}}" wire:model="fecha_expedicion1.{{$i}}">
+                                                    <input type="date" class="form-control" name="fecha_expedicion1[]" id="fecha_expedicion1.{{$i}}" wire:model="fecha_expedicion1.{{$i}}" max="{{ date('Y-m-d') }}">
                                                     @error('fecha_expedicion.'.$i)
                                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                                     @enderror
                                                 </td>
                                                 <td>
-                                                    <input type="date" class="form-control" name="fecha_vencimiento1[]" id="fecha_vencimiento1.{{$i}}" wire:model="fecha_vencimiento1.{{$i}}">
+                                                    <input type="date" class="form-control" name="fecha_vencimiento1[]" id="fecha_vencimiento1.{{$i}}" wire:model="fecha_vencimiento1.{{$i}}" max="{{ date('Y-m-d') }}">
                                                     @error('fecha_vencimiento.'.$i)
                                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                                     @enderror
@@ -787,57 +787,58 @@
                         </div><!-- Col -->
                     </div><!-- Row -->
                     <div class="row form-group">
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label d-inline-flex">
+                                <div class="divcuadro">94</div>DECLARANTE DNI
+                            </label>
 
-                        <div class="row form-group">
-                            <label class="form-label d-inline-flex" > <div class="divcuadro">94</div>DECLARANTE</label>
-                            <div class="col-md-2 mb-3">
-                                <label class="form-label d-inline-flex" >DNI</label>
-                                <input type="number" class="form-control" name="num_documento_declarante" wire:model.lazy="numdocumentodeclarante" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="17" >
-                                @error('numdocumentodeclarante')
-                                    <span class="error-message" style="color:red">{{ $message }}</span>
-                                @enderror
-                                @if ($message = Session::get('dark'))
-                                    <span class="error-message" style="color:red">{{ $message }}</span>
-                                @endif
-                            </div>
-                            <div class="col-md-2 mb-3">
-                                <label class="form-label d-inline-flex" > NOMBRES</label>
-                                <input type="text" class="form-control" name="nombres_declarante" wire:model="nombres_declarante" onkeydown="return /[a-ñ]/i.test(event.key)">
-                                @error('fecha_declarante')
-                                    <span class="error-message" style="color:red">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <label class="form-label d-inline-flex" > APELLIDO PATERNO</label>
-                                <input type="text" class="form-control" name="apellido_paterno_declarante" wire:model="apellido_paterno_declarante" onkeydown="return /[a-ñ]/i.test(event.key)">
-                                @error('fecha_declarante')
-                                    <span class="error-message" style="color:red">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <label class="form-label d-inline-flex" > APELLIDO MATERNO</label>
-                                <input type="text" class="form-control" name="apellido_materno_declarante" wire:model="apellido_materno_declarante" onkeydown="return /[a-ñ]/i.test(event.key)">
-                                @error('fecha_declarante')
-                                    <span class="error-message" style="color:red">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="col-md-2 mb-3">
-                                <label class="form-label d-inline-flex" > FECHA</label>
-                                <input type="date" class="form-control" name="fecha_declarante" wire:model="fecha_declarante" max="{{ date('Y-m-d') }}">
-                                @error('fecha_declarante')
-                                    <span class="error-message" style="color:red">{{ $message }}</span>
-                                @enderror
-                            </div>
+                            <label class="form-label d-inline-flex"></label>
+                            <input type="number" class="form-control" name="numdocumentodeclarante" wire:model.lazy="numdocumentodeclarante" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="17" placeholder="DNI declarante">
+                            @error('numdocumentodeclarante')
+                                <span class="error-message" style="color:red">{{ $message }}</span>
+                            @enderror
+                            @if ($message = Session::get('dark'))
+                                <span class="error-message" style="color:red">{{ $message }}</span>
+                            @endif
+
+
+                            <label class="form-label d-inline-flex" > NOMBRES</label>
+                            <input type="text" class="form-control" name="nombres_declarante" wire:model="nombres_declarante" onkeydown="return /[a-ñ]/i.test(event.key)" placeholder="Nombre declarante">
+                            @error('nombres_declarante')
+                                <span class="error-message" style="color:red">{{ $message }}</span>
+                            @enderror
+
+
+                            <label class="form-label d-inline-flex" > APELLIDO PATERNO</label>
+                            <input type="text" class="form-control" name="apellido_paterno_declarante" wire:model="apellido_paterno_declarante" onkeydown="return /[a-ñ]/i.test(event.key)" placeholder="A. Paterno declarante">
+                            @error('apellido_paterno_declarante')
+                                <span class="error-message" style="color:red">{{ $message }}</span>
+                            @enderror
+
+
+                            <label class="form-label d-inline-flex" > APELLIDO MATERNO</label>
+                            <input type="text" class="form-control" name="apellido_materno_declarante" wire:model="apellido_materno_declarante" onkeydown="return /[a-ñ]/i.test(event.key)" placeholder="A. Materno declarante">
+                            @error('apellido_materno_declarante')
+                                <span class="error-message" style="color:red">{{ $message }}</span>
+                            @enderror
+
+
+                            <label class="form-label d-inline-flex" > FECHA</label>
+                            <input type="date" class="form-control" name="fecha_declarante" wire:model="fecha_declarante" max="{{ date('Y-m-d') }}" >
+                            @error('fecha_declarante')
+                                <span class="error-message" style="color:red">{{ $message }}</span>
+                            @enderror
+
                         </div>
 
 
 
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-3 mb-3">
                             <label class="form-label d-inline-flex" > <div class="divcuadro">95</div>SUPERVISOR</label>
                             <select class="form-select"  data-width="100%" data-live-search="true" name="supervisor" id="supervisor" wire:model="supervisor">
                                 <option value="">SELECCIONE</option>
                                 @foreach($supervisores as $supervisor)
-                                    <option value="{{$supervisor?->id_persona}}">{{$supervisor?->nume_doc}} {{$supervisor?->nombres}} {{$supervisor?->ape_paterno}} {{$supervisor?->ape_materno}}</option>
+                                    <option value="{{$supervisor->id_persona}}">{{$supervisor->nume_doc}} {{$supervisor->nombres}} {{$supervisor->ape_paterno}} {{$supervisor->ape_materno}}</option>
                                 @endforeach
                             </select>
                             @error('supervisor')
@@ -849,12 +850,12 @@
                                 <span class="error-message" style="color:red">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-3 mb-3">
                             <label class="form-label d-inline-flex" > <div class="divcuadrorequired">96</div>TÉCNICO CATASTRAL</label>
                             <select class="form-select"  data-width="100%" data-live-search="true" name="tecnico" id="tecnico" wire:model="tecnico">
                                 <option value="">SELECCIONE</option>
                                 @foreach($tecnicos as $tecnico)
-                                    <option value="{{$tecnico?->id_persona}}">{{$tecnico?->nume_doc}} {{$tecnico?->nombres}} {{$tecnico?->ape_paterno}} {{$tecnico?->ape_materno}}</option>
+                                    <option value="{{$tecnico->id_persona}}">{{$tecnico->nume_doc}} {{$tecnico->nombres}} {{$tecnico->ape_paterno}} {{$tecnico->ape_materno}}</option>
                                 @endforeach
                             </select>
                             @error('tecnico')
@@ -866,12 +867,12 @@
                                 <span class="error-message" style="color:red">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-3 mb-3">
                             <label class="form-label d-inline-flex" > <div class="divcuadro">97</div>Vº Bº VERIFICADOR CATASTRAL</label>
                             <select class="form-select"  data-width="100%" data-live-search="true" name="verificador" id="verificador" wire:model="verificador">
                                 <option value="">SELECCIONE</option>
                                 @foreach($verificadores as $verificador)
-                                    <option value="{{$verificador?->id_persona}}">{{$verificador?->nume_doc}} {{$verificador?->nombres}} {{$verificador?->ape_paterno}} {{$verificador?->ape_materno}}</option>
+                                    <option value="{{$verificador->id_persona}}">{{$verificador->nume_doc}} {{$verificador->nombres}} {{$verificador->ape_paterno}} {{$verificador->ape_materno}}</option>
                                 @endforeach
                             </select>
                             @error('verificador')

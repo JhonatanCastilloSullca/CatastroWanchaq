@@ -380,7 +380,7 @@
                             <div class="col-md-2">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex" > <div class="divcuadro">14</div> CÓDIGO URBANO</label>
-                                    <input type="text" class="form-control" placeholder="" name="codigohurbanoconductor" wire:model="codigohurbanoconductor" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="4">
+                                    <input type="text" class="form-control" placeholder="" name="codigohurbanoconductor" wire:model.lazy="codigohurbanoconductor" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="4">
                                     @error('codigohurbanoconductor')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
@@ -567,13 +567,13 @@
                                         <label class="form-label d-inline-flex" > <div class="divcuadro">150</div>F. VENCIMIENTO</label>
                                     </div>
                                     <div class="col-md-6 mb-2">
-                                        <input type="date" class="form-control" name="fecha_expedicion" wire:model="fecha_expedicion">
+                                        <input type="date" class="form-control" name="fecha_expedicion" wire:model="fecha_expedicion" max="{{ date('Y-m-d') }}">
                                         @error('fecha_expedicion')
                                             <span class="error-message" style="color:red">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="col-md-6 mb-2">
-                                        <input type="date" class="form-control" name="fecha_vencimiento" wire:model="fecha_vencimiento">
+                                        <input type="date" class="form-control" name="fecha_vencimiento" wire:model="fecha_vencimiento" max="{{ date('Y-m-d') }}">
                                         @error('fecha_vencimiento')
                                             <span class="error-message" style="color:red">{{ $message }}</span>
                                         @enderror
@@ -582,7 +582,7 @@
                                         <label class="form-label d-inline-flex" > <div class="divcuadro">151</div>INICIO DE ACTIVIDAD</labep>
                                     </div>
                                     <div class="col-md-6 mb-2">
-                                        <input type="date" class="form-control" name="inic_actividad" wire:model="inic_actividad">
+                                        <input type="date" class="form-control" name="inic_actividad" wire:model="inic_actividad" max="{{ date('Y-m-d') }}">
                                         @error('inic_actividad')
                                             <span class="error-message" style="color:red">{{ $message }}</span>
                                         @enderror
@@ -662,13 +662,13 @@
                                                     @enderror
                                                 </td>
                                                 <td>
-                                                    <input type="date" class="form-control" name="fecha_expedicion1[]" id="fecha_expedicion1.{{$i}}" wire:model="fecha_expedicion1.{{$i}}">
+                                                    <input type="date" class="form-control" name="fecha_expedicion1[]" id="fecha_expedicion1.{{$i}}" wire:model="fecha_expedicion1.{{$i}}" max="{{ date('Y-m-d') }}">
                                                     @error('fecha_expedicion.'.$i)
                                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                                     @enderror
                                                 </td>
                                                 <td>
-                                                    <input type="date" class="form-control" name="fecha_vencimiento1[]" id="fecha_vencimiento1.{{$i}}" wire:model="fecha_vencimiento1.{{$i}}">
+                                                    <input type="date" class="form-control" name="fecha_vencimiento1[]" id="fecha_vencimiento1.{{$i}}" wire:model="fecha_vencimiento1.{{$i}}" max="{{ date('Y-m-d') }}">
                                                     @error('fecha_vencimiento.'.$i)
                                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                                     @enderror
@@ -757,9 +757,7 @@
                         </div><!-- Col -->
                     </div><!-- Row -->
                     <div class="row form-group">
-
                         <div class="col-md-3 mb-3">
-
                             <label class="form-label d-inline-flex">
                                 <div class="divcuadro">94</div>DECLARANTE DNI
                             </label>

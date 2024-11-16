@@ -34,25 +34,25 @@
                                     @enderror
                                 </td>
                                 <td>
-                                    <input type="date" class="form-control"  name="fecha[]" placeholder="FECHA" id="fecha.{{$i}}" >
+                                    <input type="date" class="form-control"  name="fecha[]" placeholder="FECHA" id="fecha.{{$i}}" max="{{ date('Y-m-d') }}">
                                     @error('fecha.'.$i)
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control"  name="mep[]" placeholder="MEP" id="mep.{{$i}}"  >
+                                    <input type="text" class="form-control w-65"  name="mep[]" placeholder="MEP" id="mep.{{$i}}"  >
                                     @error('mep.'.$i)
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control"  name="ecs[]" placeholder="ECS" id="ecs.{{$i}}"  >
+                                    <input type="text" class="form-control w-65"  name="ecs[]" placeholder="ECS" id="ecs.{{$i}}"  >
                                     @error('ecs.'.$i)
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
                                 </td>
                                 <td>                                    
-                                    <input type="text" class="form-control"  name="ecc[]" placeholder="ECC" id="ecc.{{$i}}" >
+                                    <input type="text" class="form-control w-65"  name="ecc[]" placeholder="ECC" id="ecc.{{$i}}" >
                                     @error('ecc.'.$i)
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror

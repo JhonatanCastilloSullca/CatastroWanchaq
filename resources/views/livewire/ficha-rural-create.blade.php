@@ -743,7 +743,7 @@
                         <div class="col-md-3">
                             <div class="mb-3">
                                 <label class="form-label d-inline-flex" > <div class="divcuadro">49</div> FECHA INICIO DE OCUPACION</label>
-                                <input type="date" class="form-control" placeholder="" name="fecha_inicio" maxlength="100" wire:model="fecha_inicio">
+                                <input type="date" class="form-control" placeholder="" name="fecha_inicio" maxlength="100" wire:model="fecha_inicio" max="{{ date('Y-m-d') }}">
                                 @error('fecha_inicio')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
@@ -779,7 +779,7 @@
                         <div class="col-md-3">
                             <div class="mb-3">
                                 <label class="form-label d-inline-flex" > <div class="divcuadro">52</div>FECHA DE INSCRIPCION</label>
-                                <input type="date" class="form-control" placeholder="" name="fecha_inscripcion" wire:model="fecha_inscripcion">
+                                <input type="date" class="form-control" placeholder="" name="fecha_inscripcion" wire:model="fecha_inscripcion" max="{{ date('Y-m-d') }}">
                                 @error('fecha_inscripcion')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
@@ -813,7 +813,7 @@
                         <div class="col-md-3">
                             <div class="mb-3">
                                 <label class="form-label d-inline-flex" > <div class="divcuadro">54</div>FECHA DE ADQUISICION</label>
-                                <input type="date" class="form-control" placeholder="" name="fecha_adquisicion" wire:model="fecha_adquisicion">
+                                <input type="date" class="form-control" placeholder="" name="fecha_adquisicion" wire:model="fecha_adquisicion" max="{{ date('Y-m-d') }}">
                                 @error('fecha_adquisicion')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
@@ -1237,13 +1237,13 @@
                                                 @enderror
                                             </td>
                                             <td>
-                                                <input type="date" class="form-control"  name="fecha[]" placeholder="FECHA" id="fecha.{{$i}}"  wire:model="fecha.{{$i}}">
+                                                <input type="date" class="form-control"  name="fecha[]" placeholder="FECHA" id="fecha.{{$i}}"  wire:model="fecha.{{$i}}" max="{{ date('Y-m-d') }}">
                                                 @error('fecha.'.$i)
                                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                                 @enderror
                                             </td>
                                             <td>
-                                                <select class="form-select"  data-width="100%" data-live-search="true" name="mep.{{$i}}" id="mep.{{$i}}" wire:model="mep.{{$i}}">
+                                                <select class="form-select w-65"  data-width="100%" data-live-search="true" name="mep.{{$i}}" id="mep.{{$i}}" wire:model="mep.{{$i}}">
                                                     <option value="" >SELECCIONE</option>
                                                     <option value="01">01 CONCRETO</option>
                                                     <option value="02">02 LADRILLO</option>
@@ -1254,7 +1254,7 @@
                                                 @enderror
                                             </td>
                                             <td>
-                                                <select class="form-select"  data-width="100%" data-live-search="true" name="ecs.{{$i}}" id="ecs.{{$i}}" wire:model="ecs.{{$i}}">
+                                                <select class="form-select w-65"  data-width="100%" data-live-search="true" name="ecs.{{$i}}" id="ecs.{{$i}}" wire:model="ecs.{{$i}}">
                                                     <option value="" >SELECCIONE</option>
                                                     <option value="01">01 MUY BUENO</option>
                                                     <option value="02">02 BUENO</option>
@@ -1266,7 +1266,7 @@
                                                 @enderror
                                             </td>
                                             <td>
-                                                <select class="form-select"  data-width="100%" data-live-search="true" name="ecc.{{$i}}" id="ecc.{{$i}}" wire:model="ecc.{{$i}}">
+                                                <select class="form-select w-65"  data-width="100%" data-live-search="true" name="ecc.{{$i}}" id="ecc.{{$i}}" wire:model="ecc.{{$i}}">
                                                     <option value="" >SELECCIONE</option>
                                                     <option value="01">01 TERMINADO</option>
                                                     <option value="02">02 EN CONSTRUCCION</option>
@@ -1412,7 +1412,7 @@
                                                 @enderror
                                             </td>
                                             <td>
-                                                <input type="date" class="form-control"  name="fecha_const[]" placeholder="fecha_const" id="fecha_const.{{$i}}"  wire:model="fecha_const.{{$i}}">
+                                                <input type="date" class="form-control"  name="fecha_const[]" placeholder="fecha_const" id="fecha_const.{{$i}}"  wire:model="fecha_const.{{$i}}" max="{{ date('Y-m-d') }}">
                                                 @error('fecha_const.'.$i)fecha_const
                                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                                 @enderror

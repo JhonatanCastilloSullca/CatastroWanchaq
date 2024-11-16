@@ -591,7 +591,7 @@
                                                 @enderror
                                             </td>
                                             <td>
-                                                <input type="date" class="form-control" placeholder="" name="fecha_norma" wire:model="fecha_norma.{{$i}}">
+                                                <input type="date" class="form-control" placeholder="" name="fecha_norma" wire:model="fecha_norma.{{$i}}" max="{{ date('Y-m-d') }}">
                                                 @error('fecha_norma.'.$i)
                                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                                 @enderror
@@ -1557,7 +1557,7 @@
                                                 @enderror
                                             </td>
                                             <td>
-                                                <input type="date" class="form-control" placeholder="" name="fecha_norma1" wire:model="fecha_norma1.{{$i}}">
+                                                <input type="date" class="form-control" placeholder="" name="fecha_norma1" wire:model="fecha_norma1.{{$i}}" max="{{ date('Y-m-d') }}">
                                                 @error('fecha_norma1.'.$i)
                                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                                 @enderror

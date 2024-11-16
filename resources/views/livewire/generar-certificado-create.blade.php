@@ -600,7 +600,7 @@
                                                 @enderror
                                             </td>
                                             <td>
-                                                <select class="form-select" data-width="100%" data-live-search="true" name="mep.{{$i}}" id="mep.{{$i}}" wire:model="mep.{{$i}}" tabindex="90">
+                                                <select class="form-select w-65" data-width="100%" data-live-search="true" name="mep.{{$i}}" id="mep.{{$i}}" wire:model="mep.{{$i}}" tabindex="90">
                                                     <option value="">SELECCIONE</option>
                                                     @foreach(\App\Models\TablaCodigo::where('id_tabla','=','MEP')->orderby('codigo','asc')->get() as $tablacodigo)
                                                     <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
@@ -611,7 +611,7 @@
                                                 @enderror
                                             </td>
                                             <td>
-                                                <select class="form-select" data-width="100%" data-live-search="true" name="ecs.{{$i}}" id="ecs.{{$i}}" wire:model="ecs.{{$i}}" tabindex="90">
+                                                <select class="form-select w-65" data-width="100%" data-live-search="true" name="ecs.{{$i}}" id="ecs.{{$i}}" wire:model="ecs.{{$i}}" tabindex="90">
                                                     <option value="">SELECCIONE</option>
                                                     @foreach(\App\Models\TablaCodigo::where('id_tabla','=','ECS')->orderby('codigo','asc')->get() as $tablacodigo)
                                                     <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
@@ -622,7 +622,7 @@
                                                 @enderror
                                             </td>
                                             <td>
-                                                <select class="form-select" data-width="100%" data-live-search="true" name="ecc.{{$i}}" id="ecc.{{$i}}" wire:model="ecc.{{$i}}" tabindex="90">
+                                                <select class="form-select w-65" data-width="100%" data-live-search="true" name="ecc.{{$i}}" id="ecc.{{$i}}" wire:model="ecc.{{$i}}" tabindex="90">
                                                     <option value="">SELECCIONE</option>
                                                     @foreach(\App\Models\TablaCodigo::where('id_tabla','=','ECC')->orderby('codigo','asc')->get() as $tablacodigo)
                                                     <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>

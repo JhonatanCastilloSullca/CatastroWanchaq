@@ -899,7 +899,7 @@
                                                         @enderror
                                                     </td>
                                                     <td>
-                                                        <select class="form-select" data-width="100%"
+                                                        <select class="form-select w-65" data-width="100%"
                                                             data-live-search="true" name="mep.{{ $i }}"
                                                             id="mep.{{ $i }}"
                                                             wire:model="mep.{{ $i }}" tabindex="57">
@@ -916,7 +916,7 @@
                                                         @enderror
                                                     </td>
                                                     <td>
-                                                        <select class="form-select" data-width="100%"
+                                                        <select class="form-select w-65" data-width="100%"
                                                             data-live-search="true" name="ecs.{{ $i }}"
                                                             id="ecs.{{ $i }}"
                                                             wire:model="ecs.{{ $i }}" tabindex="57">
@@ -933,7 +933,7 @@
                                                         @enderror
                                                     </td>
                                                     <td>
-                                                        <select class="form-select" data-width="100%"
+                                                        <select class="form-select w-65" data-width="100%"
                                                             data-live-search="true" name="ecc.{{ $i }}"
                                                             id="ecc.{{ $i }}"
                                                             wire:model="ecc.{{ $i }}" tabindex="57">
@@ -953,7 +953,7 @@
                                                         <input type="text" class="form-control"
                                                             name="estr_muro_col[]" placeholder="MUROS"
                                                             wire:model="estr_muro_col.{{ $i }}"
-                                                            onkeydown="return /[a-z. ;]/i.test(event.key)"
+                                                            onkeydown="return /[a-i. ;]/i.test(event.key)"
                                                             maxlength="1" tabindex="57">
                                                         @error('estr_muro_col.' . $i)
                                                             <span class="error-message"
@@ -964,7 +964,7 @@
                                                         <input type="text" class="form-control"
                                                             name="estr_techo[]" placeholder="TECHOS"
                                                             wire:model="estr_techo.{{ $i }}"
-                                                            onkeydown="return /[a-z. ;]/i.test(event.key)"
+                                                            onkeydown="return /[a-i. ;]/i.test(event.key)"
                                                             maxlength="1" tabindex="57">
                                                         @error('estr_techo.' . $i)
                                                             <span class="error-message"
@@ -975,7 +975,7 @@
                                                         <input type="text" class="form-control" name="acab_piso[]"
                                                             placeholder="PISOS"
                                                             wire:model="acab_piso.{{ $i }}"
-                                                            onkeydown="return /[a-z. ;]/i.test(event.key)"
+                                                            onkeydown="return /[a-i. ;]/i.test(event.key)"
                                                             maxlength="1" tabindex="57">
                                                         @error('acab_piso.' . $i)
                                                             <span class="error-message"
@@ -986,7 +986,7 @@
                                                         <input type="text" class="form-control"
                                                             name="acab_puerta_ven[]" placeholder="P. Y V."
                                                             wire:model="acab_puerta_ven.{{ $i }}"
-                                                            onkeydown="return /[a-z. ;]/i.test(event.key)"
+                                                            onkeydown="return /[a-i. ;]/i.test(event.key)"
                                                             maxlength="1" tabindex="57">
                                                         @error('acab_puerta_ven.' . $i)
                                                             <span class="error-message"
@@ -997,7 +997,7 @@
                                                         <input type="text" class="form-control"
                                                             name="acab_revest[]" placeholder="REVEST."
                                                             wire:model="acab_revest.{{ $i }}"
-                                                            onkeydown="return /[a-z. ;]/i.test(event.key)"
+                                                            onkeydown="return /[a-i. ;]/i.test(event.key)"
                                                             maxlength="1" tabindex="57">
                                                         @error('acab_revest.' . $i)
                                                             <span class="error-message"
@@ -1008,7 +1008,7 @@
                                                         <input type="text" class="form-control" name="acab_bano[]"
                                                             placeholder="BAÑOS"
                                                             wire:model="acab_bano.{{ $i }}"
-                                                            onkeydown="return /[a-z. ;]/i.test(event.key)"
+                                                            onkeydown="return /[a-i. ;]/i.test(event.key)"
                                                             maxlength="1" tabindex="57">
                                                         @error('acab_bano.' . $i)
                                                             <span class="error-message"
@@ -1019,7 +1019,7 @@
                                                         <input type="text" class="form-control"
                                                             name="inst_elect_sanita[]" placeholder="INST. E."
                                                             wire:model="inst_elect_sanita.{{ $i }}"
-                                                            onkeydown="return /[a-z. ;]/i.test(event.key)"
+                                                            onkeydown="return /[a-i. ;]/i.test(event.key)"
                                                             maxlength="1" tabindex="57">
                                                         @error('inst_elect_sanita.' . $i)
                                                             <span class="error-message"
@@ -1156,7 +1156,7 @@
                                                         @enderror
                                                     </td>
                                                     <td>
-                                                        <select class="form-select" data-width="100%"
+                                                        <select class="form-select w-65" data-width="100%"
                                                             data-live-search="true"
                                                             name="inst_mep.{{ $i }}"
                                                             id="inst_mep.{{ $i }}"
@@ -1175,7 +1175,7 @@
                                                         @enderror
                                                     </td>
                                                     <td>
-                                                        <select class="form-select" data-width="100%"
+                                                        <select class="form-select w-65" data-width="100%"
                                                             data-live-search="true"
                                                             name="inst_ecs.{{ $i }}"
                                                             id="inst_ecs.{{ $i }}"
@@ -1194,7 +1194,7 @@
                                                         @enderror
                                                     </td>
                                                     <td>
-                                                        <select class="form-select" data-width="100%"
+                                                        <select class="form-select w-65" data-width="100%"
                                                             data-live-search="true"
                                                             name="inst_ecc.{{ $i }}"
                                                             id="inst_ecc.{{ $i }}"

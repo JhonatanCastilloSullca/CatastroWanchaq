@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Http;
 use App\Models\Ficha;
 use App\Models\Uso;
 use App\Models\Ubiges;
+use App\Models\HabUrbana;
 use App\Models\Persona;
 use App\Models\Sectore;
 use App\Models\Manzana;
@@ -203,7 +204,7 @@ class FichaEconomicaEdit extends Component
         }
 
         if($fichaanterior?->fichaeconomica!=""){
-            $this->pred_area_autor==$fichaanterior?->fichaeconomica?->pred_area_autor;
+            $this->pred_area_autor=$fichaanterior?->fichaeconomica?->pred_area_autor;
             $this->pred_area_verif=$fichaanterior?->fichaeconomica?->pred_area_verif;
             $this->viap_area_autor=$fichaanterior?->fichaeconomica?->viap_area_autor;
             $this->viap_area_verif=$fichaanterior?->fichaeconomica?->viap_area_verif;
@@ -427,6 +428,7 @@ class FichaEconomicaEdit extends Component
 
     public function register()
     {
+        
 
         try
         {
@@ -1041,8 +1043,12 @@ class FichaEconomicaEdit extends Component
             $fichaeconomica=new FichaEconomica();
             $fichaeconomica->id_ficha=$ficha->id_ficha;
             $fichaeconomica->nomb_comercial=strtoupper($this->nomb_comercial);
+            
             if($this->pred_area_autor!=""){
                 $fichaeconomica->pred_area_autor=$this->pred_area_autor;
+            }
+            if($this->pred_area_verif!=""){
+                $fichaeconomica->pred_area_verif=$this->pred_area_verif;
             }
             if($this->viap_area_autor!=""){
                 $fichaeconomica->viap_area_autor=$this->viap_area_autor;
@@ -1327,6 +1333,17 @@ class FichaEconomicaEdit extends Component
                 $this->apellido_materno_declarante=$persona['apellidoMaterno'];
                 $this->numdocumentodeclarante=$dni;
             }
+        }
+    }
+    public function updatedcodigohurbanoconductor($id)
+    {
+        $idbuscar = str_pad($id, 4, '0', STR_PAD_LEFT);
+        $this->hab_urbana2 = HabUrbana::where('codi_hab_urba', $idbuscar)->first();
+
+        if ($this->hab_urbana2 == "") {
+            $this->nombrehhurbanaconductor = "";
+        } else {
+            $this->nombrehhurbanaconductor = $this->hab_urbana2->tipo_hab_urba . " " . $this->hab_urbana2->nomb_hab_urba;
         }
     }
     public function render()

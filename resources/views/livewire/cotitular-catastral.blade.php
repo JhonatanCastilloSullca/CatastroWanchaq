@@ -171,7 +171,7 @@
         <div class="col-md-2">
             <div class="mb-3">
                 <label class="form-label d-inline-flex" > <div class="divcuadro">33</div> FECHA DE ADQUISICION</label>
-                <input type="date" class="form-control" placeholder="" name="fecha_adquisicion[]">
+                <input type="date" class="form-control" placeholder="" name="fecha_adquisicion[]" max="{{ date('Y-m-d') }}">
                 @error('fecha_adquisicion')
                     <span class="error-message" style="color:red">{{ $message }}</span>
                 @enderror
@@ -198,7 +198,7 @@
         <div class="col-md-2">
             <div class="mb-3">
                 <label class="form-label d-inline-flex" > <div class="divcuadro">33</div> F. DE INICIO</label>
-                <input type="date" class="form-control" placeholder="" name="fecha_inicio[]">
+                <input type="date" class="form-control" placeholder="" name="fecha_inicio[]" max="{{ date('Y-m-d') }}">
                 @error('fecha_inicio')
                     <span class="error-message" style="color:red">{{ $message }}</span>
                 @enderror
@@ -207,7 +207,7 @@
         <div class="col-md-2">
             <div class="mb-3">
                 <label class="form-label d-inline-flex" > <div class="divcuadro">33</div> F. DE VENCIMIENTO</label>
-                <input type="date" class="form-control" placeholder="" name="fecha_vencimiento[]">
+                <input type="date" class="form-control" placeholder="" name="fecha_vencimiento[]" max="{{ date('Y-m-d') }}">
                 @error('fecha_vencimiento')
                     <span class="error-message" style="color:red">{{ $message }}</span>
                 @enderror

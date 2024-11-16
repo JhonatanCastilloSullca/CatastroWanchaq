@@ -925,7 +925,7 @@
                                         <div class="divcuadro">14</div> CÓDIGO URBANO
                                     </label>
                                     <input type="text" class="form-control" placeholder=""
-                                        name="codigohurbanootros" wire:model="codigohurbanootros" tabindex="56"
+                                        name="codigohurbanootros" wire:model.lazy="codigohurbanootros" tabindex="56"
                                         maxlength="4">
                                     @error('codigohurbanootros')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
@@ -1080,7 +1080,7 @@
                                         <div class="divcuadro">39</div> FECHA DE ADQUISICION
                                     </label>
                                     <input type="date" class="form-control" placeholder=""
-                                        name="fecha_adquisicion" wire:model="fecha_adquisicion" tabindex="67">
+                                        name="fecha_adquisicion" wire:model="fecha_adquisicion" tabindex="67" max="{{ date('Y-m-d') }}">
                                     @error('fecha_adquisicion')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
@@ -1987,7 +1987,7 @@
                                                             name="fecha_dococumento[]" placeholder="FECHA"
                                                             id="fecha_dococumento.{{ $i }}"
                                                             wire:model="fecha_dococumento.{{ $i }}"
-                                                            tabindex="119">
+                                                            tabindex="119" max="{{ date('Y-m-d') }}">
                                                         @error('fecha_dococumento.' . $i)
                                                             <span class="error-message"
                                                                 style="color:red">{{ $message }}</span>

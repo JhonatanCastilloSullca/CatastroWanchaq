@@ -3,9 +3,10 @@
     {{csrf_field()}}
     <div class="card-body" style="background-color: #fff8e4">
         <div class="row">
-            <div class="row form-group">
+            <h3 class="mb-4">Ficha Catastral Urbana Cotitularidad</h3>
+            <div class="row form-group">                
             <h4 class="mb-4"> DATOS GENERALES</h4>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="mb-3">
                         <input type="hidden" name="fichaanterior" value="{{$fichaanterior->id_ficha}}" >
                         <label class="form-label d-inline-flex" > NUMERO DE FICHA</label>
@@ -34,7 +35,7 @@
                         </div>
                     </div>
                 </div><!-- Col -->
-                <div class="col-md-5">
+                <div class="col-md-6">
                     <div class="mb-3">
                         <label class="form-label d-inline-flex" > <div class="divcuadro">1</div> CÓDIGO ÚNICO CATASTRAL - CUC</label>
                         <input type="text" class="form-control" placeholder="" name="cuc" value="{{$fichaanterior->unicat->cuc}}">
@@ -112,385 +113,470 @@
                 </div><!-- Col -->
             </div><!-- Row -->
 
-            @for($i=0;$i<$total;$i++)
-            <div class="row form-group" id="titular{{$i}}">
-                <h4 class="mb-4">DATOS DEL TITULAR CATASTRAL</h4>
-                <div class="col-md-2">
-                    <div class="mb-2">
-                        <label class="form-label d-inline-flex" > <div class="divcuadro">124</div> NRO. DE COTITULAR</label>
-                        <input type="text" class="form-control" name="nume_titular[]" readonly placeholder="Nro de cotitular" value="{{$fichaanterior->titulars[$i]->nume_titular}}" >
-                        <span class="text-danger">@error('zona_dist'){{$message}}@enderror</span>
-                    </div>
-                </div><!-- Col -->
-                <div class="row form-group">
-                    <div class="col-md-3">
-                        <div class="mb-3">
-                            <label class="form-label d-inline-flex" > <div class="divcuadrorequired">140</div> TIPO DE TITULAR</label>
-                            <select class="form-select"  data-width="100%" data-live-search="true" name="tipo_persona[]" id="tipo_persona{{$i}}" wire:model="tipoTitular.{{$i}}" >
-                                <option value="">SELECCIONE</option>
-                                @foreach(\App\Models\TablaCodigo::where('id_tabla','=','TPE')->get() as $tablacodigo)
-                                    <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
-                                @endforeach
-                            </select>
-                            @error('tipoTitular.'.$i)
-                                <span class="error-message" style="color:red">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div><!-- Col -->
-                    <div class="col-md-3">
-                        <div class="mb-2">
-                            <label class="form-label d-inline-flex" > <div class="divcuadro">124</div> TOTAL DE COTITULARES</label>
-                            <input type="text" class="form-control" name="nume_titular[]" readonly placeholder="Nro de cotitular" value="{{$total}}" >
-                        </div>
-                    </div><!-- Col -->
-                    <div class="col-md-3">
-                        <div class="mb-2">
-                            <label class="form-label d-inline-flex" > <div class="divcuadrorequired">127</div> % DE COTITULAR</label>
-                            <input type="text" class="form-control" name="porc_cotitular[]" placeholder="Nro de cotitular" wire:model="porc_cotitular.{{$i}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="12">
-                            <span class="text-danger">@error('porc_cotitular.'.$i){{$message}}@enderror</span>
-                        </div>
-                    </div><!-- Col -->
-                    <div class="col-md-3">
-                        <div class="mb-2">
-                            <label class="form-label d-inline-flex" > <div class="divcuadro">04</div> COD CONTRIBUYENTE</label>
-                            <input type="text" class="form-control" name="codi_contribuyente[]" placeholder="Nro de cotitular" wire:model="codi_contribuyente.{{$i}}"  maxlength="10">
-                            <span class="text-danger">@error('codi_contribuyente.'.$i){{$message}}@enderror</span>
-                        </div>
-                    </div><!-- Col -->
-                </div><!-- Row -->
-                <div class="row form-group"  id="natural{{$i}}" wire:ignore>
-                    <div class="col-md-2">
-                        <div class="mb-3">
-                            <label class="form-label d-inline-flex" > <div class="divcuadro">26</div> TIPO DOC. IDENTIDAD</label>
-                            <select class="form-select"  data-width="100%" data-live-search="true" name="tipo_doc1[]" id="tipo_doc1" wire:model="tipo_doc1.{{$i}}" >
-                                <option value="">SELECCIONE</option>
-                                @foreach(\App\Models\TablaCodigo::where('id_tabla','=','DOC')->orderby('codigo','asc')->get() as $tablacodigo)
-                                    <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
-                                @endforeach
-                            </select>
-                            @error('tipo_doc1.'.$i)
-                                <span class="error-message" style="color:red">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div><!-- Col -->
-                    <div class="col-md-3">
-                        <div class="mb-3">
-                            <label class="form-label d-inline-flex" > <div class="divcuadro">27</div> N° DOC.</label>
-                            <input type="text" class="form-control" placeholder="" name="numedoc1[]" id="numedoc1[]" wire:model.lazy="numedoc1.{{$i}}">
-                            @error('numedoc1.'.$i)
-                                <span class="error-message" style="color:red">{{ $message }}</span>
-                            @enderror
-                            @if ($message = Session::get('info.'.$i))
-                                <span class="error-message" style="color:red">{{ $message }}</span>
-                            @endif
-                        </div>
-                    </div><!-- Col -->
-                    <div class="col-md-7 row">
-                        <div class="col-md-4">
+            
+            @for ($i = 0; $i < $total; $i++)
+                    <div class="row form-group" id="titular{{ $i }}">
+                        <h4 class="mb-4">DATOS DEL TITULAR CATASTRAL</h4>
+                        <div class="col-md-2">
+                            <div class="mb-2">
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">124</div> NRO. DE COTITULAR
+                                </label>
+                                <input type="text" class="form-control" name="nume_titular[]" readonly
+                                    placeholder="Nro de cotitular" value="{{ $i + 1 }}">
+                                <span class="text-danger">
+                                    @error('zona_dist')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
+                        </div><!-- Col -->
+                        <div class="col-md-2">
+                            <div class="mb-2">
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">125</div> TOTAL DE COTITULARES
+                                </label>
+                                <input type="text" class="form-control" name="nume_titular[]" readonly
+                                    placeholder="Nro de cotitular" value="{{ $total }}">
+                                <span class="text-danger">
+                                    @error('zona_dist')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
+                        </div><!-- Col -->
+                        <div class="col-md-3">
                             <div class="mb-3">
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">32</div> NOMBRES</label>
-                                <input type="text" class="form-control" placeholder="" name="nombres1[]" id="nombres1[]" wire:model="nombres1.{{$i}}">
-                                @error('nombres1.'.$i)
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadrorequired">126</div> TIPO DE TITULAR
+                                </label>
+                                <select class="form-select" data-width="100%" data-live-search="true"
+                                    name="tipo_persona[]" id="tipo_persona{{ $i }}"
+                                    wire:model="tipoTitular.{{ $i }}">
+                                    <option value="">SELECCIONE</option>
+                                    @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'TPE')->get() as $tablacodigo)
+                                        <option value="{{ $tablacodigo->codigo }}">{{ $tablacodigo->codigo }}
+                                            {{ $tablacodigo->desc_codigo }}</option>
+                                    @endforeach
+                                </select>
+                                @error('tipoTitular.' . $i)
+                                    <span class="error-message" style="color:red">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div><!-- Col -->
+                        <div class="col-md-3">
+                            <div class="mb-2">
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">127</div> % DE COTITULAR
+                                </label>
+                                <input type="text" class="form-control" name="porc_cotitular[]"
+                                    placeholder="Nro de cotitular" wire:model="porc_cotitular.{{ $i }}"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                    maxlength="12">
+                                <span class="text-danger">
+                                    @error('porc_cotitular.' . $i)
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
+                        </div><!-- Col -->
+                        <div class="col-md-2">
+                            <div class="mb-2">
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">03</div> COD CONTRIBUYENTE
+                                </label>
+                                <input type="text" class="form-control" name="codi_contribuyente[]"
+                                    placeholder="Nro de cotitular"
+                                    wire:model="codi_contribuyente.{{ $i }}"
+                                    maxlength="10">
+                                <span class="text-danger">
+                                    @error('codi_contribuyente.' . $i)
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
+                        </div><!-- Col -->
+
+                        <div class="row form-group w-100" id="natural{{ $i }}" wire:ignore>
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label d-inline-flex">
+                                        <div class="divcuadro">22</div> TIPO DOC. IDENTIDAD
+                                    </label>
+                                    <select class="form-select" data-width="100%" data-live-search="true"
+                                        name="tipo_doc1[]" id="tipo_doc1"
+                                        wire:model="tipo_doc1.{{ $i }}">
+                                        <option value="">SELECCIONE</option>
+                                        @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'DOC')->orderby('codigo', 'asc')->get() as $tablacodigo)
+                                            <option value="{{ $tablacodigo->codigo }}">{{ $tablacodigo->codigo }}
+                                                {{ $tablacodigo->desc_codigo }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('tipo_doc1.' . $i)
+                                        <span class="error-message" style="color:red">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div><!-- Col -->
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label class="form-label d-inline-flex">
+                                        <div class="divcuadro">23</div> N° DOC.
+                                    </label>
+                                    <input type="text" class="form-control" placeholder="" name="numedoc1[]"
+                                        id="numedoc1.{{ $i }}"
+                                        wire:model.lazy="numedoc1.{{ $i }}">
+                                    @error('numedoc1.' . $i)
+                                        <span class="error-message" style="color:red">{{ $message }}</span>
+                                    @enderror
+                                    @if ($message = Session::get('info.' . $i))
+                                        <span class="error-message" style="color:red">{{ $message }}</span>
+                                    @endif
+                                </div>
+                            </div><!-- Col -->
+                            <div class="col-md-7 row">
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label d-inline-flex">
+                                            <div class="divcuadro">24</div> NOMBRES
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="" name="nombres1[]"
+                                            id="nombres1.{{ $i }}"
+                                            wire:model.defer="nombres1.{{ $i }}">
+                                        @error('nombres1.' . $i)
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div><!-- Col -->
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label d-inline-flex">
+                                            <div class="divcuadro">25</div> APELLIDO PATERNO
+                                        </label>
+                                        <input type="text" class="form-control" placeholder=""
+                                            name="ape_paterno1[]" id="ape_paterno1.{{ $i }}"
+                                            wire:model="ape_paterno1.{{ $i }}">
+                                        @error('ape_paterno1.' . $i)
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div><!-- Col -->
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label d-inline-flex">
+                                            <div class="divcuadro">26</div> APELLIDO MATERNO
+                                        </label>
+                                        <input type="text" class="form-control" placeholder=""
+                                            name="ape_materno1[]" id="ape_materno1.{{ $i }}"
+                                            wire:model="ape_materno1.{{ $i }}">
+                                        @error('ape_materno1.' . $i)
+                                            <span class="error-message" style="color:red">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div><!-- Col -->
+                            </div><!-- Col -->
+                        </div><!-- Col -->
+                        <div class="row form-group" id="juridica{{ $i }}" wire:ignore>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label class="form-label d-inline-flex">
+                                        <div class="divcuadro">31</div> Nº DE R.U.C.
+                                    </label>
+                                    <input type="text" class="form-control" placeholder="" name="numedoc3[]"
+                                        id="numedoc3{{ $i }}"
+                                        wire:model.lazy="numedoc3.{{ $i }}">
+                                    @error('numedoc3.' . $i)
+                                        <span class="error-message" style="color:red">{{ $message }}</span>
+                                    @enderror
+                                    @if ($message = Session::get('warning.' . $i))
+                                        <span class="error-message" style="color:red">{{ $message }}</span>
+                                    @endif
+                                </div>
+                            </div><!-- Col -->
+                            <div class="col-md-7">
+                                <div class="mb-3">
+                                    <label class="form-label d-inline-flex">
+                                        <div class="divcuadro">32</div> RAZON SOCIAL
+                                    </label>
+                                    <input type="text" class="form-control" placeholder="" name="razon_social[]"
+                                        id="razon_social{{ $i }}"
+                                        wire:model="razon_social.{{ $i }}">
+                                    @error('razon_social.' . $i)
+                                        <span class="error-message" style="color:red">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div><!-- Col -->
+                        </div><!-- Col -->
+
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">38</div> FORMA DE ADQUISICION
+                                </label>
+                                <select class="form-select" data-width="100%" data-live-search="true"
+                                    name="form_adquisicion[]" id="form_adquisicion[]"
+                                    wire:model="form_adquisicion.{{ $i }}">
+                                    <option value="">SELECCIONE</option>
+                                    @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'FAQ')->orderby('codigo', 'asc')->get() as $tablacodigo)
+                                        <option value="{{ $tablacodigo->codigo }}">{{ $tablacodigo->codigo }}
+                                            {{ $tablacodigo->desc_codigo }}</option>
+                                    @endforeach
+                                </select>
+                                @error('form_adquisicion.' . $i)
+                                    <span class="error-message" style="color:red">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div><!-- Col -->
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">39</div> FECHA DE ADQUISICION
+                                </label>
+                                <input type="date" class="form-control" placeholder="" name="fecha_adquisicion[]"
+                                    wire:model="fecha_adquisicion.{{ $i }}" max="{{ date('Y-m-d') }}">
+                                @error('fecha_adquisicion.' . $i)
+                                    <span class="error-message" style="color:red">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>                        
+                    </div><!-- Row -->
+                    <div class="row form-group" id="domiclio{{ $i }}">
+                        <h4 class="mb-4"> DOMICILIO FISCAL DEL COTITULAR CATASTRAL</h4>
+                        <div class="col-md-2" id="departamentos{{ $i }}">
+                            <div class="mb-3">
+                                <div wire:ignore>
+                                    <label class="form-label d-inline-flex">
+                                        <div class="divcuadrorequired">31</div> DEPARTAMENTO
+                                    </label>
+                                    <select class="form-select " data-width="100%" data-live-search="true"
+                                        name="deparamentoconductor" id="deparamentoconductor{{ $i }}"
+                                        wire:model="deparamentoconductor.{{ $i }}">
+
+                                    </select>
+                                </div>
+                                @error('deparamentoconductor.' . $i)
+                                    <span class="error-message" style="color:red">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div><!-- Col -->
+                        <div class="col-md-2" id="provincias{{ $i }}">
+                            <div class="mb-3">
+                                <div wire:ignore>
+                                    <label class="form-label d-inline-flex">
+                                        <div class="divcuadrorequired">32</div> PROVINCIA
+                                    </label>
+                                    <select class="form-select " name="provinciaconductor"
+                                        id="provinciaconductor{{ $i }}"
+                                        wire:model="provinciaconductor.{{ $i }}">
+                                    </select>
+                                </div>
+                                @error('provinciaconductor.' . $i)
+                                    <span class="error-message" style="color:red">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div><!-- Col -->
+                        <div class="col-md-2" id="distritos{{ $i }}">
+                            <div class="mb-3">
+                                <div wire:ignore>
+                                    <label class="form-label d-inline-flex">
+                                        <div class="divcuadrorequired">33</div> DISTRITO
+                                    </label>
+                                    <select class="form-select " name="distritoconductor"
+                                        id="distritoconductor{{ $i }}"
+                                        wire:model="distritoconductor.{{ $i }}">
+
+
+                                    </select>
+                                </div>
+                                @error('distritoconductor.' . $i)
+                                    <span class="error-message" style="color:red">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div><!-- Col -->
+                        <div class="col-md-2">
+                            <div class="mb-3">
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">34</div> TELÉFONO
+                                </label>
+                                <input type="text" class="form-control" placeholder="" name="telefonoconductor[]"
+                                    wire:model="telefonoconductor.{{ $i }}"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                    maxlength="10">
+                                @error('telefonoconductor.' . $i)
+                                    <span class="error-message" style="color:red">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div><!-- Col -->
+                        <div class="col-md-2">
+                            <div class="mb-3">
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">35</div> ANEXO
+                                </label>
+                                <input type="text" class="form-control" placeholder="" name="anexoconductor[]"
+                                    wire:model="anexoconductor.{{ $i }}"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                    maxlength="5">
+                                @error('anexoconductor.' . $i)
+                                    <span class="error-message" style="color:red">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="mb-3">
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">45</div> EMAIL
+                                </label>
+                                <input type="text" class="form-control" placeholder="" name="emailconductor[]"
+                                    wire:model="emailconductor.{{ $i }}" maxlength="100">
+                                @error('emailconductor.' . $i)
+                                    <span class="error-message" style="color:red">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div><!-- Col -->
+                        <div class="col-md-2">
+                            <div class="mb-3">
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">05</div> C. VIA
+                                </label>
+                                <input type="text" class="form-control" placeholder=""
+                                    name="codigoviaconductor[]"
+                                    wire:model.lazy="codigoviaconductor.{{ $i }}"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                    maxlength="6">
+                                @error('codigoviaconductor.' . $i)
+                                    <span class="error-message" style="color:red">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div><!-- Col -->
+                        <div class="col-md-2">
+                            <div class="mb-">
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">06</div> T. VIA
+                                </label>
+                                <input type="text" class="form-control" placeholder="" name="tipoviaconductor[]"
+                                    wire:model="tipoviaconductor.{{ $i }}" maxlength="4">
+                                @error('tipoviaconductor.' . $i)
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div><!-- Col -->
                         <div class="col-md-4">
                             <div class="mb-3">
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">32</div> APELLIDO PATERNO</label>
-                                <input type="text" class="form-control" placeholder="" name="ape_paterno1[]" id="ape_paterno1[]" wire:model="ape_paterno1.{{$i}}">
-                                @error('ape_paterno1.'.$i)
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">07</div> NOMBRE DE VIA
+                                </label>
+                                <input type="text" class="form-control" placeholder=""
+                                    name="nombreviaconductor[]" wire:model="nombreviaconductor.{{ $i }}"
+                                    maxlength="100">
+                                @error('nombreviaconductor.' . $i)
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div><!-- Col -->
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <div class="mb-3">
-                                <label class="form-label d-inline-flex" > <div class="divcuadro">32</div> APELLIDO MATERNO</label>
-                                <input type="text" class="form-control" placeholder="" name="ape_materno1[]" id="ape_materno1[]" wire:model="ape_materno1.{{$i}}">
-                                @error('ape_materno1.'.$i)
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">09</div> N° MUNICIPAL
+                                </label>
+                                <input type="text" class="form-control" placeholder=""
+                                    name="nmunicipalconductor[]" wire:model="nmunicipalconductor.{{ $i }}"
+                                    maxlength="6">
+                                @error('nmunicipalconductor.' . $i)
+                                    <span class="error-message" style="color:red">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div><!-- Col -->                        
+                        <div class="col-md-2">
+                            <div class="mb-3">
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">13</div> N. INTERIOR
+                                </label>
+                                <input type="text" class="form-control" placeholder=""
+                                    name="ninteriorconductor[]" wire:model="ninteriorconductor.{{ $i }}"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                    maxlength="4">
+                                @error('ninteriorconductor.' . $i)
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div><!-- Col -->
-                    </div><!-- Col -->
-                </div><!-- Col -->
-                <div class="row form-group" id="juridica{{$i}}" wire:ignore>
-                    <div class="col-md-3">
-                        <div class="mb-3">
-                            <label class="form-label d-inline-flex" > <div class="divcuadro">31</div> Nº DE R.U.C.</label>
-                            <input type="text" class="form-control" placeholder="" name="numedoc3[]" id="numedoc3{{$i}}" wire:model.lazy="numedoc3.{{$i}}">
-                            @error('numedoc3.'.$i)
-                                <span class="error-message" style="color:red">{{ $message }}</span>
-                            @enderror
-                            @if ($message = Session::get('warning.'.$i))
-                                <span class="error-message" style="color:red">{{ $message }}</span>
-                            @endif
-                        </div>
-                    </div><!-- Col -->
-                    <div class="col-md-7">
-                        <div class="mb-3">
-                            <label class="form-label d-inline-flex" > <div class="divcuadro">32</div> RAZON SOCIAL</label>
-                            <input type="text" class="form-control" placeholder="" name="razon_social[]" id="razon_social{{$i}}" wire:model="razon_social.{{$i}}">
-                            @error('razon_social.'.$i)
-                                <span class="error-message" style="color:red">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div><!-- Col -->
-                </div><!-- Col -->
-
-                <div class="col-md-2">
-                    <div class="mb-3">
-                        <label class="form-label d-inline-flex" > <div class="divcuadro">38</div> FORMA DE ADQUISICION</label>
-                        <select class="form-select"  data-width="100%" data-live-search="true" name="form_adquisicion[]" id="form_adquisicion[]" wire:model="form_adquisicion.{{$i}}">
-                            <option value="" >SELECCIONE</option>
-                            @foreach(\App\Models\TablaCodigo::where('id_tabla','=','FAQ')->orderby('codigo','asc')->get() as $tablacodigo)
-                                <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
-                            @endforeach
-                        </select>
-                        @error('form_adquisicion.'.$i)
-                            <span class="error-message" style="color:red">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div><!-- Col -->
-                <div class="col-md-2">
-                    <div class="mb-3">
-                        <label class="form-label d-inline-flex" > <div class="divcuadrorequired">33</div> FECHA DE ADQUISICION</label>
-                        <input type="date" class="form-control" placeholder="" name="fecha_adquisicion[]" wire:model="fecha_adquisicion.{{$i}}">
-                        @error('fecha_adquisicion.'.$i)
-                            <span class="error-message" style="color:red">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div><!-- Col -->
-                <div class="col-md-2">
-                    <div class="mb-3">
-                        <label class="form-label d-inline-flex" > <div class="divcuadro">33</div> COND. ESP. TITULAR</label>
-                        <select class="form-select"  data-width="100%" data-live-search="true" name="condicion[]" wire:model="condicion.{{$i}}">
-                            <option value="" >SELECCIONE</option>
-                            @foreach(\App\Models\TablaCodigo::where('id_tabla','=','CEF')->orderby('codigo','asc')->get() as $tablacodigo)
-                                <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
-                            @endforeach
-                        </select>
-                        @error('condicion.'.$i)
-                            <span class="error-message" style="color:red">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div><!-- Col -->
-                <div class="col-md-2">
-                    <div class="mb-3">
-                        <label class="form-label d-inline-flex" > <div class="divcuadro">33</div> Nº RES. EXONERACION</label>
-                        <input type="text" class="form-control" placeholder="" name="nume_resolucion[]" wire:model="nume_resolucion.{{$i}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="10">
-                        @error('nume_resolucion.'.$i)
-                            <span class="error-message" style="color:red">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div><!-- Col -->
-                <div class="col-md-2">
-                    <div class="mb-3">
-                        <label class="form-label d-inline-flex" > <div class="divcuadro">33</div> F. DE INICIO</label>
-                        <input type="date" class="form-control" placeholder="" name="fecha_inicio[]" wire:model="fecha_inicio.{{$i}}">
-                        @error('fecha_inicio.'.$i)
-                            <span class="error-message" style="color:red">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div><!-- Col -->
-                <div class="col-md-2">
-                    <div class="mb-3">
-                        <label class="form-label d-inline-flex" > <div class="divcuadro">33</div> F. DE VENCIMIENTO</label>
-                        <input type="date" class="form-control" placeholder="" name="fecha_vencimiento[]" wire:model="fecha_vencimiento.{{$i}}">
-                        @error('fecha_vencimiento.'.$i)
-                            <span class="error-message" style="color:red">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div><!-- Col -->
-            </div><!-- Row -->
-            <div class="row form-group" id="domiclio{{$i}}">
-                <h4 class="mb-4"> DOMICILIO FISCAL DEL COTITULAR CATASTRAL</h4>
-                <div class="col-md-2" id="departamentos{{$i}}" >
-                    <div class="mb-3">
-                        <div wire:ignore>
-                            <label class="form-label d-inline-flex" > <div class="divcuadrorequired">39</div> DEPARTAMENTO</label>
-                            <select  class="form-select " data-width="100%" data-live-search="true"  name="deparamentoconductor" id="deparamentoconductor{{$i}}" wire:model="deparamentoconductor.{{$i}}">
-
-                            </select>
-                        </div>
-                        @error('deparamentoconductor.'.$i)
-                            <span class="error-message" style="color:red">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div><!-- Col -->
-                <div class="col-md-2" id="provincias{{$i}}">
-                    <div class="mb-3">
-                        <div wire:ignore>
-                            <label class="form-label d-inline-flex" > <div class="divcuadrorequired">40</div> PROVINCIA</label>
-                            <select  class="form-select " name="provinciaconductor" id="provinciaconductor{{$i}}"  wire:model="provinciaconductor.{{$i}}">
-                            </select>
-                        </div>
-                        @error('provinciaconductor.'.$i)
-                            <span class="error-message" style="color:red">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div><!-- Col -->
-                <div class="col-md-2" id="distritos{{$i}}">
-                    <div class="mb-3">
-                        <div wire:ignore>
-                            <label class="form-label d-inline-flex" > <div class="divcuadrorequired">41</div> DISTRITO</label>
-                            <select  class="form-select " name="distritoconductor" id="distritoconductor{{$i}}"  wire:model="distritoconductor.{{$i}}">
-
-
-                            </select>
-                        </div>
-                        @error('distritoconductor.'.$i)
-                            <span class="error-message" style="color:red">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div><!-- Col -->
-                <div class="col-md-2">
-                    <div class="mb-3">
-                        <label class="form-label d-inline-flex" > <div class="divcuadro">42</div> TELÉFONO</label>
-                        <input type="text" class="form-control" placeholder=""  name="telefonoconductor[]" wire:model="telefonoconductor.{{$i}}"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="10">
-                        @error('telefonoconductor.'.$i)
-                            <span class="error-message" style="color:red">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div><!-- Col -->
-                <div class="col-md-1">
-                    <div class="mb-3">
-                        <label class="form-label d-inline-flex" > <div class="divcuadro">43</div> ANEXO</label>
-                        <input type="text" class="form-control" placeholder=""  name="anexoconductor[]" wire:model="anexoconductor.{{$i}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="5">
-                        @error('anexoconductor.'.$i)
-                            <span class="error-message" style="color:red">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div><!-- Col -->
-                <div class="col-md-1">
-                    <div class="mb-3">
-                        <label class="form-label d-inline-flex" > <div class="divcuadro">44</div> FAX</label>
-                        <input type="text" class="form-control" placeholder="" name="faxconductor[]" wire:model="faxconductor.{{$i}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="10">
-                        @error('faxconductor.'.$i)
-                            <span class="error-message" style="color:red">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div><!-- Col -->
-                <div class="col-md-2">
-                    <div class="mb-3">
-                        <label class="form-label d-inline-flex" > <div class="divcuadro">45</div> EMAIL</label>
-                        <input type="text" class="form-control" placeholder="" name="emailconductor[]" wire:model="emailconductor.{{$i}}" maxlength="100" >
-                        @error('emailconductor.'.$i)
-                            <span class="error-message" style="color:red">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div><!-- Col -->
-                <div class="col-md-1">
-                    <div class="mb-3">
-                        <label class="form-label d-inline-flex" > <div class="divcuadro">7</div> C. VIA</label>
-                        <input type="text" class="form-control" placeholder="" name="codigoviaconductor[]" wire:model="codigoviaconductor.{{$i}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="6">
-                        @error('codigoviaconductor.'.$i)
-                            <span class="error-message" style="color:red">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div><!-- Col -->
-                <div class="col-md-1">
-                    <div class="mb-">
-                        <label class="form-label d-inline-flex" > <div class="divcuadro">8</div> T. VIA</label>
-                        <input type="text" class="form-control" placeholder="" name="tipoviaconductor[]" wire:model="tipoviaconductor.{{$i}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="5" >
-                        @error('tipoviaconductor.'.$i)
-                            <span class="error-message" style="color:red">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div><!-- Col -->
-                <div class="col-md-4">
-                    <div class="mb-3">
-                        <label class="form-label d-inline-flex" > <div class="divcuadro">9</div> NOMBRE DE VIA</label>
-                        <input type="text" class="form-control" placeholder="" name="nombreviaconductor[]" wire:model="nombreviaconductor.{{$i}}" maxlength="100">
-                        @error('nombreviaconductor.'.$i)
-                            <span class="error-message" style="color:red">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div><!-- Col -->
-                <div class="col-md-2">
-                    <div class="mb-3">
-                        <label class="form-label d-inline-flex" > <div class="divcuadro">10</div> N° MUNICIPAL</label>
-                        <input type="text" class="form-control" placeholder="" name="nmunicipalconductor[]" wire:model="nmunicipalconductor.{{$i}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="6">
-                        @error('nmunicipalconductor.'.$i)
-                            <span class="error-message" style="color:red">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div><!-- Col -->
-                <div class="col-md-2">
-                    <div class="mb-3">
-                        <label class="form-label d-inline-flex" > <div class="divcuadro">14</div> NOMB. EDIFICACION</label>
-                        <input type="text" class="form-control" placeholder="" name="nomb_edificacionconductor[]" wire:model="nomb_edificacionconductor.{{$i}}" maxlength="100">
-                        @error('nomb_edificacionconductor.'.$i)
-                            <span class="error-message" style="color:red">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div><!-- Col -->
-                <div class="col-md-2">
-                    <div class="mb-3">
-                        <label class="form-label d-inline-flex" > <div class="divcuadro">17</div> N. INTERIOR</label>
-                        <input type="text" class="form-control" placeholder="" name="ninteriorconductor[]" wire:model="ninteriorconductor.{{$i}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="4">
-                        @error('ninteriorconductor.'.$i)
-                            <span class="error-message" style="color:red">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div><!-- Col -->
-                <div class="col-md-2">
-                    <div class="mb-3">
-                        <label class="form-label d-inline-flex" > <div class="divcuadro">18</div> CÓDIGO URBANO</label>
-                        <input type="text" class="form-control" placeholder="" name="codigohurbanoconductor[]" wire:model="codigohurbanoconductor.{{$i}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="4">
-                        @error('codigohurbanoconductor.'.$i)
-                            <span class="error-message" style="color:red">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div><!-- Col -->
-                <div class="col-md-3">
-                    <div class="mb-3">
-                        <label class="form-label d-inline-flex" > <div class="divcuadro">19</div> NOMBRE DE LA HABILITACIÓN URBANA</label>
-                        <input type="text" class="form-control" placeholder="" name="nombrehhurbanaconductor[]" wire:model="nombrehhurbanaconductor.{{$i}}" maxlength="100">
-                        @error('nombrehhurbanaconductor.'.$i)
-                            <span class="error-message" style="color:red">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div><!-- Col -->
-                <div class="col-md-2">
-                    <div class="mb-2">
-                        <label class="form-label d-inline-flex" > <div class="divcuadro">20</div> ZONA/SECTOR/ETAPA</label>
-                        <input type="text" class="form-control" placeholder="" name="zonaconductor[]" wire:model="zonaconductor.{{$i}}" maxlength="50">
-                        @error('zonaconductor.'.$i)
-                            <span class="error-message" style="color:red">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div><!-- Col -->
-                <div class="col-md-2">
-                    <div class="mb-3">
-                        <label class="form-label d-inline-flex" > <div class="divcuadro">21</div> MANZANA</label>
-                        <input type="text" class="form-control" placeholder="" name="manzanaconductor[]" wire:model="manzanaconductor.{{$i}}" maxlength="5">
-                        @error('manzanaconductor.'.$i)
-                            <span class="error-message" style="color:red">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div><!-- Col -->
-                <div class="col-md-1">
-                    <div class="mb-3">
-                        <label class="form-label d-inline-flex" > <div class="divcuadro">22</div> LOTE</label>
-                        <input type="text" class="form-control" placeholder="" name="loteconductor[]" wire:model="loteconductor.{{$i}}" maxlength="5">
-                        @error('loteconductor.'.$i)
-                            <span class="error-message" style="color:red">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div><!-- Col -->
-                <div class="col-md-2">
-                    <div class="mb-3">
-                        <label class="form-label d-inline-flex" > <div class="divcuadro">23</div> SUB-LOTE</label>
-                        <input type="text" class="form-control" placeholder="" name="subloteconductor[]" wire:model="subloteconductor.{{$i}}" maxlength="5">
-                        @error('subloteconductor.'.$i)
-                            <span class="error-message" style="color:red">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div><!-- Col -->
-            </div><!-- Row -->
-            @endfor
+                        <div class="col-md-2">
+                            <div class="mb-3">
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">14</div> CÓDIGO DE HU
+                                </label>
+                                <input type="text" class="form-control" placeholder=""
+                                    name="codigohurbanoconductor[]"
+                                    wire:model="codigohurbanoconductor.{{ $i }}"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                    maxlength="4">
+                                @error('codigohurbanoconductor.' . $i)
+                                    <span class="error-message" style="color:red">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div><!-- Col -->
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">15</div> NOMBRE DE LA HABILITACIÓN URBANA
+                                </label>
+                                <input type="text" class="form-control" placeholder=""
+                                    name="nombrehhurbanaconductor[]"
+                                    wire:model="nombrehhurbanaconductor.{{ $i }}" maxlength="100">
+                                @error('nombrehhurbanaconductor.' . $i)
+                                    <span class="error-message" style="color:red">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div><!-- Col -->
+                        <div class="col-md-2">
+                            <div class="mb-2">
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">16</div> ZONA/SECTOR/ETAPA
+                                </label>
+                                <input type="text" class="form-control" placeholder="" name="zonaconductor[]"
+                                    wire:model="zonaconductor.{{ $i }}" maxlength="50">
+                                @error('zonaconductor.' . $i)
+                                    <span class="error-message" style="color:red">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div><!-- Col -->
+                        <div class="col-md-2">
+                            <div class="mb-3">
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">17</div> MANZANA
+                                </label>
+                                <input type="text" class="form-control" placeholder="" name="manzanaconductor[]"
+                                    wire:model="manzanaconductor.{{ $i }}" maxlength="5">
+                                @error('manzanaconductor.' . $i)
+                                    <span class="error-message" style="color:red">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div><!-- Col -->
+                        <div class="col-md-1">
+                            <div class="mb-3">
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">18</div> LOTE
+                                </label>
+                                <input type="text" class="form-control" placeholder="" name="loteconductor[]"
+                                    wire:model="loteconductor.{{ $i }}" maxlength="5">
+                                @error('loteconductor.' . $i)
+                                    <span class="error-message" style="color:red">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div><!-- Col -->
+                        <div class="col-md-2">
+                            <div class="mb-3">
+                                <label class="form-label d-inline-flex">
+                                    <div class="divcuadro">19</div> SUB-LOTE
+                                </label>
+                                <input type="text" class="form-control" placeholder="" name="subloteconductor[]"
+                                    wire:model="subloteconductor.{{ $i }}" maxlength="5">
+                                @error('subloteconductor.' . $i)
+                                    <span class="error-message" style="color:red">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div><!-- Col -->
+                    </div><!-- Row -->
+                @endfor
 
             <div class="row form-group">
                 <h4 class="mb-4"> INFORMACION COMPLEMENTARIA</h4>
