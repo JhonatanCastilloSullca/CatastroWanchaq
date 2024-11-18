@@ -2131,8 +2131,24 @@ class FichaIndividualCreate extends Component
             $isLocal = in_array($host, ['localhost', '192.168.1.16']);
             $mapsUrl = $isLocal ? 'http://192.168.1.16:81' : 'http://209.45.78.210:9101';
 
-            $url = $mapsUrl . "servicio/wms?service=WMS&request=GetMap&layers=lotes,idLotes,verticesLote,ejeVias&styles=&format=image%2Fpng&transparent=false&version=1.1.1&width=450&height=400&srs=EPSG%3A32719&bbox=" . $extension[0]->extension . "&id=" . $ficha->id_lote;            $nombreArchivo = $ficha->id_ficha . '.png';
-            
+            $baseUrl = "http://209.45.78.210:9101/servicio/wms";
+            $params = [
+                'service' => 'WMS',
+                'request' => 'GetMap',
+                'layers' => 'lotes,idLotes,verticesLote,ejeVias',
+                'styles' => '',
+                'format' => 'image/png',
+                'transparent' => 'false',
+                'version' => '1.1.1',
+                'width' => '450',
+                'height' => '400',
+                'srs' => 'EPSG:32719',
+                'bbox' => '178907.0515,8502050.071676556,178936.017,8502071.737',
+                'id' => '08010807003001'
+            ];
+            $url = $baseUrl . '?' . http_build_query($params);
+
+            $nombreArchivo = $ficha->id_ficha . '.jpg';            
             if($url){
                 $contenidoImagen = file_get_contents($url); 
                 Storage::disk('public')->put('img/imagenesplanos/' . $nombreArchivo, $contenidoImagen);
