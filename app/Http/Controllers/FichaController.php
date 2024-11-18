@@ -122,6 +122,7 @@ class FichaController extends Controller
             $puerta->delete();
         }
         $fichaanterior->fichasUnicatRelacionadas()->delete();
+        $fichaanterior->archivo()->delete();
         $fichaanterior->delete();
 
         return redirect()->back()->with('success', 'Ficha Eliminado Correctamente!');
