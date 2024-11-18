@@ -2211,7 +2211,8 @@ class FichaIndividualEdit extends Component
             $nombreArchivo = $ficha->id_ficha . '.jpg';
             $url = htmlspecialchars_decode($url);
             if($url){
-                $contenidoImagen = file_get_contents($url); 
+                $contenidoImagen = file_get_contents($url);
+                dd($contenidoImagen , $url);
                 Storage::disk('public')->put('img/imagenesplanos/' . $nombreArchivo, $contenidoImagen);
                 $fichaindividual->imagen_plano = $nombreArchivo;
             }else{
