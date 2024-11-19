@@ -1224,10 +1224,14 @@
           {{$autorizacion?->nume_licencia}}
         </div>
         <div style="width: 62px;height: 16px;float:left;" class="texto2 fz8 lh14">
+            @if($autorizacion?->fecha_expedicion !='')
           {{date("d-m-Y", strtotime($autorizacion?->fecha_expedicion))}}
+            @endif
         </div>
         <div style="width: 63px;height: 16px;float:left;" class="texto2 fz8 lh14">
+          @if($autorizacion?->fecha_vencimiento !='')
           {{date("d-m-Y", strtotime($autorizacion?->fecha_vencimiento))}}
+          @endif
         </div>
 
       </div>
