@@ -1024,7 +1024,7 @@ class FichaCotitularidadEdit extends Component
         if($hab_urbana2==""){
             $this->nombrehhurbanaconductor[$nested]="";
         }else{
-            $this->nombrehhurbanaconductor[$nested] = $hab_urbana2->nomb_hab_urba;
+            $this->nombrehhurbanaconductor[$nested] = $this->hab_urbana2->tipo_hab_urba . " " . $this->hab_urbana2->nomb_hab_urba;
         }
     }
 

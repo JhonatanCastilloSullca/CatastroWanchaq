@@ -185,7 +185,7 @@
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="form-label d-inline-flex" > <div class="{{ $requiredtipoConductor == 1 ? 'divcuadrorequired' : 'divcuadro' }}">28</div>  NOMBRES</label>
-                                        <input type="text" class="form-control" placeholder="" name="nombres1" id="nombres1" wire:model="nombres1" onkeydown="return /[a-ñ]/i.test(event.key)" maxlength="150">
+                                        <input type="text" class="form-control" placeholder="" name="nombres1" id="nombres1" wire:model="nombres1" maxlength="150">
                                         @error('nombres1')
                                             <span class="error-message" style="color:red">{{ $message }}</span>
                                         @enderror
@@ -194,7 +194,7 @@
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="form-label d-inline-flex" > <div class="{{ $requiredtipoConductor == 1 ? 'divcuadrorequired' : 'divcuadro' }}">28</div>  APELLIDO PATERNO</label>
-                                        <input type="text" class="form-control" placeholder="" name="ape_paterno1" id="ape_paterno1" wire:model="ape_paterno1" onkeydown="return /[a-ñ]/i.test(event.key)" maxlength="50">
+                                        <input type="text" class="form-control" placeholder="" name="ape_paterno1" id="ape_paterno1" wire:model="ape_paterno1" maxlength="50">
                                         @error('ape_paterno1')
                                             <span class="error-message" style="color:red">{{ $message }}</span>
                                         @enderror
@@ -206,7 +206,7 @@
                                             <div class="{{ $requiredtipoConductor == 1 ? 'divcuadrorequired' : 'divcuadro' }}">28</div> 
                                             APELLIDO MATERNO</label>
                                             
-                                        <input type="text" class="form-control" placeholder="" name="ape_materno1" id="ape_materno1" wire:model="ape_materno1" onkeydown="return /[a-ñ]/i.test(event.key)" maxlength="50">
+                                        <input type="text" class="form-control" placeholder="" name="ape_materno1" id="ape_materno1" wire:model="ape_materno1" maxlength="50">
                                         @error('ape_materno1')
                                             <span class="error-message" style="color:red">{{ $message }}</span>
                                         @enderror
@@ -231,7 +231,7 @@
                                         <div class="{{ $requiredtipoConductor == 2 ? 'divcuadrorequired' : 'divcuadro' }}">28</div> 
                                         RAZON SOCIAL
                                     </label>
-                                    <input type="text" class="form-control" placeholder="" name="razon_social" wire:model="razon_social" onkeydown="return /[a-z]/i.test(event.key)" maxlength="100">
+                                    <input type="text" class="form-control" placeholder="" name="razon_social" wire:model="razon_social" maxlength="100">
                                     @error('razon_social')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
@@ -718,7 +718,7 @@
                         <div class="row form-group">
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <label class="form-label d-inline-flex" > <div class="divcuadrorequired">88</div>CONDICIÓN DE DECLARANTE</label>
+                                    <label class="form-label d-inline-flex" > <div class="divcuadro">88</div>CONDICIÓN DE DECLARANTE</label>
                                     <select class="form-select"  data-width="100%" data-live-search="true" name="cond_declarante" id="cond_declarante" wire:model="cond_declarante" >
                                         <option value="" >SELECCIONE</option>
                                         @foreach(\App\Models\TablaCodigo::where('id_tabla','=','CDE')->orderby('codigo','asc')->get() as $tablacodigo)

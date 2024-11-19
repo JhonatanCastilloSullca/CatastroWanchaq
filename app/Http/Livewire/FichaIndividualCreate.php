@@ -1073,6 +1073,7 @@ class FichaIndividualCreate extends Component
                     'entrada'                       => 'required|max:2',
                     'piso'                          => 'required|max:2',
                     'unidad'                        => 'required|max:3',
+                    'dc'                            => 'required|max:1',
                     'codi_cont_rentas'              => 'nullable|max:15',
                     'codi_pred_rentas'              => 'nullable|max:15',
                     'tipo_edificacion'              => 'nullable',
@@ -1346,7 +1347,7 @@ class FichaIndividualCreate extends Component
                 for ($i = 0; $i < $this->cont4; $i++) {
                     $this->validate([
                         'tipo_dococumento.' . $i            => 'required',
-                        'nume_documento.' . $i              => 'nullable|max:20',
+                        'nume_documento.' . $i              => 'nullable|max:50',
                         'fecha_dococumento.' . $i           => 'nullable',
                         'area_autorizadadocumento.' . $i    => 'nullable|numeric|regex:/^[\d]{0,7}(\.[\d]{1,2})?$/',
                     ]);

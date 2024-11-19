@@ -16,9 +16,12 @@
                 <div style="text-align-last: center;">
                     <a href="{{route('ficha.createeconomica',$ficha)}}">
                         <button type="button" class="btn btn-primary"><i data-feather="plus-circle"></i> Agregar Ficha Economica</button>
+                        <a href="{{route('reporte.reportelista')}}">
+                            <button type="button" class="btn btn-info" ><i data-feather="x-circle"></i> Cancelar</button>
+                        </a>
                     </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
                 </div>
+                
             </div>
         </div>
     </div>

@@ -2417,6 +2417,7 @@
             {{ $ficha?->fichaindividual?->uso?->desc_uso }}
         </div>
         <div style="width: 130px;height: 16px;float:left;" class="texto2 fz8 lh14 color-azul color-azul">
+            dd
             {{ $ficha?->unicat?->edificacion?->lote?->zonificacion }}
         </div>
     </div>

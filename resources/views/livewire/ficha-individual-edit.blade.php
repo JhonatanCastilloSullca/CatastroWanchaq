@@ -1156,7 +1156,7 @@
                                         <option value="">SELECCIONE</option>                                        
 
                                         @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'ZON')->orderBy('desc_codigo', 'asc')->get() as $tablacodigo)
-                                            <option value="{{ $tablacodigo->codigo }}">
+                                            <option value="{{ $tablacodigo->desc_codigo }}">
                                                 {{ $tablacodigo->desc_codigo }}</option>
                                         @endforeach
                                     </select>
@@ -1980,7 +1980,7 @@
                                                     <td>
                                                         <input type="text" class="form-control"
                                                             name="nume_documento[]" placeholder="N° DE DOCUMENTO"
-                                                            id="Documento.{{ $i }}" maxlength="20"
+                                                            id="Documento.{{ $i }}" maxlength="50"
                                                             wire:model="nume_documento.{{ $i }}"
                                                             tabindex="120">
                                                         @error('nume_documento.' . $i)

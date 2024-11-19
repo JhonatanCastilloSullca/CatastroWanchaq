@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('id_ficha')->references('id_ficha')->on('tf_fichas')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('codi_doc')->nullable();
             $table->string('tipo_doc', 2)->nullable();
-            $table->string('nume_doc', 20)->nullable();
+            $table->string('nume_doc', 50)->nullable();
             $table->decimal('area_autorizada', 7, 2)->nullable();
             $table->date('fecha_doc')->nullable();
             $table->string('url_doc', 250)->nullable();

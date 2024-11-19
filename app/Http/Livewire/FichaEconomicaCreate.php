@@ -248,7 +248,7 @@ class FichaEconomicaCreate extends Component
                     'inic_actividad'                => 'nullable',
 
 
-                    'cond_declarante'               => 'required',
+                    'cond_declarante'               => 'nullable',
                     'docu_presentado'               => 'nullable',
                     'esta_llenado'                  => 'required',
 
@@ -322,7 +322,7 @@ class FichaEconomicaCreate extends Component
                     'inic_actividad'                => 'nullable',
 
 
-                    'cond_declarante'               => 'required',
+                    'cond_declarante'               => 'nullable',
                     'docu_presentado'               => 'nullable',
                     'esta_llenado'                  => 'required',
 

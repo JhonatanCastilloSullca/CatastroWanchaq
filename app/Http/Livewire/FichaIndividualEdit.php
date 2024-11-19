@@ -1511,7 +1511,7 @@ class FichaIndividualEdit extends Component
             for ($i = 0; $i < $this->cont4; $i++) {
                 $this->validate([
                     'tipo_dococumento.' . $i            => 'required',
-                    'nume_documento.' . $i              => 'nullable|max:20',
+                    'nume_documento.' . $i              => 'nullable|max:50',
                     'fecha_dococumento.' . $i           => 'nullable',
                     'area_autorizadadocumento.' . $i    => 'nullable|numeric|regex:/^[\d]{0,7}(\.[\d]{1,2})?$/',
                 ]);
