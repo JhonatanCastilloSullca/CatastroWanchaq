@@ -10,6 +10,7 @@ use App\Models\FichaEconomica;
 use App\Models\Lote;
 use App\Models\Sectore;
 use App\Models\Manzana;
+use App\Models\Via;
 use DB;
 
 class DashboardController extends Controller
@@ -82,8 +83,158 @@ class DashboardController extends Controller
         ->select(DB::raw('COUNT(a.codi_actividad) as cantidad'),'a.desc_actividad','a.codi_actividad')
         ->groupBy('a.codi_actividad','a.desc_actividad')->orderBy('cantidad','desc')->take(10)->get();
 
+        $vias = Via::select('tipo_via',DB::raw('COUNT(tipo_via) as total'))->groupBy('tipo_via')->get();
+
+        $maxNiveles = DB::table('tf_construcciones')
+        ->select('id_ficha', DB::raw('MAX(nume_piso) as max_nivel'))
+        ->groupBy('id_ficha');
+
+        $niveles = DB::table(DB::raw("({$maxNiveles->toSql()}) as MaxNiveles"))
+        ->mergeBindings($maxNiveles)
+        ->select('max_nivel', DB::raw('COUNT(*) as cantidad_fichas'))
+        ->groupBy('max_nivel')
+        ->orderByDesc('max_nivel')
+        ->get();
+
+        $mepMapping = [
+            '01' => ['nombre' => 'Concreto', 'color' => '#68da3e'],
+            '02' => ['nombre' => 'Ladrillo', 'color' => '#00c6ab'],
+            '03' => ['nombre' => 'Adobe', 'color' => '#6aa3b4'],
+            '04' => ['nombre' => 'Fierro', 'color' => '#416864'],
+            '05' => ['nombre' => 'Rotoplas', 'color' => '#223026'],
+            '06' => ['nombre' => 'Policarbonato', 'color' => '#ebb7ce'],
+            '07' => ['nombre' => 'Otros', 'color' => '#b38471']
+        ];
+        
+        $materiales = DB::table('tf_construcciones')
+        ->select('nume_piso', 'mep', DB::raw('COUNT(*) as cantidad'))
+        ->groupBy('nume_piso', 'mep')
+        ->orderBy('nume_piso')
+        ->orderBy('mep')
+        ->get()
+        ->map(function ($item) use ($mepMapping) {
+            $item->material = $mepMapping[$item->mep]['nombre'] ?? 'Desconocido';
+            $item->color = $mepMapping[$item->mep]['color'] ?? '#000000';
+            return $item;
+        });
+    
+
+        $dataByMaterial = [];
+        $uniquePisos = $materiales->pluck('nume_piso')->unique()->sort();
+        
+        foreach ($materiales as $material) {
+            $materialNombre = $material->material;
+            if (!isset($dataByMaterial[$materialNombre])) {
+                $dataByMaterial[$materialNombre] = [
+                    'label' => $materialNombre,
+                    'backgroundColor' => $material->color,
+                    'data' => []
+                ];
+            }
+            $dataByMaterial[$materialNombre]['data'][$material->nume_piso] = $material->cantidad;
+        }
+        
+        // Llenar pisos faltantes con 0 para cada material
+        foreach ($dataByMaterial as &$dataset) {
+            foreach ($uniquePisos as $piso) {
+                $dataset['data'][$piso] = $dataset['data'][$piso] ?? 0;
+            }
+            ksort($dataset['data']); // Asegurar orden por piso
+            $dataset['data'] = array_values($dataset['data']);
+        }
+
+        $escMapping = [
+            '01' => ['nombre' => 'Muy Bueno', 'color' => '#68da3e'],
+            '02' => ['nombre' => 'Bueno', 'color' => '#00c6ab'],
+            '03' => ['nombre' => 'Regular', 'color' => '#6aa3b4'],
+            '04' => ['nombre' => 'Malo', 'color' => '#416864'],
+        ];
+        
+        $conservacion = DB::table('tf_construcciones')
+        ->select('nume_piso', 'ecs', DB::raw('COUNT(*) as cantidad'))
+        ->groupBy('nume_piso', 'ecs')
+        ->orderBy('nume_piso')
+        ->orderBy('ecs')
+        ->get()
+        ->map(function ($item) use ($escMapping) {
+            $item->material = $escMapping[$item->ecs]['nombre'] ?? 'Desconocido';
+            $item->color = $escMapping[$item->ecs]['color'] ?? '#000000';
+            return $item;
+        });
+    
+
+        $dataByConservacion = [];
+        $uniquePisosMateriales = $conservacion->pluck('nume_piso')->unique()->sort();
+        
+        foreach ($conservacion as $conservacio) {
+            $materialNombre = $conservacio->material;
+            if (!isset($dataByConservacion[$materialNombre])) {
+                $dataByConservacion[$materialNombre] = [
+                    'label' => $materialNombre,
+                    'backgroundColor' => $conservacio->color,
+                    'data' => []
+                ];
+            }
+            $dataByConservacion[$materialNombre]['data'][$conservacio->nume_piso] = $conservacio->cantidad;
+        }
+        
+        // Llenar pisos faltantes con 0 para cada material
+        foreach ($dataByConservacion as &$dataset) {
+            foreach ($uniquePisosMateriales as $piso) {
+                $dataset['data'][$piso] = $dataset['data'][$piso] ?? 0;
+            }
+            ksort($dataset['data']); // Asegurar orden por piso
+            $dataset['data'] = array_values($dataset['data']);
+        }
+
+        $eccMapping = [
+            '01' => ['nombre' => 'Terminado', 'color' => '#68da3e'],
+            '02' => ['nombre' => 'En Construccion', 'color' => '#00c6ab'],
+            '03' => ['nombre' => 'Inconclusa', 'color' => '#6aa3b4'],
+            '04' => ['nombre' => 'En Ruinas', 'color' => '#416864'],
+        ];
+        
+        $construcciones = DB::table('tf_construcciones')
+        ->select('nume_piso', 'ecc', DB::raw('COUNT(*) as cantidad'))
+        ->groupBy('nume_piso', 'ecc')
+        ->orderBy('nume_piso')
+        ->orderBy('ecc')
+        ->get()
+        ->map(function ($item) use ($eccMapping) {
+            $item->material = $eccMapping[$item->ecc]['nombre'] ?? 'Desconocido';
+            $item->color = $eccMapping[$item->ecc]['color'] ?? '#000000';
+            return $item;
+        });
+    
+
+        $dataByConstrucciones = [];
+        $uniquePisosConstruccion = $construcciones->pluck('nume_piso')->unique()->sort();
+        
+        foreach ($construcciones as $construccion) {
+            $materialNombre = $construccion->material;
+            if (!isset($dataByConstrucciones[$materialNombre])) {
+                $dataByConstrucciones[$materialNombre] = [
+                    'label' => $materialNombre,
+                    'backgroundColor' => $construccion->color,
+                    'data' => []
+                ];
+            }
+            $dataByConstrucciones[$materialNombre]['data'][$construccion->nume_piso] = $construccion->cantidad;
+        }
+        
+        // Llenar pisos faltantes con 0 para cada material
+        foreach ($dataByConstrucciones as &$dataset) {
+            foreach ($uniquePisosConstruccion as $piso) {
+                $dataset['data'][$piso] = $dataset['data'][$piso] ?? 0;
+            }
+            ksort($dataset['data']); // Asegurar orden por piso
+            $dataset['data'] = array_values($dataset['data']);
+        }
+
+        
         return view('dashboard',compact('fichaindividual','fichaindividualestado','fichacotitularidad','fichacotitularidadestado','fichaeconomica',
         'fichaeconomicaestado','fichassectores','fichastipo','fichascalificacion','fichaspersona','fichaspersona2','totallotes','totallotessector',
-        'porcentajeindividual','porcentajeeconomica','porcentajecotitular','porcentajebiencomun','fichaactividades'));
+        'porcentajeindividual','porcentajeeconomica','porcentajecotitular','porcentajebiencomun','fichaactividades','vias','niveles','materiales',
+        'dataByMaterial','uniquePisos','dataByConservacion','uniquePisosMateriales','dataByConstrucciones','uniquePisosConstruccion'));
     }
 }
