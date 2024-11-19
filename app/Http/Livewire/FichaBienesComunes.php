@@ -643,7 +643,7 @@ class FichaBienesComunes extends Component
                 'clasificacion'                 => 'required',
                 'cont_en'                       => 'required',
                 'codi_uso'                      => 'required',
-                'zonificacion'                  => 'required|max:30',
+                'zonificacion'                  => 'nullable|max:100',
                 'area_declarada'                => 'nullable|numeric|regex:/^[\d]{0,7}(\.[\d]{1,2})?$/',
                 'area_verificada1'              => 'required|numeric|regex:/^[\d]{0,7}(\.[\d]{1,2})?$/',
                 'area_declarada'                => 'nullable|numeric|regex:/^[\d]{0,7}(\.[\d]{1,2})?$/',

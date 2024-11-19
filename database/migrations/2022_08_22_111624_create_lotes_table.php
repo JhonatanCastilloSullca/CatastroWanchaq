@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('lote_dist', 15)->nullable();
             $table->string('sub_lote_dist', 6)->nullable();
             $table->string('estructuracion', 30)->nullable();
-            $table->string('zonificacion', 30)->nullable();
+            $table->string('zonificacion', 100)->nullable();
             $table->string('cuc', 8)->nullable();
             $table->string('zona_dist', 15)->nullable();
             $table->primary('id_lote');

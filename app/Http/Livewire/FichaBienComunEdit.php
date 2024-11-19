@@ -861,7 +861,7 @@ class FichaBienComunEdit extends Component
                 'clasificacion'                 => 'required',
                 'cont_en'                       => 'required',
                 'codi_uso'                      => 'required',
-                'zonificacion'                  => 'nullable|max:30',
+                'zonificacion'                  => 'nullable|max:100',
                 'estructuracion'                => 'nullable|max:30',
                 'area_declarada'                => 'nullable|numeric|regex:/^[\d]{0,7}(\.[\d]{1,2})?$/',
                 'area_verificada1'              => 'required|numeric|regex:/^[\d]{0,7}(\.[\d]{1,2})?$/',
