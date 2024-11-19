@@ -553,7 +553,7 @@
                                         tabindex="30">
                                         <option value="">SELECCIONE</option>
                                         @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'ZON')->orderby('codigo', 'asc')->get() as $tablacodigo)
-                                            <option value="{{ $tablacodigo->codigo }}">
+                                            <option value="{{ $tablacodigo->desc_codigo }}">
                                                 {{ $tablacodigo->desc_codigo }}</option>
                                         @endforeach
                                     </select>
