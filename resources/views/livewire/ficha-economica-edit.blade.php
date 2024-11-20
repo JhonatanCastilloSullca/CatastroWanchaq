@@ -228,7 +228,7 @@
                             <div class="col-md-7">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="{{ $requiredtipoConductor == 2 ? 'divcuadrorequired' : 'divcuadro' }}">28</div> 
+                                        <div class="{{ $requiredtipoConductor == 2 ? 'divcuadro' : 'divcuadro' }}">28</div> 
                                         RAZON SOCIAL
                                     </label>
                                     <input type="text" class="form-control" placeholder="" name="razon_social" wire:model="razon_social" maxlength="100">
