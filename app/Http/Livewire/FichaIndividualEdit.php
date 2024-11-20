@@ -198,6 +198,7 @@ class FichaIndividualEdit extends Component
     public $fecha_dococumento;
     public $area_autorizadadocumento;
     public $url_doc;
+    public $url_docvista;
     #DOCUMENTOS
 
     #INSCRIPCION
@@ -474,8 +475,9 @@ class FichaIndividualEdit extends Component
         }
 
         if ($fichaanterior?->documento_adjuntos != "") {
+            
             $this->cont4 = count($fichaanterior?->documento_adjuntos);
-            // dd($this->cont4);
+            // dd($fichaanterior?->documento_adjuntos);
 
             foreach ($fichaanterior?->documento_adjuntos as $i => $documento) {
                 $this->tipo_dococumento[$i] = $documento?->tipo_doc;
@@ -486,6 +488,7 @@ class FichaIndividualEdit extends Component
                     $this->fecha_dococumento[$i] = "";
                 }
                 $this->area_autorizadadocumento[$i] = $documento?->area_autorizada;
+                $this->url_docvista[$i] = $documento?->url_doc;
             }
         }
 
@@ -2177,40 +2180,40 @@ class FichaIndividualEdit extends Component
             $fichaindividual->mantenimiento = $this->mantenimiento;
             $fichaindividual->observaciones = $this->observacion;
             $fichaindividual->nume_ficha = str_pad($this->nume_ficha, 7, '0', STR_PAD_LEFT);
-            if ($this->nuevaImagen) {
-                $nombreImagen = $ficha->id_ficha . '.' . $this->nuevaImagen->getClientOriginalExtension();
-                $rutaImagen = $this->nuevaImagen->storeAs('img/imageneslotes', $nombreImagen);
+            // if ($this->nuevaImagen) {
+            //     $nombreImagen = $ficha->id_ficha . '.' . $this->nuevaImagen->getClientOriginalExtension();
+            //     $rutaImagen = $this->nuevaImagen->storeAs('img/imageneslotes', $nombreImagen);
 
-                // Corregir la rotación de la imagen si es necesario
-                Image::make('storage/' . $rutaImagen)->orientate()->save('storage/' . $rutaImagen, null, 'jpg');
+            //     // Corregir la rotación de la imagen si es necesario
+            //     Image::make('storage/' . $rutaImagen)->orientate()->save('storage/' . $rutaImagen, null, 'jpg');
 
-                $fichaindividual->imagen_lote = $nombreImagen;
-            } else {
-                $fichaindividual->imagen_lote = $this->imagen_lote;
-            }
+            //     $fichaindividual->imagen_lote = $nombreImagen;
+            // } else {
+            //     $fichaindividual->imagen_lote = $this->imagen_lote;
+            // }
 
-            $connection = DB::connection('pgsqlgeo');
-            $extension = $connection->select("
-            SELECT ST_XMin(extent) || ',' ||
-                ST_YMin(extent) || ',' ||
-                ST_XMax(extent) || ',' ||
-                ST_YMax(extent) AS extension
-            FROM (
-                SELECT ST_Expand(ST_Extent(geom), 5) AS extent
-                FROM geo.tg_lote
-                WHERE id_lote= '" . $ficha->id_lote . "'
-                ) AS subconsulta;
-            ");
+            // $connection = DB::connection('pgsqlgeo');
+            // $extension = $connection->select("
+            // SELECT ST_XMin(extent) || ',' ||
+            //     ST_YMin(extent) || ',' ||
+            //     ST_XMax(extent) || ',' ||
+            //     ST_YMax(extent) AS extension
+            // FROM (
+            //     SELECT ST_Expand(ST_Extent(geom), 5) AS extent
+            //     FROM geo.tg_lote
+            //     WHERE id_lote= '" . $ficha->id_lote . "'
+            //     ) AS subconsulta;
+            // ");
             
-            $url = env('URL_MAP') . "/servicio/wms?service=WMS&request=GetMap&layers=lotes,idLotes,verticesLote,ejeVias&styles=&format=image%2Fpng&transparent=false&version=1.1.1&width=450&height=400&srs=EPSG%3A32719&bbox=" . $extension[0]->extension . "&id=" . $ficha->id_lote;
-            $nombreArchivo = $ficha->id_ficha . '.jpg';
-            if($url){
-                $contenidoImagen = file_get_contents($url); 
-                Storage::disk('public')->put('img/imagenesplanos/' . $nombreArchivo, $contenidoImagen);
-                $fichaindividual->imagen_plano = $nombreArchivo;
-            }else{
-                $fichaindividual->imagen_plano = 'imagen_plano.png';
-            }
+            // $url = env('URL_MAP') . "/servicio/wms?service=WMS&request=GetMap&layers=lotes,idLotes,verticesLote,ejeVias&styles=&format=image%2Fpng&transparent=false&version=1.1.1&width=450&height=400&srs=EPSG%3A32719&bbox=" . $extension[0]->extension . "&id=" . $ficha->id_lote;
+            // $nombreArchivo = $ficha->id_ficha . '.jpg';
+            // if($url){
+            //     $contenidoImagen = file_get_contents($url); 
+            //     Storage::disk('public')->put('img/imagenesplanos/' . $nombreArchivo, $contenidoImagen);
+            //     $fichaindividual->imagen_plano = $nombreArchivo;
+            // }else{
+            //     $fichaindividual->imagen_plano = 'imagen_plano.png';
+            // }
 
             // if ($this->nuevaImagenPlano) {
             //     $nombreImagen = $ficha->id_ficha . '.' . $this->nuevaImagenPlano->getClientOriginalExtension();
@@ -2640,16 +2643,27 @@ class FichaIndividualEdit extends Component
                         $documento->fecha_doc = "1950-01-01";
                     }
                 }
-                if ($this->url_doc) {
-                    $nombreImagen3 = $ficha->id_ficha . '.' . $this->url_doc->getClientOriginalExtension();
 
-                    $rutaImagen3 = $this->url_doc->storeAs('img/documentos/', $nombreImagen3);
 
-                    // Image::make('storage/' . $rutaImagen2)->resize(1600, null, function ($constraint) {
-                    //     $constraint->aspectRatio();
-                    // })->save('storage/' . $rutaImagen2, null, 'jpg');
-                    $documento->url_doc = $rutaImagen3;
+
+                if (isset($this->url_doc[$contdoc]) || isset($this->url_docvista[$contdoc])) {
+                    if ($this->url_docvista[$contdoc] != "" ||$this->url_doc[$contdoc] != "") {
+                        if ($this->url_docvista[$contdoc] != "" && !isset($this->url_doc[$contdoc])) {
+                            $documento->url_doc = $this->url_docvista[$contdoc];
+                        }
+                        else{
+                        $nombreImagen3 = $ficha->id_ficha.'-'.$contdoc . '.' . $this->url_doc[$contdoc]->getClientOriginalExtension();
+                        $rutaImagen3 = $this->url_doc[$contdoc]->storeAs('img/documentos/', $nombreImagen3);                        
+                        $documento->url_doc = $rutaImagen3;
+                    }
+                    } 
+                    else{
+                        dd($contdoc);
+                            $documento->url_doc = $url_docvista[$contdoc];
+                    }                  
                 }
+                
+                           
 
                 $documento->save();
                 $contdoc++;

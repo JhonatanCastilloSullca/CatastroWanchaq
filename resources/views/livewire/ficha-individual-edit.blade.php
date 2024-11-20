@@ -2007,9 +2007,19 @@
                                                         @enderror
                                                     </td>
                                                     <td>
-                                                        <input type="file" accept="application/pdf"
-                                                            class="form-control" name="url_doc" id="url_doc"
-                                                            wire:model.defer="url_doc">
+                                                        <div class="d-flex gap-2">
+                                                            <input type="file" accept="application/pdf"
+                                                                class="form-control" name="url_doc" id="url_doc"
+                                                                wire:model.defer="url_doc.{{ $i }}">
+
+                                                            @if (!empty($url_docvista[$i]))
+                                                                <a class="btn btn-success btn-icon"
+                                                                    href="{{ asset('storage/' . $url_docvista[$i]) }}"
+                                                                    target="_blank">
+                                                                    <i data-feather="image"></i>
+                                                                </a>
+                                                            @endif
+                                                        </div>
                                                     </td>
                                                     
                                                 </tr>

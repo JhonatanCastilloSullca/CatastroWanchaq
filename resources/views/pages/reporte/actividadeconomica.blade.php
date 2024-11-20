@@ -1,7 +1,9 @@
 @extends('layout.master')
 @push('plugin-styles')
     <link href="{{ asset('assets/plugins/select2/select2.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css') }}" rel="stylesheet" />
 @endpush
+
 @section('content')
 <div class="row inbox-wrapper">
     <div class="col-md-12">
@@ -57,7 +59,7 @@
                     </div>
                 </div>
                 <div class="table-responsive ">
-                    <table class="table">
+                    <table class="table" id="tablareporte">
                         <thead>
                             <tr>
                                 <th>Nº Ficha</th>
@@ -105,11 +107,48 @@
 
 
 @push('plugin-scripts')
+    
+    <script src="{{ asset('assets/plugins/datatables-net/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.js') }}"></script>
     <script src="{{ asset('assets/plugins/select2/select2.min.js') }}"></script>
 @endpush
 
 @push('custom-scripts')
+
 <script>
 $('#buscarActividad').select2();
+</script>
+<script>
+    $(function() {
+    'use strict';
+
+    $(function() {
+        $('#tablareporte').DataTable({
+        "aLengthMenu": [
+            [10, 30, 50, -1],
+            [10, 30, 50, "All"]
+        ],
+        "language": {
+            "lengthMenu": "Mostrar  _MENU_  registros por paginas",
+            "zeroRecords": "Nada encontrado - disculpa",
+            "info": "Mostrando la página _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles.",
+            "infoFiltered": "(filtrado de _MAX_ registros totales)",
+            "search": "Buscar:",
+            "paginate":{
+            "next": "Siguiente",
+            "previous": "Anterior",
+            }
+        },
+        "columnDefs": [
+            {
+            targets: [4],
+            orderable: false
+            }
+        ]
+        });
+    });
+
+});
 </script>
 @endpush
