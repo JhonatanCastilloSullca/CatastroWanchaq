@@ -634,7 +634,7 @@ class FichaIndividualEdit extends Component
         $this->departamentos = Ubiges::where('cod_pro', '00')?->where('codi_dis', '00')?->get();
         $this->provincias = Ubiges::where('cod_pro', '!=', '00')?->where('codi_dis', '00')?->get();
         $this->distritos = Ubiges::where('codi_dis', '!=', '00')?->get();
-        $this->manzanas = Manzana::all();
+        $this->manzanas = Manzana::orderBy('codi_mzna')->get();
         $this->vias = Via::all();
     }
     /* EMPIEZA CÓDIGO REFERENCIAL */

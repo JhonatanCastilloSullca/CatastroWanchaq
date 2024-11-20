@@ -51,7 +51,7 @@ class ReporteController extends Controller
     public function reportelista(Request $request)
     {
         $sectores = Sectore::all();
-        $manzanas = Manzana::all();
+        $manzanas = Manzana::orderBy('codi_mzna')->get();
         $sector2 = $request->buscarSector;
         $manzana2 = $request->buscarManzana;
         if ($request->buscarFicha != "") {
@@ -738,7 +738,7 @@ class ReporteController extends Controller
     public function porlote(Request $request)
     {
         $sectores = Sectore::all();
-        $manzanas = Manzana::all();
+        $manzanas = Manzana::orderBy('codi_mzna')->get();
 
         $sector2 = $request->buscarSector;
         $manzana2 = $request->buscarManzana;
