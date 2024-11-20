@@ -546,17 +546,11 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadrorequired">44</div> ZONIFICACION
+                                        <div class="divcuadro">44</div> ZONIFICACION
                                     </label>
-                                    <select class="form-select" data-width="100%" data-live-search="true"
-                                        name="zonificacion" id="zonificacion" wire:model="zonificacion"
-                                        tabindex="30">
-                                        <option value="">SELECCIONE</option>
-                                        @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'ZON')->orderby('codigo', 'asc')->get() as $tablacodigo)
-                                            <option value="{{ $tablacodigo->desc_codigo }}">
-                                                {{ $tablacodigo->desc_codigo }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" class="form-control" placeholder="" name="zonificacion"
+                                        wire:model="zonificacion"
+                                        maxlength="50" tabindex="31">
                                     @error('zonificacion')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
