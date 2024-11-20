@@ -2180,50 +2180,50 @@ class FichaIndividualEdit extends Component
             $fichaindividual->mantenimiento = $this->mantenimiento;
             $fichaindividual->observaciones = $this->observacion;
             $fichaindividual->nume_ficha = str_pad($this->nume_ficha, 7, '0', STR_PAD_LEFT);
-            // if ($this->nuevaImagen) {
-            //     $nombreImagen = $ficha->id_ficha . '.' . $this->nuevaImagen->getClientOriginalExtension();
-            //     $rutaImagen = $this->nuevaImagen->storeAs('img/imageneslotes', $nombreImagen);
+            if ($this->nuevaImagen) {
+                $nombreImagen = $ficha->id_ficha . '.' . $this->nuevaImagen->getClientOriginalExtension();
+                $rutaImagen = $this->nuevaImagen->storeAs('img/imageneslotes', $nombreImagen);
 
-            //     // Corregir la rotación de la imagen si es necesario
-            //     Image::make('storage/' . $rutaImagen)->orientate()->save('storage/' . $rutaImagen, null, 'jpg');
+                // Corregir la rotación de la imagen si es necesario
+                Image::make('storage/' . $rutaImagen)->orientate()->save('storage/' . $rutaImagen, null, 'jpg');
 
-            //     $fichaindividual->imagen_lote = $nombreImagen;
-            // } else {
-            //     $fichaindividual->imagen_lote = $this->imagen_lote;
-            // }
+                $fichaindividual->imagen_lote = $nombreImagen;
+            } else {
+                $fichaindividual->imagen_lote = $this->imagen_lote;
+            }
 
-            // $connection = DB::connection('pgsqlgeo');
-            // $extension = $connection->select("
-            // SELECT ST_XMin(extent) || ',' ||
-            //     ST_YMin(extent) || ',' ||
-            //     ST_XMax(extent) || ',' ||
-            //     ST_YMax(extent) AS extension
-            // FROM (
-            //     SELECT ST_Expand(ST_Extent(geom), 5) AS extent
-            //     FROM geo.tg_lote
-            //     WHERE id_lote= '" . $ficha->id_lote . "'
-            //     ) AS subconsulta;
-            // ");
+            $connection = DB::connection('pgsqlgeo');
+            $extension = $connection->select("
+            SELECT ST_XMin(extent) || ',' ||
+                ST_YMin(extent) || ',' ||
+                ST_XMax(extent) || ',' ||
+                ST_YMax(extent) AS extension
+            FROM (
+                SELECT ST_Expand(ST_Extent(geom), 5) AS extent
+                FROM geo.tg_lote
+                WHERE id_lote= '" . $ficha->id_lote . "'
+                ) AS subconsulta;
+            ");
             
-            // $url = env('URL_MAP') . "/servicio/wms?service=WMS&request=GetMap&layers=lotes,idLotes,verticesLote,ejeVias&styles=&format=image%2Fpng&transparent=false&version=1.1.1&width=450&height=400&srs=EPSG%3A32719&bbox=" . $extension[0]->extension . "&id=" . $ficha->id_lote;
-            // $nombreArchivo = $ficha->id_ficha . '.jpg';
-            // if($url){
-            //     $contenidoImagen = file_get_contents($url); 
-            //     Storage::disk('public')->put('img/imagenesplanos/' . $nombreArchivo, $contenidoImagen);
-            //     $fichaindividual->imagen_plano = $nombreArchivo;
-            // }else{
-            //     $fichaindividual->imagen_plano = 'imagen_plano.png';
-            // }
+            $url = env('URL_MAP') . "/servicio/wms?service=WMS&request=GetMap&layers=lotes,idLotes,verticesLote,ejeVias&styles=&format=image%2Fpng&transparent=false&version=1.1.1&width=450&height=400&srs=EPSG%3A32719&bbox=" . $extension[0]->extension . "&id=" . $ficha->id_lote;
+            $nombreArchivo = $ficha->id_ficha . '.jpg';
+            if($url){
+                $contenidoImagen = file_get_contents($url); 
+                Storage::disk('public')->put('img/imagenesplanos/' . $nombreArchivo, $contenidoImagen);
+                $fichaindividual->imagen_plano = $nombreArchivo;
+            }else{
+                $fichaindividual->imagen_plano = 'imagen_plano.png';
+            }
 
-            // if ($this->nuevaImagenPlano) {
-            //     $nombreImagen = $ficha->id_ficha . '.' . $this->nuevaImagenPlano->getClientOriginalExtension();
-            //     $rutaImagen = $this->nuevaImagenPlano->storeAs('img/imagenesplanos', $nombreImagen);
-            //     // Corregir la rotación de la imagen si es necesario
-            //     Image::make('storage/' . $rutaImagen)->orientate()->save('storage/' . $rutaImagen, null, 'jpg');
-            //     $fichaindividual->imagen_plano = $nombreImagen;
-            // } else {
-            //     $fichaindividual->imagen_plano = $this->imagen_plano;
-            // }
+            if ($this->nuevaImagenPlano) {
+                $nombreImagen = $ficha->id_ficha . '.' . $this->nuevaImagenPlano->getClientOriginalExtension();
+                $rutaImagen = $this->nuevaImagenPlano->storeAs('img/imagenesplanos', $nombreImagen);
+                // Corregir la rotación de la imagen si es necesario
+                Image::make('storage/' . $rutaImagen)->orientate()->save('storage/' . $rutaImagen, null, 'jpg');
+                $fichaindividual->imagen_plano = $nombreImagen;
+            } else {
+                $fichaindividual->imagen_plano = $this->imagen_plano;
+            }
 
 
             $fichaindividual->save();

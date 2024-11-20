@@ -740,7 +740,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadrorequired">28</div> RAZON SOCIAL
+                                        <div class="divcuadro">28</div> RAZON SOCIAL
                                     </label>
                                     <input type="text" class="form-control" placeholder="" name="razon_social"
                                         wire:model="razon_social" maxlength="100" tabindex="45">
@@ -749,7 +749,6 @@
                                     @enderror
                                 </div>
                             </div><!-- Col -->
-                            <!--SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS-->
                             <div class="col-md-3">
                                 <div class="mb-3">
                                     <div wire:ignore>
