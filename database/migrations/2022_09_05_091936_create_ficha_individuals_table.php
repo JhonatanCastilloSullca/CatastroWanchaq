@@ -37,7 +37,7 @@ return new class extends Migration
             $table->integer('nume_habitantes')->nullable();
             $table->integer('nume_familias')->nullable();
             $table->string('mantenimiento',2)->nullable();
-            $table->string('observaciones',500)->nullable();
+            $table->text('observaciones')->nullable();
             $table->string('estado_propiedad',10)->nullable();
             $table->string('nume_ficha',7)->nullable();
             $table->string('imagen_lote',250)->nullable();

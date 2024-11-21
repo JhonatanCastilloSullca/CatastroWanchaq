@@ -46,7 +46,7 @@ return new class extends Migration
             $table->string('cercania_rio',2)->nullable();
             $table->string('cumple_explotacion',2)->nullable();
             $table->string('llenada_intervension',2)->nullable();
-            $table->string('observaciones',500)->nullable();
+            $table->text('observaciones')->nullable();
             $table->string('nume_ficha',7)->nullable();
             $table->string('zona_geografica',2)->nullable();
         });        

@@ -253,7 +253,7 @@ class FichaEconomicaCreate extends Component
                     'esta_llenado'                  => 'required',
 
                     'mantenimiento'                 => 'nullable',
-                    'observacion'                   => 'nullable|max:500',
+                    'observacion'                   => 'nullable|max:800',
 
                     'supervisor'                    => 'nullable',
                     'fecha_supervision'             => 'nullable|date',
@@ -327,7 +327,7 @@ class FichaEconomicaCreate extends Component
                     'esta_llenado'                  => 'required',
 
                     'mantenimiento'                 => 'required',
-                    'observacion'                   => 'nullable|max:500',
+                    'observacion'                   => 'nullable|max:800',
 
                     'supervisor'                    => 'nullable',
                     'fecha_supervision'             => 'nullable|date',

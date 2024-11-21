@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreign('id_ficha')->references('id_ficha')->on('tf_fichas')->onDelete('cascade')->onUpdate('cascade');
             $table->string('cond_declarante',2)->nullable();
             $table->string('esta_llenado',1)->nullable();
-            $table->string('observaciones',500)->nullable();
+            $table->text('observaciones')->nullable();
             $table->string('nume_ficha',7)->nullable();
         });        
     }

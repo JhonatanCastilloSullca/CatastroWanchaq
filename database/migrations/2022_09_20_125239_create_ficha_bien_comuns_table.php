@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('cond_declarante',2)->nullable();
             $table->string('esta_llenado',1)->nullable();
             $table->string('mantenimiento',2)->nullable();
-            $table->string('observaciones',500)->nullable();
+            $table->text('observaciones')->nullable();
             $table->string('codi_uso',6)->unsigned();
             $table->foreign('codi_uso')->references('codi_uso')->on('tf_usos_bc')->onDelete('cascade')->onUpdate('cascade');
             $table->string('nume_ficha',7)->nullable();

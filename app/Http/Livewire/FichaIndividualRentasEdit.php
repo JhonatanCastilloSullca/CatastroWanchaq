@@ -1126,7 +1126,7 @@ class FichaIndividualRentasEdit extends Component
                     'nume_familias'                 => 'nullable|numeric|min:0',
 
                     'mantenimiento'                 => 'nullable',
-                    'observacion'                   => 'nullable|max:500',
+                    'observacion'                   => 'nullable|max:800',
 
                     'numdocumentodeclarante'        => 'nullable|max:8',
                     'nombres_declarante'            => 'nullable|max:150',
@@ -1214,7 +1214,7 @@ class FichaIndividualRentasEdit extends Component
                     'nume_familias'                 => 'nullable|numeric|min:0',
                     'mantenimiento'                 => 'nullable',
 
-                    'observacion'                 => 'nullable|max:500',
+                    'observacion'                 => 'nullable|max:800',
 
                     'numdocumentodeclarante'        => 'nullable|max:8',
                     'nombres_declarante'            => 'nullable|max:150',

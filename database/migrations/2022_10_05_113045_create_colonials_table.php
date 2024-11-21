@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('num_pisos',5)->nullable();
             $table->string('tipo_fecha',1)->nullable();
             $table->string('fecha_construccion',4)->nullable();
-            $table->string('observaciones',500)->nullable();
+            $table->text('observaciones')->nullable();
         });        
     }
 

@@ -104,7 +104,7 @@ class GenerarNumeracionCreate extends Component
                 'codi_uso'                      => 'required',
                 'tipo_edificacion'              => 'nullable',
                 'cont_en'                       => 'required',
-                'observacion'                   => 'nullable|max:500',
+                'observacion'                   => 'nullable|max:800',
             ]);
 
             for($i=0;$i<$this->cont;$i++){

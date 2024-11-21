@@ -735,7 +735,7 @@ class FichaBienCulturalEdit extends Component
                 'area_monu'                => 'nullable|numeric',
                 'perimetro_monumento'        => 'nullable|numeric',
                 'fil_crono'                => 'required',
-                'observacion'                => 'nullable|max:500',
+                'observacion'                => 'nullable|max:800',
                 'presencia_arquitectura'                => 'nullable',
 
                 'tipo_partida'                  => 'nullable',
@@ -799,7 +799,7 @@ class FichaBienCulturalEdit extends Component
                 'nume_habitantes'               => 'nullable|numeric',
                 'nume_familias'               => 'nullable|numeric',
                 'esta_llenado'                  => 'required',
-                'observacion1'                   => 'nullable|max:500',
+                'observacion1'                   => 'nullable|max:800',
 
                 'supervisor'                    => 'nullable',
                 'fecha_supervision'             => 'nullable|date',

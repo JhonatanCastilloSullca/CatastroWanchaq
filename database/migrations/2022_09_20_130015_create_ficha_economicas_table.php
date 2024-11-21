@@ -32,7 +32,7 @@ return new class extends Migration
             $table->string('mantenimiento',2)->nullable();
             $table->string('docu_presentado',2)->nullable();
             $table->decimal('pred_area_verif',7,2)->nullable();
-            $table->string('observaciones',500)->nullable();
+            $table->text('observaciones')->nullable();
             $table->string('nume_ficha',7)->nullable();
             $table->string('codigo_secuencial',250)->nullable();
 

@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('tipo_area',1)->nullable();
             $table->decimal('area_monu',11,2)->nullable();
             $table->decimal('perimetro_monumento',11,2)->nullable();
-            $table->string('observaciones',500)->nullable();
+            $table->text('observaciones')->nullable();
         });        
     }
 
