@@ -137,7 +137,7 @@ class GenerarCertificadoCreate extends Component
                 'codi_uso'                      => 'required',
                 'tipo_edificacion'              => 'nullable',
                 'cont_en'                       => 'required',
-                'observacion'                   => 'nullable|max:800',
+                'observacion'                   => 'nullable|max:1000',
 
                 //MEDIDAS EN CAMPO
                 'fren_campo'                    => 'nullable|max:200',

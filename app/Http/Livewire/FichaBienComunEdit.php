@@ -901,7 +901,7 @@ class FichaBienComunEdit extends Component
                 'esta_llenado'                  => 'required',
 
                 'mantenimiento'                 => 'nullable',
-                'observacion'                   => 'nullable|max:800',
+                'observacion'                   => 'nullable|max:1000',
 
                 'numdocumentodeclarante'        => 'nullable|max:8',
                 'nombres_declarante'            => 'nullable|max:150',
