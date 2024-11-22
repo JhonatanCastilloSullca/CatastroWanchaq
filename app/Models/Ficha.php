@@ -84,7 +84,8 @@ class Ficha  extends Authenticatable implements AuditableContract
     }
     public function titulars()
     {
-        return $this->hasMany('App\Models\Titular', 'id_ficha', 'id_ficha')->orderBy('nume_titular', 'asc');
+        return $this->hasMany('App\Models\Titular', 'id_ficha', 'id_ficha')->orderByRaw('CAST(nume_titular AS INTEGER) asc');
+
     }
 
     public function conductors()
