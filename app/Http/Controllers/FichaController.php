@@ -913,9 +913,8 @@ class FichaController extends Controller
         $mpdf->Output($fileName, 'I');
     }
 
-    public function fichaCotitularidad(Ficha $ficha)
+public function fichaCotitularidad(Ficha $ficha)
     {
-        dd($ficha->titulars);
         $fileName = 'cotitularidad.pdf';
         $mpdf = new \Mpdf\Mpdf([
             'format' => [210, 297],
