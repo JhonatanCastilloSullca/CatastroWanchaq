@@ -1650,8 +1650,13 @@ class FichaIndividualEdit extends Component
             $edificacionbuscar = str_pad($lote->id_lote, 14, '0', STR_PAD_LEFT) . '' . str_pad($this->edifica, 2, '0', STR_PAD_LEFT);
 
             $edificacionencontrar = Edificaciones::where('id_edificacion', $edificacionbuscar)->first();
+            
             if ($edificacionencontrar != "") {
                 $edificacion = $edificacionencontrar;
+                $edificacion->codi_edificacion = str_pad($this->edifica, 2, '0', STR_PAD_LEFT);
+                $edificacion->tipo_edificacion = $this->tipo_edificacion;                
+                $edificacion->clasificacion = $this->clasificacion;
+                $edificacion->save();
             } else {
                 $edificacion = new Edificaciones();
                 $edificacion->id_edificacion = str_pad($lote->id_lote, 14, '0', STR_PAD_LEFT) . '' . str_pad($this->edifica, 2, '0', STR_PAD_LEFT);
@@ -2192,28 +2197,28 @@ class FichaIndividualEdit extends Component
                 $fichaindividual->imagen_lote = $this->imagen_lote;
             }
 
-            $connection = DB::connection('pgsqlgeo');
-            $extension = $connection->select("
-            SELECT ST_XMin(extent) || ',' ||
-                ST_YMin(extent) || ',' ||
-                ST_XMax(extent) || ',' ||
-                ST_YMax(extent) AS extension
-            FROM (
-                SELECT ST_Expand(ST_Extent(geom), 5) AS extent
-                FROM geo.tg_lote
-                WHERE id_lote= '" . $ficha->id_lote . "'
-                ) AS subconsulta;
-            ");
+            // $connection = DB::connection('pgsqlgeo');
+            // $extension = $connection->select("
+            // SELECT ST_XMin(extent) || ',' ||
+            //     ST_YMin(extent) || ',' ||
+            //     ST_XMax(extent) || ',' ||
+            //     ST_YMax(extent) AS extension
+            // FROM (
+            //     SELECT ST_Expand(ST_Extent(geom), 5) AS extent
+            //     FROM geo.tg_lote
+            //     WHERE id_lote= '" . $ficha->id_lote . "'
+            //     ) AS subconsulta;
+            // ");
             
-            $url = env('URL_MAP') . "/servicio/wms?service=WMS&request=GetMap&layers=lotes,idLotes,verticesLote,ejeVias&styles=&format=image%2Fpng&transparent=false&version=1.1.1&width=450&height=400&srs=EPSG%3A32719&bbox=" . $extension[0]->extension . "&id=" . $ficha->id_lote;
-            $nombreArchivo = $ficha->id_ficha . '.jpg';
-            if($url){
-                $contenidoImagen = file_get_contents($url); 
-                Storage::disk('public')->put('img/imagenesplanos/' . $nombreArchivo, $contenidoImagen);
-                $fichaindividual->imagen_plano = $nombreArchivo;
-            }else{
-                $fichaindividual->imagen_plano = 'imagen_plano.png';
-            }
+            // $url = env('URL_MAP') . "/servicio/wms?service=WMS&request=GetMap&layers=lotes,idLotes,verticesLote,ejeVias&styles=&format=image%2Fpng&transparent=false&version=1.1.1&width=450&height=400&srs=EPSG%3A32719&bbox=" . $extension[0]->extension . "&id=" . $ficha->id_lote;
+            // $nombreArchivo = $ficha->id_ficha . '.jpg';
+            // if($url){
+            //     $contenidoImagen = file_get_contents($url); 
+            //     Storage::disk('public')->put('img/imagenesplanos/' . $nombreArchivo, $contenidoImagen);
+            //     $fichaindividual->imagen_plano = $nombreArchivo;
+            // }else{
+            //     $fichaindividual->imagen_plano = 'imagen_plano.png';
+            // }
 
             if ($this->nuevaImagenPlano) {
                 $nombreImagen = $ficha->id_ficha . '.' . $this->nuevaImagenPlano->getClientOriginalExtension();
