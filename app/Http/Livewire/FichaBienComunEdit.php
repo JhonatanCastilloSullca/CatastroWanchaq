@@ -645,7 +645,7 @@ class FichaBienComunEdit extends Component
         $this->cont2++;
     }
 
-    public function reducirConstruccion()
+    public function reducirConstruccion($value)
     {
         $this->cont2--;        
         if (is_array($this->bloque)) {

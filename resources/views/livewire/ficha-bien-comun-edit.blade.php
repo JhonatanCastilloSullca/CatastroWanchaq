@@ -548,7 +548,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label class="form-label d-inline-flex">
-                                    <div class="divcuadrorequired">44</div> ZONIFICACION
+                                    <div class="divcuadro">44</div> ZONIFICACION
                                 </label>
                                 <input type="text" class="form-control" placeholder="" name="zonificacion"
                                     wire:model="zonificacion"
@@ -1354,7 +1354,7 @@
                         <div class="col-md-3">
                             <div class="mb-3">
                                 <label class="form-label d-inline-flex" >EN JARDÍN DE AISLAMIENTO</label>
-                                <input type="text" id="en_jardin_aislamiento" class="form-control" placeholder="EN JARDIN  DE AISLAMIENTO" name="en_jardin_aislamiento" wire:model="en_jardin_aislamiento" oninput="this.value = this.value.replace(/[^0-9,]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="8" tabindex="134">
+                                <input type="text" id="en_jardin_aislamiento" class="form-control" placeholder="EN JARDIN  DE AISLAMIENTO" name="en_jardin_aislamiento" wire:model="en_jardin_aislamiento" oninput="this.value = this.value.replace(/[^0-9,.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="8" tabindex="134">
                                 @error('en_jardin_aislamiento')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
@@ -1363,7 +1363,7 @@
                         <div class="col-md-3">
                             <div class="mb-3">
                                 <label class="form-label d-inline-flex" >EN ÁREA INTANGIBLE</label>
-                                <input type="text" id="en_area_intangible" class="form-control" placeholder="EN ÁREA INTANGIBLE" name="en_area_intangible" wire:model="en_area_intangible" oninput="this.value = this.value.replace(/[^0-9,]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="8" tabindex="135">
+                                <input type="text" id="en_area_intangible" class="form-control" placeholder="EN ÁREA INTANGIBLE" name="en_area_intangible" wire:model="en_area_intangible" oninput="this.value = this.value.replace(/[^0-9,.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="8" tabindex="135">
                                 @error('en_area_intangible')
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror

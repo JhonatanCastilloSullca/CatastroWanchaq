@@ -125,6 +125,7 @@ class UserController extends Controller
             return redirect()->back()->with('success', 'Usuario Desactivado Correctamente!');
         }else{
             $user->estado = '1';
+            $user->fecha_cese = null;
             $user->save();
             return redirect()->back()->with('success', 'Usuario Activo Correctamente!');
         }

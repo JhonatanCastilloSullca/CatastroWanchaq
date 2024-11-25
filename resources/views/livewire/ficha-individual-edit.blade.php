@@ -723,7 +723,7 @@
                             <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadrorequired">27</div> Nº DE R.U.C.
+                                        <div class="divcuadro">27</div> Nº DE R.U.C.
                                     </label>
                                     <input type="text" class="form-control" placeholder="" name="nume_doc3"
                                         wire:model.lazy="numedoc3"
