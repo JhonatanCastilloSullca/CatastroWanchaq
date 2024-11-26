@@ -1465,6 +1465,41 @@
                                         </tr>
                                         @endfor
                                     </tbody>
+                                    <tfoot>
+                                        <tr>                                                    
+                                            <td>
+                                                Total:
+                                            </td>
+                                            <td>
+                                                {{$cont5}}
+                                            </td>
+                                            <td>
+                                                {{$totalrecap['rbcedifica']}}
+                                            </td>
+                                            <td>
+                                                {{$totalrecap['rbcentrada']}}
+                                            </td>
+                                            <td>
+                                                
+                                                {{$totalrecap['rbcnume_piso']}}
+                                            </td>
+                                            <td>
+                                                {{$totalrecap['rbcunidad']}}                                                   
+                                            </td>
+                                            <td>
+                                                {{$totalrecap['rbctotalporcentaje']}}
+                                            </td>
+                                            <td>
+                                                {{$totalrecap['rbctotalatc']}}
+                                            </td>
+                                            <td>
+                                                {{$totalrecap['rbctotalacc']}}
+                                            </td>
+                                            <td>
+                                                {{$totalrecap['rbctotalaoic']}}
+                                            </td>
+                                        </tr>
+                                    </tfoot>
                                 </table>
                             </div>
                         </div><!-- Col -->

@@ -319,9 +319,8 @@ class FichaIndividualEdit extends Component
         $this->nume_interior = $fichaanterior?->unicat?->nume_interior;
 
         #IDENTIFICACIÓN DEL TITULAR CATASTRAL
-        // dd($fichaanterior?->titulars[0]);
-        if ($fichaanterior?->titulars != "" || $fichaanterior?->titulars != NULL ) {
-            
+        // dd($fichaanterior?->titulars);
+        if (!$fichaanterior?->titulars->isEmpty()) {            
             $this->tipoTitular = $fichaanterior?->titulars[0]?->persona?->tipo_persona;
             if ($fichaanterior?->titulars[0]?->persona?->tipo_persona == 1) {
                 $this->esta_civil1 = $fichaanterior?->titulars[0]?->esta_civil;

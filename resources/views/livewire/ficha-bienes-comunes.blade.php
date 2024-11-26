@@ -1478,7 +1478,7 @@
                                                     <td>
                                                         <input type="text" class="form-control"
                                                             name="rbcedifica[]"
-                                                            wire:model.defer="rbcedifica.{{ $i }}"
+                                                            wire:model="rbcedifica.{{ $i }}"
                                                             id="rbcedifica.{{ $i }}" maxlength="2">
                                                         @error('rbcedifica.' . $i)
                                                             <span class="error-message"
@@ -1488,7 +1488,7 @@
                                                     <td>
                                                         <input type="text" class="form-control"
                                                             name="rbcentrada[]"
-                                                            wire:model.defer="rbcentrada.{{ $i }}"
+                                                            wire:model="rbcentrada.{{ $i }}"
                                                             id="rbcentrada.{{ $i }}" maxlength="2">
                                                         @error('rbcentrada.' . $i)
                                                             <span class="error-message"
@@ -1498,7 +1498,7 @@
                                                     <td>
                                                         <input type="text" class="form-control"
                                                             name="rbcnume_piso[]"
-                                                            wire:model.defer="rbcnume_piso.{{ $i }}"
+                                                            wire:model="rbcnume_piso.{{ $i }}"
                                                             id="rbcnume_piso.{{ $i }}" maxlength="2">
                                                         @error('rbcnume_piso.' . $i)
                                                             <span class="error-message"
@@ -1508,7 +1508,7 @@
                                                     <td>
                                                         <input type="text" class="form-control"
                                                             name="rbcunidad[]"
-                                                            wire:model.defer="rbcunidad.{{ $i }}"
+                                                            wire:model="rbcunidad.{{ $i }}"
                                                             id="rbcunidad.{{ $i }}" maxlength="3">
                                                         @error('rbcunidad.' . $i)
                                                             <span class="error-message"
@@ -1518,7 +1518,7 @@
                                                     <td>
                                                         <input type="text" class="form-control"
                                                             name="rbctotalporcentaje[]"
-                                                            wire:model.defer="rbctotalporcentaje.{{ $i }}"
+                                                            wire:model="rbctotalporcentaje.{{ $i }}"
                                                             id="rbctotalporcentaje.{{ $i }}"
                                                             oninput="this.value = this.value.replace(/[^0-9,.]/g, '').replace(/(\..*?)\..*/g, '$1');"
                                                             maxlength="7">
@@ -1530,7 +1530,7 @@
                                                     <td>
                                                         <input type="text" class="form-control"
                                                             name="rbctotalatc[]"
-                                                            wire:model.defer="rbctotalatc.{{ $i }}"
+                                                            wire:model="rbctotalatc.{{ $i }}"
                                                             id="rbctotalatc.{{ $i }}"
                                                             oninput="this.value = this.value.replace(/[^0-9,.]/g, '').replace(/(\..*?)\..*/g, '$1');"
                                                             maxlength="9">
@@ -1542,7 +1542,7 @@
                                                     <td>
                                                         <input type="text" class="form-control"
                                                             name="rbctotalacc[]"
-                                                            wire:model.defer="rbctotalacc.{{ $i }}"
+                                                            wire:model="rbctotalacc.{{ $i }}"
                                                             id="rbctotalacc.{{ $i }}"
                                                             oninput="this.value = this.value.replace(/[^0-9,.]/g, '').replace(/(\..*?)\..*/g, '$1');"
                                                             maxlength="9">
@@ -1554,7 +1554,7 @@
                                                     <td>
                                                         <input type="text" class="form-control"
                                                             name="rbctotalaoic[]"
-                                                            wire:model.defer="rbctotalaoic.{{ $i }}"
+                                                            wire:model="rbctotalaoic.{{ $i }}"
                                                             id="rbctotalaoic.{{ $i }}"
                                                             oninput="this.value = this.value.replace(/[^0-9,.]/g, '').replace(/(\..*?)\..*/g, '$1');"
                                                             maxlength="9">
@@ -1566,6 +1566,41 @@
                                                 </tr>
                                             @endfor
                                         </tbody>
+                                        <tfoot>
+                                            <tr>                                                    
+                                                <td>
+                                                    Total:
+                                                </td>
+                                                <td>
+                                                    {{$cont5}}
+                                                </td>
+                                                <td>
+                                                    {{$totalrecap['rbcedifica']}}
+                                                </td>
+                                                <td>
+                                                    {{$totalrecap['rbcentrada']}}
+                                                </td>
+                                                <td>
+                                                    
+                                                    {{$totalrecap['rbcnume_piso']}}
+                                                </td>
+                                                <td>
+                                                    {{$totalrecap['rbcunidad']}}                                                   
+                                                </td>
+                                                <td>
+                                                    {{$totalrecap['rbctotalporcentaje']}}
+                                                </td>
+                                                <td>
+                                                    {{$totalrecap['rbctotalatc']}}
+                                                </td>
+                                                <td>
+                                                    {{$totalrecap['rbctotalacc']}}
+                                                </td>
+                                                <td>
+                                                    {{$totalrecap['rbctotalaoic']}}
+                                                </td>
+                                            </tr>
+                                        </tfoot>
                                     </table>
                                 </div>
                             </div><!-- Col -->
