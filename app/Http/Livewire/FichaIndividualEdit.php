@@ -312,7 +312,7 @@ class FichaIndividualEdit extends Component
         $this->zona_dist = $fichaanterior?->lote?->zona_dist;
         $this->mzna_dist = $fichaanterior?->lote?->mzna_dist;
         $this->lote_dist = $fichaanterior?->lote?->lote_dist;
-        $this->sub_lote_dist = $fichaanterior?->sub_lote_dist;
+        $this->sub_lote_dist = $fichaanterior?->lote?->sub_lote_dist;
 
         $this->tipo_edificacion = $fichaanterior?->unicat?->edificacion?->tipo_edificacion;
         $this->tipo_interior = $fichaanterior?->unicat?->tipo_interior;
@@ -1624,6 +1624,7 @@ class FichaIndividualEdit extends Component
             $loteencontrar = Lote::where('id_lote', $lotebuscar)->first();
             if ($loteencontrar != "") {
                 $lote = $loteencontrar;
+                
                 $lote->codi_lote = str_pad($this->lote, 3, '0', STR_PAD_LEFT);
                 $lote->id_hab_urba = $this->tipoHabi;
                 $lote->mzna_dist = strtoupper($this->mzna_dist);
