@@ -2829,4 +2829,13 @@ class FichaIndividualEdit extends Component
     {
         $this->unidad = str_pad($value, 2, '0', STR_PAD_LEFT);
     }
+    public function updatedcodiinstalacion($value,$nested)
+    {
+        $obras=CodigoInstalacion::where('codi_instalacion',$value)->first();
+        if($obras=="")
+        {
+        }else{
+            $this->inst_uni_med[$nested]=$obras->unidad;
+        }
+    }
 }
