@@ -537,7 +537,12 @@ class FichaCotitularidadEdit extends Component
                             $titular->form_adquisicion=$this->form_adquisicion[$cont];
                         }
                         if(isset($this->fecha_adquisicion[$cont])){
-                            $titular->fecha_adquisicion=$this->fecha_adquisicion[$cont];
+                            if ($this->fecha_adquisicion[$cont] == "") {                                
+                                $titular->fecha_adquisicion = null;
+                            }
+                            else{
+                            $titular->fecha_adquisicion = $this->fecha_adquisicion[$cont];
+                            }
                         }
                         if(isset($this->porc_cotitular[$cont])){
                             $titular->porc_cotitular=$this->porc_cotitular[$cont];
@@ -654,8 +659,14 @@ class FichaCotitularidadEdit extends Component
                         if(isset($this->form_adquisicion[$cont])){
                             $titular->form_adquisicion=$this->form_adquisicion[$cont];
                         }
+                        
                         if(isset($this->fecha_adquisicion[$cont])){
-                            $titular->fecha_adquisicion=$this->fecha_adquisicion[$cont];
+                            if ($this->fecha_adquisicion[$cont] == "") {                                
+                                $titular->fecha_adquisicion = null;
+                            }
+                            else{
+                            $titular->fecha_adquisicion = $this->fecha_adquisicion[$cont];
+                            }
                         }
                         if(isset($this->porc_cotitular[$cont])){
                             $titular->porc_cotitular=$this->porc_cotitular[$cont];
@@ -767,7 +778,12 @@ class FichaCotitularidadEdit extends Component
                             $titular->form_adquisicion=$this->form_adquisicion[$cont];
                         }
                         if(isset($this->fecha_adquisicion[$cont])){
-                            $titular->fecha_adquisicion=$this->fecha_adquisicion[$cont];
+                            if ($this->fecha_adquisicion[$cont] == "") {                                
+                                $titular->fecha_adquisicion = null;
+                            }
+                            else{
+                            $titular->fecha_adquisicion = $this->fecha_adquisicion[$cont];
+                            }
                         }
 
                         if(isset($this->porc_cotitular[$cont])){
@@ -881,9 +897,14 @@ class FichaCotitularidadEdit extends Component
 
                         if(isset($this->form_adquisicion[$cont])){
                             $titular->form_adquisicion=$this->form_adquisicion[$cont];
-                        }
+                        }                        
                         if(isset($this->fecha_adquisicion[$cont])){
-                            $titular->fecha_adquisicion=$this->fecha_adquisicion[$cont];
+                            if ($this->fecha_adquisicion[$cont] == "") {                                
+                                $titular->fecha_adquisicion = null;
+                            }
+                            else{
+                            $titular->fecha_adquisicion = $this->fecha_adquisicion[$cont];
+                            }
                         }
                         if(isset($this->porc_cotitular[$cont])){
                             $titular->porc_cotitular=$this->porc_cotitular[$cont];
