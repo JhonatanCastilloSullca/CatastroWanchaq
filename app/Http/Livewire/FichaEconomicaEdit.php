@@ -221,6 +221,9 @@ class FichaEconomicaEdit extends Component
             if($fichaanterior?->fichaeconomica?->inic_actividad!="1969-12-31"){
                 $this->inic_actividad=$fichaanterior?->fichaeconomica?->inic_actividad;
             }
+
+            $this->totalautor =$this->pred_area_autor + $this->viap_area_autor + $this->bc_area_autor;
+            $this->totalverificada =$this->pred_area_verif +$this->viap_area_verif+ $this->bc_area_verif;
         }
 
         $this->cont2 = count($fichaanterior?->autorizacion_anuncios);
