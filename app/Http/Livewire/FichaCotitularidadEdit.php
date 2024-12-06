@@ -101,7 +101,6 @@ class FichaCotitularidadEdit extends Component
         $this-> nume_ficha_lote = $separarnume_ficha[0];
         $this-> nume_ficha_lote2 = $separarnume_ficha[1];
 
-
         for($i=0;$i<$this->total;$i++)
         {
             $this-> tipoTitular[$i] = $fichaanterior->titulars[$i]->persona->tipo_persona;

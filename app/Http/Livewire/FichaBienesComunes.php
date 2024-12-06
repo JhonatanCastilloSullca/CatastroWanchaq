@@ -597,14 +597,14 @@ class FichaBienesComunes extends Component
 
     public function aumentarRecap()
     {
-        $this->rbcedifica[$this->cont5]="";
-        $this->rbcentrada[$this->cont5]="";
-        $this->rbcnume_piso[$this->cont5]="";
-        $this->rbcunidad[$this->cont5]="";
-        $this->rbctotalporcentaje[$this->cont5]="";
-        $this->rbctotalatc[$this->cont5]="";
-        $this->rbctotalacc[$this->cont5]="";
-        $this->rbctotalaoic[$this->cont5]="";
+        $this->rbcedifica[$this->cont5]=0;
+        $this->rbcentrada[$this->cont5]=0;
+        $this->rbcnume_piso[$this->cont5]=0;
+        $this->rbcunidad[$this->cont5]=0;
+        $this->rbctotalporcentaje[$this->cont5]=0;
+        $this->rbctotalatc[$this->cont5]=0;
+        $this->rbctotalacc[$this->cont5]=0;
+        $this->rbctotalaoic[$this->cont5]=0;
         $this->cont5++;
     }
 
@@ -1500,91 +1500,47 @@ class FichaBienesComunes extends Component
 
     public function updatedrbcedifica($nested, $value)
     {
-        $this->totalrecap['rbcedifica'] = array_sum($this->rbcedifica);
-        $this->totalrecap['rbcentrada'] = array_sum($this->rbcentrada);
-        $this->totalrecap['rbcnume_piso'] = array_sum($this->rbcnume_piso);
-        $this->totalrecap['rbcunidad'] = array_sum($this->rbcunidad);
-        $this->totalrecap['rbctotalporcentaje'] = array_sum($this->rbctotalporcentaje);
-        $this->totalrecap['rbctotalatc'] = array_sum($this->rbctotalatc);
-        $this->totalrecap['rbctotalacc'] = array_sum($this->rbctotalacc);
-        $this->totalrecap['rbctotalaoic'] = array_sum($this->rbctotalaoic);
+        $this->sumarecap();
     }
     public function updatedrbcentrada($nested, $value)
     {
-        $this->totalrecap['rbcedifica'] = array_sum($this->rbcedifica);
-        $this->totalrecap['rbcentrada'] = array_sum($this->rbcentrada);
-        $this->totalrecap['rbcnume_piso'] = array_sum($this->rbcnume_piso);
-        $this->totalrecap['rbcunidad'] = array_sum($this->rbcunidad);
-        $this->totalrecap['rbctotalporcentaje'] = array_sum($this->rbctotalporcentaje);
-        $this->totalrecap['rbctotalatc'] = array_sum($this->rbctotalatc);
-        $this->totalrecap['rbctotalacc'] = array_sum($this->rbctotalacc);
-        $this->totalrecap['rbctotalaoic'] = array_sum($this->rbctotalaoic);
+        $this->sumarecap();
     }
     public function updatedrbcnume_piso($nested, $value)
     {
-        $this->totalrecap['rbcedifica'] = array_sum($this->rbcedifica);
-        $this->totalrecap['rbcentrada'] = array_sum($this->rbcentrada);
-        $this->totalrecap['rbcnume_piso'] = array_sum($this->rbcnume_piso);
-        $this->totalrecap['rbcunidad'] = array_sum($this->rbcunidad);
-        $this->totalrecap['rbctotalporcentaje'] = array_sum($this->rbctotalporcentaje);
-        $this->totalrecap['rbctotalatc'] = array_sum($this->rbctotalatc);
-        $this->totalrecap['rbctotalacc'] = array_sum($this->rbctotalacc);
-        $this->totalrecap['rbctotalaoic'] = array_sum($this->rbctotalaoic);
+        $this->sumarecap();
     }
     public function updatedrbcunidad($nested, $value)
     {
-        $this->totalrecap['rbcedifica'] = array_sum($this->rbcedifica);
-        $this->totalrecap['rbcentrada'] = array_sum($this->rbcentrada);
-        $this->totalrecap['rbcnume_piso'] = array_sum($this->rbcnume_piso);
-        $this->totalrecap['rbcunidad'] = array_sum($this->rbcunidad);
-        $this->totalrecap['rbctotalporcentaje'] = array_sum($this->rbctotalporcentaje);
-        $this->totalrecap['rbctotalatc'] = array_sum($this->rbctotalatc);
-        $this->totalrecap['rbctotalacc'] = array_sum($this->rbctotalacc);
-        $this->totalrecap['rbctotalaoic'] = array_sum($this->rbctotalaoic);
+        $this->sumarecap();
     }
     public function updatedrbctotalporcentaje($nested, $value)
     {
-        $this->totalrecap['rbcedifica'] = array_sum($this->rbcedifica);
-        $this->totalrecap['rbcentrada'] = array_sum($this->rbcentrada);
-        $this->totalrecap['rbcnume_piso'] = array_sum($this->rbcnume_piso);
-        $this->totalrecap['rbcunidad'] = array_sum($this->rbcunidad);
-        $this->totalrecap['rbctotalporcentaje'] = array_sum($this->rbctotalporcentaje);
-        $this->totalrecap['rbctotalatc'] = array_sum($this->rbctotalatc);
-        $this->totalrecap['rbctotalacc'] = array_sum($this->rbctotalacc);
-        $this->totalrecap['rbctotalaoic'] = array_sum($this->rbctotalaoic);
+        $this->sumarecap();
     }
     public function updatedrbctotalatc($nested, $value)
     {
-        $this->totalrecap['rbcedifica'] = array_sum($this->rbcedifica);
-        $this->totalrecap['rbcentrada'] = array_sum($this->rbcentrada);
-        $this->totalrecap['rbcnume_piso'] = array_sum($this->rbcnume_piso);
-        $this->totalrecap['rbcunidad'] = array_sum($this->rbcunidad);
-        $this->totalrecap['rbctotalporcentaje'] = array_sum($this->rbctotalporcentaje);
-        $this->totalrecap['rbctotalatc'] = array_sum($this->rbctotalatc);
-        $this->totalrecap['rbctotalacc'] = array_sum($this->rbctotalacc);
-        $this->totalrecap['rbctotalaoic'] = array_sum($this->rbctotalaoic);
+        $this->sumarecap();
     }
     public function updatedrbctotalacc($nested, $value)
     {
-        $this->totalrecap['rbcedifica'] = array_sum($this->rbcedifica);
-        $this->totalrecap['rbcentrada'] = array_sum($this->rbcentrada);
-        $this->totalrecap['rbcnume_piso'] = array_sum($this->rbcnume_piso);
-        $this->totalrecap['rbcunidad'] = array_sum($this->rbcunidad);
-        $this->totalrecap['rbctotalporcentaje'] = array_sum($this->rbctotalporcentaje);
-        $this->totalrecap['rbctotalatc'] = array_sum($this->rbctotalatc);
-        $this->totalrecap['rbctotalacc'] = array_sum($this->rbctotalacc);
-        $this->totalrecap['rbctotalaoic'] = array_sum($this->rbctotalaoic);
+        $this->sumarecap();
     }
     public function updatedrbctotalaoic($nested, $value)
     {
-        $this->totalrecap['rbcedifica'] = array_sum($this->rbcedifica);
-        $this->totalrecap['rbcentrada'] = array_sum($this->rbcentrada);
-        $this->totalrecap['rbcnume_piso'] = array_sum($this->rbcnume_piso);
-        $this->totalrecap['rbcunidad'] = array_sum($this->rbcunidad);
-        $this->totalrecap['rbctotalporcentaje'] = array_sum($this->rbctotalporcentaje);
-        $this->totalrecap['rbctotalatc'] = array_sum($this->rbctotalatc);
-        $this->totalrecap['rbctotalacc'] = array_sum($this->rbctotalacc);
-        $this->totalrecap['rbctotalaoic'] = array_sum($this->rbctotalaoic);
+        $this->sumarecap();
     }
+    public function sumarecap()
+    {
+        $this->totalrecap['rbcedifica'] = array_sum(array_map(fn($value) => $value !== "" ? (float)$value : 0, $this->rbcedifica));
+        $this->totalrecap['rbcentrada'] = array_sum(array_map(fn($value) => $value !== "" ? (float)$value : 0, $this->rbcentrada));
+        $this->totalrecap['rbcnume_piso'] = array_sum(array_map(fn($value) => $value !== "" ? (float)$value : 0, $this->rbcnume_piso));
+        $this->totalrecap['rbcunidad'] = array_sum(array_map(fn($value) => $value !== "" ? (float)$value : 0, $this->rbcunidad));
+        $this->totalrecap['rbctotalporcentaje'] = array_sum(array_map(fn($value) => $value !== "" ? (float)$value : 0, $this->rbctotalporcentaje));
+        $this->totalrecap['rbctotalatc'] = array_sum(array_map(fn($value) => $value !== "" ? (float)$value : 0, $this->rbctotalatc));
+        $this->totalrecap['rbctotalacc'] = array_sum(array_map(fn($value) => $value !== "" ? (float)$value : 0, $this->rbctotalacc));
+        $this->totalrecap['rbctotalaoic'] = array_sum(array_map(fn($value) => $value !== "" ? (float)$value : 0, $this->rbctotalaoic));
+    }
+
     
 }
