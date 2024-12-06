@@ -1415,49 +1415,49 @@
                                                 {{$i+1}}
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control"  name="rbcedifica[]"  wire:model="rbcedifica.{{$i}}"  id="rbcedifica.{{$i}}" maxlength="2" >
+                                                <input type="text" class="form-control"  name="rbcedifica[]"  wire:model="rbcedifica.{{$i}}"  id="rbcedifica.{{$i}}" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" >
                                                 @error('rbcedifica.'.$i)
                                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                                 @enderror
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control"  name="rbcentrada[]"  wire:model="rbcentrada.{{$i}}"  id="rbcentrada.{{$i}}"  maxlength="2" >
+                                                <input type="text" class="form-control"  name="rbcentrada[]"  wire:model="rbcentrada.{{$i}}"  id="rbcentrada.{{$i}}"  maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" >
                                                 @error('rbcentrada.'.$i)
                                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                                 @enderror
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control"  name="rbcnume_piso[]"  wire:model="rbcnume_piso.{{$i}}"  id="rbcnume_piso.{{$i}}" maxlength="2"  >
+                                                <input type="text" class="form-control"  name="rbcnume_piso[]"  wire:model="rbcnume_piso.{{$i}}"  id="rbcnume_piso.{{$i}}" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  >
                                                 @error('rbcnume_piso.'.$i)
                                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                                 @enderror
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control"  name="rbcunidad[]"  wire:model="rbcunidad.{{$i}}"  id="rbcunidad.{{$i}}" maxlength="3" >
+                                                <input type="text" class="form-control"  name="rbcunidad[]"  wire:model="rbcunidad.{{$i}}"  id="rbcunidad.{{$i}}" maxlength="3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" >
                                                 @error('rbcunidad.'.$i)
                                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                                 @enderror
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control"  name="rbctotalporcentaje[]"  wire:model="rbctotalporcentaje.{{$i}}"  id="rbctotalporcentaje.{{$i}}"   oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="7">
+                                                <input type="text" class="form-control"  name="rbctotalporcentaje[]"  wire:model="rbctotalporcentaje.{{$i}}"  id="rbctotalporcentaje.{{$i}}"   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="7">
                                                 @error('rbctotalporcentaje.'.$i)
                                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                                 @enderror
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control"  name="rbctotalatc[]"  wire:model="rbctotalatc.{{$i}}" id="rbctotalatc.{{$i}}"  oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="9">
+                                                <input type="text" class="form-control"  name="rbctotalatc[]"  wire:model="rbctotalatc.{{$i}}" id="rbctotalatc.{{$i}}"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="9">
                                                 @error('rbctotalatc.'.$i)
                                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                                 @enderror
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control"  name="rbctotalacc[]"  wire:model="rbctotalacc.{{$i}}" id="rbctotalacc.{{$i}}"   oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="9">
+                                                <input type="text" class="form-control"  name="rbctotalacc[]"  wire:model="rbctotalacc.{{$i}}" id="rbctotalacc.{{$i}}"   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="9">
                                                 @error('rbctotalacc.'.$i)
                                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                                 @enderror
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control"  name="rbctotalaoic[]" wire:model="rbctotalaoic.{{$i}}" id="rbctotalaoic.{{$i}}" oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="9">
+                                                <input type="text" class="form-control"  name="rbctotalaoic[]" wire:model="rbctotalaoic.{{$i}}" id="rbctotalaoic.{{$i}}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="9">
                                                 @error('rbctotalaoic.'.$i)
                                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                                 @enderror

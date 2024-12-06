@@ -59,7 +59,7 @@
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
                                 </div>
-                            </div><!-- Col -->                            
+                            </div><!-- Col -->
                         </div><!-- Row -->
                         <div class="row  form-group">
                             <div class="col-md-12">
@@ -91,7 +91,8 @@
                                                 <input type="number" class="form-control" name="dist" readonly
                                                     wire:model="dist" tabindex="7">
                                                 @error('dist')
-                                                    <span class="error-message" style="color:red">{{ $message }}</span>
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
@@ -201,8 +202,7 @@
                                             </div>
                                         </div>
                                         <button type="button" class="btn btn-primary btn-icon mt-3"
-                                                wire:click="calcularDC"
-                                                wire:loading.attr="disabled">
+                                            wire:click="calcularDC" wire:loading.attr="disabled">
                                             <i class="mdi mdi-calculator"></i>
                                         </button>
 
@@ -247,8 +247,7 @@
                                             <tr>
                                                 <th>
                                                     <button type="button" class="btn btn-success btn-icon"
-                                                        wire:click="aumentarUbicacion"
-                                                        wire:loading.attr="disabled"
+                                                        wire:click="aumentarUbicacion" wire:loading.attr="disabled"
                                                         tabindex="18">+
                                                     </button>
                                                 </th>
@@ -274,12 +273,11 @@
                                         </thead>
                                         <tbody>
                                             @for ($i = 0; $i < $cont; $i++)
-                                                <tr>                                                    
+                                                <tr>
                                                     <td>
                                                         <button type="button" class="btn btn-danger btn-icon"
-                                                            wire:click="reducirUbicacion({{$i}})"
-                                                            wire:loading.attr="disabled"
-                                                            tabindex="18">-
+                                                            wire:click="reducirUbicacion({{ $i }})"
+                                                            wire:loading.attr="disabled" tabindex="18">-
                                                         </button>
                                                     </td>
                                                     <td>
@@ -352,7 +350,7 @@
                                                                 style="color:red">{{ $message }}</span>
                                                         @enderror
                                                     </td>
-                                                    
+
                                                 </tr>
                                             @endfor
                                         </tbody>
@@ -360,7 +358,7 @@
                                 </div>
                             </div><!-- Col -->
                         </div><!-- Row -->
-                        <div class="row form-group">                            
+                        <div class="row form-group">
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
@@ -427,8 +425,8 @@
                                         <div class="divcuadro">16</div> ZONA/SECTOR/ETAPA
                                     </label>
                                     <input type="text" class="form-control" name="zona_dist"
-                                        wire:model="zona_dist" placeholder="Zona, Sector, Etapa"
-                                        tabindex="23" maxlength="15">
+                                        wire:model="zona_dist" placeholder="Zona, Sector, Etapa" tabindex="23"
+                                        maxlength="15">
                                     <span class="text-danger">
                                         @error('zona_dist')
                                             {{ $message }}
@@ -542,15 +540,14 @@
                                     @enderror
                                 </div>
                             </div><!-- Col -->
-                            
+
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
                                         <div class="divcuadro">44</div> ZONIFICACION
                                     </label>
                                     <input type="text" class="form-control" placeholder="" name="zonificacion"
-                                        wire:model="zonificacion"
-                                        maxlength="50" tabindex="31">
+                                        wire:model="zonificacion" maxlength="50" tabindex="31">
                                     @error('zonificacion')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
@@ -648,7 +645,7 @@
                                         @enderror
                                     </div><!-- Col -->
                                 </div>
-                                
+
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label d-inline-flex">
@@ -688,8 +685,8 @@
                                         @enderror
                                     </div><!-- Col -->
                                 </div>
-                                
-                                
+
+
                             </div>
                         </div><!-- Row -->
                         <div class="row form-group">
@@ -793,15 +790,14 @@
                                 <div class="table-responsive">
                                     <table id="vias" class="table">
                                         <thead>
-                                            <tr>                                                
+                                            <tr>
                                                 <th>
                                                     @if ($codi_uso == '070101')
-                                                    @else                                                                                                                
+                                                    @else
                                                         <button type="button" class="btn btn-success btn-icon"
-                                                                wire:click="aumentarConstruccion"
-                                                                wire:loading.attr="disabled"
-                                                                wire:target="aumentarConstruccion"
-                                                                tabindex="57">+
+                                                            wire:click="aumentarConstruccion"
+                                                            wire:loading.attr="disabled"
+                                                            wire:target="aumentarConstruccion" tabindex="57">+
                                                         </button>
                                                     @endif
                                                 </th>
@@ -857,10 +853,9 @@
                                                 <tr>
                                                     <td>
                                                         <button type="button" class="btn btn-danger btn-icon"
-                                                                wire:click="reducirConstruccion({{ $i }})"
-                                                                wire:loading.attr="disabled"
-                                                                wire:target="reducirConstruccion"
-                                                                tabindex="57">-
+                                                            wire:click="reducirConstruccion({{ $i }})"
+                                                            wire:loading.attr="disabled"
+                                                            wire:target="reducirConstruccion" tabindex="57">-
                                                         </button>
                                                     </td>
                                                     <td>
@@ -1047,7 +1042,7 @@
                                                             <span class="error-message"
                                                                 style="color:red">{{ $message }}</span>
                                                         @enderror
-                                                    </td>                                                    
+                                                    </td>
                                                 </tr>
                                             @endfor
                                         </tbody>
@@ -1065,8 +1060,7 @@
                                             <tr>
                                                 <th>
                                                     <button type="button" class="btn btn-success btn-icon"
-                                                        wire:click="aumentarObras"
-                                                        wire:loading.attr="disabled"
+                                                        wire:click="aumentarObras" wire:loading.attr="disabled"
                                                         tabindex="58">+
                                                     </button>
                                                 </th>
@@ -1103,19 +1097,18 @@
                                                 <th><label class="form-label d-inline-flex">
                                                         <div class="divcuadro">69</div> UCA
                                                     </label></th>
-                                                
+
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @for ($i = 0; $i < $cont3; $i++)
                                                 <tr>
-                                                    
+
                                                     <td>
                                                         <button type="button" class="btn btn-danger btn-icon"
-                                                                wire:click="reducirObras({{ $i }})"
-                                                                wire:loading.attr="disabled"
-                                                                wire:target="reducirObras"
-                                                                tabindex="109">-
+                                                            wire:click="reducirObras({{ $i }})"
+                                                            wire:loading.attr="disabled" wire:target="reducirObras"
+                                                            tabindex="109">-
                                                         </button>
                                                     </td>
                                                     <td>
@@ -1205,8 +1198,8 @@
                                                             <span class="error-message"
                                                                 style="color:red">{{ $message }}</span>
                                                         @enderror
-                                                    </td>                                                    
-                                                    
+                                                    </td>
+
                                                     <td>
                                                         <input type="text" class="form-control"
                                                             name="inst_prod_total[]" placeholder="PRODUCTO TOTAL"
@@ -1269,9 +1262,8 @@
                                                     @if ($edifica == '99')
                                                         <button type="button" class="btn btn-success btn-icon"
                                                             wire:click="aumentarEdificios"
-                                                            wire:loading.attr="disabled"
-                                                            tabindex="59">+
-                                                        </button>                                              
+                                                            wire:loading.attr="disabled" tabindex="59">+
+                                                        </button>
                                                     @endif
                                                 </th>
                                                 <th><label class="form-label d-inline-flex">
@@ -1289,18 +1281,17 @@
                                                 <th><label class="form-label d-inline-flex">
                                                         <div class="divcuadro">132</div> AOIC (M2)
                                                     </label></th>
-                                                
+
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @for ($i = 0; $i < $cont4; $i++)
                                                 <tr>
-                                                    
+
                                                     <td>
                                                         <button type="button" class="btn btn-danger btn-icon"
-                                                            wire:click="reducirEdificios({{$i}})"
-                                                            wire:loading.attr="disabled"
-                                                            tabindex="60">-
+                                                            wire:click="reducirEdificios({{ $i }})"
+                                                            wire:loading.attr="disabled" tabindex="60">-
                                                         </button>
                                                     </td>
                                                     <td>
@@ -1431,10 +1422,9 @@
                                         <thead>
                                             <tr>
                                                 <th>
-                                                    @if ($edifica != '99')                                                                                                            
+                                                    @if ($edifica != '99')
                                                         <button type="button" class="btn btn-success btn-icon"
-                                                            wire:click="aumentarRecap"
-                                                            wire:loading.attr="disabled"
+                                                            wire:click="aumentarRecap" wire:loading.attr="disabled"
                                                             tabindex="65">+
                                                         </button>
                                                     @endif
@@ -1459,13 +1449,13 @@
                                                 <th><label class="form-label d-inline-flex">
                                                         <div class="divcuadro">132</div> AOIC
                                                     </label></th>
-                                                
+
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @for ($i = 0; $i < $cont5; $i++)
                                                 <tr>
-                                                    
+
                                                     <td>
                                                         <button type="button" class="btn btn-danger btn-icon"
                                                             wire:click="reducirRecap({{ $i }})"
@@ -1473,13 +1463,15 @@
                                                         </button>
                                                     </td>
                                                     <td>
-                                                        {{$i+1}}
+                                                        {{ $i + 1 }}
                                                     </td>
                                                     <td>
                                                         <input type="text" class="form-control"
                                                             name="rbcedifica[]"
                                                             wire:model="rbcedifica.{{ $i }}"
-                                                            id="rbcedifica.{{ $i }}" maxlength="2">
+                                                            id="rbcedifica.{{ $i }}" maxlength="2"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+
                                                         @error('rbcedifica.' . $i)
                                                             <span class="error-message"
                                                                 style="color:red">{{ $message }}</span>
@@ -1489,7 +1481,9 @@
                                                         <input type="text" class="form-control"
                                                             name="rbcentrada[]"
                                                             wire:model="rbcentrada.{{ $i }}"
-                                                            id="rbcentrada.{{ $i }}" maxlength="2">
+                                                            id="rbcentrada.{{ $i }}" maxlength="2"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+
                                                         @error('rbcentrada.' . $i)
                                                             <span class="error-message"
                                                                 style="color:red">{{ $message }}</span>
@@ -1499,7 +1493,9 @@
                                                         <input type="text" class="form-control"
                                                             name="rbcnume_piso[]"
                                                             wire:model="rbcnume_piso.{{ $i }}"
-                                                            id="rbcnume_piso.{{ $i }}" maxlength="2">
+                                                            id="rbcnume_piso.{{ $i }}" maxlength="2"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+
                                                         @error('rbcnume_piso.' . $i)
                                                             <span class="error-message"
                                                                 style="color:red">{{ $message }}</span>
@@ -1509,7 +1505,9 @@
                                                         <input type="text" class="form-control"
                                                             name="rbcunidad[]"
                                                             wire:model="rbcunidad.{{ $i }}"
-                                                            id="rbcunidad.{{ $i }}" maxlength="3">
+                                                            id="rbcunidad.{{ $i }}" maxlength="3"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+
                                                         @error('rbcunidad.' . $i)
                                                             <span class="error-message"
                                                                 style="color:red">{{ $message }}</span>
@@ -1520,7 +1518,7 @@
                                                             name="rbctotalporcentaje[]"
                                                             wire:model="rbctotalporcentaje.{{ $i }}"
                                                             id="rbctotalporcentaje.{{ $i }}"
-                                                            oninput="this.value = this.value.replace(/[^0-9,.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
                                                             maxlength="7">
                                                         @error('rbctotalporcentaje.' . $i)
                                                             <span class="error-message"
@@ -1532,7 +1530,7 @@
                                                             name="rbctotalatc[]"
                                                             wire:model="rbctotalatc.{{ $i }}"
                                                             id="rbctotalatc.{{ $i }}"
-                                                            oninput="this.value = this.value.replace(/[^0-9,.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
                                                             maxlength="9">
                                                         @error('rbctotalatc.' . $i)
                                                             <span class="error-message"
@@ -1544,7 +1542,7 @@
                                                             name="rbctotalacc[]"
                                                             wire:model="rbctotalacc.{{ $i }}"
                                                             id="rbctotalacc.{{ $i }}"
-                                                            oninput="this.value = this.value.replace(/[^0-9,.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
                                                             maxlength="9">
                                                         @error('rbctotalacc.' . $i)
                                                             <span class="error-message"
@@ -1556,7 +1554,7 @@
                                                             name="rbctotalaoic[]"
                                                             wire:model="rbctotalaoic.{{ $i }}"
                                                             id="rbctotalaoic.{{ $i }}"
-                                                            oninput="this.value = this.value.replace(/[^0-9,.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
                                                             maxlength="9">
                                                         @error('rbctotalaoic.' . $i)
                                                             <span class="error-message"
@@ -1567,37 +1565,37 @@
                                             @endfor
                                         </tbody>
                                         <tfoot>
-                                            <tr>                                                    
+                                            <tr>
                                                 <td>
                                                     Total:
                                                 </td>
                                                 <td>
-                                                    {{$cont5}}
+                                                    {{ $cont5 }}
                                                 </td>
                                                 <td>
-                                                    {{$totalrecap['rbcedifica']}}
+                                                    {{ $totalrecap['rbcedifica'] }}
                                                 </td>
                                                 <td>
-                                                    {{$totalrecap['rbcentrada']}}
+                                                    {{ $totalrecap['rbcentrada'] }}
                                                 </td>
                                                 <td>
-                                                    
-                                                    {{$totalrecap['rbcnume_piso']}}
+
+                                                    {{ $totalrecap['rbcnume_piso'] }}
                                                 </td>
                                                 <td>
-                                                    {{$totalrecap['rbcunidad']}}                                                   
+                                                    {{ $totalrecap['rbcunidad'] }}
                                                 </td>
                                                 <td>
-                                                    {{$totalrecap['rbctotalporcentaje']}}
+                                                    {{ $totalrecap['rbctotalporcentaje'] }}
                                                 </td>
                                                 <td>
-                                                    {{$totalrecap['rbctotalatc']}}
+                                                    {{ $totalrecap['rbctotalatc'] }}
                                                 </td>
                                                 <td>
-                                                    {{$totalrecap['rbctotalacc']}}
+                                                    {{ $totalrecap['rbctotalacc'] }}
                                                 </td>
                                                 <td>
-                                                    {{$totalrecap['rbctotalaoic']}}
+                                                    {{ $totalrecap['rbctotalaoic'] }}
                                                 </td>
                                             </tr>
                                         </tfoot>
@@ -1944,650 +1942,755 @@
                                 <div class="col-12 w-100">
                                     <div class="row w-100">
                                         @error('numeficha')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('nume_ficha_lote')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('nume_ficha_lote2')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('cuc')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('dpto')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('prov')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('dist')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('sector')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('mzna')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('lote')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('edifica')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('entrada')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('piso')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('unidad')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('dc')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('codi_cont_rentas')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('codi_pred_rentas')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @for ($i = 0; $i < $cont; $i++)
                                             @error('tipoVia.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('tipopuerta.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('nume_muni.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('cond_nume.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
                                         @endfor
 
                                         @error('tipo_edificacion')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('tipoHabi')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('nomb_hab_urba')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('zona_dist')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('mzna_dist')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('lote_dist')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('sub_lote_dist')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('clasificacion')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('cont_en')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('codi_uso')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('zonificacion')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('area_declarada')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('area_verificada1')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('fren_campo')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('dere_campo')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('izqu_campo')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('fond_campo')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('fren_colinda_campo')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('dere_colinda_campo')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('izqu_colinda_campo')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('fond_colinda_campo')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
                                         @for ($i = 0; $i < $cont2; $i++)
                                             @error('bloque.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('num_piso.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('fecha.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('mep.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('ecs.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('ecc.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('estr_muro_col.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('estr_techo.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('acab_piso.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('acab_puerta_ven.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('acab_revest.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('acab_bano.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('inst_elect_sanita.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('area_verificada.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('uca.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
                                         @endfor
                                         @for ($i = 0; $i < $cont3; $i++)
                                             @error('codiinstalacion.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('inst_fecha.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('inst_mep.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('inst_ecs.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('inst_ecc.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('inst_prod_total.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('inst_uni_med.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('inst_uca.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
                                         @endfor
                                         @for ($i = 0; $i < $cont4; $i++)
                                             @error('edificiobbc.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('porcentaje.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('atc.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('acc.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('aoic.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
                                         @endfor
                                         @error('en_colindante')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('en_jardin_aislamiento')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('en_area_publica')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('en_area_intangible')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
                                         @for ($i = 0; $i < $cont5; $i++)
                                             @error('rbcedifica.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('rbcentrada.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('rbcnume_piso.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('rbcunidad.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('rbctotalporcentaje.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('rbctotalatc.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('rbctotalacc.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
 
                                             @error('rbctotalaoic.' . $i)
-                                            <div class="col-3">
-                                                <span class="error-message" style="color:red">{{ $message }}</span>
-                                            </div>
+                                                <div class="col-3">
+                                                    <span class="error-message"
+                                                        style="color:red">{{ $message }}</span>
+                                                </div>
                                             @enderror
                                         @endfor
                                         @error('tipo_partida')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('nume_partida')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('fojas')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('asiento')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('fecha_inscripcion')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('codi_decla_fabrica')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('asie_fabrica')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('fecha_fabrica')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('cond_declarante')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('esta_llenado')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('mantenimiento')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('observacion')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('numdocumentodeclarante')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('nombres_declarante')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('apellido_paterno_declarante')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('apellido_materno_declarante')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('fecha_declarante')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('supervisor')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('fecha_supervision')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('tecnico')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('fecha_levantamiento')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('verificador')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('nume_registro')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
                                         @enderror
 
                                         @error('fecha_verificacion')
-                                        <div class="col-3">
-                                            <span class="error-message" style="color:red">{{ $message }}</span>
-                                        </div>
-                                        @enderror                                        
+                                            <div class="col-3">
+                                                <span class="error-message"
+                                                    style="color:red">{{ $message }}</span>
+                                            </div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
 
-                            <button type="button" class="btn btn-primary"
-                                wire:click.prevent="register"
+                            <button type="button" class="btn btn-primary" wire:click.prevent="register"
                                 wire:loading.attr="disabled">Guardar
                             </button>
                         </div>
