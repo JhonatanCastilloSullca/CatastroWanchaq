@@ -388,6 +388,7 @@
                                     <select class="form-select" data-width="100%" data-live-search="true"
                                         name="tipo_interior" id="tipo_interior" wire:model="tipo_interior"
                                         tabindex="24">
+                                        <option value="">SELECCIONE</option>
                                         @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'TIN')->orderby('codigo', 'asc')->get() as $tablacodigo)
                                             <option value="{{ $tablacodigo->codigo }}">{{ $tablacodigo->codigo }}
                                                 {{ $tablacodigo->desc_codigo }}</option>
