@@ -1338,7 +1338,7 @@ class FichaIndividualCreate extends Component
                         'inst_ecs.' . $i                    => 'nullable',
                         'inst_ecc.' . $i                    => 'nullable',
                         'inst_prod_total.' . $i             => 'nullable|numeric|regex:/^[\d]{0,7}(\.[\d]{1,2})?$/',
-                        'inst_uni_med.' . $i                => 'nullable|max:2',
+                        'inst_uni_med.' . $i                => 'nullable|max:9',
                         'inst_uca.' . $i                    => 'nullable',
                     ]);
                 }

@@ -250,7 +250,7 @@ class FichaBienComunEdit extends Component
         $this->zona_dist=$fichaanterior->lote->zona_dist;
         $this->mzna_dist=$fichaanterior->lote->mzna_dist;
         $this->lote_dist=$fichaanterior->lote->lote_dist;
-        $this->sub_lote_dist=$fichaanterior->sub_lote_dist;
+        $this->sub_lote_dist=$fichaanterior->lote->sub_lote_dist;
 
         $this->cont = count($fichaanterior->puertas);
         if($this->cont==0){
