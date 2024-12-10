@@ -490,14 +490,32 @@ class FichaBienComunEdit extends Component
         $this->notarias=Notarias::all();
         $this->vias=Via::all();
 
-        $this->totalrecap['rbcedifica'] = array_sum($this->rbcedifica);
-        $this->totalrecap['rbcentrada'] = array_sum($this->rbcentrada);
-        $this->totalrecap['rbcnume_piso'] = array_sum($this->rbcnume_piso);
-        $this->totalrecap['rbcunidad'] = array_sum($this->rbcunidad);
-        $this->totalrecap['rbctotalporcentaje'] = array_sum($this->rbctotalporcentaje);
-        $this->totalrecap['rbctotalatc'] = array_sum($this->rbctotalatc);
-        $this->totalrecap['rbctotalacc'] = array_sum($this->rbctotalacc);
-        $this->totalrecap['rbctotalaoic'] = array_sum($this->rbctotalaoic);
+        // $this->totalrecap['rbcedifica'] = array_sum($this->rbcedifica);
+        // $this->totalrecap['rbcentrada'] = array_sum($this->rbcentrada);
+        // $this->totalrecap['rbcnume_piso'] = array_sum($this->rbcnume_piso);
+        // $this->totalrecap['rbcunidad'] = array_sum($this->rbcunidad);
+        // $this->totalrecap['rbctotalporcentaje'] = array_sum($this->rbctotalporcentaje);
+        // $this->totalrecap['rbctotalatc'] = array_sum($this->rbctotalatc);
+        // $this->totalrecap['rbctotalacc'] = array_sum($this->rbctotalacc);
+        // $this->totalrecap['rbctotalaoic'] = array_sum($this->rbctotalaoic);
+
+
+        $this->totalrecap['rbcedifica'] = is_array($this->rbcedifica) ? array_sum($this->rbcedifica) : 0;
+
+        $this->totalrecap['rbcentrada'] = is_array($this->rbcentrada) ? array_sum($this->rbcentrada) : 0;
+
+        $this->totalrecap['rbcnume_piso'] = is_array($this->rbcnume_piso) ? array_sum($this->rbcnume_piso) : 0;
+
+        $this->totalrecap['rbcunidad'] = is_array($this->rbcunidad) ? array_sum($this->rbcunidad) : 0;
+
+        $this->totalrecap['rbctotalporcentaje'] = is_array($this->rbctotalporcentaje) ? array_sum($this->rbctotalporcentaje) : 0;
+
+        $this->totalrecap['rbctotalatc'] = is_array($this->rbctotalatc) ? array_sum($this->rbctotalatc) : 0;
+
+        $this->totalrecap['rbctotalacc'] = is_array($this->rbctotalacc) ? array_sum($this->rbctotalacc) : 0;
+
+        $this->totalrecap['rbctotalaoic'] = is_array($this->rbctotalaoic) ? array_sum($this->rbctotalaoic) : 0;
+
     }
 
     public function updatedsector($id_sector)
