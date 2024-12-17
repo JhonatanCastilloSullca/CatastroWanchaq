@@ -632,7 +632,7 @@ class FichaCotitularidadEdit extends Component
                         $domicilio->save();
                     }else{
                         $persona= new Persona();
-                        if($this->numedoc1[$cont]==""){
+                        if(!isset($this->numedoc1[$cont])){
                             $cantidadpersona=Persona::where('tipo_persona',1)->count()+1;
                             $persona->id_persona=str_pad($cantidadpersona,8,'0',STR_PAD_LEFT).'11'.$this->tipo_doc1[$cont];
                             $persona->nume_doc="";
