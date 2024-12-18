@@ -516,7 +516,13 @@ class FichaCotitularidadEdit extends Component
             $personas=$this->tipoTitular;
             while($cont<count($personas)){
                 if($this->tipoTitular[$cont]==1){
-                    $buscarpersona=Persona::where('tipo_persona',1)->where('tipo_funcion',1)->where('nume_doc',$this->numedoc1[$cont])->first();
+                        $buscarpersona = Persona::where('tipo_persona', 1)
+                        ->where('tipo_funcion', 1)
+                        ->where('nume_doc', $this->numedoc1[$cont])
+                        ->whereRaw('LOWER(nombres) = ?', [strtolower($this->nombres1[$cont])])
+                        ->whereRaw('LOWER(ape_paterno) = ?', [strtolower($this->ape_paterno1[$cont])])
+                        ->whereRaw('LOWER(ape_materno) = ?', [strtolower($this->ape_materno1[$cont])])
+                        ->first();
                     if($buscarpersona!=""){
                         $persona=$buscarpersona;
                         $persona->tipo_doc=$this->tipo_doc1[$cont];
