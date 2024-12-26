@@ -65,12 +65,13 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th rowspan="2">CUC Lote</th>
+                                <th rowspan="2">Ref. Castastral</th>
                                 <th rowspan="2">CUC Unidad Catastral</th>
                                 <th rowspan="2">Titular(es) Catastral(es)</th>
                                 <th rowspan="2">% Propiedad</th>
                                 <th rowspan="2">DNI / RUC</th>
                                 <th colspan="8" class="text-center">UBICACIÓN DEL PREDIO CATASTRAL</th>
+                                <th rowspan="2">Área de Titulo (m2)</th>
                                 <th rowspan="2">Área de terreno verificada (m2)</th>
                                 <th rowspan="2">Área de construida verificada total (m2)</th>
                                 <th rowspan="2">Uso</th>
@@ -89,7 +90,7 @@
                         <tbody>
                             @foreach($titulares as $titular)
                                 <tr>
-                                    <td>{{$titular->lote->cuc}}</td>
+                                    <td>{{$titular->id_uni_cat}}</td>
                                     <td>{{$titular->cuc}}</td>
                                     <td>
                                         @foreach($titular->titularesPersonalizados as $titular1)
@@ -114,6 +115,7 @@
                                     <td>{{$titular->lote->manzana->codi_mzna}}</td>
                                     <td>{{$titular->lote->codi_lote}}</td>
                                     <td>{{$titular->lote?->hab_urbana?->nomb_hab_urba}}</td>
+                                    <td>{{$titular->totalareaporlotetitulo}}</td>
                                     <td>{{$titular->totalareaporlote}}</td>
                                     <td>{{$titular->totalareaporpiso}}</td>
                                     <td>{{$titular->usoUniCat()->desc_uso}}</td>

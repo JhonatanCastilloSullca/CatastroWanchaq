@@ -1187,6 +1187,27 @@ public function fichaCotitularidad(Ficha $ficha)
             ->groupBy('tf_uni_cat.id_lote')
             ->toSql();
 
+        $areaPorLoteTitulo = UniCat::select('tf_uni_cat.id_lote')
+        ->join('tf_fichas as tf', 'tf_uni_cat.id_uni_cat', '=', 'tf.id_uni_cat')
+        ->leftJoin('tf_fichas_bienes_comunes as tb', 'tf.id_ficha', '=', 'tb.id_ficha')
+        ->leftJoin('tf_fichas_individuales as ti', 'tf.id_ficha', '=', 'ti.id_ficha')
+        ->leftJoin('tf_construcciones as tc', 'tf.id_ficha', '=', 'tc.id_ficha')
+        ->selectRaw('
+            SUM(
+                CASE
+                    WHEN tf.tipo_ficha = \'04\' THEN COALESCE(tb.area_titulo, 0)
+                    WHEN tf.tipo_ficha = \'01\' THEN 
+                        CASE 
+                            WHEN COALESCE(tc.area_declarada, 0) > 0 THEN tc.area_declarada
+                            ELSE COALESCE(ti.area_titulo, 0)
+                        END
+                    ELSE 0
+                END
+            ) as totalAreaPorLoteTitulo
+        ')
+        ->groupBy('tf_uni_cat.id_lote')
+        ->toSql();
+
         $areaPorPiso = UniCat::select('tf_uni_cat.id_lote', 'tf_uni_cat.id_edificacion', 'tf_uni_cat.codi_entrada', 'tf_uni_cat.codi_piso')
             ->join('tf_fichas as tf', 'tf_uni_cat.id_uni_cat', '=', 'tf.id_uni_cat')
             ->join('tf_edificaciones as te', 'tf_uni_cat.id_edificacion', '=', 'te.id_edificacion')
@@ -1223,13 +1244,14 @@ public function fichaCotitularidad(Ficha $ficha)
                 $query->where('id_sector', $sector2);
             })
             ->join(DB::raw('(' . $areaPorLote . ') as area_por_lote'), 'tf_uni_cat.id_lote', '=', 'area_por_lote.id_lote')
+            ->join(DB::raw('(' . $areaPorLoteTitulo . ') as area_por_lote_titulo'), 'tf_uni_cat.id_lote', '=', 'area_por_lote_titulo.id_lote')
             ->join(DB::raw('(' . $areaPorPiso . ') as area_por_piso'), function ($join) {
                 $join->on('tf_uni_cat.id_lote', '=', 'area_por_piso.id_lote')
                     ->on('tf_uni_cat.codi_entrada', '=', 'area_por_piso.codi_entrada')
                     ->on('tf_uni_cat.codi_piso', '=', 'area_por_piso.codi_piso')
                     ->on('tf_uni_cat.id_edificacion', '=', 'area_por_piso.id_edificacion');
             })
-            ->select('tf_uni_cat.*', 'area_por_lote.totalareaporlote', 'area_por_piso.totalareaporpiso')
+            ->select('tf_uni_cat.*', 'area_por_lote.totalareaporlote', 'area_por_piso.totalareaporpiso','area_por_lote_titulo.totalareaporlotetitulo')
             ->distinct()
             ->orderBy('tf_uni_cat.cuc', 'asc')
             ->get();
@@ -1296,6 +1318,27 @@ public function fichaCotitularidad(Ficha $ficha)
             ->groupBy('tf_uni_cat.id_lote', 'tf_uni_cat.id_edificacion', 'tf_uni_cat.codi_entrada', 'tf_uni_cat.codi_piso')
             ->toSql();
 
+        $areaPorLoteTitulo = UniCat::select('tf_uni_cat.id_lote')
+        ->join('tf_fichas as tf', 'tf_uni_cat.id_uni_cat', '=', 'tf.id_uni_cat')
+        ->leftJoin('tf_fichas_bienes_comunes as tb', 'tf.id_ficha', '=', 'tb.id_ficha')
+        ->leftJoin('tf_fichas_individuales as ti', 'tf.id_ficha', '=', 'ti.id_ficha')
+        ->leftJoin('tf_construcciones as tc', 'tf.id_ficha', '=', 'tc.id_ficha')
+        ->selectRaw('
+            SUM(
+                CASE
+                    WHEN tf.tipo_ficha = \'04\' THEN COALESCE(tb.area_titulo, 0)
+                    WHEN tf.tipo_ficha = \'01\' THEN 
+                        CASE 
+                            WHEN COALESCE(tc.area_declarada, 0) > 0 THEN tc.area_declarada
+                            ELSE COALESCE(ti.area_titulo, 0)
+                        END
+                    ELSE 0
+                END
+            ) as totalAreaPorLoteTitulo
+        ')
+        ->groupBy('tf_uni_cat.id_lote')
+        ->toSql();
+
         $titulares = UniCat::with([
             'edificacion',
             'lote',
@@ -1309,6 +1352,7 @@ public function fichaCotitularidad(Ficha $ficha)
             ->whereHas('lote.manzana.sectore', function ($query) use ($sector2) {
                 $query->where('id_sector', $sector2);
             })
+            ->join(DB::raw('(' . $areaPorLoteTitulo . ') as area_por_lote_titulo'), 'tf_uni_cat.id_lote', '=', 'area_por_lote_titulo.id_lote')
             ->join(DB::raw('(' . $areaPorLote . ') as area_por_lote'), 'tf_uni_cat.id_lote', '=', 'area_por_lote.id_lote')
             ->join(DB::raw('(' . $areaPorPiso . ') as area_por_piso'), function ($join) {
                 $join->on('tf_uni_cat.id_lote', '=', 'area_por_piso.id_lote')
@@ -1316,7 +1360,7 @@ public function fichaCotitularidad(Ficha $ficha)
                     ->on('tf_uni_cat.codi_piso', '=', 'area_por_piso.codi_piso')
                     ->on('tf_uni_cat.id_edificacion', '=', 'area_por_piso.id_edificacion');
             })
-            ->select('tf_uni_cat.*', 'area_por_lote.totalareaporlote', 'area_por_piso.totalareaporpiso')
+            ->select('tf_uni_cat.*', 'area_por_lote.totalareaporlote', 'area_por_piso.totalareaporpiso','area_por_lote_titulo.totalareaporlotetitulo')
             ->distinct()
             ->orderBy('tf_uni_cat.cuc', 'asc')
             ->get();
