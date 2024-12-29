@@ -1663,7 +1663,7 @@
                                     <select class="form-select"  data-width="100%" data-live-search="true" name="mantenimiento" id="mantenimiento" wire:model="mantenimiento" tabindex="140">
                                         <option value="">SELECCIONE</option>
 
-                                        @foreach(\App\Models\TablaCodigo::where('id_tabla','=','MFI')->orderby('codigo','asc')->get() as $tablacodigo)
+                                        @foreach(\App\Models\TablaCodigo::where('id_tabla','=','MFC')->orderby('codigo','asc')->get() as $tablacodigo)
                                             <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
                                         @endforeach
 
