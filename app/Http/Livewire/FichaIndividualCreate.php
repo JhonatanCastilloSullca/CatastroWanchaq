@@ -2138,27 +2138,6 @@ class FichaIndividualCreate extends Component
                 $fichaindividual->imagen_plano = 'imagen_plano.png';
             }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             // if ($this->imagen_plano) {
             //     $nombreImagen2 = $ficha->id_ficha . '.' . $this->imagen_plano->getClientOriginalExtension();
             //     $rutaImagen2 = $this->imagen_plano->storeAs('img/imagenesplanos', $nombreImagen2);

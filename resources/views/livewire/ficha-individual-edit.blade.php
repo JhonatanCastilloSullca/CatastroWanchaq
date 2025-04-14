@@ -605,7 +605,7 @@
                                     </label>
                                     <input type="text" class="form-control" placeholder="" name="nombres1"
                                         id="nombres1" wire:model="nombres1"
-                                        onkeydown="return /[a-ñ]/i.test(event.key)" tabindex="36">
+                                        onkeydown="return /[a-ñ. ;]/i.test(event.key)" tabindex="36">
                                     @error('nombres1')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
@@ -618,7 +618,7 @@
                                     </label>
                                     <input type="text" class="form-control" placeholder="" name="ape_paterno1"
                                         id="ape_paterno1" wire:model="ape_paterno1"
-                                        onkeydown="return /[a-ñ]/i.test(event.key)" tabindex="37">
+                                        onkeydown="return /[a-ñ. ;]/i.test(event.key)" tabindex="37">
                                     @error('ape_paterno1')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
@@ -631,7 +631,7 @@
                                     </label>
                                     <input type="text" class="form-control" placeholder="" name="ape_materno1"
                                         id="ape_materno1" wire:model="ape_materno1"
-                                        onkeydown="return /[a-ñ]/i.test(event.key)" tabindex="38">
+                                        onkeydown="return /[a-ñ. ;]/i.test(event.key)" tabindex="38">
                                     @error('ape_materno1')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
@@ -686,7 +686,7 @@
                                         </label>
                                         <input type="text" class="form-control" placeholder="" name="nombres2"
                                             id="nombres2" wire:model="nombres2"
-                                            onkeydown="return /[a-ñ]/i.test(event.key)" tabindex="41">
+                                            onkeydown="return /[a-ñ. ;]/i.test(event.key)" tabindex="41">
                                         @error('nombres2')
                                             <span class="error-message" style="color:red">{{ $message }}</span>
                                         @enderror
@@ -699,7 +699,7 @@
                                         </label>
                                         <input type="text" class="form-control" placeholder=""
                                             name="ape_paterno2" id="ape_paterno2" wire:model="ape_paterno2"
-                                            onkeydown="return /[a-ñ]/i.test(event.key)" tabindex="42">
+                                            onkeydown="return /[a-ñ. ;]/i.test(event.key)" tabindex="42">
                                         @error('ape_paterno2')
                                             <span class="error-message" style="color:red">{{ $message }}</span>
                                         @enderror
@@ -712,7 +712,7 @@
                                         </label>
                                         <input type="text" class="form-control" placeholder=""
                                             name="ape_materno2" id="ape_materno2" wire:model="ape_materno2"
-                                            onkeydown="return /[a-ñ]/i.test(event.key)" tabindex="43">
+                                            onkeydown="return /[a-ñ. ;]/i.test(event.key)" tabindex="43">
                                         @error('ape_materno2')
                                             <span class="error-message" style="color:red">{{ $message }}</span>
                                         @enderror

@@ -37,6 +37,7 @@ class FichaEconomicaEdit extends Component
     public $provincias;
     public $distritos;
     public $numeficha;
+    public $codigo_secuencial;
     public $nume_ficha_lote;
     public $nume_ficha_lote2;
     public $codi_hoja_catastral;
@@ -153,6 +154,9 @@ class FichaEconomicaEdit extends Component
         }
         if($fichaanterior?->fichaeconomica!=""){
             $this->nomb_comercial=$fichaanterior?->fichaeconomica?->nomb_comercial;
+        }
+        if($fichaanterior?->fichaeconomica!=""){
+            $this->codigo_secuencial=$fichaanterior?->fichaeconomica?->codigo_secuencial;
         }
         if($fichaanterior?->conductor!=""){
             if($fichaanterior?->conductor?->persona?->tipo_persona==1){
@@ -1046,6 +1050,7 @@ class FichaEconomicaEdit extends Component
             $fichaeconomica=new FichaEconomica();
             $fichaeconomica->id_ficha=$ficha->id_ficha;
             $fichaeconomica->nomb_comercial=strtoupper($this->nomb_comercial);
+            $fichaeconomica->codigo_secuencial=strtoupper($this->codigo_secuencial);
             
             if($this->pred_area_autor!=""){
                 $fichaeconomica->pred_area_autor=$this->pred_area_autor;

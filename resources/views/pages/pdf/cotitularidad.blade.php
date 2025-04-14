@@ -578,7 +578,10 @@
             </div>
           </div>
           <div style="width: 70px;height: 16px;float:left;" class="texto2 fz8 lh14">
-            {{date("d/m/Y", strtotime($titular1?->fecha_adquisicion))}}
+            @if ($titular1?->fecha_adquisicion != '')                    
+                {{date("d/m/Y", strtotime($titular1?->fecha_adquisicion))}}
+            @endif
+            
           </div>
           {{-- <div style="width: 90px;height: 16px;float:left;" class="fondoclaro">
             <div class="numeros">

@@ -107,11 +107,12 @@
                     <div class="col-md-1">
                         <div class="mb-3">
                             <label class="form-label labelpeque d-inline-flex" >DC</label>
-                            <input type="text" class="form-control" readonly placeholder="" name="dc" value="{{$fichaanterior->dc}} ">
+                            <input type="text" class="form-control" readonly placeholder="" name="dc" value="{{$fichaanterior->unicat->dc}} ">
                         </div>
                     </div>
                 </div><!-- Col -->
             </div><!-- Row -->
+            
 
             
             @for ($i = 0; $i < $total; $i++)

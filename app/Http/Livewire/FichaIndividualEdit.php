@@ -299,7 +299,7 @@ class FichaIndividualEdit extends Component
         $this->edifica = $fichaanterior?->unicat?->edificacion?->codi_edificacion;
         $this->entrada = $fichaanterior?->unicat?->codi_entrada;
         $this->piso = $fichaanterior?->unicat?->codi_piso;
-        $this->unidad = $fichaanterior?->unicat?->codi_unidad;
+        $this->unidad = $fichaanterior?->unicat?->codi_unidad;        
         $this->dc = $fichaanterior?->dc;
         $this->codi_cont_rentas = $fichaanterior?->unicat?->codi_cont_rentas;
         $this->codi_pred_rentas = $fichaanterior?->unicat?->codi_pred_rentas;
@@ -1724,6 +1724,7 @@ class FichaIndividualEdit extends Component
             $ficha->nume_ficha = str_pad($this->nume_ficha, 7, '0', STR_PAD_LEFT);
             $ficha->id_lote = $lote->id_lote;
             $ficha->dc = $this->dc;
+            dd($this->dc, $ficha->dc);
             $ficha->nume_ficha_lote = $this->nume_ficha_lote . '-' . $this->nume_ficha_lote2;
             if ($declarante == "") {
             } else {
@@ -2222,15 +2223,15 @@ class FichaIndividualEdit extends Component
                 $fichaindividual->imagen_plano = 'imagen_plano.png';
             }
 
-            if ($this->nuevaImagenPlano) {
-                $nombreImagen = $ficha->id_ficha . '.' . $this->nuevaImagenPlano->getClientOriginalExtension();
-                $rutaImagen = $this->nuevaImagenPlano->storeAs('img/imagenesplanos', $nombreImagen);
-                // Corregir la rotación de la imagen si es necesario
-                Image::make('storage/' . $rutaImagen)->orientate()->save('storage/' . $rutaImagen, null, 'jpg');
-                $fichaindividual->imagen_plano = $nombreImagen;
-            } else {
-                $fichaindividual->imagen_plano = $this->imagen_plano;
-            }
+            // if ($this->nuevaImagenPlano) {
+            //     $nombreImagen = $ficha->id_ficha . '.' . $this->nuevaImagenPlano->getClientOriginalExtension();
+            //     $rutaImagen = $this->nuevaImagenPlano->storeAs('img/imagenesplanos', $nombreImagen);
+            //     // Corregir la rotación de la imagen si es necesario
+            //     Image::make('storage/' . $rutaImagen)->orientate()->save('storage/' . $rutaImagen, null, 'jpg');
+            //     $fichaindividual->imagen_plano = $nombreImagen;
+            // } else {
+            //     $fichaindividual->imagen_plano = $this->imagen_plano;
+            // }
 
 
             $fichaindividual->save();
