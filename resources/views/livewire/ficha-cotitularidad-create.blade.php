@@ -683,7 +683,7 @@
 
                         <label class="form-label d-inline-flex"> NOMBRES</label>
                         <input type="text" class="form-control" name="nombres_declarante"
-                            wire:model="nombres_declarante" onkeydown="return /[a-ñ]/i.test(event.key)"
+                            wire:model="nombres_declarante" onkeydown="return /[a-ñ ]/i.test(event.key)"
                             placeholder="Nombre declarante">
                         @error('nombres_declarante')
                             <span class="error-message" style="color:red">{{ $message }}</span>
@@ -692,7 +692,7 @@
 
                         <label class="form-label d-inline-flex"> APELLIDO PATERNO</label>
                         <input type="text" class="form-control" name="apellido_paterno_declarante"
-                            wire:model="apellido_paterno_declarante" onkeydown="return /[a-ñ]/i.test(event.key)"
+                            wire:model="apellido_paterno_declarante" onkeydown="return /[a-ñ ]/i.test(event.key)"
                             placeholder="A. Paterno declarante">
                         @error('apellido_paterno_declarante')
                             <span class="error-message" style="color:red">{{ $message }}</span>
@@ -701,7 +701,7 @@
 
                         <label class="form-label d-inline-flex"> APELLIDO MATERNO</label>
                         <input type="text" class="form-control" name="apellido_materno_declarante"
-                            wire:model="apellido_materno_declarante" onkeydown="return /[a-ñ]/i.test(event.key)"
+                            wire:model="apellido_materno_declarante" onkeydown="return /[a-ñ ]/i.test(event.key)"
                             placeholder="A. Materno declarante">
                         @error('apellido_materno_declarante')
                             <span class="error-message" style="color:red">{{ $message }}</span>
