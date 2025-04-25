@@ -120,4 +120,75 @@ class ImagenesController extends Controller
         }
         return redirect()->back()->with('success', 'Imagen Agregado Correctamente!');
     }
+
+    public function destroy(Request $request)
+    {
+        $fichaindividual = FichaIndividual::where('id_ficha',$request->id_eliminar)->first();
+        $archivo = Archivo::where('id_ficha',$request->id_eliminar)->first();
+        if($request->tipo_eliminar == "fachada"){
+            $ruta = 'img/imageneslotes/' . $fichaindividual->imagen_lote;
+            if (Storage::exists($ruta)) {
+                Storage::delete($ruta);
+            }
+            $fichaindividual->imagen_lote = null;
+            $fichaindividual->save();
+        }
+        if($request->tipo_eliminar == "plano"){
+            $ruta = 'img/imagenesplanos/' . $fichaindividual->imagen_plano;
+            if (Storage::exists($ruta)) {
+                Storage::delete($ruta);
+            }
+            $fichaindividual->imagen_plano = null;
+            $fichaindividual->save();
+        }
+        if($request->tipo_eliminar == "imagen1"){
+            $ruta = 'img/archivos/' . $archivo->imagen1;
+            if (Storage::exists($ruta)) {
+                Storage::delete($ruta);
+            }
+            $archivo->imagen1 = null;
+            $archivo->save();
+        }
+        if($request->tipo_eliminar == "imagen2"){
+            $ruta = 'img/archivos/' . $archivo->imagen2;
+            if (Storage::exists($ruta)) {
+                Storage::delete($ruta);
+            }
+            $archivo->imagen2 = null;
+            $archivo->save();
+        }
+        if($request->tipo_eliminar == "imagen3"){
+            $ruta = 'img/archivos/' . $archivo->imagen3;
+            if (Storage::exists($ruta)) {
+                Storage::delete($ruta);
+            }
+            $archivo->imagen3 = null;
+            $archivo->save();
+        }
+        if($request->tipo_eliminar == "pdfplano"){
+            $ruta = 'img/archivos/' . $archivo->plano;
+            if (Storage::exists($ruta)) {
+                Storage::delete($ruta);
+            }
+            $archivo->plano = null;
+            $archivo->save();
+        }
+        if($request->tipo_eliminar == "pdfsunarp"){
+            $ruta = 'img/archivos/' . $archivo->sunarp;
+            if (Storage::exists($ruta)) {
+                Storage::delete($ruta);
+            }
+            $archivo->sunarp = null;
+            $archivo->save();
+        }
+        if($request->tipo_eliminar == "pdfrentas"){
+            $ruta = 'img/archivos/' . $archivo->rentas;
+            if (Storage::exists($ruta)) {
+                Storage::delete($ruta);
+            }
+            $archivo->rentas = null;
+            $archivo->save();
+        }
+        return redirect()->back()->with('success', 'Imagen Eliminado Correctamente!');
+    }
 }
