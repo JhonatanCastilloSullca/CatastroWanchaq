@@ -197,7 +197,7 @@
                             <a class="btn btn-success btn-icon me-2" href=""  target="_blank"id="imagenpdfplano">
                                 <i data-feather="image"></i>
                             </a>
-                            <button class="btn btn-danger btn-icon mb-5 eliminar-imagen" type="button" id="eliminarimagenpdfrentas" data-tipo="pdfplano" >
+                            <button class="btn btn-danger btn-icon mb-5 eliminar-imagen" type="button" id="eliminarimagenpdfplano" data-tipo="pdfplano" >
                                 <i data-feather="trash" ></i>
                             </button>
                         </div>
@@ -231,7 +231,7 @@
                             <a class="btn btn-success btn-icon me-2 mb-5 " href=""  target="_blank" id="imagenpdfrentas">
                                 <i data-feather="image" ></i>
                             </a>
-                            <button class="btn btn-danger btn-icon mb-5 eliminar-imagen" type="button" id="eliminarimagenpdfplano" data-tipo="pdfrentas">
+                            <button class="btn btn-danger btn-icon mb-5 eliminar-imagen" type="button" id="eliminarimagenpdfrentas" data-tipo="pdfrentas">
                                 <i data-feather="trash" ></i>
                             </button>
                         </div>
