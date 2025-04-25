@@ -1724,7 +1724,7 @@ class FichaIndividualEdit extends Component
             $ficha->nume_ficha = str_pad($this->nume_ficha, 7, '0', STR_PAD_LEFT);
             $ficha->id_lote = $lote->id_lote;
             $ficha->dc = $this->dc;
-            dd($this->dc, $ficha->dc);
+            // dd($this->dc, $ficha->dc);
             $ficha->nume_ficha_lote = $this->nume_ficha_lote . '-' . $this->nume_ficha_lote2;
             if ($declarante == "") {
             } else {
