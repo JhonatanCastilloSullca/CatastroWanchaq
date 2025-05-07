@@ -1216,7 +1216,7 @@
                                                     <td>
                                                         <input type="text" class="form-control"
                                                             name="inst_uni_med[]" placeholder="U. MEDIDA"
-                                                            id="inst-uni_med.{{ $i }}" maxlength="2"
+                                                            id="inst-uni_med.{{ $i }}" maxlength="5"
                                                             wire:model.defer="inst_uni_med.{{ $i }}"
                                                             tabindex="58">
                                                         @error('inst_uni_med.' . $i)
