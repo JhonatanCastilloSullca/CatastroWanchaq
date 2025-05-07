@@ -108,9 +108,14 @@
                         @enderror
                     </div>
                     <div class="col-md-1">
-                        <a class="btn btn-success btn-icon" href=""  target="_blank"id="imagenfachada">
-                            <i data-feather="image"></i>
-                        </a>
+                        <div class="btn-group">
+                            <a class="btn btn-success btn-icon me-2" href=""  target="_blank"id="imagenfachada">
+                                <i data-feather="image"></i>
+                            </a>
+                            <button class="btn btn-danger btn-icon mb-5 eliminar-imagen" type="button" id="imagenfachada" data-tipo="fachada" >
+                                <i data-feather="trash" ></i>
+                            </button>
+                        </div>
                     </div>
                     <div class="col-md-5">
                         <label for="plano" class="form-label">IMAGEN PLANO:</label>
@@ -120,9 +125,14 @@
                         @enderror
                     </div>
                     <div class="col-md-1">
-                        <a class="btn btn-success btn-icon" href=""  target="_blank"id="imagenplano">
-                            <i data-feather="image"></i>
-                        </a>
+                        <div class="btn-group">
+                            <a class="btn btn-success btn-icon me-2" href=""  target="_blank"id="imagenplano">
+                                <i data-feather="image"></i>
+                            </a>
+                            <button class="btn btn-danger btn-icon mb-5 eliminar-imagen" type="button" id="eliminarimagenplano" data-tipo="plano" >
+                                <i data-feather="trash" ></i>
+                            </button>
+                        </div>
                     </div>
                     <div class="col-md-5 mb-3">
                         <label for="imagen1" class="form-label">IMAGEN 1:</label>
@@ -132,9 +142,14 @@
                         @enderror
                     </div>
                     <div class="col-md-1 mb-3">
-                        <a class="btn btn-success btn-icon" href=""  target="_blank"id="imagenimagen1">
-                            <i data-feather="image"></i>
-                        </a>
+                        <div class="btn-group">
+                            <a class="btn btn-success btn-icon me-2" href=""  target="_blank"id="imagenimagen1">
+                                <i data-feather="image"></i>
+                            </a>
+                            <button class="btn btn-danger btn-icon mb-5 eliminar-imagen" type="button" id="eliminarimagenimagen1" data-tipo="imagen1" >
+                                <i data-feather="trash" ></i>
+                            </button>
+                        </div>
                     </div>
                     <div class="col-md-5 mb-3">
                         <label for="imagen2" class="form-label">IMAGEN 2:</label>
@@ -144,9 +159,14 @@
                         @enderror
                     </div>
                     <div class="col-md-1">
-                        <a class="btn btn-success btn-icon" href=""  target="_blank"id="imagenimagen2">
-                            <i data-feather="image"></i>
-                        </a>
+                        <div class="btn-group">
+                            <a class="btn btn-success btn-icon me-2" href=""  target="_blank"id="imagenimagen2">
+                                <i data-feather="image"></i>
+                            </a>
+                            <button class="btn btn-danger btn-icon mb-5 eliminar-imagen" type="button" id="eliminarimagenimagen2" data-tipo="imagen2" >
+                                <i data-feather="trash" ></i>
+                            </button>
+                        </div>
                     </div>
                     <div class="col-md-5 mb-3">
                         <label for="imagen3" class="form-label">IMAGEN 3:</label>
@@ -156,9 +176,14 @@
                         @enderror
                     </div>
                     <div class="col-md-1">
-                        <a class="btn btn-success btn-icon" href=""  target="_blank"id="imagenimagen3">
-                            <i data-feather="image"></i>
-                        </a>
+                        <div class="btn-group">
+                            <a class="btn btn-success btn-icon me-2" href=""  target="_blank"id="imagenimagen3">
+                                <i data-feather="image"></i>
+                            </a>
+                            <button class="btn btn-danger btn-icon mb-5 eliminar-imagen" type="button" id="eliminarimagenimagen3" data-tipo="imagen3" >
+                                <i data-feather="trash" ></i>
+                            </button>
+                        </div>
                     </div>
                     <div class="col-md-5">
                         <label for="pdfplano" class="form-label">PDF PLANO:</label>
@@ -168,9 +193,14 @@
                         @enderror
                     </div>
                     <div class="col-md-1">
-                        <a class="btn btn-success btn-icon" href=""  target="_blank"id="imagenpdfplano">
-                            <i data-feather="image"></i>
-                        </a>
+                        <div class="btn-group">
+                            <a class="btn btn-success btn-icon me-2" href=""  target="_blank"id="imagenpdfplano">
+                                <i data-feather="image"></i>
+                            </a>
+                            <button class="btn btn-danger btn-icon mb-5 eliminar-imagen" type="button" id="eliminarimagenpdfplano" data-tipo="pdfplano" >
+                                <i data-feather="trash" ></i>
+                            </button>
+                        </div>
                     </div>
                     <div class="col-md-5">
                         <label for="pdfsunarp" class="form-label">PDF SUNARP:</label>
@@ -180,9 +210,14 @@
                         @enderror
                     </div>
                     <div class="col-md-1">
-                        <a class="btn btn-success btn-icon" href=""  target="_blank"id="imagenpdfsunarp">
-                            <i data-feather="image"></i>
-                        </a>
+                        <div class="btn-group">
+                            <a class="btn btn-success btn-icon me-2" href=""  target="_blank"id="imagenpdfsunarp">
+                                <i data-feather="image"></i>
+                            </a>
+                            <button class="btn btn-danger btn-icon mb-5 eliminar-imagen" type="button" id="eliminarimagenpdfsunarp" data-tipo="pdfsunarp" >
+                                <i data-feather="trash" ></i>
+                            </button>
+                        </div>
                     </div>
                     <div class="col-md-5 mb-3">
                         <label for="pdfrentas" class="form-label">PDF RENTAS:</label>
@@ -192,9 +227,14 @@
                         @enderror
                     </div>
                     <div class="col-md-1">
-                        <a class="btn btn-success btn-icon mb-5 " href=""  target="_blank"id="imagenpdfrentas">
-                            <i data-feather="image" ></i>
-                        </a>
+                        <div class="btn-group">
+                            <a class="btn btn-success btn-icon me-2 mb-5 " href=""  target="_blank" id="imagenpdfrentas">
+                                <i data-feather="image" ></i>
+                            </a>
+                            <button class="btn btn-danger btn-icon mb-5 eliminar-imagen" type="button" id="eliminarimagenpdfrentas" data-tipo="pdfrentas">
+                                <i data-feather="trash" ></i>
+                            </button>
+                        </div>
                     </div>
                     <input type="hidden" name="id_ficha" id="id_ficha" class="id_ficha">
                 </div>
@@ -207,6 +247,13 @@
             
         </div>
     </div>
+    <form action="{{route('imagenes.destroy','test')}}" method="POST" autocomplete="off" id="formEliminar">
+        {{method_field('delete')}}
+        {{csrf_field()}}
+            <div class="modal-footer">
+            <input type="hidden" name="id_eliminar" id="id_eliminar">
+            <input type="hidden" name="tipo_eliminar" id="tipo_eliminar">
+    </form>
 </div>
 
 @endsection
@@ -219,6 +266,17 @@
 @push('custom-scripts')
 
 <script>
+
+$(document).ready(function() {
+
+    $('.eliminar-imagen').click(function () {
+        let tipo = $(this).data('tipo');
+        console.log(tipo)
+        $('#tipo_eliminar').val(tipo);
+        $('#formEliminar').submit();
+    });
+
+});
     $('#buscarCliente').select2();
 
     
@@ -240,9 +298,12 @@ editar.addEventListener('show.bs.modal', function (event) {
     var idModal = editar.querySelector('.id_ficha')
     idModal.value = id;
 
+    $('#id_eliminar').val(id);
+
     if(imagenfachada){
         $('#imagenfachada').attr('href', '{{$base}}/imageneslotes/'+imagenfachada);
     }else{
+        $('#imagenfachada').hide();
         $('#imagenfachada').hide();
     }
 
@@ -250,45 +311,53 @@ editar.addEventListener('show.bs.modal', function (event) {
         $('#imagenplano').attr('href', '{{$base}}/imagenesplanos/'+imagenplano);
     }else{
         $('#imagenplano').hide();
+        $('#eliminarimagenplano').hide();
     }
 
     if(imagen1){
         $('#imagenimagen1').attr('href', '{{$base}}/archivos/'+imagen1);
     }else{
         $('#imagenimagen1').hide();
+        $('#eliminarimagenimagen1').hide();
     }
 
     if(imagen2){
         $('#imagenimagen2').attr('href', '{{$base}}/archivos/'+imagen2);
     }else{
         $('#imagenimagen2').hide();
+        $('#eliminarimagenimagen2').hide();
     }
 
     if(imagen3){
         $('#imagenimagen3').attr('href', '{{$base}}/archivos/'+imagen3);
     }else{
         $('#imagenimagen3').hide();
+        $('#eliminarimagenimagen3').hide();
     }
     if(pdfrentas){
         $('#imagenpdfrentas').attr('href', '{{$base}}/archivos/'+pdfrentas);
     }else{
         $('#imagenpdfrentas').hide();
+        $('#eliminarimagenpdfrentas').hide();
     }
 
     if(pdfsunarp){
         $('#imagenpdfsunarp').attr('href', '{{$base}}/archivos/'+pdfsunarp);
     }else{
         $('#imagenpdfsunarp').hide();
+        $('#eliminarimagenpdfsunarp').hide();
     }
 
     if(pdfplano){
         $('#imagenpdfplano').attr('href', '{{$base}}/archivos/'+pdfplano);
     }else{
         $('#imagenpdfplano').hide();
+        $('#eliminarimagenpdfplano').hide();
     }
 
 });
-    
+
+
 </script>
 @if($manzana2==0)
     @if($sector2==0)
