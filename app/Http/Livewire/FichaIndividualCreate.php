@@ -327,22 +327,22 @@ class FichaIndividualCreate extends Component
     public function calcularDC()
     {
         $this->validate([
-            'dpto' => 'required|numeric',
-            'prov' => 'required|numeric',
-            'dist' => 'required|numeric',
-            'sector' => 'required|numeric',
-            'mzna' => 'required|numeric',
-            'lote' => 'required|numeric',
+            'dpto'    => 'required|numeric',
+            'prov'    => 'required|numeric',
+            'dist'    => 'required|numeric',
+            'sector'  => 'required|numeric',
+            'mzna'    => 'required|numeric',
+            'lote'    => 'required|numeric',
             'edifica' => 'required|numeric',
             'entrada' => 'required|numeric',
-            'piso' => 'required|numeric',
-            'unidad' => 'required|numeric',
+            'piso'    => 'required|numeric',
+            'unidad'  => 'required|numeric',
         ]);
 
         $this->dc = ($this->dpto + $this->prov + $this->dist + $this->sector + $this->mzna + $this->lote + $this->edifica + $this->entrada + $this->piso + $this->unidad) % 9;
         $codicatastral = '080108' . $this->sector . $this->mzna . $this->lote . $this->edifica . $this->entrada . $this->piso . $this->unidad;
-
-        $exists = Unicat::where('id_uni_cat', $codicatastral)->exists();
+        $exists = Ficha::where('id_uni_cat', $codicatastral)->exists();
+        
 
         if ($exists) {
             $this->mensajeunicat = "Código de Referencia Catastral ya existe";
