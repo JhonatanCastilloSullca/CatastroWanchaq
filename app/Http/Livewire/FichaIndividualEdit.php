@@ -663,7 +663,7 @@ class FichaIndividualEdit extends Component
         if ($this->fichaanterior->id_uni_cat == $codicatastral) {
             $this->mensajeunicat = "";
         } else {
-            $exists = Unicat::where('id_uni_cat', $codicatastral)->exists();
+            $exists = Ficha::where('id_uni_cat', $codicatastral)->exists();
             if ($exists) {
                 $this->mensajeunicat = "Código de Referencia Catastral ya existe";
             } else {
