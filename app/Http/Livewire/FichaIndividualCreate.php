@@ -501,7 +501,7 @@ class FichaIndividualCreate extends Component
                             session()->flash('success', 'No se encontro datos');
                         }
                     } else {
-                        $this->nombres1 = $persona['nombre'];
+                        $this->nombres1 = $persona['nombres'];
                         $this->ape_paterno1 = $persona['apellidoPaterno'];
                         $this->ape_materno1 = $persona['apellidoMaterno'];
                         $this->numedoc1 = $dni;
