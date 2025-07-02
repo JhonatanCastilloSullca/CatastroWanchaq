@@ -27,7 +27,7 @@
                                     <input type="text" class="form-control" placeholder="" id="nume_ficha_lote"
                                         name="nume_ficha_lote" wire:model="nume_ficha_lote"
                                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
-                                        maxlength="2">
+                                        maxlength="4">
                                     @error('nume_ficha_lote')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                         @push('scripts')
@@ -43,7 +43,7 @@
                                     <input type="text" class="form-control" placeholder="" name="nume_ficha_lote2"
                                         wire:model="nume_ficha_lote2"
                                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
-                                        maxlength="3">
+                                        maxlength="4">
                                     @error('nume_ficha_lote2')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror

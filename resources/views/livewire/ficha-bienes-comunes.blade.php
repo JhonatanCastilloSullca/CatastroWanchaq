@@ -27,7 +27,7 @@
                                         <div class="col-md-6">
                                             <label class="form-label d-inline-flex"> Nro Fichas</label>
                                             <input type="text" class="form-control" placeholder=""
-                                                name="nume_ficha_lote" wire:model="nume_ficha_lote" maxlength="2"
+                                                name="nume_ficha_lote" wire:model="nume_ficha_lote" maxlength="4"
                                                 tabindex="2">
                                             @error('nume_ficha_lote')
                                                 <span class="error-message" style="color:red">{{ $message }}</span>
@@ -38,7 +38,7 @@
                                             <input type="text" class="form-control" placeholder=""
                                                 name="nume_ficha_lote2" wire:model="nume_ficha_lote2"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
-                                                maxlength="3" tabindex="3">
+                                                maxlength="4" tabindex="3">
                                             @error('nume_ficha_lote2')
                                                 <span class="error-message" style="color:red">{{ $message }}</span>
                                             @enderror
