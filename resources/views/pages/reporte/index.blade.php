@@ -480,6 +480,7 @@
     $('#EditarCodRef').modal('show');
   });
 </script>
+@endif
 
 @push('custom-scripts')
 
