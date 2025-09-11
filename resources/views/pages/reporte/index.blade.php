@@ -443,6 +443,7 @@
     <script src="{{ asset('assets/plugins/select2/select2.min.js') }}"></script>
 @endpush
 
+@push('custom-scripts')
 <script>
     var editarEconomica = document.getElementById('EditarCodRef');
 
@@ -481,8 +482,6 @@
   });
 </script>
 @endif
-
-@push('custom-scripts')
 
 
     <script>
