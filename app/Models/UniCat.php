@@ -118,13 +118,14 @@ class UniCat extends Authenticatable implements AuditableContract
 
     public function usoUniCat()
     {
-        return $this->join('tf_fichas', 'tf_uni_cat.id_uni_cat', '=', 'tf_fichas.id_uni_cat')
-                    ->join('tf_fichas_individuales', 'tf_fichas.id_ficha', '=', 'tf_fichas_individuales.id_ficha')
-                    ->join('tf_usos', 'tf_fichas_individuales.codi_uso', '=', 'tf_usos.codi_uso')
-                    ->where('tf_fichas.tipo_ficha', '01')
-                    ->orderBy('tf_fichas.fecha_grabado', 'desc')
-                    ->select('tf_usos.*')
-                    ->first();
+        return \DB::table('tf_usos')
+        ->join('tf_fichas_individuales', 'tf_usos.codi_uso', '=', 'tf_fichas_individuales.codi_uso')
+        ->join('tf_fichas', 'tf_fichas_individuales.id_ficha', '=', 'tf_fichas.id_ficha')
+        ->where('tf_fichas.id_uni_cat', $this->id_uni_cat)
+        ->where('tf_fichas.tipo_ficha', '01')
+        ->orderBy('tf_fichas.fecha_grabado', 'desc')
+        ->select('tf_usos.*')
+        ->first();
     }
 
 }

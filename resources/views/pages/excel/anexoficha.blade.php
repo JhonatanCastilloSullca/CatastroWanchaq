@@ -104,7 +104,7 @@
                                     <td>{{ $titular->lote->manzana->codi_mzna }}</td>
                                     <td>{{ $titular->lote->codi_lote }}</td>
                                     <td>{{ $titular->lote?->hab_urbana?->nomb_hab_urba }}</td>
-                                    <td>{{$titular->totalareaporlotetitulo}}</td>
+                                    <td>{{ $titular->totalareaporlotetitulo}}</td>
                                     <td>{{ $titular->totalareaporlote }}</td>
                                     <td>{{ $titular->totalareaporpiso }}</td>
                                     <td>{{ $titular->usoUniCat()->desc_uso }}</td>

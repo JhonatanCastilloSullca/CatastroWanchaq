@@ -68,16 +68,22 @@ class ManzanaController extends Controller
         foreach($lotes as $lote)
         {
             $lote->id_lote = $manzana->id_mzna.''.$lote->codi_lote;
+            $lote->codi_lote = $lote->codi_lote;
+            $lote->id_mzna = $manzana->id_mzna;
             $lote->save();
             $edificaciones = Edificaciones::where('id_lote',$lote->id_lote)->get();
             foreach($edificaciones as $edificacion)
             {
                 $edificacion->id_edificacion = $lote->id_lote.''.$edificacion->codi_edificacion;
+                $edificacion->codi_edificacion = $edificacion->codi_edificacion;
+                $edificacion->id_lote = $lote->id_lote;
                 $edificacion->save();
                 $unicats = UniCat::where('id_lote',$lote->id_lote)->where('id_edificacion',$edificacion->id)->get();
                 foreach($unicats as $unicat)
                 {
                     $unicat->id_uni_cat = $edificacion->id_edificacion.''.$unicat->codi_entrada.''.$unicat->codi_piso.''.$unicat->codi_unidad;
+                    $unicat->id_edificacion = $edificacion->id_edificacion;
+                    $unicat->id_lote = $lote->id_lote;
                     $unicat->save();
                 }
             }
