@@ -314,7 +314,7 @@ class FichaBienesComunes extends Component
         $this->dc = ($this->dpto + $this->prov + $this->dist + $this->sector + $this->mzna + $this->lote + $this->edifica + $this->entrada + $this->piso + $this->unidad) % 9;
         $codicatastral = '080108' . $this->sector . $this->mzna . $this->lote . $this->edifica . $this->entrada . $this->piso . $this->unidad;
 
-        $exists = Unicat::where('id_uni_cat', $codicatastral)->exists();
+        $exists = Ficha::where('id_uni_cat', $codicatastral)->exists();
 
         if ($exists) {
             $this->mensajeunicat = "Código de Referencia Catastral ya existe";
@@ -751,7 +751,7 @@ class FichaBienesComunes extends Component
                     'inst_ecs.'.$i                    => 'nullable',
                     'inst_ecc.'.$i                    => 'nullable',
                     'inst_prod_total.'.$i             => 'nullable|numeric|regex:/^[\d]{0,7}(\.[\d]{1,2})?$/',
-                    'inst_uni_med.'.$i                => 'nullable|max:2',
+                    'inst_uni_med.'.$i                => 'nullable|max:5',
                     'inst_uca.'.$i                    => 'nullable',
                 ]);
             }

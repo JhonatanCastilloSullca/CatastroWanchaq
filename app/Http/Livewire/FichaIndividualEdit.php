@@ -663,7 +663,7 @@ class FichaIndividualEdit extends Component
         if ($this->fichaanterior->id_uni_cat == $codicatastral) {
             $this->mensajeunicat = "";
         } else {
-            $exists = Unicat::where('id_uni_cat', $codicatastral)->exists();
+            $exists = Ficha::where('id_uni_cat', $codicatastral)->exists();
             if ($exists) {
                 $this->mensajeunicat = "Código de Referencia Catastral ya existe";
             } else {
@@ -1280,7 +1280,7 @@ class FichaIndividualEdit extends Component
                     'nume_ficha'                    => ['required', 'max:7', Rule::unique('tf_fichas_individuales', 'nume_ficha')->ignore($id, 'id_ficha')],
                     'nume_ficha_lote'               => 'required|max:4',
                     'nume_ficha_lote2'              => 'required|max:5',
-                    'cuc'                           => 'nullable|max:12',
+                    'cuc'                           => 'required|max:12',
                     'sector'                        => 'required',
                     'mzna'                          => 'required',
                     'lote'                          => 'required|max:3',
@@ -1326,8 +1326,8 @@ class FichaIndividualEdit extends Component
                     'cont_en'                       => 'required',
                     'codi_uso'                      => 'required',
                     'zonificacion'                  => 'nullable|max:100',
-                    'area_titulo'                => 'nullable|numeric|regex:/^[\d]{0,7}(\.[\d]{1,2})?$/',
-                    'area_verificada1'              => 'nullable|numeric|regex:/^[\d]{0,7}(\.[\d]{1,2})?$/',
+                    'area_titulo'                   => 'nullable|numeric|regex:/^[\d]{0,9}(\.[\d]{1,2})?$/',
+                    'area_verificada1'              => 'nullable|numeric|regex:/^[\d]{0,9}(\.[\d]{1,2})?$/',
                     'fren_campo'                    => 'nullable|max:200',
                     'dere_campo'                    => 'nullable|max:200',
                     'izqu_campo'                    => 'nullable|max:200',
@@ -1517,7 +1517,7 @@ class FichaIndividualEdit extends Component
                     'tipo_dococumento.' . $i            => 'required',
                     'nume_documento.' . $i              => 'nullable|max:50',
                     'fecha_dococumento.' . $i           => 'nullable',
-                    'area_autorizadadocumento.' . $i    => 'nullable|numeric|regex:/^[\d]{0,7}(\.[\d]{1,2})?$/',
+                    'area_autorizadadocumento.' . $i    => 'nullable|numeric|regex:/^[\d]{0,9}(\.[\d]{1,2})?$/',
                 ]);
             }
 
@@ -1724,7 +1724,7 @@ class FichaIndividualEdit extends Component
             $ficha->nume_ficha = str_pad($this->nume_ficha, 7, '0', STR_PAD_LEFT);
             $ficha->id_lote = $lote->id_lote;
             $ficha->dc = $this->dc;
-            dd($this->dc, $ficha->dc);
+            // dd($this->dc, $ficha->dc);
             $ficha->nume_ficha_lote = $this->nume_ficha_lote . '-' . $this->nume_ficha_lote2;
             if ($declarante == "") {
             } else {

@@ -72,7 +72,7 @@
                                 <td>
                                     <button type="button" class="btn btn-success btn-icon " data-bs-toggle="modal" data-bs-target="#Agregar" data-id="{{$ficha->id_ficha}}"
                                         data-fachada="{{$ficha->fichaindividual->imagen_lote}}" data-plano="{{$ficha->fichaindividual->imagen_plano}}" data-imagen1="{{$ficha->archivo?->imagen1}}" data-imagen2="{{$ficha->archivo?->imagen2}}"
-                                        data-imagen3="{{$ficha->archivo?->imagen3}}" data-sunarpdf="{{$ficha->archivo?->rentas}}" data-rentaspdf="{{$ficha->archivo?->sunarp}}" data-planopdf="{{$ficha->archivo?->plano}}">
+                                        data-imagen3="{{$ficha->archivo?->imagen3}}" data-sunarpdf="{{$ficha->archivo?->sunarp}}" data-rentaspdf="{{$ficha->archivo?->rentas}}" data-planopdf="{{$ficha->archivo?->plano}}">
                                         <i data-feather="image"></i>
                                     </button>
                                 </td>
