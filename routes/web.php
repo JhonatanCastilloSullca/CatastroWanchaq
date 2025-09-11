@@ -178,6 +178,7 @@ Route::group(['middleware'=>['auth']], function () {
     Route::get('reporte/reportefirmas', 'App\Http\Controllers\ReporteController@reportefirmas')->name('reporte.reportefirmas');
     Route::get('reporte/condiciondeclarante', 'App\Http\Controllers\ReporteController@condiciondeclarante')->name('reporte.condiciondeclarante');
 
-
+    Route::post('editar-ficha-cod-refefencia', 'App\Http\Controllers\FichaController@updateCod')->name('ficha.updateCod');
+    Route::post('duplicar-cotitular', 'App\Http\Controllers\FichaController@duplicarCotitular')->name('ficha.duplicarCotitular');
 
 });
