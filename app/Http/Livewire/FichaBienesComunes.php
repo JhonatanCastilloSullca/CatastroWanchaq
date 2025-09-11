@@ -228,6 +228,8 @@ class FichaBienesComunes extends Component
 
     public function mount()
     {
+        $this->nume_ficha_lote = $this->nume_ficha_lote ?? '';
+        $this->nume_ficha_lote2 = $this->nume_ficha_lote2 ?? '';
         $this->usos = UsosBc::orderBy('codi_uso', 'asc')->get();
         
         $this->tecnicos = Persona::where('tipo_funcion', 3)->orderBy('nombres', 'asc')->get();
