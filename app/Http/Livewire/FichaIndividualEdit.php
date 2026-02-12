@@ -1770,6 +1770,7 @@ class FichaIndividualEdit extends Component
             $ficha->id_usuario = $usuario;
             $ficha->fecha_grabado = $fechaanterior;
             $ficha->activo = 1;
+            $ficha->cuc = str_pad($this->cuc, 12, '0', STR_PAD_LEFT);
             $ficha->save();
 
 

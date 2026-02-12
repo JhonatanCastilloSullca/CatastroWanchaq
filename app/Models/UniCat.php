@@ -72,18 +72,23 @@ class UniCat extends Authenticatable implements AuditableContract
 
     public function titularesPersonalizados()
     {
-        return $this->hasManyThrough(Titular::class, Ficha::class, 'id_uni_cat', 'id_ficha', 'id_uni_cat', 'id_ficha')
-                    ->join('tf_personas as tp', 'tp.id_persona', '=', 'tf_titulares.id_persona')
-                    ->select(
-                        'tf_titulares.*',
-                        DB::raw("CASE
-                                    WHEN tp.tipo_persona = '1' THEN CONCAT(tp.nombres, ' ', tp.ape_paterno, ' ', tp.ape_materno)
-                                    WHEN tp.tipo_persona = '2' THEN tp.razon_social
-                                    ELSE 'Otro'
-                                END AS nombres"),
-                        'tp.nume_doc',
-                        'tp.tipo_persona'
-                    );
+        return \DB::table('tf_titulares')
+        ->join('tf_fichas', 'tf_fichas.id_ficha', '=', 'tf_titulares.id_ficha')
+        ->join('tf_personas as tp', 'tp.id_persona', '=', 'tf_titulares.id_persona')
+        ->where('tf_fichas.id_uni_cat', $this->id_uni_cat)
+        ->whereIn('tf_fichas.tipo_ficha', ['01', '02'])
+        ->orderBy('tf_fichas.fecha_grabado', 'desc')
+        ->select(
+            'tf_titulares.*',
+            DB::raw("CASE
+                        WHEN tp.tipo_persona = '1' THEN CONCAT(tp.nombres, ' ', tp.ape_paterno, ' ', tp.ape_materno)
+                        WHEN tp.tipo_persona = '2' THEN tp.razon_social
+                        ELSE 'Otro'
+                     END AS nombres"),
+            'tp.nume_doc',
+            'tp.tipo_persona'
+        )
+        ->get();
     }
 
     public function puertaPersonalizada()
@@ -94,31 +99,9 @@ class UniCat extends Authenticatable implements AuditableContract
                     ->where('tf_puertas.tipo_puerta', 'P');
     }
 
-    public function areaIndividual()
-    {
-        return $this->hasOne(Ficha::class, 'id_uni_cat', 'id_uni_cat')
-                    ->leftJoin('tf_fichas_bienes_comunes as tb', 'tb.id_ficha', '=', 'tf_fichas.id_ficha')
-                    ->leftJoin('tf_fichas_individuales as ti', 'ti.id_ficha', '=', 'tf_fichas.id_ficha')
-                    ->leftJoin('tf_construcciones as tc', 'tc.id_ficha', '=', 'tf_fichas.id_ficha')
-                    ->selectRaw("
-                        tf_fichas.id_uni_cat,
-                        CASE
-                            WHEN tf_fichas.tipo_ficha = '04' THEN COALESCE(MAX(tb.area_verificada), 0)
-                            WHEN tf_fichas.tipo_ficha = '01' THEN 
-                                CASE 
-                                    WHEN COALESCE(SUM(tc.area_verificada), 0) > 0 THEN SUM(tc.area_verificada)
-                                    ELSE COALESCE(MAX(ti.area_verificada), 0)
-                                END
-                            ELSE 0
-                        END as areaInd,
-                        tf_fichas.tipo_ficha
-                    ")
-                    ->groupBy('tf_fichas.id_uni_cat', 'tf_fichas.tipo_ficha');
-    }
-
     public function usoUniCat()
     {
-        return \DB::table('tf_usos')
+       return \DB::table('tf_usos')
         ->join('tf_fichas_individuales', 'tf_usos.codi_uso', '=', 'tf_fichas_individuales.codi_uso')
         ->join('tf_fichas', 'tf_fichas_individuales.id_ficha', '=', 'tf_fichas.id_ficha')
         ->where('tf_fichas.id_uni_cat', $this->id_uni_cat)
@@ -128,4 +111,26 @@ class UniCat extends Authenticatable implements AuditableContract
         ->first();
     }
 
+
+    public function areaIndividual()
+    {
+        return $this->hasOne(Ficha::class, 'id_uni_cat', 'id_uni_cat')
+            ->leftJoin('tf_fichas_bienes_comunes as tb', 'tb.id_ficha', '=', 'tf_fichas.id_ficha')
+            ->leftJoin('tf_fichas_individuales as ti', 'ti.id_ficha', '=', 'tf_fichas.id_ficha')
+            ->leftJoin('tf_construcciones as tc', 'tc.id_ficha', '=', 'tf_fichas.id_ficha')
+            ->selectRaw("
+                tf_fichas.id_uni_cat,
+                CASE
+                    WHEN tf_fichas.tipo_ficha = '04' THEN COALESCE(MAX(tb.area_verificada), 0)
+                    WHEN tf_fichas.tipo_ficha = '01' THEN 
+                        CASE 
+                            WHEN COALESCE(SUM(tc.area_verificada), 0) > 0 THEN SUM(tc.area_verificada)
+                            ELSE COALESCE(MAX(ti.area_verificada), 0)
+                        END
+                    ELSE 0
+                END as areaInd,
+                tf_fichas.tipo_ficha
+            ")
+            ->groupBy('tf_fichas.id_uni_cat', 'tf_fichas.tipo_ficha');
+    }
 }
