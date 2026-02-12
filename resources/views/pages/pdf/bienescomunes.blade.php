@@ -2331,9 +2331,9 @@
             </div>           
             
             <div style="width: 120px;height: 16px;float:left;" class="texto2 fz8 lh14">
-                @if($ficha?->sunarp!="")
-                {{date("d-m-Y", strtotime($ficha?->sunarp?->fecha_inscripcion))}}
-                @endif
+                @if($ficha?->sunarp?->fecha_inscripcion!="")
+                    {{date("d-m-Y", strtotime($ficha?->sunarp?->fecha_inscripcion))}}
+                @endif  
             </div>
 
             <div style="width: 231px;height: 16px;float:left;" class="fondoclaro">
