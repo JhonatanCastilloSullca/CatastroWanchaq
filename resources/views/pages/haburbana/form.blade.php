@@ -9,7 +9,7 @@
   <label for="recipient-name" class="form-label">Tipo Habilitacion Urbana:</label>
   <select class="form-select tipo_hab_urba" id="tipo_hab_urba" name="tipo_hab_urba" data-width="100%">
       @foreach($codigos as $codigo)
-        <option value="{{$codigo->desc_codigo}}">{{$codigo->desc_codigo}}</option>
+        <option value="{{$codigo->codigo}}">{{$codigo->codigo}} {{$codigo->desc_codigo}}</option>
       @endforeach
   </select>
 
