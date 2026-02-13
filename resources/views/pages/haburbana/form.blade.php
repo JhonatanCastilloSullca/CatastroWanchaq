@@ -8,14 +8,9 @@
 <div class="mb-3">
   <label for="recipient-name" class="form-label">Tipo Habilitacion Urbana:</label>
   <select class="form-select tipo_hab_urba" id="tipo_hab_urba" name="tipo_hab_urba" data-width="100%">
-      <option value="AA.HH.">AA.HH.</option>
-      <option value="ASOC.">ASOC.</option>
-      <option value="CP.">CP.</option>
-      <option value="HU.PR.">HU.PR.</option>
-      <option value="CA.">CA.</option>
-      <option value="URB.">URB.</option>
-      <option value="S/T">S/T</option>
-
+      @foreach($codigos as $codigo)
+        <option value="{{$codigo->desc_tabla}}">{{$codigo->desc_tabla}}</option>
+      @endforeach
   </select>
 
   @error('tipo_hab_urba')

@@ -6,6 +6,7 @@ use App\Models\HabUrbana;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Institucion;
+use App\Models\Tabla;
 use Illuminate\Validation\Rule;
 
 class HabUrbanaController extends Controller
@@ -23,7 +24,8 @@ class HabUrbanaController extends Controller
     {
         $haburbanas=HabUrbana::all();
         $i=0;
-        return view('pages.haburbana.index',compact('haburbanas','i'));
+        $codigos = Tabla::where('id_tabla','HUR')->get();
+        return view('pages.haburbana.index',compact('haburbanas','i','codigos'));
     }
 
     public function store(Request $request)
