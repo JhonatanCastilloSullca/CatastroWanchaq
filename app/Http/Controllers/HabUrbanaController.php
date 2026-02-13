@@ -25,7 +25,7 @@ class HabUrbanaController extends Controller
     {
         $haburbanas=HabUrbana::all();
         $i=0;
-        $codigos = TablaCodigo::where('id_tabla','HUR')->get();
+        $codigos = TablaCodigo::where('id_tabla','HUR')->orderBy('desc_codigo','asc')->get();
         return view('pages.haburbana.index',compact('haburbanas','i','codigos'));
     }
 
