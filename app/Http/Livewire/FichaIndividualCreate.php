@@ -513,31 +513,15 @@ class FichaIndividualCreate extends Component
         }
     }
 
-    public function reducirUbicacion($i)
+    public function reducirUbicacion()
     {
-        if ($this->cont > 0) {           
-
-
+        if($this->cont > 0){
             $this->cont--;
-
-            if (is_array($this->tipoVia)) {
-                array_splice($this->tipoVia, $i, 1);
-            }
-            if (is_array($this->tipopuerta)) {
-                array_splice($this->tipopuerta, $i, 1);
-            }
-            if (is_array($this->nume_muni)) {
-                array_splice($this->nume_muni, $i, 1);
-            }
-            if (is_array($this->cond_nume)) {
-                array_splice($this->cond_nume, $i, 1);
-            }
-            if (is_array($this->tipoViatipo)) {
-                array_splice($this->tipoViatipo, $i, 1);
-            }
-            if (is_array($this->tipoVianombre)) {
-                array_splice($this->tipoVianombre, $i, 1);
-            }
+            array_splice($this->idPuertaEditar, $this->cont);
+            array_splice($this->tipoVia, $this->cont);
+            array_splice($this->tipopuerta, $this->cont);
+            array_splice($this->nume_muni, $this->cont);
+            array_splice($this->cond_nume, $this->cont);
         }
     }
 

@@ -719,22 +719,16 @@ class FichaBienComunEdit extends Component
 
     }
 
-    public function reducirUbicacion($value)
+    public function reducirUbicacion()
     {
-        $this->cont--;
-        if (is_array($this->tipoVia)) {
-            array_splice($this->tipoVia, $value, 1);
+        if($this->cont > 0){
+            $this->cont--;
+            array_splice($this->idPuertaEditar, $this->cont);
+            array_splice($this->tipoVia, $this->cont);
+            array_splice($this->tipopuerta, $this->cont);
+            array_splice($this->nume_muni, $this->cont);
+            array_splice($this->cond_nume, $this->cont);
         }
-        if (is_array($this->tipopuerta)) {
-            array_splice($this->tipopuerta, $value, 1);
-        }
-        if (is_array($this->nume_muni)) {
-            array_splice($this->nume_muni, $value, 1);
-        }
-        if (is_array($this->cond_nume)) {
-            array_splice($this->cond_nume, $value, 1);
-        }
-        
     }
 
     /* UBICACION DEL PREDIO */
