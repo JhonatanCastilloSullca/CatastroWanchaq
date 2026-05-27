@@ -239,119 +239,96 @@
                             </div><!-- Col -->
                         </div><!-- Row -->
                         <div class="row form-group">
-                            <h4 class="mb-4"> UBICACION DEL PREDIO CATASTRAL</h4>
+                            <div>
+                                <span class="mb-2 h4"> UBICACION DEL PREDIO CATASTRAL</span>
+                                <button type="button" class="btn btn-primary btn-icon mt-3" wire:click="buscarPuertas()">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
                             <div class="col-md-12 mb-3">
                                 <div class="table-responsive">
                                     <table id="vias" class="table">
                                         <thead>
                                             <tr>
+                                                <th><label class="form-label d-inline-flex" > <div class="divcuadrorequired">07</div> CÓDIGO DE VIA</label></th>
+                                                <th><label class="form-label d-inline-flex" > <div class="divcuadro">08</div> TIPO DE VIA</label></th>
+                                                <th><label class="form-label d-inline-flex" > <div class="divcuadro">09</div> NOMBRE DE VIA</label></th>
+                                                <th><label class="form-label d-inline-flex" > <div class="divcuadrorequired">10</div>TIPO DE PUERTA</label></th>
+                                                <th><label class="form-label d-inline-flex" > <div class="divcuadro">11</div> N° MUNICIPAL</label></th>
+                                                <th><label class="form-label d-inline-flex" > <div class="divcuadro">12</div> COND. NUMER. </label></th>
                                                 <th>
-                                                    <button type="button" class="btn btn-success btn-icon"
-                                                        wire:click="aumentarUbicacion" wire:loading.attr="disabled"
-                                                        tabindex="18">+
-                                                    </button>
+                                                    @if($cont==0)
+                                                        <button type="button" class="btn btn-success btn-icon" wire:click="aumentarUbicacion" tabindex="18">+</button>
+                                                    @endif
                                                 </th>
-                                                <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadrorequired">05</div> CÓDIGO DE VIA
-                                                    </label></th>
-                                                <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadrorequired">06</div> TIPO DE VIA
-                                                    </label></th>
-                                                <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadrorequired">07</div> NOMBRE DE VIA
-                                                    </label></th>
-                                                <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadrorequired">08</div>TIPO DE PUERTA
-                                                    </label></th>
-                                                <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">09</div> N° MUNICIPAL
-                                                    </label></th>
-                                                <th><label class="form-label d-inline-flex">
-                                                        <div class="divcuadro">10</div> COND. NUMER.
-                                                    </label></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @for ($i = 0; $i < $cont; $i++)
-                                                <tr>
-                                                    <td>
-                                                        <button type="button" class="btn btn-danger btn-icon"
-                                                            wire:click="reducirUbicacion({{ $i }})"
-                                                            wire:loading.attr="disabled" tabindex="18">-
-                                                        </button>
-                                                    </td>
-                                                    <td>
-                                                        <select class="form-select" id="via_id{{ $i }}"
-                                                            name="via_id[]" data-width="100%"
-                                                            wire:model="tipoVia.{{ $i }}" data-live-search
-                                                            tabindex="18">
-                                                            <option value="">Seleccione</option>
-                                                            @foreach ($vias as $via)
-                                                                <option
-                                                                    value="{{ str_pad($via->id_via, 12, '0', STR_PAD_LEFT) }}">
-                                                                    {{ $via->codi_via }} {{ $via->tipo_via }}
-                                                                    {{ $via->nomb_via }}</option>
+                                            @foreach($puertass as $i => $puerta)
+                                            <tr>
+                                                <td>{{$puerta['id_puerta']}}</td>
+                                                <td>{{$puerta['tipoVianombre']}}</td>
+                                                <td>{{$puerta['tipoViatipo']}}</td>
+                                                <td>{{$puerta['tipo_puerta']}}</td>
+                                                <td>{{$puerta['nume_muni']}}</td>
+                                                <td>{{$puerta['cond_nume']}}</td>
+                                                <td><button type="button" class="btn btn-danger btn-icon" wire:click="eliminarPuertas({{$i}})">x</button></td>
+                                                <td><button type="button" class="btn btn-dark btn-icon" wire:click='votarPuertas(@json($puerta["id_puerta"]),{{$i}},1)'>x</button></td>
+                                            </tr>
+                                            @endforeach
+                                            @for($i=0;$i<$cont;$i++)
+                                            <tr >
+                                                <td>
+                                                    <select class="form-select" id="via_id{{$i}}" name="via_id[]" data-width="100%" wire:model="tipoVia.{{$i}}" data-live-search tabindex="18">
+                                                        <option value="">Seleccione</option>
+                                                            @foreach($vias as $via)
+                                                                <option value="{{str_pad($via->id_via,12,'0',STR_PAD_LEFT)}}">{{$via->codi_via}} {{$via->tipo_via}} {{$via->nomb_via}}</option>
                                                             @endforeach
-                                                        </select>
-                                                        @error('tipoVia.' . $i)
-                                                            <span class="error-message"
-                                                                style="color:red">{{ $message }}</span>
-                                                        @enderror
-                                                    </td>
-                                                    <td>
-                                                        {{ $tipoViatipo[$i] }}
-                                                    </td>
-                                                    <td>
-                                                        {{ $tipoVianombre[$i] }}
-                                                    </td>
-                                                    <td>
-                                                        <select class="form-select" data-width="100%"
-                                                            data-live-search="true" name="tipo_puerta[]"
-                                                            id="tipo_puerta.{{ $i }}"
-                                                            wire:model="tipopuerta.{{ $i }}"
-                                                            tabindex="18">
-                                                            <option value="">SELECCIONE</option>
-                                                            @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'TPR')->orderby('codigo', 'asc')->get() as $tablacodigo)
-                                                                <option value="{{ $tablacodigo->codigo }}">
-                                                                    {{ $tablacodigo->codigo }}
-                                                                    {{ $tablacodigo->desc_codigo }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                        @error('tipopuerta.' . $i)
-                                                            <span class="error-message"
-                                                                style="color:red">{{ $message }}</span>
-                                                        @enderror
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" placeholder=""
-                                                            name="nume_muni[]" id="nume_muni.{{ $i }}"
-                                                            wire:model="nume_muni.{{ $i }}" maxlength="20"
-                                                            tabindex="18">
-                                                        @error('nume_muni.' . $i)
-                                                            <span class="error-message"
-                                                                style="color:red">{{ $message }}</span>
-                                                        @enderror
-                                                    </td>
-                                                    <td>
-                                                        <select class="form-select" data-width="100%"
-                                                            data-live-search="true" name="cond_nume[]"
-                                                            id="cond_nume.{{ $i }}"
-                                                            wire:model="cond_nume.{{ $i }}"
-                                                            tabindex="18">
-                                                            <option value="">SELECCIONE</option>
-                                                            @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'CNP')->orderby('codigo', 'asc')->get() as $tablacodigo)
-                                                                <option value="{{ $tablacodigo->codigo }}">
-                                                                    {{ $tablacodigo->codigo }}
-                                                                    {{ $tablacodigo->desc_codigo }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                        @error('cond_nume.' . $i)
-                                                            <span class="error-message"
-                                                                style="color:red">{{ $message }}</span>
-                                                        @enderror
-                                                    </td>
-
-                                                </tr>
+                                                    </select>
+                                                    @error('tipoVia.'.$i)
+                                                        <span class="error-message" style="color:red">{{ $message }}</span>
+                                                    @enderror
+                                                </td>
+                                                <td>
+                                                    {{$tipoViatipo[$i]}}
+                                                </td>
+                                                <td>
+                                                    {{$tipoVianombre[$i]}}
+                                                </td>
+                                                <td>
+                                                    <select class="form-select"  data-width="100%" data-live-search="true" name="tipo_puerta[]" id="tipo_puerta.{{$i}}" wire:model="tipopuerta.{{$i}}"  tabindex="18">
+                                                        <option value="" >SELECCIONE</option>
+                                                        @foreach(\App\Models\TablaCodigo::where('id_tabla','=','TPR')->orderby('codigo','asc')->get() as $tablacodigo)
+                                                            <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('tipopuerta.'.$i)
+                                                        <span class="error-message" style="color:red">{{ $message }}</span>
+                                                    @enderror
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" placeholder="" name="nume_muni[]" id="nume_muni.{{$i}}" wire:model="nume_muni.{{$i}}"  maxlength="20" tabindex="18">
+                                                    @error('nume_muni.'.$i)
+                                                        <span class="error-message" style="color:red">{{ $message }}</span>
+                                                    @enderror
+                                                </td>
+                                                <td>
+                                                    <select class="form-select"  data-width="100%" data-live-search="true" name="cond_nume[]" id="cond_nume.{{$i}}" wire:model="cond_nume.{{$i}}" tabindex="18">
+                                                        <option value=""  >SELECCIONE</option>
+                                                        @foreach(\App\Models\TablaCodigo::where('id_tabla','=','CNP')->orderby('codigo','asc')->get() as $tablacodigo)
+                                                            <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('cond_nume.'.$i)
+                                                        <span class="error-message" style="color:red">{{ $message }}</span>
+                                                    @enderror
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-success btn-icon" wire:click="aumentarUbicacion" tabindex="18">+</button>
+                                                    <button type="button" class="btn btn-danger btn-icon" wire:click="reducirUbicacion" tabindex="18">-</button>
+                                                    <button type="button" class="btn btn-dark btn-icon" wire:click='votarPuertas(@json($idPuertaEditar[$i] ?? null),{{$i}},0)'>x</button>
+                                                </td>
+                                            </tr>
                                             @endfor
                                         </tbody>
                                     </table>
@@ -2693,6 +2670,12 @@
                             <button type="button" class="btn btn-primary" wire:click.prevent="register"
                                 wire:loading.attr="disabled">Guardar
                             </button>
+                            @error('sectorbloqueo')
+                                <span class="error-message" style="color:red">{{ $message }}</span>
+                            @enderror
+                            @error('error-lindero')
+                                <span class="error-message" style="color:red">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -2700,3 +2683,30 @@
         </div>
     </form>
 </div>
+@push('custom-scripts')
+<script>
+  document.addEventListener('livewire:load', () => {
+    Livewire.on('alertPuerta', (cantidad) => {
+      Swal.fire(
+        'El lote cuenta con ' + cantidad + ' registrados.',
+        '¿Estás seguro de crear más puertas?',
+        'question'
+      )
+    });
+    Livewire.on('alertPuertaBorrar', (mensaje, id, i,n) => {
+        Swal.fire({
+            title: mensaje,
+            text: '¿Estás seguro de eliminar la puerta?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Livewire.emit('puertaBorrarConfirmada', id, i,n);
+            }
+        });
+    });
+  });
+</script>
+@endpush

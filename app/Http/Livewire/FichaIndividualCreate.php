@@ -38,6 +38,7 @@ use Carbon\Carbon;
 use DB;
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
+use Illuminate\Validation\ValidationException;
 
 class FichaIndividualCreate extends Component
 {
@@ -273,6 +274,12 @@ class FichaIndividualCreate extends Component
     public $pdfsunarp;
     public $pdfrentas;
 
+    public $puertass=[];
+    public $idPuertaEliminar;
+    public $idPuertaEditar;
+
+    protected $listeners = ['puertaBorrarConfirmada' => 'borrarPuerta'];
+
 
     public function mount()
     {   
@@ -300,6 +307,77 @@ class FichaIndividualCreate extends Component
         $this->ape_materno1 = "";
     }
     /* EMPIEZA CÓDIGO REFERENCIAL */
+
+    public function buscarPuertas()
+    {
+        $ubigeo=Institucion::first();
+        $idLote = $ubigeo->id_institucion.$this->sector.$this->mzna.$this->lote;
+        if($this->sector && $this->mzna && $this->lote){
+            $puertas = Puerta::with('via')->where('id_lote',$idLote)->get();
+            $this->puertass = [];
+            foreach($puertas as $puerta)
+            {
+                $this->puertass[] = [
+                    'id_puerta' => $puerta->id_puerta,
+                    'id_via' => $puerta->id_via,
+                    'tipoVianombre' => $puerta->via->nomb_via,
+                    'tipoViatipo' => $puerta->via->tipo_via,
+                    'tipo_puerta' => $puerta->tipo_puerta,
+                    'nume_muni' => $puerta->nume_muni,
+                    'cond_nume' => $puerta->cond_nume,
+                ];
+            }
+        }
+        
+    }
+
+    public function eliminarPuertas($i)
+    {
+        unset($this->puertass[$i]);
+        $this->puertass = array_values($this->puertass);
+    }
+
+    public function votarPuertas(string $id,$i = null,$n)
+    {
+        $puerta = Puerta::where('id_puerta',$id)->first();
+        if($puerta->fichas){
+            $this->idPuertaEliminar = $puerta->id_puerta;
+            $mensaje = "La puerta tiene estas fichas relacionadas numeros: ";
+            foreach($puerta->fichas as $ficha){
+                $mensaje .= $ficha->nume_ficha.',';
+            }
+
+            $this->emit('alertPuertaBorrar',$mensaje,$id,$i,$n);
+        }else{
+            $puerta->delete();
+        }
+        
+    }
+
+    public function borrarPuerta($id,?int $i = null,$n)
+    {
+        $puerta = Puerta::where('id_puerta',$id)->first();
+        $puerta->fichas()->detach();
+        $puerta->delete();
+        if($i !== null){
+            if($n==1){
+                unset($this->puertass[$i]);
+                $this->puertass = array_values($this->puertass);
+            }else{
+                unset($this->idPuertaEditar[$i]);
+                unset($this->tipoVia[$i]);
+                unset($this->tipopuerta[$i]);
+                unset($this->nume_muni[$i]);
+                unset($this->cond_nume[$i]);
+                $this->cont--;
+                $this->idPuertaEditar = array_values($this->idPuertaEditar);
+                $this->tipoVia = array_values($this->tipoVia);
+                $this->tipopuerta = array_values($this->tipopuerta);
+                $this->nume_muni = array_values($this->nume_muni);
+                $this->cond_nume = array_values($this->cond_nume);
+            }
+        }
+    }
 
 
     public function mostrardc()
@@ -1061,6 +1139,16 @@ class FichaIndividualCreate extends Component
             $ubigeo = Institucion::first();
             /*VALIDACIONES*/
 
+            $sectorbloqueo=str_pad($ubigeo->id_institucion,6,'0',STR_PAD_LEFT).''.str_pad($this->sector,2,'0',STR_PAD_LEFT);
+
+            $sectorblqueoo=Sectore::where('id_sector',$sectorbloqueo)->first();
+
+            if($sectorblqueoo->bloqueo == 1 )
+            {
+                $this->addError('sectorbloqueo', 'Este sector está bloqueado y no se puede guardar.');
+                return;
+            }
+
 
             if ($this->esta_llenado == "4") {
                 $this->validate([
@@ -1168,14 +1256,14 @@ class FichaIndividualCreate extends Component
                         'zonificacion'                  => 'nullable|max:100',
                         'area_titulo'                   => 'nullable|numeric|regex:/^[\d]{0,9}(\.[\d]{1,2})?$/',
                         'area_verificada1'              => 'nullable|numeric|regex:/^[\d]{0,9}(\.[\d]{1,2})?$/',
-                        'fren_campo'                    => 'nullable|max:200',
-                        'dere_campo'                    => 'nullable|max:200',
-                        'izqu_campo'                    => 'nullable|max:200',
-                        'fond_campo'                    => 'nullable|max:200',
-                        'fren_colinda_campo'            => 'nullable|max:200',
-                        'dere_colinda_campo'            => 'nullable|max:200',
-                        'izqu_colinda_campo'            => 'nullable|max:200',
-                        'fond_colinda_campo'            => 'nullable|max:200',
+                        'fren_campo'                    => 'nullable|max:400',
+                        'dere_campo'                    => 'nullable|max:400',
+                        'izqu_campo'                    => 'nullable|max:400',
+                        'fond_campo'                    => 'nullable|max:400',
+                        'fren_colinda_campo'            => 'nullable|max:400',
+                        'dere_colinda_campo'            => 'nullable|max:400',
+                        'izqu_colinda_campo'            => 'nullable|max:400',
+                        'fond_colinda_campo'            => 'nullable|max:400',
 
                         'porc_bc_terr_legal'            => 'nullable|numeric|regex:/^[\d]{0,7}(\.[\d]{1,2})?$/',
                         'porc_bc_const_legal'           => 'nullable|numeric|regex:/^[\d]{0,7}(\.[\d]{1,2})?$/',
@@ -1203,7 +1291,7 @@ class FichaIndividualCreate extends Component
                         'nume_familias'                 => 'nullable|numeric|min:0',
 
                         'mantenimiento'                 => 'required',
-                        'observacion'                   => 'nullable|max:1000',
+                        'observacion'                   => 'nullable|max:2000',
 
                         'numdocumentodeclarante'        => 'nullable|max:8',
                         'nombres_declarante'            => 'nullable|max:150',
@@ -1252,14 +1340,14 @@ class FichaIndividualCreate extends Component
                         'zonificacion'                  => 'nullable|max:100',
                         'area_titulo'                   => 'nullable|numeric|regex:/^[\d]{0,7}(\.[\d]{1,2})?$/',
                         'area_verificada1'              => 'nullable|numeric|regex:/^[\d]{0,7}(\.[\d]{1,2})?$/',
-                        'fren_campo'                    => 'nullable|max:200',
-                        'dere_campo'                    => 'nullable|max:200',
-                        'izqu_campo'                    => 'nullable|max:200',
-                        'fond_campo'                    => 'nullable|max:200',
-                        'fren_colinda_campo'            => 'nullable|max:200',
-                        'dere_colinda_campo'            => 'nullable|max:200',
-                        'izqu_colinda_campo'            => 'nullable|max:200',
-                        'fond_colinda_campo'            => 'nullable|max:200',
+                        'fren_campo'                    => 'nullable|max:400',
+                        'dere_campo'                    => 'nullable|max:400',
+                        'izqu_campo'                    => 'nullable|max:400',
+                        'fond_campo'                    => 'nullable|max:400',
+                        'fren_colinda_campo'            => 'nullable|max:400',
+                        'dere_colinda_campo'            => 'nullable|max:400',
+                        'izqu_colinda_campo'            => 'nullable|max:400',
+                        'fond_colinda_campo'            => 'nullable|max:400',
 
                         'porc_bc_terr_legal'            => 'nullable|numeric|regex:/^[\d]{0,7}(\.[\d]{1,2})?$/',
                         'porc_bc_const_legal'           => 'nullable|numeric|regex:/^[\d]{0,7}(\.[\d]{1,2})?$/',
@@ -1287,7 +1375,7 @@ class FichaIndividualCreate extends Component
                         'nume_familias'                 => 'nullable|numeric|min:0',
                         'mantenimiento'                 => 'nullable',
 
-                        'observacion'                 => 'nullable|max:1000',
+                        'observacion'                 => 'nullable|max:2000',
 
                         'numdocumentodeclarante'        => 'nullable|max:8',
                         'nombres_declarante'            => 'nullable|max:150',
@@ -1525,7 +1613,9 @@ class FichaIndividualCreate extends Component
             $ficha->tipo_ficha = "01";
             $ficha->nume_ficha = str_pad($this->numeficha, 7, '0', STR_PAD_LEFT);
             $ficha->id_lote = $lote->id_lote;
-            $ficha->dc = $this->dc;
+            $suma = array_sum(str_split($unicat->id_uni_cat)); 
+            $dc   = $suma % 9;
+            $ficha->dc=$dc;
             $ficha->nume_ficha_lote = $this->nume_ficha_lote . '-' . $this->nume_ficha_lote2;
             if ($declarante == "") {
             } else {
@@ -1577,26 +1667,31 @@ class FichaIndividualCreate extends Component
             $ficha->cuc = str_pad($this->cuc, 12, '0', STR_PAD_LEFT);
             $ficha->save();
 
-            $contpuertas = 0;
-            while ($contpuertas < $this->cont) {
-                $buscarpuertas = 0;
-                $idpuerta = $this->buscarpuerta($buscarpuertas, $this->tipopuerta[$contpuertas], $lote->id_lote);
-                $puerta = new Puerta();
-                $puerta->id_puerta = $idpuerta;
-                $puerta->id_lote = $lote->id_lote;
-                $puerta->codi_puerta = $this->tipopuerta[$contpuertas];
-                $puerta->tipo_puerta = $this->tipopuerta[$contpuertas];
-                if (isset($this->nume_muni[$contpuertas])) {
-                    $puerta->nume_muni = $this->nume_muni[$contpuertas];
+            foreach($this->puertass as $puerta){
+                $puertaReal = Puerta::find($puerta['id_puerta']);
+                $puertaReal->fichas()->attach(str_pad($ficha->id_ficha,19,'0',STR_PAD_LEFT));
+            }
+
+            $contpuertas=0;
+            while($contpuertas<$this->cont)
+            {
+                $buscarpuertas=0;
+                $idpuerta=$this->buscarpuerta($buscarpuertas,$this->tipopuerta[$contpuertas],$lote->id_lote);
+                $puerta= new Puerta();
+                $puerta->id_puerta=$idpuerta;
+                $puerta->id_lote=$lote->id_lote;
+                $puerta->codi_puerta=$this->tipopuerta[$contpuertas];
+                $puerta->tipo_puerta=$this->tipopuerta[$contpuertas];
+                if(isset($this->nume_muni[$contpuertas])){
+                    $puerta->nume_muni=$this->nume_muni[$contpuertas];
                 }
-                if (isset($this->cond_nume[$contpuertas])) {
-                    $puerta->cond_nume = $this->cond_nume[$contpuertas];
+                if(isset($this->cond_nume[$contpuertas])){
+                    $puerta->cond_nume=$this->cond_nume[$contpuertas];
                 }
-                $puerta->id_via = $this->tipoVia[$contpuertas];
+                $puerta->id_via=$this->tipoVia[$contpuertas];
                 $puerta->save();
                 $contpuertas++;
-                $puerta->fichas()->attach(str_pad($ficha->id_ficha, 19, '0', STR_PAD_LEFT));
-                $puerta->via->hab_urbanas()->attach($this->tipoHabi);
+                $puerta->fichas()->attach(str_pad($ficha->id_ficha,19,'0',STR_PAD_LEFT));
             }
 
             if ($this->condtitular != "05") {
@@ -2197,16 +2292,42 @@ class FichaIndividualCreate extends Component
                 $archivo->save();
             }
 
-            $lindero = new Lindero();
-            $lindero->id_ficha = $ficha->id_ficha;
-            $lindero->fren_campo = $this->fren_campo;
-            $lindero->fren_colinda_campo = $this->fren_colinda_campo;
-            $lindero->dere_campo = $this->dere_campo;
-            $lindero->dere_colinda_campo = $this->dere_colinda_campo;
-            $lindero->izqu_campo = $this->izqu_campo;
-            $lindero->izqu_colinda_campo = $this->izqu_colinda_campo;
-            $lindero->fond_campo = $this->fond_campo;
-            $lindero->fond_colinda_campo = $this->fond_colinda_campo;
+            $err = null;
+            $fmt = $this->normalizaLindero($this->fren_campo, 2, $err);
+            if ($fmt === null && $err !== null) {
+                throw ValidationException::withMessages([
+                    'error-lindero' => $err
+                ]);
+            }
+            $fmt2 = $this->normalizaLindero($this->dere_campo, 2, $err);
+            if ($fmt2 === null && $err !== null) {
+                throw ValidationException::withMessages([
+                    'error-lindero' => $err
+                ]);
+            }
+            $fmt3 = $this->normalizaLindero($this->izqu_campo, 2, $err);
+            if ($fmt3 === null && $err !== null) {
+                throw ValidationException::withMessages([
+                    'error-lindero' => $err
+                ]);
+            }
+            $fmt4 = $this->normalizaLindero($this->fond_campo, 2, $err);
+            if ($fmt4 === null && $err !== null) {
+                throw ValidationException::withMessages([
+                    'error-lindero' => $err
+                ]);
+            }
+
+            $lindero=new Lindero();
+            $lindero->id_ficha=$ficha->id_ficha;
+            $lindero->fren_campo=$fmt;
+            $lindero->fren_colinda_campo=$this->fren_colinda_campo;
+            $lindero->dere_campo=$fmt2;
+            $lindero->dere_colinda_campo=$this->dere_colinda_campo;
+            $lindero->izqu_campo=$fmt3;
+            $lindero->izqu_colinda_campo=$this->izqu_colinda_campo;
+            $lindero->fond_campo=$fmt4;
+            $lindero->fond_colinda_campo=$this->fond_colinda_campo;
             $lindero->save();
 
             $servicios = new ServicioBasico();
@@ -2660,18 +2781,62 @@ class FichaIndividualCreate extends Component
         }
     }
 
-    public function buscarpuerta($cont, $idpuerta, $idlote)
+    public function buscarpuerta($cont,$idpuerta,$idlote)
     {
-        $id = $idlote . '' . $idpuerta . '' . $cont;
-        $buscarpuertaexiste = Puerta::where('id_puerta', $id)->first();
-        if ($buscarpuertaexiste != "") {
-            $cont = $cont + 1;
-            $id = $this->buscarpuerta($cont, $idpuerta, $idlote);
-        } else {
+        $id=$idlote.''.$idpuerta.''.$cont;
+        $buscarpuertaexiste=Puerta::where('id_puerta',$id)->first();
+        if($buscarpuertaexiste!=""){
+            $cont=$cont+1;
+            $id=$this->buscarpuerta($cont,$idpuerta,$idlote);
+        }else{
             return $id;
         }
 
         return $id;
+    }
+
+    function normalizaLindero(?string $s, int $dec = 2, ?string &$error = null): ?string
+    {
+        $error = null;
+
+        // 0) null => null (no valida)
+        if ($s === null) {
+            return null;
+        }
+
+        // 1) normaliza espacios extremos
+        $s = trim($s);
+
+        // 2) vacío => '' (cadena vacía)
+        if ($s === '') {
+            return '';
+        }
+
+        // 3) normaliza separadores y espacios
+        $s = str_replace(',', '.', $s);
+        $s = preg_replace('/\s+/', ' ', $s);
+        $s = trim($s, " ;"); // quita ; y espacios de extremos
+
+        // 4) separa por ';' o por espacios
+        $parts = preg_split('/\s*;\s*|\s+/', $s, -1, PREG_SPLIT_NO_EMPTY);
+        if (!$parts) {
+            return '';
+        }
+
+        // 5) valida y normaliza decimales (una sola coma decimal, hasta $dec)
+        $re = '/^\d+(?:\.\d{1,'.$dec.'})?$/';
+        foreach ($parts as $i => $p) {
+            if (!preg_match($re, $p)) {
+                $error = 'Error Lindero: valor inválido en la posición '.($i+1).': "'.$p.
+                        '". Usa números con hasta '.$dec.' decimales (ej. 3.25), separados por ";".';
+                return null;
+            }
+            // fuerza exactamente $dec decimales
+            $parts[$i] = number_format((float)$p, $dec, '.', '');
+        }
+
+        // 6) une como "a; b; c" (sin ';' final)
+        return implode('; ', $parts);
     }
 
     //CAMBIOS WANCHAQ
