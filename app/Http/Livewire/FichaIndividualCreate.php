@@ -495,13 +495,23 @@ class FichaIndividualCreate extends Component
 
     public function aumentarUbicacion()
     {
-        $this->tipoViatipo[$this->cont] = "";
-        $this->tipoVianombre[$this->cont] = "";
-        $this->tipopuerta[$this->cont] = "";
-        $this->nume_muni[$this->cont] = "";
-        $this->tipoVia[$this->cont] = "";
-        $this->cond_nume[$this->cont] = "";
+        $ubigeo=Institucion::first();
+        $idLote = $ubigeo->id_institucion.$this->sector.$this->mzna.$this->lote;
+        $puertas = [];
+        if($this->sector && $this->mzna && $this->lote){
+            $puertas = Puerta::with('via')->where('id_lote',$idLote)->get();
+        }
+        if(count($puertas)>0){
+            $this->emit('alertPuerta',count($puertas));
+        }  
+        $this->idPuertaEditar[$this->cont]=null;
+        $this->tipoViatipo[$this->cont]="";
+        $this->tipoVianombre[$this->cont]="";
+        $this->tipopuerta[$this->cont] = null;
+        $this->nume_muni[$this->cont] = null;
+        $this->cond_nume[$this->cont] = null;
         $this->cont++;
+
     }
     public function updatedcodiinstalacion($value,$nested)
     {
