@@ -573,7 +573,9 @@ class ReporteController extends Controller
         $sectores = Sectore::orderby('codi_sector')->get();
         $sector2 = $request->buscarSector ?? 0;
 
-        $titulares = DB::table('catastro.vw_reporte_titulares')
+        if($sector2 != 0)
+        {
+            $titulares = DB::table('catastro.vw_reporte_titulares')
             ->when($sector2 != 0, function ($query) use ($sector2) {
                 $query->where('id_sector', $sector2);
             })
@@ -631,7 +633,11 @@ class ReporteController extends Controller
             ")
             ->get();
 
-        $numero = $titulares->count();
+            $numero = $titulares->count();
+        }else{
+            $titulares = [];
+            $numero = 0;
+        }
 
         return view('pages.reporte.reportetitulares', compact(
             'titulares',

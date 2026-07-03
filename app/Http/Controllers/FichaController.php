@@ -1166,63 +1166,69 @@ public function fichaCotitularidad(Ficha $ficha)
         $sector2 = $sector;
         $sectores = Sectore::where('id_sector', $sector)->first();
 
-        $titulares = DB::table('catastro.vw_reporte_titulares')
-            ->where('id_sector', $sector2)
-            ->orderBy('codi_mzna')
-            ->orderBy('codi_lote')
-            ->orderByRaw("
-                CASE 
-                    WHEN COALESCE(NULLIF(codi_edificacion,''),'99') = '99' THEN 0 
-                    ELSE 1 
-                END ASC
-            ")
-            ->orderByRaw("
-                CASE 
-                    WHEN COALESCE(NULLIF(codi_edificacion,''),'99') <> '99'
-                    THEN NULLIF(codi_edificacion,'')::int
-                END ASC NULLS LAST
-            ")
-            ->orderByRaw("
-                CASE 
-                    WHEN codi_entrada = '99' 
-                    AND codi_piso = '99' 
-                    AND codi_unidad = '999'
-                    THEN 0 ELSE 1
-                END ASC
-            ")
-            ->orderByRaw("
-                CASE 
-                    WHEN NOT (
-                        codi_entrada = '99' 
+        if($sector2 != 0)
+        {
+            $titulares = DB::table('catastro.vw_reporte_titulares')
+                ->where('id_sector', $sector2)
+                ->orderBy('codi_mzna')
+                ->orderBy('codi_lote')
+                ->orderByRaw("
+                    CASE 
+                        WHEN COALESCE(NULLIF(codi_edificacion,''),'99') = '99' THEN 0 
+                        ELSE 1 
+                    END ASC
+                ")
+                ->orderByRaw("
+                    CASE 
+                        WHEN COALESCE(NULLIF(codi_edificacion,''),'99') <> '99'
+                        THEN NULLIF(codi_edificacion,'')::int
+                    END ASC NULLS LAST
+                ")
+                ->orderByRaw("
+                    CASE 
+                        WHEN codi_entrada = '99' 
                         AND codi_piso = '99' 
                         AND codi_unidad = '999'
-                    )
-                    THEN NULLIF(BTRIM(codi_entrada),'')::int
-                END ASC NULLS LAST
-            ")
-            ->orderByRaw("
-                CASE 
-                    WHEN NOT (
-                        codi_entrada = '99' 
-                        AND codi_piso = '99' 
-                        AND codi_unidad = '999'
-                    )
-                    THEN NULLIF(BTRIM(codi_piso),'')::int
-                END ASC NULLS LAST
-            ")
-            ->orderByRaw("
-                CASE 
-                    WHEN NOT (
-                        codi_entrada = '99' 
-                        AND codi_piso = '99' 
-                        AND codi_unidad = '999'
-                    )
-                    THEN NULLIF(BTRIM(codi_unidad),'')::int
-                END ASC NULLS LAST
-            ")
-            ->get();
+                        THEN 0 ELSE 1
+                    END ASC
+                ")
+                ->orderByRaw("
+                    CASE 
+                        WHEN NOT (
+                            codi_entrada = '99' 
+                            AND codi_piso = '99' 
+                            AND codi_unidad = '999'
+                        )
+                        THEN NULLIF(BTRIM(codi_entrada),'')::int
+                    END ASC NULLS LAST
+                ")
+                ->orderByRaw("
+                    CASE 
+                        WHEN NOT (
+                            codi_entrada = '99' 
+                            AND codi_piso = '99' 
+                            AND codi_unidad = '999'
+                        )
+                        THEN NULLIF(BTRIM(codi_piso),'')::int
+                    END ASC NULLS LAST
+                ")
+                ->orderByRaw("
+                    CASE 
+                        WHEN NOT (
+                            codi_entrada = '99' 
+                            AND codi_piso = '99' 
+                            AND codi_unidad = '999'
+                        )
+                        THEN NULLIF(BTRIM(codi_unidad),'')::int
+                    END ASC NULLS LAST
+                ")
+                ->get();
 
-        $numero = $titulares->count();
+            $numero = $titulares->count();
+        }else{
+            $titulares = [];
+            $numero = 0;
+        }
         $logos = Institucion::first();
 
         $fecha = $mytime->format('d/m/Y');
@@ -1261,63 +1267,69 @@ public function fichaCotitularidad(Ficha $ficha)
         $sector2 = $sector;
         $sectores = Sectore::where('id_sector', $sector)->first();
 
-        $titulares = DB::table('catastro.vw_reporte_titulares')
-            ->where('id_sector', $sector2)
-            ->orderBy('codi_mzna')
-            ->orderBy('codi_lote')
-            ->orderByRaw("
-                CASE 
-                    WHEN COALESCE(NULLIF(codi_edificacion,''),'99') = '99' THEN 0 
-                    ELSE 1 
-                END ASC
-            ")
-            ->orderByRaw("
-                CASE 
-                    WHEN COALESCE(NULLIF(codi_edificacion,''),'99') <> '99'
-                    THEN NULLIF(codi_edificacion,'')::int
-                END ASC NULLS LAST
-            ")
-            ->orderByRaw("
-                CASE 
-                    WHEN codi_entrada = '99' 
-                    AND codi_piso = '99' 
-                    AND codi_unidad = '999'
-                    THEN 0 ELSE 1
-                END ASC
-            ")
-            ->orderByRaw("
-                CASE 
-                    WHEN NOT (
-                        codi_entrada = '99' 
+        if($sector2 != 0)
+        {
+            $titulares = DB::table('catastro.vw_reporte_titulares')
+                ->where('id_sector', $sector2)
+                ->orderBy('codi_mzna')
+                ->orderBy('codi_lote')
+                ->orderByRaw("
+                    CASE 
+                        WHEN COALESCE(NULLIF(codi_edificacion,''),'99') = '99' THEN 0 
+                        ELSE 1 
+                    END ASC
+                ")
+                ->orderByRaw("
+                    CASE 
+                        WHEN COALESCE(NULLIF(codi_edificacion,''),'99') <> '99'
+                        THEN NULLIF(codi_edificacion,'')::int
+                    END ASC NULLS LAST
+                ")
+                ->orderByRaw("
+                    CASE 
+                        WHEN codi_entrada = '99' 
                         AND codi_piso = '99' 
                         AND codi_unidad = '999'
-                    )
-                    THEN NULLIF(BTRIM(codi_entrada),'')::int
-                END ASC NULLS LAST
-            ")
-            ->orderByRaw("
-                CASE 
-                    WHEN NOT (
-                        codi_entrada = '99' 
-                        AND codi_piso = '99' 
-                        AND codi_unidad = '999'
-                    )
-                    THEN NULLIF(BTRIM(codi_piso),'')::int
-                END ASC NULLS LAST
-            ")
-            ->orderByRaw("
-                CASE 
-                    WHEN NOT (
-                        codi_entrada = '99' 
-                        AND codi_piso = '99' 
-                        AND codi_unidad = '999'
-                    )
-                    THEN NULLIF(BTRIM(codi_unidad),'')::int
-                END ASC NULLS LAST
-            ")
-            ->get();
+                        THEN 0 ELSE 1
+                    END ASC
+                ")
+                ->orderByRaw("
+                    CASE 
+                        WHEN NOT (
+                            codi_entrada = '99' 
+                            AND codi_piso = '99' 
+                            AND codi_unidad = '999'
+                        )
+                        THEN NULLIF(BTRIM(codi_entrada),'')::int
+                    END ASC NULLS LAST
+                ")
+                ->orderByRaw("
+                    CASE 
+                        WHEN NOT (
+                            codi_entrada = '99' 
+                            AND codi_piso = '99' 
+                            AND codi_unidad = '999'
+                        )
+                        THEN NULLIF(BTRIM(codi_piso),'')::int
+                    END ASC NULLS LAST
+                ")
+                ->orderByRaw("
+                    CASE 
+                        WHEN NOT (
+                            codi_entrada = '99' 
+                            AND codi_piso = '99' 
+                            AND codi_unidad = '999'
+                        )
+                        THEN NULLIF(BTRIM(codi_unidad),'')::int
+                    END ASC NULLS LAST
+                ")
+                ->get();
 
-        $numero = $titulares->count();
+            $numero = $titulares->count();
+        }else{
+            $titulares = [];
+            $numero = 0;
+        }
         $logos = Institucion::first();
 
         $fecha = $mytime->format('d/m/Y');
