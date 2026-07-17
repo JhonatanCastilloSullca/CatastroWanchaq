@@ -155,7 +155,7 @@
                                     name="tipo_persona[]" id="tipo_persona{{ $i }}"
                                     wire:model.lazy="tipoTitular.{{ $i }}">
                                     <option value="">SELECCIONE</option>
-                                    @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'TPE')->get() as $tablacodigo)
+                                    @foreach ($tiposTitular as $tablacodigo)
                                         <option value="{{ $tablacodigo->codigo }}">{{ $tablacodigo->codigo }}
                                             {{ $tablacodigo->desc_codigo }}</option>
                                     @endforeach
@@ -208,7 +208,7 @@
                                         name="tipo_doc1[]" id="tipo_doc1"
                                         wire:model.defer="tipo_doc1.{{ $i }}">
                                         <option value="">SELECCIONE</option>
-                                        @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'DOC')->orderby('codigo', 'asc')->get() as $tablacodigo)
+                                        @foreach ($tiposDocumento as $tablacodigo)
                                             <option value="{{ $tablacodigo->codigo }}">{{ $tablacodigo->codigo }}
                                                 {{ $tablacodigo->desc_codigo }}</option>
                                         @endforeach
@@ -317,7 +317,7 @@
                                     name="form_adquisicion[]" id="form_adquisicion[]"
                                     wire:model.defer="form_adquisicion.{{ $i }}">
                                     <option value="">SELECCIONE</option>
-                                    @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'FAQ')->orderby('codigo', 'asc')->get() as $tablacodigo)
+                                    @foreach ($formasAdquisicion as $tablacodigo)
                                         <option value="{{ $tablacodigo->codigo }}">{{ $tablacodigo->codigo }}
                                             {{ $tablacodigo->desc_codigo }}</option>
                                     @endforeach
@@ -587,7 +587,7 @@
                             <label class="form-label d-inline-flex" > <div class="divcuadro">114</div>CONDICIÓN DE DECLARANTE</label>
                             <select class="form-select"  data-width="100%" data-live-search="true" name="cond_declarante" id="cond_declarante" wire:model.defer="cond_declarante">
                                 <option value="" >SELECCIONE</option>
-                                @foreach(\App\Models\TablaCodigo::where('id_tabla','=','CDE')->orderby('codigo','asc')->get() as $tablacodigo)
+                                @foreach($condicionesDeclarante as $tablacodigo)
                                     <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
                                 @endforeach
                             </select>
@@ -601,7 +601,7 @@
                             <label class="form-label d-inline-flex" > <div class="divcuadrorequired">116</div>ESTADO DE LLENADO DE LA FICHA</label>
                             <select class="form-select"  data-width="100%" data-live-search="true" name="esta_llenado" id="esta_llenado" wire:model.defer="esta_llenado">
                                 <option value="" >SELECCIONE</option>
-                                @foreach(\App\Models\TablaCodigo::where('id_tabla','=','LLE')->orderby('codigo','asc')->get() as $tablacodigo)
+                                @foreach($estadosLlenado as $tablacodigo)
                                     <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
                                 @endforeach
                             </select>

@@ -94,6 +94,12 @@ class FichaCotitularidadCreate extends Component
     public $subloteconductor;
     public $codi_hoja_catastral;
 
+    public $tiposTitular;
+    public $tiposDocumento;
+    public $formasAdquisicion;
+    public $condicionesDeclarante;
+    public $estadosLlenado;
+
     public function mount(Ficha $fichaanterior, $total)
     {
         $this->usos = Uso::all();
@@ -115,6 +121,19 @@ class FichaCotitularidadCreate extends Component
             $this->ape_paterno1[$i] = "";
             $this->ape_materno1[$i] = "";
         }
+
+        $catalogos = \App\Models\TablaCodigo::query()
+            ->select('id_tabla', 'codigo', 'desc_codigo')
+            ->whereIn('id_tabla', ['TPE', 'DOC', 'FAQ', 'CDE', 'LLE'])
+            ->orderBy('codigo')
+            ->get()
+            ->groupBy('id_tabla');
+
+        $this->tiposTitular = $catalogos->get('TPE', collect());
+        $this->tiposDocumento = $catalogos->get('DOC', collect());
+        $this->formasAdquisicion = $catalogos->get('FAQ', collect());
+        $this->condicionesDeclarante = $catalogos->get('CDE', collect());
+        $this->estadosLlenado = $catalogos->get('LLE', collect());
     }
 
 

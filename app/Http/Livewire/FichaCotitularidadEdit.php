@@ -92,6 +92,12 @@ class FichaCotitularidadEdit extends Component
     public $provincias;
     public $distritos;
 
+    public $tiposTitular;
+    public $tiposDocumento;
+    public $formasAdquisicion;
+    public $condicionesDeclarante;
+    public $estadosLlenado;
+
     public function mount(Ficha $fichaanterior)
     {
 
@@ -101,63 +107,78 @@ class FichaCotitularidadEdit extends Component
         $this-> nume_ficha_lote = $separarnume_ficha[0];
         $this-> nume_ficha_lote2 = $separarnume_ficha[1];
 
-        for($i=0;$i<$this->total;$i++)
+        for ($i = 0; $i < $this->total; $i++)
         {
-            $this-> tipoTitular[$i] = $fichaanterior->titulars[$i]->persona->tipo_persona;
-            $this-> porc_cotitular[$i] = $fichaanterior->titulars[$i]->porc_cotitular;
-            $this-> codi_contribuyente[$i] = $fichaanterior->titulars[$i]->codi_contribuyente;
-            if($fichaanterior->titulars[$i]->persona->tipo_persona==1){
-                $this-> tipo_doc1[$i] = $fichaanterior->titulars[$i]->persona->tipo_doc;
-                $this-> numedoc1[$i] = $fichaanterior->titulars[$i]->persona->nume_doc;
-                $this-> nombres1[$i] = $fichaanterior->titulars[$i]->persona->nombres;
-                $this-> ape_paterno1[$i] = $fichaanterior->titulars[$i]->persona->ape_paterno;
-                $this-> ape_materno1[$i] = $fichaanterior->titulars[$i]->persona->ape_materno;
-            }
-            if($fichaanterior->titulars[$i]->persona->tipo_persona==2){
-                $this-> numedoc3[$i] = $fichaanterior->titulars[$i]->persona->nume_doc;
-                $this-> razon_social[$i] = $fichaanterior->titulars[$i]->persona->razon_social;
-            }
+            $titular = $fichaanterior->titulars[$i];
+            $persona = $titular->persona;
+            $exoneracion = $titular->exoneraciontitular;
 
+            $domicilio = $persona->domiciliotitular(
+                $fichaanterior->id_ficha
+            );
 
+            $this->tipoTitular[$i] = $persona->tipo_persona;
+            $this->porc_cotitular[$i] = $titular->porc_cotitular;
+            $this->codi_contribuyente[$i] = $titular->codi_contribuyente;
 
-            $this-> form_adquisicion[$i] = $fichaanterior->titulars[$i]->form_adquisicion;
-            if($fichaanterior->titulars[$i]->fecha_adquisicion!="1969-12-31"){
-                $this-> fecha_adquisicion[$i] = $fichaanterior->titulars[$i]->fecha_adquisicion;
-            }
-            $this-> condicion[$i] = $fichaanterior->titulars[$i]->cond_titular;
-            $this-> nume_resolucion[$i] = $fichaanterior->titulars[$i]->exoneraciontitular->nume_resolucion;
-            if($fichaanterior->titulars[$i]->exoneraciontitular->fecha_inicio!="1969-12-31"){
-                $this-> fecha_inicio[$i] = $fichaanterior->titulars[$i]->exoneraciontitular->fecha_inicio;
-            }
-            if($fichaanterior->titulars[$i]->exoneraciontitular->fecha_vencimiento!="1969-12-31"){
-                $this-> fecha_vencimiento[$i] = $fichaanterior->titulars[$i]->exoneraciontitular->fecha_vencimiento;
+            if ($persona->tipo_persona == 1) {
+                $this->tipo_doc1[$i] = $persona->tipo_doc;
+                $this->numedoc1[$i] = $persona->nume_doc;
+                $this->nombres1[$i] = $persona->nombres;
+                $this->ape_paterno1[$i] = $persona->ape_paterno;
+                $this->ape_materno1[$i] = $persona->ape_materno;
             }
 
-
-
-            if($fichaanterior->titulars[$i]->persona->domiciliotitular($fichaanterior->id_ficha)!="")
-            {
-                $this-> deparamentoconductor[$i] = $fichaanterior->titulars[$i]->persona->domiciliotitular($fichaanterior->id_ficha)->codi_dep;
-                $this-> provinciaconductor[$i] = $fichaanterior->titulars[$i]->persona->domiciliotitular($fichaanterior->id_ficha)->codi_pro;
-                $this-> distritoconductor[$i] = $fichaanterior->titulars[$i]->persona->domiciliotitular($fichaanterior->id_ficha)->codi_dis;
-                $this-> telefonoconductor[$i] = $fichaanterior->titulars[$i]->telf;
-                $this-> anexoconductor[$i] = $fichaanterior->titulars[$i]->anexo;
-                $this-> faxconductor[$i] = $fichaanterior->titulars[$i]->fax;
-                $this-> emailconductor[$i] = $fichaanterior->titulars[$i]->email;
-                $this-> codigoviaconductor[$i] = $fichaanterior->titulars[$i]->persona->domiciliotitular($fichaanterior->id_ficha)->codi_via;
-                $this-> tipoviaconductor[$i] = $fichaanterior->titulars[$i]->persona->domiciliotitular($fichaanterior->id_ficha)->tipo_via;
-                $this-> nombreviaconductor[$i] = $fichaanterior->titulars[$i]->persona->domiciliotitular($fichaanterior->id_ficha)->nomb_via;
-                $this-> nmunicipalconductor[$i] = $fichaanterior->titulars[$i]->persona->domiciliotitular($fichaanterior->id_ficha)->nume_muni;
-                $this-> nomb_edificacionconductor[$i] = $fichaanterior->titulars[$i]->persona->domiciliotitular($fichaanterior->id_ficha)->nomb_edificacion;
-                $this-> ninteriorconductor[$i] = $fichaanterior->titulars[$i]->persona->domiciliotitular($fichaanterior->id_ficha)->nume_interior;
-                $this-> codigohurbanoconductor[$i] = $fichaanterior->titulars[$i]->persona->domiciliotitular($fichaanterior->id_ficha)->codi_hab_urba;
-                $this-> nombrehhurbanaconductor[$i] = $fichaanterior->titulars[$i]->persona->domiciliotitular($fichaanterior->id_ficha)->nomb_hab_urba;
-                $this-> zonaconductor[$i] = $fichaanterior->titulars[$i]->persona->domiciliotitular($fichaanterior->id_ficha)->sector;
-                $this-> manzanaconductor[$i] = $fichaanterior->titulars[$i]->persona->domiciliotitular($fichaanterior->id_ficha)->mzna;
-                $this-> loteconductor[$i] = $fichaanterior->titulars[$i]->persona->domiciliotitular($fichaanterior->id_ficha)->lote;
-                $this-> subloteconductor[$i] = $fichaanterior->titulars[$i]->persona->domiciliotitular($fichaanterior->id_ficha)->sublote;
+            if ($persona->tipo_persona == 2) {
+                $this->numedoc3[$i] = $persona->nume_doc;
+                $this->razon_social[$i] = $persona->razon_social;
             }
 
+            $this->form_adquisicion[$i] = $titular->form_adquisicion;
+            $this->fecha_adquisicion[$i] =
+                $titular->fecha_adquisicion != '1969-12-31'
+                    ? $titular->fecha_adquisicion
+                    : null;
+
+            $this->condicion[$i] = $titular->cond_titular;
+
+            if ($exoneracion) {
+                $this->nume_resolucion[$i] = $exoneracion->nume_resolucion;
+
+                $this->fecha_inicio[$i] =
+                    $exoneracion->fecha_inicio != '1969-12-31'
+                        ? $exoneracion->fecha_inicio
+                        : null;
+
+                $this->fecha_vencimiento[$i] =
+                    $exoneracion->fecha_vencimiento != '1969-12-31'
+                        ? $exoneracion->fecha_vencimiento
+                        : null;
+            }
+
+            if ($domicilio) {
+                $this->deparamentoconductor[$i] = $domicilio->codi_dep;
+                $this->provinciaconductor[$i] = $domicilio->codi_pro;
+                $this->distritoconductor[$i] = $domicilio->codi_dis;
+
+                $this->codigoviaconductor[$i] = $domicilio->codi_via;
+                $this->tipoviaconductor[$i] = $domicilio->tipo_via;
+                $this->nombreviaconductor[$i] = $domicilio->nomb_via;
+                $this->nmunicipalconductor[$i] = $domicilio->nume_muni;
+                $this->nomb_edificacionconductor[$i] = $domicilio->nomb_edificacion;
+                $this->ninteriorconductor[$i] = $domicilio->nume_interior;
+                $this->codigohurbanoconductor[$i] = $domicilio->codi_hab_urba;
+                $this->nombrehhurbanoconductor[$i] = $domicilio->nomb_hab_urba;
+                $this->zonaconductor[$i] = $domicilio->sector;
+                $this->manzanaconductor[$i] = $domicilio->mzna;
+                $this->loteconductor[$i] = $domicilio->lote;
+                $this->subloteconductor[$i] = $domicilio->sublote;
+            }
+
+            $this->telefonoconductor[$i] = $titular->telf;
+            $this->anexoconductor[$i] = $titular->anexo;
+            $this->faxconductor[$i] = $titular->fax;
+            $this->emailconductor[$i] = $titular->email;
         }
 
         $this-> observacion = $fichaanterior->fichacotitular->observaciones;
@@ -205,6 +226,19 @@ class FichaCotitularidadEdit extends Component
         $this->departamentos=Ubiges::where('cod_pro','00')->where('codi_dis','00')->get();
         $this->provincias=Ubiges::where('cod_pro','!=','00')->where('codi_dis','00')->get();
         $this->distritos=Ubiges::where('codi_dis','!=','00')->get();
+
+        $catalogos = \App\Models\TablaCodigo::query()
+            ->select('id_tabla', 'codigo', 'desc_codigo')
+            ->whereIn('id_tabla', ['TPE', 'DOC', 'FAQ', 'CDE', 'LLE'])
+            ->orderBy('codigo')
+            ->get()
+            ->groupBy('id_tabla');
+
+        $this->tiposTitular = $catalogos->get('TPE', collect());
+        $this->tiposDocumento = $catalogos->get('DOC', collect());
+        $this->formasAdquisicion = $catalogos->get('FAQ', collect());
+        $this->condicionesDeclarante = $catalogos->get('CDE', collect());
+        $this->estadosLlenado = $catalogos->get('LLE', collect());
 
 
     }
