@@ -736,7 +736,7 @@
 @push('custom-scripts')
 @for($i=0;$i<$total;$i++)
 <script>
-
+    
 if('{{$tipoTitular[$i]}}'=="1"){
     $('#natural{{$i}}').show();
     $('#juridica{{$i}}').hide();
@@ -770,28 +770,28 @@ function agregar()
 $('#deparamentoconductor{{$i}}').append("<option value='' >SELECCIONE</option>");
 <?php foreach ($departamentos  as $dep): ?>
     $('#deparamentoconductor{{$i}}').append("<option value='{{$dep->cod_dep}}' >{{$dep->descri}}</option>");
-<?php endforeach ?>
+<?php endforeach ?> 
 
 </script>
-    @if($fichaanterior->titulars[$i]->persona->domiciliotitular($fichaanterior->id_ficha)!="")
+    @if($deparamentoconductor[$i]!="")
     <script>
         $('#provinciaconductor{{$i}}').append("<option value='' >SELECCIONE</option>");
         <?php foreach ($provincias  as $pro): ?>
-            if({{$pro->cod_dep}}=='{{$fichaanterior->titulars[$i]->persona->domiciliotitular($fichaanterior->id_ficha)->codi_dep}}'){
+            if({{$pro->cod_dep}}=='{{$deparamentoconductor[$i]}}'){
                 $('#provinciaconductor{{$i}}').append("<option value='{{$pro->cod_pro}}' >{{$pro->descri}}</option>");
             }
-        <?php endforeach ?>
+        <?php endforeach ?> 
     </script>
     @endif
-    @if($fichaanterior->titulars[$i]->persona->domiciliotitular($fichaanterior->id_ficha)!="")
+    @if($deparamentoconductor[$i]!="" && $provinciaconductor[$i]!="")
     <script>
         $('#distritoconductor{{$i}}').append("<option value='' >SELECCIONE</option>");
         <?php foreach ($distritos  as $dis): ?>
-            if({{$dis->cod_pro}}=='{{$fichaanterior->titulars[$i]->persona->domiciliotitular($fichaanterior->id_ficha)->codi_pro}}' && {{$dis->cod_dep}}=='{{$fichaanterior->titulars[$i]->persona->domiciliotitular($fichaanterior->id_ficha)->codi_dep}}')
+            if({{$dis->cod_pro}}=='{{$provinciaconductor[$i]}}' && {{$dis->cod_dep}}=='{{$deparamentoconductor[$i]}}')
             {
                 $('#distritoconductor{{$i}}').append("<option value='{{$dis->codi_dis}}' >{{$dis->descri}}</option>");
             }
-        <?php endforeach ?>
+        <?php endforeach ?> 
     </script>
     @endif
 <script>
@@ -809,7 +809,7 @@ function agregarValores2(){
         if({{$pro->cod_dep}}==$("#deparamentoconductor{{$i}} option:selected").val()){
             $('#provinciaconductor{{$i}}').append("<option value='{{$pro->cod_pro}}' >{{$pro->descri}}</option>");
         }
-    <?php endforeach ?>
+    <?php endforeach ?> 
 }
 
 function limpiarselect2(){
@@ -826,7 +826,7 @@ function agregarValores3(){
         {
             $('#distritoconductor{{$i}}').append("<option value='{{$dis->codi_dis}}' >{{$dis->descri}}</option>");
         }
-    <?php endforeach ?>
+    <?php endforeach ?> 
 }
 
 function limpiarselect3(){
