@@ -168,7 +168,7 @@ class FichaCotitularidadEdit extends Component
                 $this->nomb_edificacionconductor[$i] = $domicilio->nomb_edificacion;
                 $this->ninteriorconductor[$i] = $domicilio->nume_interior;
                 $this->codigohurbanoconductor[$i] = $domicilio->codi_hab_urba;
-                $this->nombrehhurbanoconductor[$i] = $domicilio->nomb_hab_urba;
+                $this->nombrehhurbanaconductor[$i] = $domicilio->nomb_hab_urba;
                 $this->zonaconductor[$i] = $domicilio->sector;
                 $this->manzanaconductor[$i] = $domicilio->mzna;
                 $this->loteconductor[$i] = $domicilio->lote;
