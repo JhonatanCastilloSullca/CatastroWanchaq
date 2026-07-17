@@ -151,15 +151,17 @@
                                 <label class="form-label d-inline-flex">
                                     <div class="divcuadrorequired">126</div> TIPO DE TITULAR
                                 </label>
+                                <div wire:ignore>
                                 <select class="form-select" data-width="100%" data-live-search="true"
                                     name="tipo_persona[]" id="tipo_persona{{ $i }}"
                                     wire:model.lazy="tipoTitular.{{ $i }}">
                                     <option value="">SELECCIONE</option>
-                                    @foreach ($tiposTitular as $tablacodigo)
-                                        <option value="{{ $tablacodigo->codigo }}">{{ $tablacodigo->codigo }}
-                                            {{ $tablacodigo->desc_codigo }}</option>
+                                    @foreach ($tiposTitular as $tablacodigo1)
+                                        <option value="{{ $tablacodigo1->codigo }}">{{ $tablacodigo1->codigo }}
+                                            {{ $tablacodigo1->desc_codigo }}</option>
                                     @endforeach
                                 </select>
+                                </div>
                                 @error('tipoTitular.' . $i)
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
@@ -204,15 +206,17 @@
                                     <label class="form-label d-inline-flex">
                                         <div class="divcuadro">22</div> TIPO DOC. IDENTIDAD
                                     </label>
+                                    <div wire:ignore>
                                     <select class="form-select" data-width="100%" data-live-search="true"
                                         name="tipo_doc1[]" id="tipo_doc1"
                                         wire:model.defer="tipo_doc1.{{ $i }}">
                                         <option value="">SELECCIONE</option>
-                                        @foreach ($tiposDocumento as $tablacodigo)
-                                            <option value="{{ $tablacodigo->codigo }}">{{ $tablacodigo->codigo }}
-                                                {{ $tablacodigo->desc_codigo }}</option>
+                                        @foreach ($tiposDocumento as $tablacodigo2)
+                                            <option value="{{ $tablacodigo2->codigo }}">{{ $tablacodigo2->codigo }}
+                                                {{ $tablacodigo2->desc_codigo }}</option>
                                         @endforeach
                                     </select>
+                                    </div>
                                     @error('tipo_doc1.' . $i)
                                         <span class="error-message" style="color:red">{{ $message }}</span>
                                     @enderror
@@ -313,15 +317,17 @@
                                 <label class="form-label d-inline-flex">
                                     <div class="divcuadro">38</div> FORMA DE ADQUISICION
                                 </label>
+                                <div wire:ignore>
                                 <select class="form-select" data-width="100%" data-live-search="true"
                                     name="form_adquisicion[]" id="form_adquisicion[]"
                                     wire:model.defer="form_adquisicion.{{ $i }}">
                                     <option value="">SELECCIONE</option>
-                                    @foreach ($formasAdquisicion as $tablacodigo)
-                                        <option value="{{ $tablacodigo->codigo }}">{{ $tablacodigo->codigo }}
-                                            {{ $tablacodigo->desc_codigo }}</option>
+                                    @foreach ($formasAdquisicion as $tablacodigo3)
+                                        <option value="{{ $tablacodigo3->codigo }}">{{ $tablacodigo3->codigo }}
+                                            {{ $tablacodigo3->desc_codigo }}</option>
                                     @endforeach
                                 </select>
+                                </div>
                                 @error('form_adquisicion.' . $i)
                                     <span class="error-message" style="color:red">{{ $message }}</span>
                                 @enderror
@@ -585,12 +591,17 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label d-inline-flex" > <div class="divcuadro">114</div>CONDICIÓN DE DECLARANTE</label>
-                            <select class="form-select"  data-width="100%" data-live-search="true" name="cond_declarante" id="cond_declarante" wire:model.defer="cond_declarante">
-                                <option value="" >SELECCIONE</option>
-                                @foreach($condicionesDeclarante as $tablacodigo)
-                                    <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
-                                @endforeach
-                            </select>
+                            <div wire:ignore>
+                                <select class="form-select" data-width="100%" data-live-search="true"
+                                    name="cond_declarante" id="cond_declarante" wire:model.defer="cond_declarante">
+                                    <option value="">SELECCIONE</option>
+
+                                    @foreach ($condicionesDeclarante as $tablacodigo4)
+                                        <option value="{{ $tablacodigo4->codigo }}">{{ $tablacodigo4->codigo }}
+                                            {{ $tablacodigo4->desc_codigo }}</option>
+                                    @endforeach
+                                </select>
+                                </div>
                             @error('cond_declarante')
                                 <span class="error-message" style="color:red">{{ $message }}</span>
                             @enderror
@@ -599,12 +610,16 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label d-inline-flex" > <div class="divcuadrorequired">116</div>ESTADO DE LLENADO DE LA FICHA</label>
-                            <select class="form-select"  data-width="100%" data-live-search="true" name="esta_llenado" id="esta_llenado" wire:model.defer="esta_llenado">
-                                <option value="" >SELECCIONE</option>
-                                @foreach($estadosLlenado as $tablacodigo)
-                                    <option value="{{$tablacodigo->codigo}}">{{$tablacodigo->codigo}} {{$tablacodigo->desc_codigo}}</option>
-                                @endforeach
-                            </select>
+                            <div wire:ignore>
+                                    <select class="form-select" data-width="100%" data-live-search="true"
+                                        name="esta_llenado" id="esta_llenado" wire:model.defer="esta_llenado">
+                                        <option value="">SELECCIONE</option>
+                                        @foreach ($estadosLlenado as $tablacodigo5)
+                                            <option value="{{ $tablacodigo5->codigo }}">{{ $tablacodigo5->codigo }}
+                                                {{ $tablacodigo5->desc_codigo }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             @error('esta_llenado')
                                 <span class="error-message" style="color:red">{{ $message }}</span>
                             @enderror
