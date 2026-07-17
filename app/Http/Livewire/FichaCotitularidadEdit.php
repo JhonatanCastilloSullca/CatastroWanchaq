@@ -98,6 +98,8 @@ class FichaCotitularidadEdit extends Component
     public $condicionesDeclarante;
     public $estadosLlenado;
 
+    public $docimiliotitulares =[];
+
     public function mount(Ficha $fichaanterior)
     {
 
