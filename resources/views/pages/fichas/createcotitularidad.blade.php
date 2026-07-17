@@ -5,6 +5,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-12 grid-margin stretch-card" >
+        {{$fichaanterior}}
         @livewire('ficha-cotitularidad-create',["fichaanterior"=>$fichaanterior,"total"=>$total])
     </div>
 </div>
