@@ -219,7 +219,7 @@
                                         <div class="divcuadro">3</div> CÓDIGO CONTRIBUYENTE DE RENTAS
                                     </label>
                                     <input type="text" class="form-control" placeholder=""
-                                        name="codi_cont_rentas" wire:model="codi_cont_rentas" maxlength="15"
+                                        name="codi_cont_rentas" wire:model.defer="codi_cont_rentas" maxlength="15"
                                         tabindex="16">
                                     @error('codi_cont_rentas')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
@@ -232,7 +232,7 @@
                                         <div class="divcuadro">4</div> CÓDIGO PREDIAL DE RENTAS
                                     </label>
                                     <input type="text" class="form-control" placeholder=""
-                                        name="codi_pred_rentas" wire:model="codi_pred_rentas" maxlength="15"
+                                        name="codi_pred_rentas" wire:model.defer="codi_pred_rentas" maxlength="15"
                                         tabindex="17">
                                     @error('codi_pred_rentas')
                                         <span class="error-message" style="color:red">{{ $message }}</span>
