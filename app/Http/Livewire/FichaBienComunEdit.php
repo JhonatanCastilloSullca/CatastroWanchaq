@@ -268,6 +268,12 @@ class FichaBienComunEdit extends Component
         $this->cont = count($fichaanterior->puertas);
         if($this->cont==0){
             $this->cont=1;
+            $this->tipoVia[0]=null;
+            $this->tipoViatipo[0]=null;
+            $this->tipoVianombre[0]=null;
+            $this->tipopuerta[0]=null;
+            $this->nume_muni[0]=null;
+            $this->cond_nume[0]=null;
         }
 
         foreach($fichaanterior->puertas as $i => $puerta){
