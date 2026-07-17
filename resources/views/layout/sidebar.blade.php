@@ -558,6 +558,24 @@
                 </div>
             </li>
             @endcan
+            <li class="nav-item {{ active_class(['reportes-sector/*']) }}">
+                <a class="nav-link" data-bs-toggle="collapse" href="#reportes-sector" role="button"
+                    aria-expanded="{{ is_active_route(['reportes-sector/*']) }}"
+                    aria-controls="reportes-sector">
+                    <i class="link-icon mdi mdi-clipboard-text"></i>
+                    <span class="link-title">Exportar</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse {{ show_class(['reportes-sector/*']) }}" id="reportes-sector">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ url('/reportes-sector') }}"
+                                class="nav-link {{ active_class(['reportes-sector']) }}">Fichas</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
 
 </div>
 </nav>

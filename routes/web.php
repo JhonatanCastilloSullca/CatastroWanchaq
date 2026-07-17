@@ -15,7 +15,7 @@ use App\Http\Controllers\FichaBienCulturalController;
 use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\LineaTiempoController;
 use App\Http\Controllers\ProgresoFichasController;
-
+use App\Http\Controllers\ReporteSectorController;
 
 Route::group(['middleware'=>['guest']], function () {
     Route::get('/','App\Http\Controllers\Auth\LoginController@showLoginForm');
@@ -180,5 +180,33 @@ Route::group(['middleware'=>['auth']], function () {
 
     Route::post('editar-ficha-cod-refefencia', 'App\Http\Controllers\FichaController@updateCod')->name('ficha.updateCod');
     Route::post('duplicar-cotitular', 'App\Http\Controllers\FichaController@duplicarCotitular')->name('ficha.duplicarCotitular');
+
+    Route::prefix('reportes-sector')->group(function () {
+
+        Route::get('/', [
+            ReporteSectorController::class,
+            'index'
+        ])->name('reportes-sector.index');
+
+        Route::get('/individuales', [
+            ReporteSectorController::class,
+            'individuales'
+        ])->name('reportes-sector.individuales');
+
+        Route::get('/economicas', [
+            ReporteSectorController::class,
+            'economicas'
+        ])->name('reportes-sector.economicas');
+
+        Route::get('/bien-comun', [
+            ReporteSectorController::class,
+            'bienComun'
+        ])->name('reportes-sector.bien-comun');
+
+        Route::get('/puertas', [
+            ReporteSectorController::class,
+            'puertas'
+        ])->name('reportes-sector.puertas');
+    });
 
 });
