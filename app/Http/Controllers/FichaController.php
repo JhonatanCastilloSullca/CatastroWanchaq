@@ -1049,7 +1049,19 @@ public function fichaCotitularidad(Ficha $ficha)
         $isLocal = in_array($host, ['localhost', '192.168.1.16']);
         $mapsUrl = $isLocal ? 'http://192.168.1.16:81' : 'http://209.45.78.210:9101';
 
-        $url = env('URL_MAP') . "/servicio/wms?service=WMS&request=GetMap&layers=lotes,idLotes,verticesLote,ejeVias&styles=&format=image%2Fpng&transparent=false&version=1.1.1&width=450&height=400&srs=EPSG%3A32719&bbox=" . $extension[0]->extension . "&id=" . $ficha->id_lote;
+        $url = env('URL_MAP') .
+        "/servicio/wms?" .
+        "service=WMS" .
+        "&request=GetMap" .
+        "&version=1.1.1" .
+        "&layers=lote,id_lote,vertice_lote,eje_via" .
+        "&styles=" .
+        "&WIDTH=450" .
+        "&HEIGHT=400" .
+        "&SRS=EPSG:32719" .
+        "&BBOX=" . $extension[0]->extension .
+        "&format=image/png" .
+        "&id=" . $ficha->id_lote;
 
         $nombreArchivo = $ficha->id_ficha . '.jpg';
         $usos = Uso::orderBy('codi_uso')->get();
