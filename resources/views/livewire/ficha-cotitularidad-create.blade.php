@@ -1122,71 +1122,186 @@
     </form>
 </div>
 @push('custom-scripts')
-    @for ($i = 0; $i < $total; $i++)
-        <script>
-            $('#natural{{ $i }}').hide();
-            $('#juridica{{ $i }}').hide();
-            $('#tipo_persona{{ $i }}').change(agregar);
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const total = @json((int) $total);
 
-            function agregar() {
-                if ($("#tipo_persona{{ $i }} option:selected").val() == "1") {
-                    $('#natural{{ $i }}').show();
-                    $('#juridica{{ $i }}').hide();
-                }
-                if ($("#tipo_persona{{ $i }} option:selected").val() == "2") {
-                    $('#natural{{ $i }}').hide();
-                    $('#juridica{{ $i }}').show();
-                }
-                if ($("#tipo_persona{{ $i }} option:selected").val() != "2" && $(
-                        "#tipo_persona{{ $i }} option:selected").val() != "1") {
-                    $('#natural{{ $i }}').hide();
-                    $('#juridica{{ $i }}').hide();
-                }
-            }
-            $('#deparamentoconductor{{ $i }}').append("<option value='' >SELECCIONE</option>");
-            $('#deparamentoconductor{{ $i }}').change(agregarValores2);
-            $('#provinciaconductor{{ $i }}').change(agregarValores3);
+        const departamentos = @json(
+            $departamentos->map(fn ($dep) => [
+                'cod_dep' => (string) $dep->cod_dep,
+                'descri' => $dep->descri,
+            ])->values()
+        );
 
+        const provincias = @json(
+            $provincias->map(fn ($pro) => [
+                'cod_dep' => (string) $pro->cod_dep,
+                'cod_pro' => (string) $pro->cod_pro,
+                'descri' => $pro->descri,
+            ])->values()
+        );
 
-            <?php foreach ($departamentos  as $dep): ?>
-            $('#deparamentoconductor{{ $i }}').append(
-                "<option value='{{ $dep->cod_dep }}' >{{ $dep->descri }}</option>");
-            <?php endforeach ?>
+        const distritos = @json(
+            $distritos->map(fn ($dis) => [
+                'cod_dep' => (string) $dis->cod_dep,
+                'cod_pro' => (string) $dis->cod_pro,
+                'codi_dis' => (string) $dis->codi_dis,
+                'descri' => $dis->descri,
+            ])->values()
+        );
 
-            function agregarValores2() {
-                limpiarselect2();
-                $('#provinciaconductor{{ $i }}').empty();
-                $('#distritoconductor{{ $i }}').empty();
-                $('#provinciaconductor{{ $i }}').append("<option value='' >SELECCIONE</option>");
-                <?php foreach ($provincias  as $pro): ?>
-                if ({{ $pro->cod_dep }} == $("#deparamentoconductor{{ $i }} option:selected").val()) {
-                    $('#provinciaconductor{{ $i }}').append(
-                        "<option value='{{ $pro->cod_pro }}' >{{ $pro->descri }}</option>");
-                }
-                <?php endforeach ?>
-            }
+        function agregarOpcion(select, value, text) {
+            const option = document.createElement('option');
 
-            function limpiarselect2() {
-                $('#provinciaconductor{{ $i }}').empty();
-                $('#distritoconductor{{ $i }}').empty();
-            }
+            option.value = value;
+            option.textContent = text;
 
-            function agregarValores3() {
-                limpiarselect3();
-                $('#distritoconductor{{ $i }}').empty();
-                $('#distritoconductor{{ $i }}').append("<option value='' >SELECCIONE</option>");
-                <?php foreach ($distritos  as $dis): ?>
-                if ({{ $dis->cod_pro }} == $("#provinciaconductor{{ $i }} option:selected").val() &&
-                    {{ $dis->cod_dep }} == $("#deparamentoconductor{{ $i }} option:selected").val()) {
-                    $('#distritoconductor{{ $i }}').append(
-                        "<option value='{{ $dis->codi_dis }}' >{{ $dis->descri }}</option>");
-                }
-                <?php endforeach ?>
+            select.appendChild(option);
+        }
+
+        function agregarSeleccione(select) {
+            agregarOpcion(select, '', 'SELECCIONE');
+        }
+
+        function actualizarTipoPersona(index) {
+            const tipoPersona = document.getElementById(`tipo_persona${index}`);
+            const natural = document.getElementById(`natural${index}`);
+            const juridica = document.getElementById(`juridica${index}`);
+
+            if (!tipoPersona || !natural || !juridica) {
+                return;
             }
 
-            function limpiarselect3() {
-                $('#distritoconductor{{ $i }}').empty();
+            const valor = tipoPersona.value;
+
+            natural.style.display = valor === '1' ? '' : 'none';
+            juridica.style.display = valor === '2' ? '' : 'none';
+        }
+
+        function cargarDepartamentos(index) {
+            const departamento = document.getElementById(
+                `deparamentoconductor${index}`
+            );
+
+            if (!departamento) {
+                return;
             }
-        </script>
-    @endfor
+
+            departamento.innerHTML = '';
+            agregarSeleccione(departamento);
+
+            departamentos.forEach(function (dep) {
+                agregarOpcion(
+                    departamento,
+                    dep.cod_dep,
+                    dep.descri
+                );
+            });
+        }
+
+        function cargarProvincias(index) {
+            const departamento = document.getElementById(
+                `deparamentoconductor${index}`
+            );
+
+            const provincia = document.getElementById(
+                `provinciaconductor${index}`
+            );
+
+            const distrito = document.getElementById(
+                `distritoconductor${index}`
+            );
+
+            if (!departamento || !provincia || !distrito) {
+                return;
+            }
+
+            provincia.innerHTML = '';
+            distrito.innerHTML = '';
+
+            agregarSeleccione(provincia);
+            agregarSeleccione(distrito);
+
+            const codigoDepartamento = String(departamento.value);
+
+            provincias
+                .filter(function (pro) {
+                    return String(pro.cod_dep) === codigoDepartamento;
+                })
+                .forEach(function (pro) {
+                    agregarOpcion(
+                        provincia,
+                        pro.cod_pro,
+                        pro.descri
+                    );
+                });
+        }
+
+        function cargarDistritos(index) {
+            const departamento = document.getElementById(
+                `deparamentoconductor${index}`
+            );
+
+            const provincia = document.getElementById(
+                `provinciaconductor${index}`
+            );
+
+            const distrito = document.getElementById(
+                `distritoconductor${index}`
+            );
+
+            if (!departamento || !provincia || !distrito) {
+                return;
+            }
+
+            distrito.innerHTML = '';
+            agregarSeleccione(distrito);
+
+            const codigoDepartamento = String(departamento.value);
+            const codigoProvincia = String(provincia.value);
+
+            distritos
+                .filter(function (dis) {
+                    return String(dis.cod_dep) === codigoDepartamento
+                        && String(dis.cod_pro) === codigoProvincia;
+                })
+                .forEach(function (dis) {
+                    agregarOpcion(
+                        distrito,
+                        dis.codi_dis,
+                        dis.descri
+                    );
+                });
+        }
+
+        for (let index = 0; index < total; index++) {
+            const tipoPersona = document.getElementById(
+                `tipo_persona${index}`
+            );
+
+            const departamento = document.getElementById(
+                `deparamentoconductor${index}`
+            );
+
+            const provincia = document.getElementById(
+                `provinciaconductor${index}`
+            );
+
+            cargarDepartamentos(index);
+            actualizarTipoPersona(index);
+
+            tipoPersona?.addEventListener('change', function () {
+                actualizarTipoPersona(index);
+            });
+
+            departamento?.addEventListener('change', function () {
+                cargarProvincias(index);
+            });
+
+            provincia?.addEventListener('change', function () {
+                cargarDistritos(index);
+            });
+        }
+    });
+</script>
 @endpush
