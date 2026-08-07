@@ -1429,7 +1429,7 @@
                                                     <td>
                                                         <input type="text" class="form-control" name="bloque[]"
                                                             placeholder="Bloque" id="bloque.{{ $i }}"
-                                                            wire:model="bloque.{{ $i }}" maxlength="2"
+                                                            wire:model.defer="bloque.{{ $i }}" maxlength="2"
                                                             tabindex="89">
                                                         @error('bloque.' . $i)
                                                             <span class="error-message"
@@ -1440,7 +1440,7 @@
                                                         <input type="text" class="form-control"
                                                             name="nume_piso[]" placeholder="N° piso"
                                                             id="num_piso.{{ $i }}"
-                                                            wire:model="num_piso.{{ $i }}"
+                                                            wire:model.defer="num_piso.{{ $i }}"
                                                             maxlength="2" tabindex="89">
                                                         @error('num_piso.' . $i)
                                                             <span class="error-message"
@@ -1450,7 +1450,7 @@
                                                     <td>
                                                         <input type="month" class="form-control" name="fecha[]"
                                                             placeholder="FECHA" id="fecha.{{ $i }}"
-                                                            wire:model="fecha.{{ $i }}" tabindex="90">
+                                                            wire:model.defer="fecha.{{ $i }}" tabindex="90">
                                                         @error('fecha.' . $i)
                                                             <span class="error-message"
                                                                 style="color:red">{{ $message }}</span>
@@ -1460,7 +1460,7 @@
                                                         <select class="form-select w-65" data-width="100%"
                                                             data-live-search="true" name="mep.{{ $i }}"
                                                             id="mep.{{ $i }}"
-                                                            wire:model="mep.{{ $i }}" tabindex="91">
+                                                            wire:model.defer="mep.{{ $i }}" tabindex="91">
                                                             <option value="">SELECCIONE</option>
                                                             @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'MEP')->orderby('codigo', 'asc')->get() as $tablacodigo)
                                                                 <option value="{{ $tablacodigo->codigo }}">
@@ -1477,7 +1477,7 @@
                                                         <select class="form-select w-65" data-width="100%"
                                                             data-live-search="true" name="ecs.{{ $i }}"
                                                             id="ecs.{{ $i }}"
-                                                            wire:model="ecs.{{ $i }}" tabindex="92">
+                                                            wire:model.defer="ecs.{{ $i }}" tabindex="92">
                                                             <option value="">SELECCIONE</option>
                                                             @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'ECS')->orderby('codigo', 'asc')->get() as $tablacodigo)
                                                                 <option value="{{ $tablacodigo->codigo }}">
@@ -1494,7 +1494,7 @@
                                                         <select class="form-select w-65" data-width="100%"
                                                             data-live-search="true" name="ecc.{{ $i }}"
                                                             id="ecc.{{ $i }}"
-                                                            wire:model="ecc.{{ $i }}" tabindex="93">
+                                                            wire:model.defer="ecc.{{ $i }}" tabindex="93">
                                                             <option value="">SELECCIONE</option>
                                                             @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'ECC')->orderby('codigo', 'asc')->get() as $tablacodigo)
                                                                 <option value="{{ $tablacodigo->codigo }}">
@@ -1510,7 +1510,7 @@
                                                     <td>
                                                         <input type="text" class="form-control"
                                                             name="estr_muro_col[]" placeholder="MUROS"
-                                                            wire:model="estr_muro_col.{{ $i }}"
+                                                            wire:model.defer="estr_muro_col.{{ $i }}"
                                                             onkeydown="return /[a-i]/i.test(event.key)"
                                                             maxlength="1" tabindex="94">
                                                         @error('estr_muro_col.' . $i)
@@ -1521,7 +1521,7 @@
                                                     <td>
                                                         <input type="text" class="form-control"
                                                             name="estr_techo[]" placeholder="TECHOS"
-                                                            wire:model="estr_techo.{{ $i }}"
+                                                            wire:model.defer="estr_techo.{{ $i }}"
                                                             onkeydown="return /[a-i]/i.test(event.key)"
                                                             maxlength="1" tabindex="95">
                                                         @error('estr_techo.' . $i)
@@ -1532,7 +1532,7 @@
                                                     <td>
                                                         <input type="text" class="form-control"
                                                             name="acab_piso[]" placeholder="PISOS"
-                                                            wire:model="acab_piso.{{ $i }}"
+                                                            wire:model.defer="acab_piso.{{ $i }}"
                                                             onkeydown="return /[a-i]/i.test(event.key)"
                                                             maxlength="1" tabindex="96">
                                                         @error('acab_piso.' . $i)
@@ -1543,7 +1543,7 @@
                                                     <td>
                                                         <input type="text" class="form-control"
                                                             name="acab_puerta_ven[]" placeholder="P. Y V."
-                                                            wire:model="acab_puerta_ven.{{ $i }}"
+                                                            wire:model.defer="acab_puerta_ven.{{ $i }}"
                                                             onkeydown="return /[a-i]/i.test(event.key)"
                                                             maxlength="1" tabindex="97">
                                                         @error('acab_puerta_ven.' . $i)
@@ -1554,7 +1554,7 @@
                                                     <td>
                                                         <input type="text" class="form-control"
                                                             name="acab_revest[]" placeholder="REVEST."
-                                                            wire:model="acab_revest.{{ $i }}"
+                                                            wire:model.defer="acab_revest.{{ $i }}"
                                                             onkeydown="return /[a-i]/i.test(event.key)"
                                                             maxlength="1" tabindex="98">
                                                         @error('acab_revest.' . $i)
@@ -1565,7 +1565,7 @@
                                                     <td>
                                                         <input type="text" class="form-control"
                                                             name="acab_bano[]" placeholder="BAÑOS"
-                                                            wire:model="acab_bano.{{ $i }}"
+                                                            wire:model.defer="acab_bano.{{ $i }}"
                                                             onkeydown="return /[a-i]/i.test(event.key)"
                                                             maxlength="1" tabindex="99">
                                                         @error('acab_bano.' . $i)
@@ -1576,7 +1576,7 @@
                                                     <td>
                                                         <input type="text" class="form-control"
                                                             name="inst_elect_sanita[]" placeholder="INST. E."
-                                                            wire:model="inst_elect_sanita.{{ $i }}"
+                                                            wire:model.defer="inst_elect_sanita.{{ $i }}"
                                                             onkeydown="return /[a-i]/i.test(event.key)"
                                                             maxlength="1" tabindex="100">
                                                         @error('inst_elect_sanita.' . $i)
@@ -1587,7 +1587,7 @@
                                                     <td>
                                                         <input type="text" class="form-control"
                                                             name="area_verificada[]" placeholder="AREA VERIFICADA"
-                                                            wire:model="area_verificada.{{ $i }}"
+                                                            wire:model.defer="area_verificada.{{ $i }}"
                                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
                                                             maxlength="7" tabindex="101">
                                                         @error('area_verificada.' . $i)
@@ -1759,7 +1759,7 @@
                                                         <input type="month" class="form-control"
                                                             name="inst_fecha[]" placeholder="FECHA"
                                                             id="inst-fecha.{{ $i }}"
-                                                            wire:model="inst_fecha.{{ $i }}"
+                                                            wire:model.defer="inst_fecha.{{ $i }}"
                                                             tabindex="110">
                                                         @error('inst_fecha.' . $i)
                                                             <span class="error-message"
@@ -1771,7 +1771,7 @@
                                                             data-live-search="true"
                                                             name="inst_mep.{{ $i }}"
                                                             id="inst_mep.{{ $i }}"
-                                                            wire:model="inst_mep.{{ $i }}"
+                                                            wire:model.defer="inst_mep.{{ $i }}"
                                                             tabindex="111">
                                                             <option value="">SELECCIONE</option>
                                                             @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'MEP')->orderby('codigo', 'asc')->get() as $tablacodigo)
@@ -1790,7 +1790,7 @@
                                                             data-live-search="true"
                                                             name="inst_ecs.{{ $i }}"
                                                             id="inst_ecs.{{ $i }}"
-                                                            wire:model="inst_ecs.{{ $i }}"
+                                                            wire:model.defer="inst_ecs.{{ $i }}"
                                                             tabindex="112">
                                                             <option value="">SELECCIONE</option>
                                                             @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'ECS')->orderby('codigo', 'asc')->get() as $tablacodigo)
@@ -1809,7 +1809,7 @@
                                                             data-live-search="true"
                                                             name="inst_ecc.{{ $i }}"
                                                             id="inst_ecc.{{ $i }}"
-                                                            wire:model="inst_ecc.{{ $i }}"
+                                                            wire:model.defer="inst_ecc.{{ $i }}"
                                                             tabindex="113">
                                                             <option value="">SELECCIONE</option>
                                                             @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'ECC')->orderby('codigo', 'asc')->get() as $tablacodigo)
@@ -1829,7 +1829,7 @@
                                                             id="inst-prod_total.{{ $i }}"
                                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
                                                             maxlength="7"
-                                                            wire:model="inst_prod_total.{{ $i }}"
+                                                            wire:model.defer="inst_prod_total.{{ $i }}"
                                                             tabindex="114">
                                                         @error('inst_prod_total.' . $i)
                                                             <span class="error-message"
@@ -1840,7 +1840,7 @@
                                                         <input type="text" class="form-control"
                                                             name="inst_uni_med[]" placeholder="U. MEDIDA"
                                                             id="inst-uni_med.{{ $i }}" maxlength="2"
-                                                            wire:model="inst_uni_med.{{ $i }}"
+                                                            wire:model.defer="inst_uni_med.{{ $i }}"
                                                             tabindex="115">
                                                         @error('inst_uni_med.' . $i)
                                                             <span class="error-message"
@@ -1852,7 +1852,7 @@
                                                             data-live-search="true"
                                                             name="inst_uca.{{ $i }}"
                                                             id="inst_uca.{{ $i }}"
-                                                            wire:model="inst_uca.{{ $i }}"
+                                                            wire:model.defer="inst_uca.{{ $i }}"
                                                             tabindex="116">
                                                             <option value="">SELECCIONE</option>
                                                             @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'UCA')->orderby('codigo', 'asc')->get() as $tablacodigo)
@@ -1921,7 +1921,7 @@
                                                         <select class="form-select" data-width="100%"
                                                             data-live-search="true" name="tipo_dococumento[]"
                                                             id="tipo_dococumento.{{ $i }}"
-                                                            wire:model="tipo_dococumento.{{ $i }}"
+                                                            wire:model.defer="tipo_dococumento.{{ $i }}"
                                                             tabindex="119">
                                                             <option value="">SELECCIONE</option>
                                                             @foreach (\App\Models\TablaCodigo::where('id_tabla', '=', 'TDC')->orderby('codigo', 'asc')->get() as $tablacodigo)
@@ -1939,7 +1939,7 @@
                                                         <input type="text" class="form-control"
                                                             name="nume_documento[]" placeholder="N° DE DOCUMENTO"
                                                             id="Documento.{{ $i }}" maxlength="50"
-                                                            wire:model="nume_documento.{{ $i }}"
+                                                            wire:model.defer="nume_documento.{{ $i }}"
                                                             tabindex="120">
                                                         @error('nume_documento.' . $i)
                                                             <span class="error-message"
@@ -1950,7 +1950,7 @@
                                                         <input type="date" class="form-control"
                                                             name="fecha_dococumento[]" placeholder="FECHA"
                                                             id="fecha_dococumento.{{ $i }}"
-                                                            wire:model="fecha_dococumento.{{ $i }}"
+                                                            wire:model.defer="fecha_dococumento.{{ $i }}"
                                                             tabindex="121"
                                                             max="{{ date('Y-m-d') }}">
                                                         @error('fecha_dococumento.' . $i)
@@ -1963,7 +1963,7 @@
                                                             name="area_autorizadadocumento[]"
                                                             placeholder="AREA AUTORIZADA"
                                                             id="area_autorizadadocumento.{{ $i }}"
-                                                            wire:model="area_autorizadadocumento.{{ $i }}"
+                                                            wire:model.defer="area_autorizadadocumento.{{ $i }}"
                                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
                                                             maxlength="9" tabindex="122">
                                                         @error('area_autorizadadocumento.' . $i)
