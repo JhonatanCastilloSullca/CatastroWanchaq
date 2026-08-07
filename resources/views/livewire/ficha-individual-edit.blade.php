@@ -1113,7 +1113,7 @@
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <label class="form-label d-inline-flex">
-                                        <div class="divcuadro">59</div> ZONIFICACION
+                                        <div class="divcuadro">44</div> ZONIFICACION
                                     </label>
                                     <input type="text" class="form-control" placeholder="" name="zonificacion"
                                         wire:model="zonificacion"

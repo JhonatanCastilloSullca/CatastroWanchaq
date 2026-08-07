@@ -209,4 +209,11 @@ Route::group(['middleware'=>['auth']], function () {
         ])->name('reportes-sector.puertas');
     });
 
+    Route::get('masivo/exportarcuc', 'App\Http\Controllers\ReporteController@exportarcuc')->name('reporte.exportarcuc');
+    Route::post('masivo/guardarcuc', 'App\Http\Controllers\ReporteController@guardarcuc')->name('reporte.guardarcuc');
+    Route::post('masivo/importarcuc', 'App\Http\Controllers\ReporteController@importarcuc')->name('reporte.importarcuc');
+    Route::get('masivo/exportarsupervisor', 'App\Http\Controllers\ReporteController@exportarsupervisor')->name('reporte.exportarsupervisor');
+    Route::post('masivo/guardarsupervisor', 'App\Http\Controllers\ReporteController@guardarsupervisor')->name('reporte.guardarsupervisor');
+    Route::post('masivo/importarsupervisor', 'App\Http\Controllers\ReporteController@importarsupervisor')->name('reporte.importarsupervisor');
+
 });

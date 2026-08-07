@@ -576,6 +576,31 @@
                     </ul>
                 </div>
             </li>
+            <li class="nav-item {{ active_class(['masivo/*']) }}">
+                <a class="nav-link" data-bs-toggle="collapse" href="#masivo" role="button"
+                    aria-expanded="{{ is_active_route(['masivo/*']) }}"
+                    aria-controls="masivo">
+                    <i class="link-icon mdi mdi-clipboard-text"></i>
+                    <span class="link-title">Asignacion Masiva</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse {{ show_class(['masivo/*']) }}" id="masivo">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ url('/masivo/exportarcuc') }}"
+                                class="nav-link {{ active_class(['masivo/exportarcuc']) }}">CUC</a>
+                        </li>
+
+                    </ul>
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ url('/masivo/exportarsupervisor') }}"
+                                class="nav-link {{ active_class(['masivo/exportarsupervisor']) }}">Supervisor</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
 
 </div>
 </nav>
