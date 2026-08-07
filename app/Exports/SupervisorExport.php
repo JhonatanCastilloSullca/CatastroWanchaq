@@ -50,6 +50,7 @@ class SupervisorExport implements FromView, ShouldAutoSize, WithEvents, WithStyl
         $sheet->getStyle("B1")->applyFromArray($headerStyle);
         $sheet->getStyle("C1")->applyFromArray($headerStyle);
         $sheet->getStyle("D1")->applyFromArray($headerStyle);
+        $sheet->getStyle("E1")->applyFromArray($headerStyle);
         // Negrita
     }
 

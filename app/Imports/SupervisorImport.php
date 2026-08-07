@@ -24,11 +24,11 @@ class SupervisorImport implements OnEachRow, WithHeadingRow, WithBatchInserts, W
         if($uni_cat)
         {  
             $fichas = Ficha::where('id_uni_cat',$row['cod_referencia'])->get();
-            $supervisor = Persona::where('nume_doc',$row['nume_doc'])->where('tipo_funcion',2)->first();
+            $supervisor = Persona::where('nume_doc',$row['nume_doc'])->where('tipo_funcion',4)->first();
             if($fichas && $supervisor){
                 foreach($fichas as $ficha){
-                    $ficha->id_supervisor = $supervisor?->id_persona;
-                    $ficha->fecha_supervision = $row['fecha_supervision'];
+                    $ficha->id_verificador = $supervisor?->id_persona;
+                    $ficha->fecha_verificacion = $row['fecha_verificacion'];
                     $ficha->save();
                 }
             }
