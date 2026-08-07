@@ -1254,8 +1254,9 @@ class ReporteController extends Controller
         ->join('tf_fichas as f','f.id_uni_cat','=','tf_uni_cat.id_uni_cat')
         ->where('m.id_sector',$request->sector_id)
         ->orderBy('l.id_lote','asc')
+        ->get()
         ->unique('id_uni_cat')
-        ->get();
+        ->values();
 
         return Excel::download(
             new CucExport($cucs),
@@ -1284,8 +1285,9 @@ class ReporteController extends Controller
         ->leftjoin('tf_personas as p','p.id_persona','=','f.id_supervisor')
         ->where('m.id_sector',$request->sector_id)
         ->orderBy('l.id_lote','asc')
+        ->get()
         ->unique('id_uni_cat')
-        ->get();
+        ->values();
 
         return Excel::download(
             new SupervisorExport($cucs),
