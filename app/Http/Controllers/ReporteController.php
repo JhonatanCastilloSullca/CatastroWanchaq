@@ -1249,11 +1249,18 @@ class ReporteController extends Controller
 
     public function guardarcuc(Request $request)
     {
-        $cucs = UniCat::select('tf_uni_cat.id_uni_cat','m.codi_mzna','l.codi_lote','tf_uni_cat.cuc')->join('tf_lotes as l','l.id_lote','=','tf_uni_cat.id_lote')
-        ->join('tf_manzanas as m','m.id_mzna','=','l.id_mzna')
-        ->join('tf_fichas as f','f.id_uni_cat','=','tf_uni_cat.id_uni_cat')
-        ->where('m.id_sector',$request->sector_id)
-        ->orderBy('l.id_lote','asc')
+        $cucs = UniCat::select(
+            'tf_uni_cat.id_uni_cat',
+            'm.codi_mzna',
+            'l.codi_lote',
+            'tf_uni_cat.cuc'
+        )
+        ->join('tf_lotes as l', 'l.id_lote', '=', 'tf_uni_cat.id_lote')
+        ->join('tf_manzanas as m', 'm.id_mzna', '=', 'l.id_mzna')
+        ->join('tf_fichas as f', 'f.id_uni_cat', '=', 'tf_uni_cat.id_uni_cat')
+        ->where('m.id_sector', $request->sector_id)
+        ->whereIn('f.tipo_ficha', ['01', '04'])
+        ->orderBy('l.id_lote', 'asc')
         ->get()
         ->unique('id_uni_cat')
         ->values();
