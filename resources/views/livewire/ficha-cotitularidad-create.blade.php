@@ -1121,34 +1121,50 @@
         </div>
     </form>
 </div>
+@php
+    $totalJs = (int) $total;
+
+    $departamentosJs = $departamentos
+        ->map(function ($dep) {
+            return [
+                'cod_dep' => (string) $dep->cod_dep,
+                'descri'  => $dep->descri,
+            ];
+        })
+        ->values()
+        ->toArray();
+
+    $provinciasJs = $provincias
+        ->map(function ($pro) {
+            return [
+                'cod_dep' => (string) $pro->cod_dep,
+                'cod_pro' => (string) $pro->cod_pro,
+                'descri'  => $pro->descri,
+            ];
+        })
+        ->values()
+        ->toArray();
+
+    $distritosJs = $distritos
+        ->map(function ($dis) {
+            return [
+                'cod_dep'  => (string) $dis->cod_dep,
+                'cod_pro'  => (string) $dis->cod_pro,
+                'codi_dis' => (string) $dis->codi_dis,
+                'descri'   => $dis->descri,
+            ];
+        })
+        ->values()
+        ->toArray();
+@endphp
+
 @push('custom-scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const total = @json((int) $total);
-
-        const departamentos = @json(
-            $departamentos->map(fn ($dep) => [
-                'cod_dep' => (string) $dep->cod_dep,
-                'descri' => $dep->descri,
-            ])->values()
-        );
-
-        const provincias = @json(
-            $provincias->map(fn ($pro) => [
-                'cod_dep' => (string) $pro->cod_dep,
-                'cod_pro' => (string) $pro->cod_pro,
-                'descri' => $pro->descri,
-            ])->values()
-        );
-
-        const distritos = @json(
-            $distritos->map(fn ($dis) => [
-                'cod_dep' => (string) $dis->cod_dep,
-                'cod_pro' => (string) $dis->cod_pro,
-                'codi_dis' => (string) $dis->codi_dis,
-                'descri' => $dis->descri,
-            ])->values()
-        );
+        const total = @json($totalJs);
+        const departamentos = @json($departamentosJs);
+        const provincias = @json($provinciasJs);
+        const distritos = @json($distritosJs);
 
         function agregarOpcion(select, value, text) {
             const option = document.createElement('option');
@@ -1164,9 +1180,17 @@
         }
 
         function actualizarTipoPersona(index) {
-            const tipoPersona = document.getElementById(`tipo_persona${index}`);
-            const natural = document.getElementById(`natural${index}`);
-            const juridica = document.getElementById(`juridica${index}`);
+            const tipoPersona = document.getElementById(
+                `tipo_persona${index}`
+            );
+
+            const natural = document.getElementById(
+                `natural${index}`
+            );
+
+            const juridica = document.getElementById(
+                `juridica${index}`
+            );
 
             if (!tipoPersona || !natural || !juridica) {
                 return;

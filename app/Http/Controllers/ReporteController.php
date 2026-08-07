@@ -1286,15 +1286,25 @@ class ReporteController extends Controller
 
     public function guardarsupervisor(Request $request)
     {
-        $cucs = UniCat::select('tf_uni_cat.id_uni_cat','m.codi_mzna','l.codi_lote','p.nume_doc','f.fecha_supervision')->join('tf_lotes as l','l.id_lote','=','tf_uni_cat.id_lote')
-        ->join('tf_manzanas as m','m.id_mzna','=','l.id_mzna')
-        ->join('tf_fichas as f','f.id_uni_cat','=','tf_uni_cat.id_uni_cat')
+        $cucs = UniCat::select(
+            'tf_uni_cat.id_uni_cat',
+            'm.codi_mzna',
+            'l.codi_lote',
+            'p.nume_doc',
+            'f.fecha_supervision',
+
+        )
+        ->join('tf_lotes as l', 'l.id_lote', '=', 'tf_uni_cat.id_lote')
+        ->join('tf_manzanas as m', 'm.id_mzna', '=', 'l.id_mzna')
+        ->join('tf_fichas as f', 'f.id_uni_cat', '=', 'tf_uni_cat.id_uni_cat')
         ->leftjoin('tf_personas as p','p.id_persona','=','f.id_supervisor')
-        ->where('m.id_sector',$request->sector_id)
-        ->orderBy('l.id_lote','asc')
+        ->where('m.id_sector', $request->sector_id)
+        ->whereIn('f.tipo_ficha', ['01', '04'])
+        ->orderBy('l.id_lote', 'asc')
         ->get()
         ->unique('id_uni_cat')
         ->values();
+
 
         return Excel::download(
             new SupervisorExport($cucs),
