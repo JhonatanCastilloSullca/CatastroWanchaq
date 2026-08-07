@@ -20,7 +20,8 @@
                         <th>cod_referencia</th>
                         <th>manzana</th>
                         <th>lote</th>
-                        <th>dni_supervisor</th>
+                        <th>nume_doc</th>
+                        <th>fecha_supervision</th>
                     </tr>
                     @foreach($cucs as $cuc)
                         <tr>
@@ -28,6 +29,7 @@
                             <td>{{ $cuc->codi_mzna }}</td>
                             <td>{{ $cuc->codi_lote }}</td>
                             <td>{{ $cuc->nume_doc }}</td>
+                            <td>{{ $cuc->fecha_supervision }}</td>
                         </tr>
                     @endforeach
                 </tbody>
