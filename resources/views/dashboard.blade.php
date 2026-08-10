@@ -1071,58 +1071,63 @@
     });
 
     new Chart($('#construccionGrafico'), {
-        type: 'bar',
-        data: {
-            labels: [<?php echo implode(',', $uniquePisosConstruccion->toArray()); ?>], // Eje X: representa los pisos
-            datasets: [
-                <?php foreach ($dataByConstrucciones as $dataset): ?>
-                {
-                    label: "<?php echo $dataset['label']; ?>",
-                    backgroundColor: "<?php echo $dataset['backgroundColor']; ?>",
-                    data: [<?php echo implode(',', $dataset['data']); ?>]
-                },
-                <?php endforeach; ?>
-            ]
+    type: 'bar',
+
+    data: {
+        labels: @json($uniquePisosConstruccion),
+
+        datasets: [
+            @foreach ($dataByConstrucciones as $dataset)
+            {
+                label: @json($dataset['label']),
+                backgroundColor: @json($dataset['backgroundColor']),
+                data: @json($dataset['data'])
+            },
+            @endforeach
+        ]
+    },
+
+    options: {
+        plugins: {
+            legend: {
+                display: true,
+                labels: {
+                    color: "#000",
+                    font: {
+                        size: '13px',
+                        family: fontFamily
+                    }
+                }
+            }
         },
-        options: {
-            plugins: {
-                legend: {
+
+        scales: {
+            x: {
+                display: true,
+                title: {
                     display: true,
-                    labels: {
-                        color: "#000",
-                        font: {
-                            size: '13px',
-                            family: fontFamily
-                        }
+                    text: 'Pisos',
+                    color: "#000",
+                    font: {
+                        size: 14
                     }
                 }
             },
-            scales: {
-                x: {
+
+            y: {
+                display: true,
+                title: {
                     display: true,
-                    title: {
-                        display: true,
-                        text: 'Pisos',
-                        color: "#000",
-                        font: {
-                            size: 14
-                        }
-                    }
-                },
-                y: {
-                    display: true,
-                    title: {
-                        display: true,
-                        text: 'Cantidad de Niveles',
-                        color: "#000",
-                        font: {
-                            size: 14
-                        }
+                    text: 'Cantidad de Niveles',
+                    color: "#000",
+                    font: {
+                        size: 14
                     }
                 }
             }
         }
-    });
+    }
+});
 
 
     </script>

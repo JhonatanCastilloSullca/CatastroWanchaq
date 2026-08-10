@@ -214,43 +214,53 @@ class DashboardController extends Controller
             '03' => ['nombre' => 'Inconclusa', 'color' => '#6aa3b4'],
             '04' => ['nombre' => 'En Ruinas', 'color' => '#416864'],
         ];
-        
+
         $construcciones = DB::table('tf_construcciones')
-        ->select('nume_piso', 'ecc', DB::raw('COUNT(*) as cantidad'))
-        ->groupBy('nume_piso', 'ecc')
-        ->orderBy('nume_piso')
-        ->orderBy('ecc')
-        ->get()
-        ->map(function ($item) use ($eccMapping) {
-            $item->material = $eccMapping[$item->ecc]['nombre'] ?? 'Desconocido';
-            $item->color = $eccMapping[$item->ecc]['color'] ?? '#000000';
-            return $item;
-        });
-    
+            ->select('nume_piso', 'ecc', DB::raw('COUNT(*) as cantidad'))
+            ->groupBy('nume_piso', 'ecc')
+            ->orderBy('nume_piso')
+            ->orderBy('ecc')
+            ->get()
+            ->map(function ($item) use ($eccMapping) {
+                $item->material = $eccMapping[$item->ecc]['nombre'] ?? 'Desconocido';
+                $item->color = $eccMapping[$item->ecc]['color'] ?? '#000000';
+                return $item;
+            });
 
         $dataByConstrucciones = [];
-        $uniquePisosConstruccion = $construcciones->pluck('nume_piso')->unique()->sort();
-        
+
+        $uniquePisosConstruccion = $construcciones
+            ->pluck('nume_piso')
+            ->map(fn ($piso) => (string) $piso)
+            ->unique()
+            ->sort()
+            ->values();
+
         foreach ($construcciones as $construccion) {
             $materialNombre = $construccion->material;
+            $piso = (string) $construccion->nume_piso;
+
             if (!isset($dataByConstrucciones[$materialNombre])) {
                 $dataByConstrucciones[$materialNombre] = [
                     'label' => $materialNombre,
                     'backgroundColor' => $construccion->color,
-                    'data' => []
+                    'cantidades' => []
                 ];
             }
-            $dataByConstrucciones[$materialNombre]['data'][$construccion->nume_piso] = $construccion->cantidad;
+
+            $dataByConstrucciones[$materialNombre]['cantidades'][$piso] = (int) $construccion->cantidad;
         }
-        
-        // Llenar pisos faltantes con 0 para cada material
+
         foreach ($dataByConstrucciones as &$dataset) {
-            foreach ($uniquePisosConstruccion as $piso) {
-                $dataset['data'][$piso] = $dataset['data'][$piso] ?? 0;
-            }
-            ksort($dataset['data']); // Asegurar orden por piso
-            $dataset['data'] = array_values($dataset['data']);
+            $dataset['data'] = $uniquePisosConstruccion
+                ->map(fn ($piso) => $dataset['cantidades'][$piso] ?? 0)
+                ->values()
+                ->toArray();
+
+            unset($dataset['cantidades']);
         }
+
+        unset($dataset);
 
         
         return view('dashboard',compact('fichaindividual','fichaindividualestado','fichacotitularidad','fichacotitularidadestado','fichaeconomica',
