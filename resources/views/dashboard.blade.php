@@ -1013,18 +1013,21 @@
 
     new Chart($('#conservacionGrafico'), {
         type: 'bar',
+
         data: {
-            labels: [<?php echo implode(',', $uniquePisosMateriales->toArray()); ?>], // Eje X: representa los pisos
+            labels: @json($uniquePisosMateriales),
+
             datasets: [
-                <?php foreach ($dataByConservacion as $dataset): ?>
+                @foreach ($dataByConservacion as $dataset)
                 {
-                    label: "<?php echo $dataset['label']; ?>",
-                    backgroundColor: "<?php echo $dataset['backgroundColor']; ?>",
-                    data: [<?php echo implode(',', $dataset['data']); ?>]
+                    label: @json($dataset['label']),
+                    backgroundColor: @json($dataset['backgroundColor']),
+                    data: @json($dataset['data'])
                 },
-                <?php endforeach; ?>
+                @endforeach
             ]
         },
+
         options: {
             plugins: {
                 legend: {
@@ -1038,6 +1041,7 @@
                     }
                 }
             },
+
             scales: {
                 x: {
                     display: true,
@@ -1050,6 +1054,7 @@
                         }
                     }
                 },
+
                 y: {
                     display: true,
                     title: {

@@ -160,43 +160,53 @@ class DashboardController extends Controller
             '03' => ['nombre' => 'Regular', 'color' => '#6aa3b4'],
             '04' => ['nombre' => 'Malo', 'color' => '#416864'],
         ];
-        
+
         $conservacion = DB::table('tf_construcciones')
-        ->select('nume_piso', 'ecs', DB::raw('COUNT(*) as cantidad'))
-        ->groupBy('nume_piso', 'ecs')
-        ->orderBy('nume_piso')
-        ->orderBy('ecs')
-        ->get()
-        ->map(function ($item) use ($escMapping) {
-            $item->material = $escMapping[$item->ecs]['nombre'] ?? 'Desconocido';
-            $item->color = $escMapping[$item->ecs]['color'] ?? '#000000';
-            return $item;
-        });
-    
+            ->select('nume_piso', 'ecs', DB::raw('COUNT(*) as cantidad'))
+            ->groupBy('nume_piso', 'ecs')
+            ->orderBy('nume_piso')
+            ->orderBy('ecs')
+            ->get()
+            ->map(function ($item) use ($escMapping) {
+                $item->material = $escMapping[$item->ecs]['nombre'] ?? 'Desconocido';
+                $item->color = $escMapping[$item->ecs]['color'] ?? '#000000';
+                return $item;
+            });
 
         $dataByConservacion = [];
-        $uniquePisosMateriales = $conservacion->pluck('nume_piso')->unique()->sort();
-        
+
+        $uniquePisosMateriales = $conservacion
+            ->pluck('nume_piso')
+            ->map(fn ($piso) => (string) $piso)
+            ->unique()
+            ->sort()
+            ->values();
+
         foreach ($conservacion as $conservacio) {
             $materialNombre = $conservacio->material;
+            $piso = (string) $conservacio->nume_piso;
+
             if (!isset($dataByConservacion[$materialNombre])) {
                 $dataByConservacion[$materialNombre] = [
                     'label' => $materialNombre,
                     'backgroundColor' => $conservacio->color,
-                    'data' => []
+                    'cantidades' => []
                 ];
             }
-            $dataByConservacion[$materialNombre]['data'][$conservacio->nume_piso] = $conservacio->cantidad;
+
+            $dataByConservacion[$materialNombre]['cantidades'][$piso] = (int) $conservacio->cantidad;
         }
-        
-        // Llenar pisos faltantes con 0 para cada material
+
         foreach ($dataByConservacion as &$dataset) {
-            foreach ($uniquePisosMateriales as $piso) {
-                $dataset['data'][$piso] = $dataset['data'][$piso] ?? 0;
-            }
-            ksort($dataset['data']); // Asegurar orden por piso
-            $dataset['data'] = array_values($dataset['data']);
+            $dataset['data'] = $uniquePisosMateriales
+                ->map(fn ($piso) => $dataset['cantidades'][$piso] ?? 0)
+                ->values()
+                ->toArray();
+
+            unset($dataset['cantidades']);
         }
+
+        unset($dataset);
 
         $eccMapping = [
             '01' => ['nombre' => 'Terminado', 'color' => '#68da3e'],
