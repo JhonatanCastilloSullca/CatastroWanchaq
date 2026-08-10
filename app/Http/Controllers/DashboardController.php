@@ -120,28 +120,39 @@ class DashboardController extends Controller
     
 
         $dataByMaterial = [];
-        $uniquePisos = $materiales->pluck('nume_piso')->unique()->sort();
-        
+
+        $uniquePisos = $materiales
+            ->pluck('nume_piso')
+            ->map(fn ($piso) => (string) $piso)
+            ->unique()
+            ->sort()
+            ->values();
+
         foreach ($materiales as $material) {
             $materialNombre = $material->material;
+            $piso = (string) $material->nume_piso;
+
             if (!isset($dataByMaterial[$materialNombre])) {
                 $dataByMaterial[$materialNombre] = [
                     'label' => $materialNombre,
                     'backgroundColor' => $material->color,
-                    'data' => []
+                    'cantidades' => []
                 ];
             }
-            $dataByMaterial[$materialNombre]['data'][$material->nume_piso] = $material->cantidad;
+
+            $dataByMaterial[$materialNombre]['cantidades'][$piso] = (int) $material->cantidad;
         }
-        
-        // Llenar pisos faltantes con 0 para cada material
+
         foreach ($dataByMaterial as &$dataset) {
-            foreach ($uniquePisos as $piso) {
-                $dataset['data'][$piso] = $dataset['data'][$piso] ?? 0;
-            }
-            ksort($dataset['data']); // Asegurar orden por piso
-            $dataset['data'] = array_values($dataset['data']);
+            $dataset['data'] = $uniquePisos
+                ->map(fn ($piso) => $dataset['cantidades'][$piso] ?? 0)
+                ->values()
+                ->toArray();
+
+            unset($dataset['cantidades']);
         }
+
+        unset($dataset);
 
         $escMapping = [
             '01' => ['nombre' => 'Muy Bueno', 'color' => '#68da3e'],

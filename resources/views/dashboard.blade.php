@@ -960,15 +960,15 @@
         new Chart($('#materialesGrafico'), {
         type: 'bar',
         data: {
-            labels: [<?php echo implode(',', $uniquePisos->toArray()); ?>], // Eje X: representa los pisos
+            labels: @json($uniquePisos),
             datasets: [
-                <?php foreach ($dataByMaterial as $dataset): ?>
+                @foreach ($dataByMaterial as $dataset)
                 {
-                    label: "<?php echo $dataset['label']; ?>",
-                    backgroundColor: "<?php echo $dataset['backgroundColor']; ?>",
-                    data: [<?php echo implode(',', $dataset['data']); ?>]
+                    label: @json($dataset['label']),
+                    backgroundColor: @json($dataset['backgroundColor']),
+                    data: @json($dataset['data'])
                 },
-                <?php endforeach; ?>
+                @endforeach
             ]
         },
         options: {
