@@ -273,546 +273,518 @@
 
 @push('custom-scripts')
     <script>
-        if ($('#customersChart').length) {
-            var options1 = {
-                chart: {
-                    type: "line",
-                    height: 60,
-                    sparkline: {
-                        enabled: !0
-                    }
-                },
-                series: [{
-                    name: '',
-                    data: [<?php foreach ($fichaindividualestado as $ficha) {
-                        echo '"' . $ficha->cantidad . '",';
-                    } ?>]
-                }],
-                xaxis: {
-                    type: 'name',
-                    categories: [<?php foreach ($fichaindividualestado as $ficha) {
-                        echo '"' . $ficha->estadollenado->desc_codigo . '",';
-                    } ?>],
-                },
-                stroke: {
-                    width: 2,
-                    curve: "smooth"
-                },
-                markers: {
-                    size: 0
-                },
-                colors: ['#289e4f'],
-            };
-            new ApexCharts(document.querySelector("#customersChart"), options1).render();
+        if($('#customersChart').length) {
+  var options1 = {
+    chart: {
+      type: "bar",
+      height: 60,
+      sparkline: {
+        enabled: !0
+      }
+    },
+    series: [{
+      name: '',
+      data: [<?php foreach($fichaindividualestado as $ficha)
+                {echo '"'.$ficha->cantidad.'",';} ?>]
+    }],
+    xaxis: {
+      type: 'name',
+      categories: [<?php foreach($fichaindividualestado as $ficha)
+                {echo '"'.$ficha->estadollenado->desc_codigo.'",';} ?>],
+    },
+    stroke: {
+      width: 2,
+      curve: "smooth"
+    },
+    markers: {
+      size: 0
+    },
+    colors: ['#cc9900'],
+  };
+  new ApexCharts(document.querySelector("#customersChart"),options1).render();
+}
+
+if($('#ordersChart').length) {
+  var options2 = {
+    chart: {
+      type: "line",
+      height: 60,
+      sparkline: {
+        enabled: !0
+      }
+    },
+    plotOptions: {
+      bar: {
+        borderRadius: 2,
+        columnWidth: "60%"
+      }
+    },
+    colors: ['#cc9900'],
+    series: [{
+      name: '',
+      data: [<?php foreach($fichacotitularidadestado as $ficha)
+                {echo '"'.$ficha->cantidad.'",';} ?>]
+    }],
+    xaxis: {
+      type: 'name',
+      categories: [<?php foreach($fichacotitularidadestado as $ficha)
+                {echo '"'.$ficha->estadollenado->desc_codigo.'",';} ?>],
+    },
+    stroke: {
+        width: 2,
+        curve: "smooth"
+      },
+      markers: {
+        size: 0
+      },
+      colors: ['#cc9900'],
+  };
+  new ApexCharts(document.querySelector("#ordersChart"),options2).render();
+}
+
+
+  // Growth Chart
+  if($('#growthChart').length) {
+    var options3 = {
+      chart: {
+        type: "bar",
+        height: 60,
+        sparkline: {
+          enabled: !0
         }
+      },
+      series: [{
+        name: '',
+        data: [<?php foreach($fichaeconomicaestado as $ficha)
+                {echo '"'.$ficha->cantidad.'",';} ?>]
+      }],
+      xaxis: {
+        type: 'name',
+        categories: [<?php foreach($fichaeconomicaestado as $ficha)
+                {echo '"'.$ficha->estadollenado->desc_codigo.'",';} ?>],
+      },
+      stroke: {
+        width: 2,
+        curve: "smooth"
+      },
+      markers: {
+        size: 0
+      },
+      colors: ['#cc9900'],
+    };
+    new ApexCharts(document.querySelector("#growthChart"),options3).render();
+  }
 
-        if ($('#ordersChart').length) {
-            var options2 = {
-                chart: {
-                    type: "bar",
-                    height: 60,
-                    sparkline: {
-                        enabled: !0
-                    }
-                },
-                plotOptions: {
-                    bar: {
-                        borderRadius: 2,
-                        columnWidth: "60%"
-                    }
-                },
-                colors: ['#289e4f'],
-                series: [{
-                    name: '',
-                    data: [<?php foreach ($fichacotitularidadestado as $ficha) {
-                        echo '"' . $ficha->cantidad . '",';
-                    } ?>]
-                }],
-                xaxis: {
-                    type: 'name',
-                    categories: [<?php foreach ($fichacotitularidadestado as $ficha) {
-                        echo '"' . $ficha->estadollenado->desc_codigo . '",';
-                    } ?>],
-                },
-            };
-            new ApexCharts(document.querySelector("#ordersChart"), options2).render();
+  // Growth Chart
+  if($('#growth2Chart').length) {
+    var options3 = {
+      chart: {
+        type: "line",
+        height: 60,
+        sparkline: {
+          enabled: !0
         }
+      },
+      series: [{
+        name: '',
+        data: [<?php foreach($fichabiencomunestado as $ficha)
+                {echo '"'.$ficha->cantidad.'",';} ?>]
+      }],
+      xaxis: {
+        type: 'name',
+        categories: [<?php foreach($fichabiencomunestado as $ficha)
+                {echo '"'.$ficha->estadollenado->desc_codigo.'",';} ?>],
+      },
+      stroke: {
+        width: 2,
+        curve: "smooth"
+      },
+      markers: {
+        size: 0
+      },
+      colors: ['#cc9900'],
+    };
+    new ApexCharts(document.querySelector("#growth2Chart"),options3).render();
+  }
 
 
-        // Growth Chart
-        if ($('#growthChart').length) {
-            var options3 = {
-                chart: {
-                    type: "line",
-                    height: 60,
-                    sparkline: {
-                        enabled: !0
-                    }
-                },
-                series: [{
-                    name: '',
-                    data: [<?php foreach ($fichaeconomicaestado as $ficha) {
-                        echo '"' . $ficha->cantidad . '",';
-                    } ?>]
-                }],
-                xaxis: {
-                    type: 'name',
-                    categories: [<?php foreach ($fichaeconomicaestado as $ficha) {
-                        echo '"' . $ficha->estadollenado->desc_codigo . '",';
-                    } ?>],
-                },
-                stroke: {
-                    width: 2,
-                    curve: "smooth"
-                },
-                markers: {
-                    size: 0
-                },
-                colors: ['#289e4f'],
-            };
-            new ApexCharts(document.querySelector("#growthChart"), options3).render();
-        }
-        // Growth Chart - END
-        var fontFamily = "'Roboto', Helvetica, sans-serif"
-        // Grouped Bar Chart
-        if ($('#chartjsGroupedBar').length) {
-            new Chart($('#chartjsGroupedBar'), {
-                type: 'bar',
-                data: {
-                    labels: [<?php foreach ($fichassectores as $ficha) {
-                        echo '"' . $ficha->nomb_sector . '",';
-                    } ?>],
-                    datasets: [{
-                            label: "Fichas",
-                            backgroundColor: ["#68da3e", "#00c6ab", "#6aa3b4", "#416864", "#223026", "#ebb7ce",
-                                "#b38471", "#5c5e36", "#1d3d33", "#0c181c", "#ebe6ea", "#e4c5c4", "#c8ad8d",
-                                "#6f7357", "#273a2d", "#20c67a", "#3f8880", "#9dc09d", "#fef6cd", "#d6ebc1",
-                                "#ff8862", "#be6167", "#7b3ea0", "#0076a1", "#3da3a7", "#ffd3ff", "#a83f6c",
-                                "#a8a8ff", "#00c162", "#008bde", "#5749dd", "#70271c", "#a16f40", "#dccf6a",
-                                "#51f68d", "#ecc402", "#e570be", "#db54a4", "#e0314a", "#ad0244", "#643d85",
-                                "#a62fd6", "#939924", "#af9fec", "#e899d1", "#ff9177", "#fc8526"
-                            ],
-                            data: [<?php foreach ($fichassectores as $ficha) {
-                                echo '"' . $ficha->cantidad . '",';
-                            } ?>]
-                        }
-
-                    ]
-                },
-                options: {
-                    plugins: {
-                        legend: {
-                            display: true,
-                            labels: {
-                                color: "#000",
-                                font: {
-                                    size: '13px',
-                                    family: fontFamily
-                                }
-                            }
-                        },
-                    },
-                    scales: {
-                        x: {
-                            display: true,
-                            grid: {
-                                display: true,
-                                color: "rgba(77, 138, 240, .15)",
-                                borderColor: "rgba(77, 138, 240, .15)",
-                            },
-                            ticks: {
-                                color: "#000",
-                                font: {
-                                    size: 12
-                                }
-                            }
-                        },
-                        y: {
-                            grid: {
-                                display: true,
-                                color: "rgba(77, 138, 240, .15)",
-                                borderColor: "rgba(77, 138, 240, .15)",
-                            },
-                            ticks: {
-                                color: "#000",
-                                font: {
-                                    size: 12
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-
-        // Bar chart
-        if ($('#chartjsBar').length) {
-            new Chart($("#chartjsBar"), {
-                type: 'bar',
-                data: {
-                    labels: [<?php foreach ($fichastipo as $ficha) {
-                        if ($ficha->tipo_ficha == '01') {
-                            echo '"Ficha Individual",';
-                        }
-                        if ($ficha->tipo_ficha == '02') {
-                            echo '"Ficha Cotitularidad",';
-                        }
-                        if ($ficha->tipo_ficha == '03') {
-                            echo '"Ficha Economica",';
-                        }
-                        if ($ficha->tipo_ficha == '04') {
-                            echo '"Ficha Bien Comun",';
-                        }
-                        if ($ficha->tipo_ficha == '05') {
-                            echo '"Ficha Bien Cultural",';
-                        }
-                        if ($ficha->tipo_ficha == '06') {
-                            echo '"Ficha Rural",';
-                        }
-                    } ?>],
-                    datasets: [{
-                        label: "Fichas",
-                        backgroundColor: ["#68da3e", "#00c6ab", "#6aa3b4", "#416864", "#223026", "#ebb7ce",
-                            "#b38471", "#5c5e36", "#1d3d33", "#0c181c", "#ebe6ea", "#e4c5c4", "#c8ad8d",
-                            "#6f7357", "#273a2d", "#20c67a", "#3f8880", "#9dc09d", "#fef6cd", "#d6ebc1",
-                            "#ff8862", "#be6167", "#7b3ea0", "#0076a1", "#3da3a7", "#ffd3ff", "#a83f6c",
-                            "#a8a8ff", "#00c162", "#008bde", "#5749dd", "#70271c", "#a16f40", "#dccf6a",
-                            "#51f68d", "#ecc402", "#e570be", "#db54a4", "#e0314a", "#ad0244", "#643d85",
-                            "#a62fd6", "#939924", "#af9fec", "#e899d1", "#ff9177", "#fc8526"
-                        ],
-                        data: [<?php foreach ($fichastipo as $ficha) {
-                            echo '"' . $ficha->cantidad . '",';
-                        } ?>],
-                    }]
-                },
-                options: {
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                    },
-                    scales: {
-                        x: {
-                            display: true,
-                            grid: {
-                                display: true,
-                                color: "rgba(77, 138, 240, .15)",
-                                borderColor: "rgba(77, 138, 240, .15)",
-                            },
-                            ticks: {
-                                color: "#000",
-                                font: {
-                                    size: 12
-                                }
-                            }
-                        },
-                        y: {
-                            grid: {
-                                display: true,
-                                color: "rgba(77, 138, 240, .15)",
-                                borderColor: "rgba(77, 138, 240, .15)",
-                            },
-                            ticks: {
-                                color: "#000",
-                                font: {
-                                    size: 12
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-
-        if ($('#chartjsArea').length) {
-            new Chart($("#chartjsArea"), {
-                type: 'bar',
-                data: {
-                    labels: [<?php foreach ($fichascalificacion as $ficha) {
-                        echo '"' . $ficha->clasificacions->desc_codigo . '",';
-                    } ?>],
-                    datasets: [{
-                        label: "",
-                        backgroundColor: ["#68da3e", "#00c6ab", "#6aa3b4", "#416864", "#223026", "#ebb7ce",
-                            "#b38471", "#5c5e36", "#1d3d33", "#0c181c", "#ebe6ea", "#e4c5c4", "#c8ad8d",
-                            "#6f7357", "#273a2d", "#20c67a", "#3f8880", "#9dc09d", "#fef6cd", "#d6ebc1",
-                            "#ff8862", "#be6167", "#7b3ea0", "#0076a1", "#3da3a7", "#ffd3ff", "#a83f6c",
-                            "#a8a8ff", "#00c162", "#008bde", "#5749dd", "#70271c", "#a16f40", "#dccf6a",
-                            "#51f68d", "#ecc402", "#e570be", "#db54a4", "#e0314a", "#ad0244", "#643d85",
-                            "#a62fd6", "#939924", "#af9fec", "#e899d1", "#ff9177", "#fc8526"
-                        ],
-                        data: [<?php foreach ($fichascalificacion as $ficha) {
-                            echo '"' . $ficha->cantidad . '",';
-                        } ?>],
-                    }]
-                },
-                options: {
-                    indexAxis: 'y',
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                    },
-                    scales: {
-                        x: {
-                            display: true,
-                            grid: {
-                                display: true,
-                                color: "rgba(77, 138, 240, .15)",
-                                borderColor: "rgba(77, 138, 240, .15)",
-                            },
-                            ticks: {
-                                color: "#000",
-                                font: {
-                                    size: 12
-                                }
-                            }
-                        },
-                        y: {
-                            grid: {
-                                display: true,
-                                color: "rgba(77, 138, 240, .15)",
-                                borderColor: "rgba(77, 138, 240, .15)",
-                            },
-                            ticks: {
-                                color: "#000",
-                                font: {
-                                    size: 12
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-
-        // Doughnut Chart
-        if ($('#chartjsDoughnut').length) {
-            new Chart($('#chartjsDoughnut'), {
-                type: 'doughnut',
-                data: {
-                    labels: ["Natural", "Juridica"],
-                    datasets: [{
-                        label: "Tipo Persona Titular",
-                        backgroundColor: ['#68da3e', "#00c6ab"],
-                        borderColor: "#fff",
-                        data: ['{{ $fichaspersona }}', '{{ $fichaspersona2 }}'],
-                    }]
-                },
-                options: {
-                    aspectRatio: 2,
-                    plugins: {
-                        legend: {
-                            display: true,
-                            labels: {
-                                color: "#000",
-                                font: {
-                                    size: '13px',
-                                    family: fontFamily
-                                }
-                            }
-                        },
-                    }
-                }
-            });
-        }
-
-
-
-        var fontFamily = "'Roboto', Helvetica, sans-serif"
-
-        // Pie Chart
-        $.plot($('#flotPie'), [
-            <?php foreach ($totallotessector as $ficha) {
-                echo '{ label: "' . $ficha->nomb_sector . '",data:' . $ficha->cantidad . '},';
-            } ?>
-        ], {
-            series: {
-                shadowSize: 0,
-                pie: {
-                    show: true,
-                    radius: 1,
-                    innerRadius: 0.5,
-                    stroke: {
-                        color: "#fff",
-                        width: 3
-                    },
-                    label: {
-                        show: true,
-                        radius: 3 / 4,
-                        background: {
-                            opacity: 0.5
-                        },
-
-                        formatter: function(label, series) {
-                            return '<div style="font-size:11px;text-align:center;color:white;">' + Math.round(
-                                series.percent) + '%</div>';
-                        }
-                    }
-                }
-            },
-
-            grid: {
-                color: "#000",
-                borderColor: "rgba(77, 138, 240, .15)",
-                borderWidth: 1,
-                hoverable: true,
-                clickable: true
-            },
-
-            xaxis: {
-                tickColor: "rgba(77, 138, 240, .15)"
-            },
-            yaxis: {
-                tickColor: "rgba(77, 138, 240, .15)"
-            },
-            legend: {
-                backgroundColor: "#fff"
-            },
-            colors: ["#68da3e", "#00c6ab", "#6aa3b4", "#416864", "#223026", "#ebb7ce", "#b38471", "#5c5e36",
-                "#1d3d33", "#0c181c", "#ebe6ea", "#e4c5c4", "#c8ad8d", "#6f7357", "#273a2d", "#20c67a",
-                "#3f8880", "#9dc09d", "#fef6cd", "#d6ebc1", "#ff8862", "#be6167", "#7b3ea0", "#0076a1",
-                "#3da3a7", "#ffd3ff", "#a83f6c", "#a8a8ff", "#00c162", "#008bde", "#5749dd", "#70271c",
-                "#a16f40", "#dccf6a", "#51f68d", "#ecc402", "#e570be", "#db54a4", "#e0314a", "#ad0244",
-                "#643d85", "#a62fd6", "#939924", "#af9fec", "#e899d1", "#ff9177", "#fc8526"
-            ]
-        });
-
-        // Apex Radialbar chart start
-        if ($('#apexRadialBar').length) {
-            var options = {
-                chart: {
-                    height: 300,
-                    type: "radialBar",
-                    parentHeightOffset: 0,
-                    foreColor: "#000",
-                    background: "#fff",
-                    toolbar: {
-                        show: false
-                    },
-                },
-                theme: {
-                    mode: 'light'
-                },
-                tooltip: {
-                    theme: 'light'
-                },
-                colors: ["#68da3e", "#00c6ab", "#6aa3b4", "#416864", "#223026", "#ebb7ce", "#b38471", "#5c5e36",
-                    "#1d3d33", "#0c181c", "#ebe6ea", "#e4c5c4", "#c8ad8d", "#6f7357", "#273a2d", "#20c67a",
-                    "#3f8880", "#9dc09d", "#fef6cd", "#d6ebc1", "#ff8862", "#be6167", "#7b3ea0", "#0076a1",
-                    "#3da3a7", "#ffd3ff", "#a83f6c", "#a8a8ff", "#00c162", "#008bde", "#5749dd", "#70271c",
-                    "#a16f40", "#dccf6a", "#51f68d", "#ecc402", "#e570be", "#db54a4", "#e0314a", "#ad0244",
-                    "#643d85", "#a62fd6", "#939924", "#af9fec", "#e899d1", "#ff9177", "#fc8526"
-                ],
-                fill: {
-
-                },
-                grid: {
-                    padding: {
-                        top: 10
-                    }
-                },
-                plotOptions: {
-                    radialBar: {
-                        dataLabels: {
-                            total: {
-                                show: true,
-                                label: 'TOTAL',
-                                fontSize: '14px',
-                                fontFamily: "'Roboto', Helvetica, sans-serif",
-                            }
-                        },
-                        track: {
-                            background: "rgba(77, 138, 240, .15)",
-                            strokeWidth: '100%',
-                            opacity: 1,
-                            margin: 5,
-                        },
-                    }
-                },
-                series: [{{ $porcentajeindividual }}, {{ $porcentajeeconomica }}, {{ $porcentajecotitular }},
-                    {{ $porcentajebiencomun }}
-                ],
-                labels: ["F. Individual", "F. Economica", "F. Cotitularidad", "F. Bien Comun"],
-                legend: {
-                    show: true,
-                    position: "top",
-                    horizontalAlign: 'center',
-                    fontFamily: "'Roboto', Helvetica, sans-serif",
-                    itemMargin: {
-                        horizontal: 8,
-                        vertical: 0
-                    },
-                },
-            };
-
-            var chart = new ApexCharts(document.querySelector("#apexRadialBar"), options);
-            chart.render();
-            var chartAreaBounds = chart.w.globals.dom.baseEl.querySelector('.apexcharts-inner').getBoundingClientRect();
-        }
-
-        new Chart($("#actividadeseconomicas"), {
-            type: 'bar',
-            data: {
-                labels: [<?php foreach ($fichaactividades as $ficha) {
-                    echo '"' . $ficha->desc_actividad . '",';
-                } ?>],
-                datasets: [{
-                    label: "Fichas",
-                    backgroundColor: ["#68da3e", "#00c6ab", "#6aa3b4", "#416864", "#223026", "#ebb7ce",
-                        "#b38471", "#5c5e36", "#1d3d33", "#0c181c", "#ebe6ea", "#e4c5c4", "#c8ad8d",
-                        "#6f7357", "#273a2d", "#20c67a", "#3f8880", "#9dc09d", "#fef6cd", "#d6ebc1",
-                        "#ff8862", "#be6167", "#7b3ea0", "#0076a1", "#3da3a7", "#ffd3ff", "#a83f6c",
-                        "#a8a8ff", "#00c162", "#008bde", "#5749dd", "#70271c", "#a16f40", "#dccf6a",
-                        "#51f68d", "#ecc402", "#e570be", "#db54a4", "#e0314a", "#ad0244", "#643d85",
-                        "#a62fd6", "#939924", "#af9fec", "#e899d1", "#ff9177", "#fc8526"
-                    ],
-                    data: [<?php foreach ($fichaactividades as $ficha) {
-                        echo '"' . $ficha->cantidad . '",';
-                    } ?>],
-                }]
-            },
-            options: {
-                plugins: {
-                    legend: {
-                        display: false
-                    },
-                },
-                scales: {
-                    x: {
-                        display: true,
-                        grid: {
-                            display: true,
-                            color: "rgba(77, 138, 240, .15)",
-                            borderColor: "rgba(77, 138, 240, .15)",
-                        },
-                        ticks: {
-                            color: "#000",
-                            font: {
-                                size: 12
-                            }
-                        }
-                    },
-                    y: {
-                        grid: {
-                            display: true,
-                            color: "rgba(77, 138, 240, .15)",
-                            borderColor: "rgba(77, 138, 240, .15)",
-                        },
-                        ticks: {
-                            color: "#000",
-                            font: {
-                                size: 12
-                            }
-                        }
-                    }
-                }
+  // Growth Chart - END
+  var fontFamily = "'Roboto', Helvetica, sans-serif"
+    // Grouped Bar Chart
+  if($('#chartjsGroupedBar').length) {
+    new Chart($('#chartjsGroupedBar'), {
+      type: 'bar',
+      data: {
+        labels: [<?php foreach($fichassectores as $ficha)
+                {echo '"'.$ficha->nomb_sector.'",';} ?>],
+        datasets: [
+          {
+            label:"Fichas",
+            backgroundColor: ["#BADEBF",'#C16424','#2537AA','#EA4A0E','#EA0ECC'],
+            data: [<?php foreach($fichassectores as $ficha)
+                {echo '"'.$ficha->cantidad.'",';} ?>]
+          }
+          
+        ]
+      },
+      options: {
+        plugins: {
+          legend: { 
+            display: true,
+            labels: {
+              color: "#000",
+              font: {
+                size: '13px',
+                family: fontFamily
+              }
             }
-        });
-        // Apex Radialbar chart end
+          },
+        },
+        scales: {
+          x: {
+            display: true,
+            grid: {
+              display: true,
+              color: "rgba(77, 138, 240, .15)",
+              borderColor: "rgba(77, 138, 240, .15)",
+            },
+            ticks: {
+              color: "#000",
+              font: {
+                size: 12
+              }
+            }
+          },
+          y: {
+            grid: {
+              display: true,
+              color: "rgba(77, 138, 240, .15)",
+              borderColor: "rgba(77, 138, 240, .15)",
+            },
+            ticks: {
+              color: "#000",
+              font: {
+                size: 12
+              }
+            }
+          }
+        }
+      }
+    });
+  }
+
+
+  // Bar chart
+  if($('#chartjsBar').length) {
+    new Chart($("#chartjsBar"), {
+      type: 'bar',
+      data: {
+        labels: [<?php foreach($fichastipo as $ficha)
+                  { if($ficha->tipo_ficha=="01")
+                    {echo '"Ficha Individual",';}
+                    if($ficha->tipo_ficha=="02")
+                    {echo '"Ficha Cotitularidad",';} 
+                    if($ficha->tipo_ficha=="03")
+                    {echo '"Ficha Economica",';}
+                    if($ficha->tipo_ficha=="04")
+                    {echo '"Ficha Bien Comun",';}
+                    if($ficha->tipo_ficha=="05")
+                    {echo '"Ficha Bien Cultural",';}
+                    if($ficha->tipo_ficha=="06")
+                    {echo '"Ficha Rural",';} } ?>],
+        datasets: [
+          {
+            label: "Fichas",
+            backgroundColor: ["#BADEBF",'#C16424','#2537AA','#EA4A0E','#EA0ECC'],
+            data: [<?php foreach($fichastipo as $ficha)
+                  {echo '"'.$ficha->cantidad.'",';} ?>],
+          }
+        ]
+      },
+      options: {
+        plugins: {
+          legend: { display: false },
+        },
+        scales: {
+          x: {
+            display: true,
+            grid: {
+              display: true,
+              color:"rgba(77, 138, 240, .15)",
+              borderColor: "rgba(77, 138, 240, .15)",
+            },
+            ticks: {
+              color: "#000",
+              font: {
+                size: 12
+              }
+            }
+          },
+          y: {
+            grid: {
+              display: true,
+              color: "rgba(77, 138, 240, .15)",
+              borderColor: "rgba(77, 138, 240, .15)",
+            },
+            ticks: {
+              color: "#000",
+              font: {
+                size: 12
+              }
+            }
+          }
+        }
+      }
+    });
+  }
+
+  
+  if($('#chartjsArea').length) {
+    new Chart($("#chartjsArea"), {
+      type: 'bar',
+      data: {
+        labels: [<?php foreach($fichascalificacion as $ficha)
+                  {echo '"'.$ficha->clasificacions->desc_codigo.'",';} ?>],
+        datasets: [
+          {
+            label: "",
+            backgroundColor: ["#BADEBF",'#C16424','#2537AA','#EA4A0E','#EA0ECC'],
+            data: [<?php foreach($fichascalificacion as $ficha)
+                  {echo '"'.$ficha->cantidad.'",';} ?>],
+          }
+        ]
+      },
+      options: {
+        indexAxis: 'y',
+        plugins: {
+          legend: { display: false },
+        },
+        scales: {
+          x: {
+            display: true,
+            grid: {
+              display: true,
+              color:"rgba(77, 138, 240, .15)",
+              borderColor: "rgba(77, 138, 240, .15)",
+            },
+            ticks: {
+              color: "#000",
+              font: {
+                size: 12
+              }
+            }
+          },
+          y: {
+            grid: {
+              display: true,
+              color: "rgba(77, 138, 240, .15)",
+              borderColor: "rgba(77, 138, 240, .15)",
+            },
+            ticks: {
+              color: "#000",
+              font: {
+                size: 12
+              }
+            }
+          }
+        }
+      }
+    });
+  }
+
+
+  // Doughnut Chart
+  if($('#chartjsDoughnut').length) {
+    new Chart($('#chartjsDoughnut'), {
+      type: 'doughnut',
+      data: {
+        labels: ["Natural","Juridica"],
+        datasets: [
+          {
+            label: "Tipo Persona Titular",
+            backgroundColor: ['#C16424',"#BADEBF"],
+            borderColor: "#fff",
+            data: ['{{$fichaspersona}}','{{$fichaspersona2}}'],
+          }
+        ]
+      },
+      options: {
+        aspectRatio: 2,
+        plugins: {
+          legend: { 
+            display: true,
+            labels: {
+              color: "#000",
+              font: {
+                size: '13px',
+                family: fontFamily
+              }
+            }
+          },
+        }
+      }
+    });
+  }
+
+
+
+  var fontFamily = "'Roboto', Helvetica, sans-serif"
+
+  // Pie Chart
+  $.plot($('#flotPie'), [
+    <?php foreach($totallotessector as $ficha)
+      {echo '{ label: "'.$ficha->nomb_sector.'",data:'.$ficha->cantidad.'},';} ?>
+  ], {
+    series: {
+      shadowSize: 0,
+      pie: {
+        show: true,
+        radius: 1,
+        innerRadius: 0.5,
+        stroke: {
+          color: "#fff",
+          width: 3
+        },
+        label: {
+          show: true,
+          radius: 3 / 4,
+          background: { opacity: 0.5 },
+
+          formatter: function(label, series) {
+            return '<div style="font-size:11px;text-align:center;color:white;">' + Math.round(series.percent) + '%</div>';
+          }
+        }
+      }
+    },
+
+    grid: {
+      color: "#000",
+      borderColor: "rgba(77, 138, 240, .15)",
+      borderWidth: 1,
+      hoverable: true,
+      clickable: true
+    },
+
+    xaxis: { tickColor: "rgba(77, 138, 240, .15)" },
+    yaxis: { tickColor: "rgba(77, 138, 240, .15)"},
+    legend: { backgroundColor: "#fff" },
+    colors: ["#68da3e","#00c6ab","#6aa3b4","#416864","#223026","#ebb7ce","#b38471","#5c5e36","#1d3d33","#0c181c","#ebe6ea","#e4c5c4","#c8ad8d","#6f7357","#273a2d","#20c67a","#3f8880","#9dc09d","#fef6cd","#d6ebc1","#ff8862","#be6167","#7b3ea0","#0076a1","#3da3a7","#ffd3ff","#a83f6c","#a8a8ff","#00c162","#008bde","#5749dd","#70271c","#a16f40","#dccf6a","#51f68d","#ecc402","#e570be","#db54a4","#e0314a","#ad0244","#643d85","#a62fd6","#939924","#af9fec","#e899d1","#ff9177","#fc8526"]
+  });
+
+ // Apex Radialbar chart start
+ if ($('#apexRadialBar').length) {
+    var options = {
+      chart: {
+        height: 300,
+        type: "radialBar",
+        parentHeightOffset: 0,
+        foreColor:  "#000",
+        background: "#fff",
+        toolbar: {
+          show: false
+        },
+      },
+      theme: {
+        mode: 'light'
+      },
+      tooltip: {
+        theme: 'light'
+      },
+      colors: ["#68da3e","#00c6ab","#6aa3b4","#416864","#223026","#ebb7ce","#b38471","#5c5e36","#1d3d33","#0c181c","#ebe6ea","#e4c5c4","#c8ad8d","#6f7357","#273a2d","#20c67a","#3f8880","#9dc09d","#fef6cd","#d6ebc1","#ff8862","#be6167","#7b3ea0","#0076a1","#3da3a7","#ffd3ff","#a83f6c","#a8a8ff","#00c162","#008bde","#5749dd","#70271c","#a16f40","#dccf6a","#51f68d","#ecc402","#e570be","#db54a4","#e0314a","#ad0244","#643d85","#a62fd6","#939924","#af9fec","#e899d1","#ff9177","#fc8526"],
+      fill: {
+        
+      },
+      grid: {
+        padding: {
+          top: 10
+        }
+      },
+      plotOptions: {
+        radialBar: {
+          dataLabels: {
+            total: {
+              show: true,
+              label: 'TOTAL',
+              fontSize: '14px',
+              fontFamily:  "'Roboto', Helvetica, sans-serif",
+            }
+          },
+          track: {
+            background: "rgba(77, 138, 240, .15)",
+            strokeWidth: '100%',
+            opacity: 1,
+            margin: 5, 
+        },
+        }
+      },
+      series: [{{$porcentajeindividual}}, {{$porcentajeeconomica}}, {{$porcentajecotitular}}, {{$porcentajebiencomun}}],
+      labels: ["F. Individual", "F. Economica", "F. Cotitularidad", "F. Bien Comun"],
+      legend: {
+        show: true,
+        position: "top",
+        horizontalAlign: 'center',
+        fontFamily:  "'Roboto', Helvetica, sans-serif",
+        itemMargin: {
+          horizontal: 8,
+          vertical: 0
+        },
+      },
+    };
+    
+    var chart = new ApexCharts(document.querySelector("#apexRadialBar"), options);
+    chart.render();
+    var chartAreaBounds = chart.w.globals.dom.baseEl.querySelector('.apexcharts-inner').getBoundingClientRect();
+  }
+
+  new Chart($("#actividadeseconomicas"), {
+      type: 'bar',
+      data: {
+        labels: [<?php foreach($fichaactividades as $ficha)
+                  { echo '"'.$ficha->desc_actividad.'",';} ?>],
+        datasets: [
+          {
+            label: "Fichas",
+            backgroundColor: ["#68da3e","#00c6ab","#6aa3b4","#416864","#223026","#ebb7ce","#b38471","#5c5e36","#1d3d33","#0c181c","#ebe6ea","#e4c5c4","#c8ad8d","#6f7357","#273a2d","#20c67a","#3f8880","#9dc09d","#fef6cd","#d6ebc1","#ff8862","#be6167","#7b3ea0","#0076a1","#3da3a7","#ffd3ff","#a83f6c","#a8a8ff","#00c162","#008bde","#5749dd","#70271c","#a16f40","#dccf6a","#51f68d","#ecc402","#e570be","#db54a4","#e0314a","#ad0244","#643d85","#a62fd6","#939924","#af9fec","#e899d1","#ff9177","#fc8526"],
+            data: [<?php foreach($fichaactividades as $ficha)
+                  {echo '"'.$ficha->cantidad.'",';} ?>],
+          }
+        ]
+      },
+      options: {
+        plugins: {
+          legend: { display: false },
+        },
+        scales: {
+          x: {
+            display: true,
+            grid: {
+              display: true,
+              color:"rgba(77, 138, 240, .15)",
+              borderColor: "rgba(77, 138, 240, .15)",
+            },
+            ticks: {
+              color: "#000",
+              font: {
+                size: 12
+              }
+            }
+          },
+          y: {
+            grid: {
+              display: true,
+              color: "rgba(77, 138, 240, .15)",
+              borderColor: "rgba(77, 138, 240, .15)",
+            },
+            ticks: {
+              color: "#000",
+              font: {
+                size: 9
+              }
+            }
+          }
+        }
+      }
+    });
 
         // Grafico Vias
         var fontFamily = "'Roboto', Helvetica, sans-serif"
