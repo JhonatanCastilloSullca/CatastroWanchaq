@@ -122,6 +122,7 @@
                             <th>Manzana</th>
                             <th>Lote</th>
                             <th>Fecha</th>
+                            <th>Usuario</th>
                             <th>Tipo Ficha</th>
                             <th>Ver Ficha</th>
                             <th>Editar</th>
@@ -137,6 +138,7 @@
                                 <td>{{$ficha?->lote?->manzana?->codi_mzna}}</td>
                                 <td>{{$ficha?->lote?->codi_lote}}</td>
                                 <td>{{date("d/m/Y", strtotime($ficha?->fecha_grabado))}}</td>
+                                <td>{{$ficha->user->nombres}}</td>
                                 <td>
                                 @if($ficha?->tipo_ficha==01)
                                     INDIVIDUAL
