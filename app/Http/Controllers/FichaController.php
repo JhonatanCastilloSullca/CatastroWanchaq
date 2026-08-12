@@ -1405,7 +1405,7 @@ public function fichaCotitularidad(Ficha $ficha)
         $ficha->activo=1;
         $ficha->save();
 
-        foreach($fichaAnterior->titulars as $titularAnterior)
+        foreach($fichaAnterior->titulars as $i => $titularAnterior)
         {
             $titular=new Titular();
             $titular->id_ficha=$ficha->id_ficha;
