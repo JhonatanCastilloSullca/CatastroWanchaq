@@ -601,14 +601,14 @@
                     </ul>
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="{{ url('/masivo/exportarsupervisor') }}"
+                            <a href="{{ url('/masivo/exportartecnico') }}"
                                 class="nav-link {{ active_class(['masivo/exportartecnico']) }}">Tecnico</a>
                         </li>
 
                     </ul>
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="{{ url('/masivo/exportarsupervisor') }}"
+                            <a href="{{ url('/masivo/exportarverificador') }}"
                                 class="nav-link {{ active_class(['masivo/exportarverificador']) }}">Verificador</a>
                         </li>
 
