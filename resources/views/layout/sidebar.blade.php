@@ -599,6 +599,20 @@
                         </li>
 
                     </ul>
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ url('/masivo/exportarsupervisor') }}"
+                                class="nav-link {{ active_class(['masivo/exportartecnico']) }}">Tecnico</a>
+                        </li>
+
+                    </ul>
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ url('/masivo/exportarsupervisor') }}"
+                                class="nav-link {{ active_class(['masivo/exportarverificador']) }}">Verificador</a>
+                        </li>
+
+                    </ul>
                 </div>
             </li>
 

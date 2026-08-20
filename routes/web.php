@@ -215,5 +215,11 @@ Route::group(['middleware'=>['auth']], function () {
     Route::get('masivo/exportarsupervisor', 'App\Http\Controllers\ReporteController@exportarsupervisor')->name('reporte.exportarsupervisor');
     Route::post('masivo/guardarsupervisor', 'App\Http\Controllers\ReporteController@guardarsupervisor')->name('reporte.guardarsupervisor');
     Route::post('masivo/importarsupervisor', 'App\Http\Controllers\ReporteController@importarsupervisor')->name('reporte.importarsupervisor');
+    Route::get('masivo/exportartecnico', 'App\Http\Controllers\ReporteController@exportartecnico')->name('reporte.exportartecnico');
+    Route::post('masivo/guardartecnico', 'App\Http\Controllers\ReporteController@guardartecnico')->name('reporte.guardartecnico');
+    Route::post('masivo/importartecnico', 'App\Http\Controllers\ReporteController@importartecnico')->name('reporte.importartecnico');
+    Route::get('masivo/exportarverificador', 'App\Http\Controllers\ReporteController@exportarverificador')->name('reporte.exportarverificador');
+    Route::post('masivo/guardarverificador', 'App\Http\Controllers\ReporteController@guardarverificador')->name('reporte.guardarverificador');
+    Route::post('masivo/importarverificador', 'App\Http\Controllers\ReporteController@importarverificador')->name('reporte.importarverificador');
 
 });

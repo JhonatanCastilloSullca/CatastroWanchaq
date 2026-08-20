@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Exports\CucExport;
 use App\Exports\SupervisorExport;
+use App\Exports\TenicoExport;
+use App\Exports\VerificadorExport;
 use App\Imports\CucImport;
 use App\Imports\SupervisorImport;
+use App\Imports\TenicoImport;
+use App\Imports\VerificadorImport;
 use Illuminate\Http\Request;
 use App\Models\Sectore;
 use App\Models\Manzana;
@@ -1315,6 +1319,88 @@ class ReporteController extends Controller
     public function importarsupervisor(Request $request)
     {
         Excel::import(new SupervisorImport(),$request->archivo);
+        return redirect()->route('reporte.exportarsupervisor')
+            ->with('success', 'Archivo agregado Correctamente.');
+    }
+
+    public function exportartecnico()
+    {
+        $sectores=Sectore::all();
+        return view('pages.masivo.exportartecnico',compact('sectores'));
+    }
+
+    public function guardartecnico(Request $request)
+    {
+        $cucs = UniCat::select(
+            'tf_uni_cat.id_uni_cat',
+            'm.codi_mzna',
+            'l.codi_lote',
+            'p.nume_doc',
+            'f.fecha_levantamiento',
+
+        )
+        ->join('tf_lotes as l', 'l.id_lote', '=', 'tf_uni_cat.id_lote')
+        ->join('tf_manzanas as m', 'm.id_mzna', '=', 'l.id_mzna')
+        ->join('tf_fichas as f', 'f.id_uni_cat', '=', 'tf_uni_cat.id_uni_cat')
+        ->leftjoin('tf_personas as p','p.id_persona','=','f.id_tecnico')
+        ->where('m.id_sector', $request->sector_id)
+        ->whereIn('f.tipo_ficha', ['01', '04'])
+        ->orderBy('l.id_lote', 'asc')
+        ->get()
+        ->unique('id_uni_cat')
+        ->values();
+
+
+        return Excel::download(
+            new TenicoExport($cucs),
+            'tecnicoasignacion.xlsx'
+        );
+    }
+
+    public function importartecnico(Request $request)
+    {
+        Excel::import(new TenicoImport(),$request->archivo);
+        return redirect()->route('reporte.exportartecnico')
+            ->with('success', 'Archivo agregado Correctamente.');
+    }
+
+    public function exportarverificador()
+    {
+        $sectores=Sectore::all();
+        return view('pages.masivo.exportarverificador',compact('sectores'));
+    }
+
+    public function guardarverificador(Request $request)
+    {
+        $cucs = UniCat::select(
+            'tf_uni_cat.id_uni_cat',
+            'm.codi_mzna',
+            'l.codi_lote',
+            'p.nume_doc',
+            'f.fecha_verificacion',
+
+        )
+        ->join('tf_lotes as l', 'l.id_lote', '=', 'tf_uni_cat.id_lote')
+        ->join('tf_manzanas as m', 'm.id_mzna', '=', 'l.id_mzna')
+        ->join('tf_fichas as f', 'f.id_uni_cat', '=', 'tf_uni_cat.id_uni_cat')
+        ->leftjoin('tf_personas as p','p.id_persona','=','f.id_verificador')
+        ->where('m.id_sector', $request->sector_id)
+        ->whereIn('f.tipo_ficha', ['01', '04'])
+        ->orderBy('l.id_lote', 'asc')
+        ->get()
+        ->unique('id_uni_cat')
+        ->values();
+
+
+        return Excel::download(
+            new VerificadorExport($cucs),
+            'verificadorasignacion.xlsx'
+        );
+    }
+
+    public function importarverificador(Request $request)
+    {
+        Excel::import(new VerificadorImport(),$request->archivo);
         return redirect()->route('reporte.exportarsupervisor')
             ->with('success', 'Archivo agregado Correctamente.');
     }

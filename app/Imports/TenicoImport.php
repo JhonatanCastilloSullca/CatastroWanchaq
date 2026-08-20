@@ -12,9 +12,9 @@ use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
 
-class SupervisorImport implements OnEachRow, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation
+class TenicoImport implements OnEachRow, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation
 {
-    public function __construct()
+   public function __construct()
     {
     }
 
@@ -24,11 +24,11 @@ class SupervisorImport implements OnEachRow, WithHeadingRow, WithBatchInserts, W
         if($uni_cat)
         {  
             $fichas = Ficha::where('id_uni_cat',$row['cod_referencia'])->get();
-            $supervisor = Persona::where('nume_doc',$row['nume_doc'])->where('tipo_funcion',2)->first();
+            $supervisor = Persona::where('nume_doc',$row['nume_doc'])->where('tipo_funcion',3)->first();
             if($fichas && $supervisor){
                 foreach($fichas as $ficha){
-                    $ficha->id_supervisor = $supervisor?->id_persona;
-                    $ficha->fecha_supervision = $row['fecha_supervision'];
+                    $ficha->id_tecnico = $supervisor?->id_persona;
+                    $ficha->fecha_levantamiento = $row['fecha_levantamiento'];
                     $ficha->save();
                 }
             }
