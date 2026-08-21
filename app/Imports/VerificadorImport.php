@@ -28,6 +28,7 @@ class VerificadorImport implements OnEachRow, WithHeadingRow, WithBatchInserts, 
             if($fichas && $supervisor){
                 foreach($fichas as $ficha){
                     $ficha->id_verificador = $supervisor?->id_persona;
+                    $ficha->nume_registro = $row['nume_registro'];
                     $ficha->fecha_verificacion = $row['fecha_verificacion'];
                     $ficha->save();
                 }

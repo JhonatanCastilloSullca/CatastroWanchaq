@@ -21,6 +21,7 @@
                         <th>manzana</th>
                         <th>lote</th>
                         <th>nume_doc</th>
+                        <th>nume_registro</th>
                         <th>fecha_verificacion</th>
                     </tr>
                     @foreach($cucs as $cuc)
@@ -29,6 +30,7 @@
                             <td>{{ $cuc->codi_mzna }}</td>
                             <td>{{ $cuc->codi_lote }}</td>
                             <td>{{ $cuc->nume_doc }}</td>
+                            <td>{{ $cuc->nume_registro }}</td>
                             <td>{{ $cuc->fecha_verificacion }}</td>
                         </tr>
                     @endforeach

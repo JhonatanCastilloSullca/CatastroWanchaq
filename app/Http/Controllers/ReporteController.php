@@ -1377,6 +1377,7 @@ class ReporteController extends Controller
             'm.codi_mzna',
             'l.codi_lote',
             'p.nume_doc',
+            'f.nume_registro',
             'f.fecha_verificacion',
 
         )
