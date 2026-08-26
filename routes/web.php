@@ -188,6 +188,11 @@ Route::group(['middleware'=>['auth']], function () {
             'index'
         ])->name('reportes-sector.index');
 
+        Route::get(
+            '/cantidad-fichas/exportar',
+            [ReporteSectorController::class, 'exportarCantidadFichas']
+        )->name('reportes-sector.cantidad-fichas-exportar');
+
         Route::get('/individuales', [
             ReporteSectorController::class,
             'individuales'

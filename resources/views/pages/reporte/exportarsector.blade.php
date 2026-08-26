@@ -105,6 +105,15 @@
                                         PUERTAS
                                     </button>
 
+                                    <button
+                                        type="submit"
+                                        class="btn boton-reporte boton-excel"
+                                        formaction="{{ route('reportes-sector.cantidad-fichas-exportar') }}"
+                                    >
+                                        <i class="mdi mdi-file-excel"></i>
+                                        CANTIDAD DE FICHAS
+                                    </button>
+
                                 </div>
 
                             </div>

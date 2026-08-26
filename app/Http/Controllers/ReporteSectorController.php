@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CantidadFichasSectorExport;
 use App\Exports\ReporteConsultaExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,6 +20,31 @@ class ReporteSectorController extends Controller
         return view(
             'pages.reporte.exportarsector',
             compact('sectores')
+        );
+    }
+
+    public function exportarCantidadFichas(Request $request)
+    {
+        $request->validate([
+            'sector' => ['required', 'string'],
+        ]);
+
+        $sectorExiste = DB::table('catastro.tf_sectores')
+            ->whereRaw('TRIM(codi_sector) = ?', [trim($request->sector)])
+            ->exists();
+
+        if (!$sectorExiste) {
+            return back()
+                ->withInput()
+                ->with('warning', 'El sector seleccionado no existe.');
+        }
+
+        $sector = trim($request->sector);
+        $nombre = 'cantidad_fichas_sector_' . $sector . '.xlsx';
+
+        return Excel::download(
+            new CantidadFichasSectorExport($sector),
+            $nombre
         );
     }
 

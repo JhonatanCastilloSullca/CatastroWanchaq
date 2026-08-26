@@ -572,7 +572,6 @@
                             <a href="{{ url('/reportes-sector') }}"
                                 class="nav-link {{ active_class(['reportes-sector']) }}">Fichas</a>
                         </li>
-
                     </ul>
                 </div>
             </li>
