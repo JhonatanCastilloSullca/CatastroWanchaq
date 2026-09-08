@@ -36,6 +36,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\LotesPropietariosExports;
 use App\Http\Requests\DuplicarFichaRequest;
 use App\Http\Requests\FichaCodigoRequest;
+use App\Models\Archivo;
 use App\Models\ExoneracionTitular;
 use App\Models\FichaCotitularidad;
 
