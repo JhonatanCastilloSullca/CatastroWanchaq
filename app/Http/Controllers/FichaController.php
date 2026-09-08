@@ -125,7 +125,7 @@ class FichaController extends Controller
             $puerta->fichas()->detach($fichaanterior->id_ficha);
             $puerta->delete();
         }
-        $fichaanterior->archivo()->delete();
+        $fichaanterior->archivos()->delete();
         $fichaanterior->fichasUnicatRelacionadas()->delete();
         $fichaanterior->delete();
 
