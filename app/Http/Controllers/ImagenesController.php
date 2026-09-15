@@ -23,7 +23,7 @@ class ImagenesController extends Controller
         $this->middleware('can:imagenes')->only('ver,store');
     }
 
-    public function ver(Request $request)
+     public function ver(Request $request)
     {
         $sectores = Sectore::orderby('codi_sector')->get();
         $manzanas = Manzana::orderby('codi_mzna')->get();
