@@ -461,7 +461,7 @@
                 $host = request()->getHost();
 
                 $isLocal = in_array($host, ['localhost', '192.168.1.16']);
-                $mapsUrl = $isLocal ? 'http://192.168.1.16:81' : 'https://catastro.muniwanchaq.gob.pe:9100/visor/';
+                $mapsUrl = $isLocal ? 'http://192.168.1.16:81' : 'http://38.187.25.54:9100/visor/';
             @endphp
 
             <li class="nav-item">
