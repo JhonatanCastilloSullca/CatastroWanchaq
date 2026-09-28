@@ -1277,9 +1277,28 @@ class ReporteController extends Controller
 
     public function importarcuc(Request $request)
     {
-        Excel::import(new CucImport(),$request->archivo);
+        $request->validate(['archivo' => ['required', 'file', 'mimes:xlsx,xls']]);
+        $importacion = new CucImport();
+        try {
+            // También revierte bloques anteriores si una fila posterior falla.
+            DB::transaction(fn () => Excel::import($importacion, $request->file('archivo')));
+        } catch (\Illuminate\Validation\ValidationException $exception) {
+            throw $exception;
+        } catch (\Throwable $exception) {
+            report($exception);
+            $mensaje = 'No se pudo importar el archivo. No se guardaron cambios. Revise el Excel e intente nuevamente.';
+            return $request->expectsJson()
+                ? response()->json(['message' => $mensaje], 422)
+                : redirect()->route('reporte.exportarcuc')->with('error', $mensaje);
+        }
+        $resultado = $importacion->resultado();
+        $mensaje = sprintf('Importación terminada: %d filas actualizadas, %d sin cambios, %d sin CUC (omitidas) y %d unidades no encontradas.',
+            $resultado['actualizadas'], $resultado['sin_cambios'], $resultado['sin_cuc'], $resultado['no_encontradas']);
+        if ($request->expectsJson()) {
+            return response()->json(['message' => $mensaje, 'resultado' => $resultado]);
+        }
         return redirect()->route('reporte.exportarcuc')
-            ->with('success', 'Archivo agregado Correctamente.');
+            ->with('success', $mensaje);
     }
 
     public function exportarsupervisor()

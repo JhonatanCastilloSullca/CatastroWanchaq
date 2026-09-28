@@ -113,6 +113,7 @@
                                 <h5 class="mb-3">
                                     Importar archivo CUC
                                 </h5>
+                                <div id="resultadoImportacion" class="alert d-none" role="status" aria-live="polite"></div>
 
                                 <form action="{{ route('reporte.importarcuc') }}"
                                       method="POST"
@@ -168,11 +169,36 @@ document.addEventListener('DOMContentLoaded', function () {
     );
 
     if (formularioImportacion) {
-        formularioImportacion.addEventListener('submit', function () {
+        formularioImportacion.addEventListener('submit', async function (event) {
+            event.preventDefault();
             const boton = document.getElementById('btnImportar');
-
+            if (boton.disabled) return;
+            const etiqueta = boton.innerHTML;
+            const resultado = document.getElementById('resultadoImportacion');
+            resultado.className = 'alert d-none';
             boton.disabled = true;
             boton.innerHTML = 'Procesando archivo...';
+            try {
+                const response = await fetch(formularioImportacion.action, {
+                    method: 'POST',
+                    body: new FormData(formularioImportacion),
+                    headers: { 'Accept': 'application/json' }
+                });
+                const json = (response.headers.get('content-type') || '').includes('application/json')
+                    ? await response.json() : null;
+                if (!response.ok || !json) {
+                    const errores = json?.errors ? Object.values(json.errors).flat().join(' ') : null;
+                    throw new Error(errores || json?.message || 'El servidor no completó la respuesta. Revise el resultado antes de volver a importar.');
+                }
+                resultado.className = 'alert alert-success';
+                resultado.textContent = json.message;
+            } catch (error) {
+                resultado.className = 'alert alert-danger';
+                resultado.textContent = error.message || 'No se pudo conectar con el servidor. Revise el resultado antes de volver a importar.';
+            } finally {
+                boton.disabled = false;
+                boton.innerHTML = etiqueta;
+            }
         });
     }
 });
