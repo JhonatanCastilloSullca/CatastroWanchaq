@@ -558,15 +558,15 @@
                 </div>
             </li>
             @endcan
-            <li class="nav-item {{ active_class(['reportes-sector/*']) }}">
+            <li class="nav-item {{ request()->routeIs('reportes-sector.reporte') ? '' : active_class(['reportes-sector', 'reportes-sector/*']) }}">
                 <a class="nav-link" data-bs-toggle="collapse" href="#reportes-sector" role="button"
-                    aria-expanded="{{ is_active_route(['reportes-sector/*']) }}"
+                    aria-expanded="{{ request()->routeIs('reportes-sector.reporte') ? 'false' : is_active_route(['reportes-sector', 'reportes-sector/*']) }}"
                     aria-controls="reportes-sector">
                     <i class="link-icon mdi mdi-clipboard-text"></i>
                     <span class="link-title">Exportar</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
-                <div class="collapse {{ show_class(['reportes-sector/*']) }}" id="reportes-sector">
+                <div class="collapse {{ request()->routeIs('reportes-sector.reporte') ? '' : show_class(['reportes-sector', 'reportes-sector/*']) }}" id="reportes-sector">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
                             <a href="{{ url('/reportes-sector') }}"
@@ -574,6 +574,12 @@
                         </li>
                     </ul>
                 </div>
+            </li>
+            <li class="nav-item {{ active_class(['reportes-sector/reporte']) }}">
+                <a href="{{ route('reportes-sector.reporte') }}" class="nav-link">
+                    <i class="link-icon mdi mdi-clipboard-text"></i>
+                    <span class="link-title">Reporte por sector</span>
+                </a>
             </li>
             <li class="nav-item {{ active_class(['masivo/*']) }}">
                 <a class="nav-link" data-bs-toggle="collapse" href="#masivo" role="button"

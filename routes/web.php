@@ -183,6 +183,11 @@ Route::group(['middleware'=>['auth']], function () {
 
     Route::prefix('reportes-sector')->group(function () {
 
+        Route::get('/reporte', [
+            App\Http\Controllers\ReporteFichasSectorController::class,
+            'index'
+        ])->name('reportes-sector.reporte');
+
         Route::get('/', [
             ReporteSectorController::class,
             'index'
