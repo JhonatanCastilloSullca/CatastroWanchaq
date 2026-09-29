@@ -13,11 +13,14 @@ use setasign\Fpdi\PdfParser\StreamReader;
 
 class RentasPdfService
 {
-    public function generar(Lote $lote, string $tipo): string
+    public function generar(Lote $lote, string $tipo, ?string $idFicha = null): string
     {
         $fichas = Ficha::where('id_lote', $lote->id_lote)
             ->whereRaw('TRIM(tipo_ficha) = ?', ['01'])->where('activo', '1')
             ->orderBy('id_uni_cat')->orderBy('nume_ficha')->orderBy('id_ficha');
+        if ($idFicha !== null) {
+            $fichas->where('id_ficha', $idFicha);
+        }
         abort_unless((clone $fichas)->exists(), 404, 'El lote no tiene fichas individuales activas.');
 
         $pdf = $this->documento();

@@ -22,6 +22,11 @@
                         <div class="col-md-auto mb-2">
                             <button type="submit" class="btn btn-primary">Consultar</button>
                         </div>
+                        @if ($sector)
+                            <div class="col-md-auto mb-2">
+                                <a href="{{ route('reportes-sector.excel', ['sector' => $sector->id_sector]) }}" class="btn btn-success">Descargar Excel del sector</a>
+                            </div>
+                        @endif
                     </form>
 
                     @if ($errors->any())

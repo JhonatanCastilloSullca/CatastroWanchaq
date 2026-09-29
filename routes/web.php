@@ -183,6 +183,11 @@ Route::group(['middleware'=>['auth']], function () {
 
     Route::prefix('reportes-sector')->group(function () {
 
+        Route::get('/reporte/excel', [
+            App\Http\Controllers\ReporteFichasSectorController::class,
+            'exportar'
+        ])->name('reportes-sector.excel');
+
         Route::get('/reporte', [
             App\Http\Controllers\ReporteFichasSectorController::class,
             'index'

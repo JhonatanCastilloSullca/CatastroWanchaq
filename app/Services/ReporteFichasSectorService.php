@@ -25,9 +25,9 @@ class ReporteFichasSectorService
             ->whereIn(DB::raw('TRIM(f.tipo_ficha)'), array_keys(self::TIPOS));
     }
 
-    public function resumen(string $sector, ?string $manzana = null): Collection
+    private function consultaResumen(string $sector): Builder
     {
-        $query = DB::table('catastro.tf_manzanas as m')
+        return DB::table('catastro.tf_manzanas as m')
             ->leftJoin('catastro.tf_lotes as l', 'l.id_mzna', '=', 'm.id_mzna')
             ->leftJoin('catastro.tf_fichas as f', function ($join) {
                 $join->on('f.id_lote', '=', 'l.id_lote')
@@ -35,6 +35,24 @@ class ReporteFichasSectorService
                     ->whereIn(DB::raw('TRIM(f.tipo_ficha)'), array_keys(self::TIPOS));
             })
             ->where('m.id_sector', $sector);
+    }
+
+    public function detalleExcel(string $sector): Collection
+    {
+        $query = $this->consultaResumen($sector)
+            ->select('m.id_mzna', 'm.codi_mzna', 'l.id_lote', 'l.codi_lote')
+            ->groupBy('m.id_mzna', 'm.codi_mzna', 'l.id_lote', 'l.codi_lote');
+
+        return $this->contar($query)->get()->sort(function ($a, $b) {
+            return strnatcasecmp(trim($a->codi_mzna), trim($b->codi_mzna))
+                ?: strcmp($a->id_mzna, $b->id_mzna)
+                ?: strnatcasecmp(trim($a->codi_lote ?? ''), trim($b->codi_lote ?? ''));
+        })->values();
+    }
+
+    public function resumen(string $sector, ?string $manzana = null): Collection
+    {
+        $query = $this->consultaResumen($sector);
 
         if ($manzana !== null) {
             $query->where('m.id_mzna', $manzana)
@@ -46,12 +64,17 @@ class ReporteFichasSectorService
                 ->groupBy('m.id_mzna', 'm.codi_mzna');
         }
 
+        return $this->contar($query)->get()
+            ->sort(fn ($a, $b) => strnatcasecmp(trim($a->codigo), trim($b->codigo)))
+            ->values();
+    }
+
+    private function contar(Builder $query): Builder
+    {
         foreach (self::TIPOS as $tipo => $config) {
             $query->selectRaw("COUNT(CASE WHEN TRIM(f.tipo_ficha) = ? THEN f.id_ficha END) AS {$config['columna']}", [$tipo]);
         }
 
-        return $query->selectRaw('COUNT(f.id_ficha) AS total')->get()
-            ->sort(fn ($a, $b) => strnatcasecmp(trim($a->codigo), trim($b->codigo)))
-            ->values();
+        return $query->selectRaw('COUNT(f.id_ficha) AS total');
     }
 }

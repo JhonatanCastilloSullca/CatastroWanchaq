@@ -11,6 +11,85 @@ use Tests\TestCase;
 
 class RentasPdfApiTest extends TestCase
 {
+    public function test_una_consulta_devuelve_solo_links_de_todos_los_documentos(): void
+    {
+        DB::table('tf_fichas')->insert([
+            ['id_ficha'=>'C1','id_lote'=>'001','tipo_ficha'=>'02','activo'=>'1'],
+            ['id_ficha'=>'E1','id_lote'=>'001','tipo_ficha'=>'03','activo'=>'1'],
+            ['id_ficha'=>'C2','id_lote'=>'otro','tipo_ficha'=>'02','activo'=>'1'],
+            ['id_ficha'=>'E2','id_lote'=>'001','tipo_ficha'=>'03','activo'=>'0'],
+        ]);
+        DB::table('archivos')->insert(['id'=>1,'id_ficha'=>'F1','rentas'=>'prueba.pdf']);
+        Storage::put('img/archivos/prueba.pdf', '%PDF-prueba');
+        $response = $this->getJson('/api/rentas/lotes/001/enlaces')->assertOk();
+        $this->assertSame(['individuales','cotitulares','economicas','pu','archivos'], array_keys($response->json()));
+        foreach (['individuales'=>2,'cotitulares'=>1,'economicas'=>1,'pu'=>2,'archivos'=>1] as $key=>$count) {
+            $response->assertJsonCount($count, $key);
+            foreach ($response->json($key) as $url) {
+                $this->assertIsString($url);
+                $this->assertStringContainsString('/api/rentas/lotes/001/', $url);
+            }
+        }
+        $this->get($response->json('archivos.0'))->assertOk()->assertDownload('prueba.pdf');
+        $this->getJson('/api/rentas/lotes/001/fichas/F2/archivos/1/rentas')->assertNotFound();
+        $this->getJson('/api/rentas/lotes/001/fichas/C2/pdf')->assertNotFound();
+        $this->getJson('/api/rentas/lotes/001/fichas/E2/pdf')->assertNotFound();
+        $this->getJson('/api/rentas/lotes/001/fichas/F1/archivos/1/id_ficha')->assertNotFound();
+        DB::table('archivos')->update(['rentas'=>'../privado.pdf']);
+        $this->getJson('/api/rentas/lotes/001/fichas/F1/archivos/1/rentas')->assertNotFound();
+    }
+
+    public function test_enlaces_sin_documentos_son_listas_vacias(): void
+    {
+        DB::table('tf_fichas')->update(['activo'=>'0']);
+        $this->getJson('/api/rentas/lotes/001/enlaces')->assertOk()->assertExactJson([
+            'individuales'=>[], 'cotitulares'=>[], 'economicas'=>[], 'pu'=>[], 'archivos'=>[],
+        ]);
+        $this->getJson('/api/rentas/lotes/999/enlaces')->assertNotFound();
+    }
+
+    public function test_json_publico_lista_todas_las_individuales_y_sus_enlaces(): void
+    {
+        DB::table('tf_fichas')->insert([
+            ['id_ficha' => 'otra', 'id_lote' => '002', 'tipo_ficha' => '01', 'activo' => '1'],
+            ['id_ficha' => 'baja', 'id_lote' => '001', 'tipo_ficha' => '01', 'activo' => '0'],
+            ['id_ficha' => 'comun', 'id_lote' => '001', 'tipo_ficha' => '04', 'activo' => '1'],
+        ]);
+        $respuesta = $this->get('/api/rentas/lotes/001/fichas-individuales');
+        $respuesta->assertOk()->assertJsonPath('id_lote', '001')->assertJsonPath('total', 2)
+            ->assertJsonCount(2, 'fichas')->assertJsonPath('fichas.0.id_ficha', 'F1');
+        foreach (['ficha_individual', 'archivo_rentas', 'predio_urbano'] as $tipo) {
+            $this->assertStringContainsString('/api/rentas/lotes/001/', $respuesta->json('enlaces.'.$tipo));
+            $this->assertStringContainsString('/fichas-individuales/F1/', $respuesta->json('fichas.0.enlaces.'.$tipo));
+        }
+    }
+
+    public function test_json_vacio_y_lote_inexistente(): void
+    {
+        DB::table('tf_fichas')->update(['activo' => '0']);
+        $this->getJson('/api/rentas/lotes/001/fichas-individuales')->assertOk()
+            ->assertJsonPath('total', 0)->assertJsonPath('fichas', []);
+        $this->getJson('/api/rentas/lotes/999/fichas-individuales')->assertNotFound();
+    }
+
+    public function test_enlaces_por_ficha_generan_solo_la_ficha_solicitada_y_validan_pertenencia(): void
+    {
+        $this->mock(RentasPdfService::class, function ($mock) {
+            foreach (['individual', 'archivo-rentas', 'predio-urbano'] as $tipo) {
+                $mock->shouldReceive('generar')->once()->withArgs(fn ($lote, $actual, $ficha) =>
+                    $lote->id_lote === '001' && $actual === $tipo && $ficha === 'F1')->andReturn('%PDF-prueba');
+            }
+        });
+        foreach (['ficha-individual', 'archivo-rentas', 'predio-urbano'] as $tipo) {
+            $this->get('/api/rentas/lotes/001/fichas-individuales/F1/'.$tipo)->assertOk()
+                ->assertHeader('Content-Type', 'application/pdf');
+        }
+        DB::table('tf_fichas')->where('id_ficha', 'F1')->update(['id_lote' => 'otro']);
+        $this->getJson('/api/rentas/lotes/001/fichas-individuales/F1/ficha-individual')->assertNotFound();
+        DB::table('tf_fichas')->where('id_ficha', 'F2')->update(['activo' => '0']);
+        $this->getJson('/api/rentas/lotes/001/fichas-individuales/F2/ficha-individual')->assertNotFound();
+    }
+
     protected function setUp(): void
     {
         parent::setUp();

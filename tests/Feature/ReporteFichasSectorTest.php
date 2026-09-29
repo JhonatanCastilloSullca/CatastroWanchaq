@@ -11,6 +11,51 @@ use Tests\TestCase;
 
 class ReporteFichasSectorTest extends TestCase
 {
+    public function test_excel_conserva_codigos_agrupa_manzanas_y_cuadra_con_el_reporte(): void
+    {
+        DB::table('catastro.tf_manzanas')->where('id_mzna', 'M1')->update(['codi_mzna' => '002']);
+        DB::table('catastro.tf_lotes')->where('id_lote', 'L1')->update(['codi_lote' => '001']);
+        $servicio = new ReporteFichasSectorService;
+        $filas = $servicio->detalleExcel('S1');
+        $this->assertSame(['L1', 'L2', null], $filas->pluck('id_lote')->all());
+        $this->assertEquals($servicio->resumen('S1')->sum('total'), $filas->sum('total'));
+        $bytes = \Maatwebsite\Excel\Facades\Excel::raw(
+            new \App\Exports\ReporteFichasSectorExport($filas, '01'),
+            \Maatwebsite\Excel\Excel::XLSX
+        );
+        $path = tempnam(sys_get_temp_dir(), 'sector');
+        try {
+            file_put_contents($path, $bytes);
+            $book = \PhpOffice\PhpSpreadsheet\IOFactory::load($path);
+            $sheet = $book->getActiveSheet();
+            $this->assertSame('Sector 01', $sheet->getTitle());
+            $this->assertSame('G', $sheet->getHighestColumn());
+            $this->assertSame('002', $sheet->getCell('A2')->getValue());
+            $this->assertSame('001', $sheet->getCell('B2')->getValue());
+            $this->assertContains('A2:A3', $sheet->getMergeCells());
+            $this->assertEquals(5, $sheet->getCell('G5')->getCalculatedValue());
+            $this->assertEquals(0, $sheet->getCell('G3')->getValue());
+            $this->assertSame('B97DA3', $sheet->getStyle('A1')->getFill()->getStartColor()->getRGB());
+            $book->disconnectWorksheets();
+        } finally {
+            unlink($path);
+        }
+    }
+
+    public function test_excel_sector_vacio_tiene_total_cero(): void
+    {
+        $export = new \App\Exports\ReporteFichasSectorExport(collect(), '03');
+        $this->assertSame(['TOTAL', null, 0, 0, 0, 0, 0], $export->array()[1]);
+    }
+
+    public function test_descarga_rechaza_sector_inexistente(): void
+    {
+        $this->expectException(HttpException::class);
+        (new ReporteFichasSectorController)->exportar(
+            Request::create('/', 'GET', ['sector' => 'inexistente']), new ReporteFichasSectorService
+        );
+    }
+
     protected function setUp(): void
     {
         parent::setUp();

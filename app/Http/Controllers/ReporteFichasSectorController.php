@@ -3,11 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Services\ReporteFichasSectorService;
+use App\Exports\ReporteFichasSectorExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ReporteFichasSectorController extends Controller
 {
+    public function exportar(Request $request, ReporteFichasSectorService $reporte)
+    {
+        $datos = $request->validate(['sector' => ['required', 'string', 'max:20']]);
+        $sector = DB::table('catastro.tf_sectores')->where('id_sector', $datos['sector'])->first();
+        abort_unless($sector, 404);
+        $codigo = preg_replace('/[^a-zA-Z0-9_-]/', '', trim($sector->codi_sector));
+
+        return Excel::download(
+            new ReporteFichasSectorExport($reporte->detalleExcel($sector->id_sector), $sector->codi_sector),
+            'reporte_fichas_sector_'.$codigo.'.xlsx'
+        );
+    }
+
     public function index(Request $request, ReporteFichasSectorService $reporte)
     {
         $datos = $request->validate([
