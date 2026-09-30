@@ -31,19 +31,22 @@
                     {{ $puerta->via?->tipo_via }} {{ $puerta->via?->nomb_via }} {{ $puerta->nume_muni }}<br>
                 @endforeach
                 {{ $ficha->unicat?->codi_cont_rentas }}
-                @foreach ($ficha->titulars as $titular)
-                    {{ $titular->persona?->tipo_persona == '2' ? $titular->persona?->razon_social : trim($titular->persona?->nombres.' '.$titular->persona?->ape_paterno.' '.$titular->persona?->ape_materno) }}@if (!$loop->last), @endif
-                @endforeach
             </td>
             <td style="width: 28%"><table class="titulo"><tr><td><strong style="font-size: 23pt">P.U. {{ $anio }}</strong><br><strong>Hoja Predio Urbano</strong></td></tr></table></td>
         </tr>
     </table>
+    <div style="margin-bottom: 4mm">
+        <strong>TITULARES</strong>
+        @foreach ($titularesPu as $titular)
+            <div>{{ $titular->persona?->tipo_persona == '2' ? $titular->persona?->razon_social : trim($titular->persona?->nombres.' '.$titular->persona?->ape_paterno.' '.$titular->persona?->ape_materno) }}</div>
+        @endforeach
+    </div>
     <table class="datos">
         <tr><th>Id. Predio</th><th>Id. Catastro</th><th>Condición de propiedad</th><th>Datos relativos al predio</th></tr>
         <tr>
             <td>{{ $ficha->unicat?->codi_pred_rentas }}</td>
             <td>{{ $ficha->id_uni_cat }}</td>
-            <td>{{ $ficha->titulars->pluck('condiciontitular.desc_codigo')->filter()->unique()->implode(', ') }}</td>
+            <td>{{ $titularesPu->pluck('condiciontitular.desc_codigo')->filter()->unique()->implode(', ') }}</td>
             <td>{{ $ficha->construccions->map(fn ($construccion) => $descripcion('ECC', $construccion->ecc))->filter()->unique()->implode(', ') }} {{ $descripcion('CDP', $ficha->fichaindividual?->clasificacion) }}</td>
         </tr>
     </table>

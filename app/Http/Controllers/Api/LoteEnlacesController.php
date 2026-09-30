@@ -15,26 +15,37 @@ class LoteEnlacesController extends Controller
 
     public function index(Lote $lote)
     {
-        $salida = ['individuales' => [], 'cotitulares' => [], 'economicas' => [], 'pu' => [], 'archivos' => []];
         $fichas = Ficha::where('id_lote', $lote->id_lote)->where('activo', '1')
             ->whereIn(\DB::raw('TRIM(tipo_ficha)'), ['01', '02', '03'])
-            ->with('archivos')->orderBy('id_uni_cat')->orderBy('id_ficha')->get();
-        foreach ($fichas as $ficha) {
-            $tipo = trim($ficha->tipo_ficha);
-            $params = ['lote' => $lote->id_lote, 'ficha' => $ficha->id_ficha];
-            if ($tipo === '01') {
-                $salida['individuales'][] = route('api.rentas.ficha.pdf', $params + ['documento' => 'ficha-individual']);
-                $salida['pu'][] = route('api.rentas.ficha.pdf', $params + ['documento' => 'predio-urbano']);
-            } else {
-                $salida[$tipo === '02' ? 'cotitulares' : 'economicas'][] = route('api.rentas.ficha.asociada', $params);
+            ->whereNotNull('id_uni_cat')->whereRaw("TRIM(id_uni_cat) <> ''")
+            ->with('archivos')->orderBy('id_uni_cat')->orderBy('id_ficha')
+            ->get(['id_ficha', 'id_uni_cat', 'tipo_ficha']);
+        $salida = [];
+        foreach ($fichas->groupBy('id_uni_cat') as $unicat => $grupo) {
+            // Solo una individual activa habilita una fila de la tabla.
+            if (! $grupo->contains(fn ($ficha) => trim($ficha->tipo_ficha) === '01')) {
+                continue;
             }
-            foreach ($ficha->archivos as $archivo) {
-                foreach (self::ARCHIVOS as $campo) {
-                    if (filled($archivo->$campo)) {
-                        $salida['archivos'][] = route('api.rentas.ficha.adjunto', $params + ['archivo' => $archivo->id, 'campo' => $campo]);
+            $fila = ['unicat' => (string) $unicat, 'ficha_individual' => [], 'cotitulares' => [],
+                'economicas' => [], 'archivos' => [], 'pu' => []];
+            foreach ($grupo as $ficha) {
+                $tipo = trim($ficha->tipo_ficha);
+                $params = ['lote' => $lote->id_lote, 'ficha' => $ficha->id_ficha];
+                if ($tipo === '01') {
+                    $fila['ficha_individual'][] = route('api.rentas.ficha.pdf', $params + ['documento' => 'ficha-individual']);
+                    $fila['pu'][] = route('api.rentas.ficha.pdf', $params + ['documento' => 'predio-urbano']);
+                } else {
+                    $fila[$tipo === '02' ? 'cotitulares' : 'economicas'][] = route('api.rentas.ficha.asociada', $params);
+                }
+                foreach ($ficha->archivos as $archivo) {
+                    foreach (self::ARCHIVOS as $campo) {
+                        if (filled($archivo->$campo)) {
+                            $fila['archivos'][] = route('api.rentas.ficha.adjunto', $params + ['archivo' => $archivo->id, 'campo' => $campo]);
+                        }
                     }
                 }
             }
+            $salida[] = $fila;
         }
         return response()->json($salida)->header('Cache-Control', 'private, no-store');
     }

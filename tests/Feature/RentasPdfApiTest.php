@@ -11,26 +11,47 @@ use Tests\TestCase;
 
 class RentasPdfApiTest extends TestCase
 {
-    public function test_una_consulta_devuelve_solo_links_de_todos_los_documentos(): void
+    public function test_pu_recupera_todos_los_cotitulares_solo_de_la_misma_unidad_y_lote(): void
+    {
+        DB::statement('CREATE TABLE tf_titulares (id_ficha TEXT, id_persona TEXT, nume_titular TEXT, cond_titular TEXT)');
+        DB::statement('CREATE TABLE tf_personas (id_persona TEXT PRIMARY KEY, nombres TEXT, tipo_persona TEXT, razon_social TEXT)');
+        DB::statement('CREATE TABLE tf_tablas_codigos (codigo TEXT, id_tabla TEXT, desc_codigo TEXT)');
+        foreach ([['C1','001','F1','1'], ['C2','001','F2','1'], ['C3','otro','F1','1'], ['C4','001','F1','0']] as [$id,$lote,$unidad,$activo]) {
+            DB::table('tf_fichas')->insert(['id_ficha'=>$id,'id_lote'=>$lote,'id_uni_cat'=>$unidad,'tipo_ficha'=>'02 ','activo'=>$activo]);
+            foreach ([1,2,10] as $numero) {
+                $persona=$id.'P'.$numero;
+                DB::table('tf_personas')->insert(['id_persona'=>$persona,'nombres'=>$persona,'tipo_persona'=>'1']);
+                DB::table('tf_titulares')->insert(['id_ficha'=>$id,'id_persona'=>$persona,'nume_titular'=>(string)$numero]);
+            }
+        }
+        $resultado=(new RentasPdfService)->cotitularesPorUnidad(\App\Models\Lote::find('001'), ['F1']);
+        $this->assertSame(['F1'], $resultado->keys()->all());
+        $this->assertSame(['C1P1','C1P2','C1P10'], $resultado->get('F1')->pluck('persona.nombres')->all());
+        $this->assertTrue((new RentasPdfService)->cotitularesPorUnidad(\App\Models\Lote::find('001'), ['sin_cotitular'])->isEmpty());
+    }
+
+    public function test_enlaces_agrupa_documentos_por_unicat_con_individual_activa(): void
     {
         DB::table('tf_fichas')->insert([
-            ['id_ficha'=>'C1','id_lote'=>'001','tipo_ficha'=>'02','activo'=>'1'],
-            ['id_ficha'=>'E1','id_lote'=>'001','tipo_ficha'=>'03','activo'=>'1'],
-            ['id_ficha'=>'C2','id_lote'=>'otro','tipo_ficha'=>'02','activo'=>'1'],
-            ['id_ficha'=>'E2','id_lote'=>'001','tipo_ficha'=>'03','activo'=>'0'],
+            ['id_ficha'=>'C1','id_lote'=>'001','tipo_ficha'=>'02','activo'=>'1','id_uni_cat'=>'F1'],
+            ['id_ficha'=>'E1','id_lote'=>'001','tipo_ficha'=>'03','activo'=>'1','id_uni_cat'=>'F1'],
+            ['id_ficha'=>'C2','id_lote'=>'otro','tipo_ficha'=>'02','activo'=>'1','id_uni_cat'=>'F1'],
+            ['id_ficha'=>'E2','id_lote'=>'001','tipo_ficha'=>'03','activo'=>'0','id_uni_cat'=>'F2'],
         ]);
         DB::table('archivos')->insert(['id'=>1,'id_ficha'=>'F1','rentas'=>'prueba.pdf']);
         Storage::put('img/archivos/prueba.pdf', '%PDF-prueba');
         $response = $this->getJson('/api/rentas/lotes/001/enlaces')->assertOk();
-        $this->assertSame(['individuales','cotitulares','economicas','pu','archivos'], array_keys($response->json()));
-        foreach (['individuales'=>2,'cotitulares'=>1,'economicas'=>1,'pu'=>2,'archivos'=>1] as $key=>$count) {
-            $response->assertJsonCount($count, $key);
-            foreach ($response->json($key) as $url) {
+        $response->assertJsonCount(2)->assertJsonPath('0.unicat', 'F1')->assertJsonPath('1.unicat', 'F2');
+        $this->assertSame(['unicat','ficha_individual','cotitulares','economicas','archivos','pu'], array_keys($response->json('0')));
+        $response->assertJsonPath('1.cotitulares', [])->assertJsonPath('1.economicas', [])->assertJsonPath('1.archivos', []);
+        foreach (['ficha_individual'=>1,'cotitulares'=>1,'economicas'=>1,'pu'=>1,'archivos'=>1] as $key=>$count) {
+            $response->assertJsonCount($count, '0.'.$key);
+            foreach ($response->json('0.'.$key) as $url) {
                 $this->assertIsString($url);
                 $this->assertStringContainsString('/api/rentas/lotes/001/', $url);
             }
         }
-        $this->get($response->json('archivos.0'))->assertOk()->assertDownload('prueba.pdf');
+        $this->get($response->json('0.archivos.0'))->assertOk()->assertDownload('prueba.pdf');
         $this->getJson('/api/rentas/lotes/001/fichas/F2/archivos/1/rentas')->assertNotFound();
         $this->getJson('/api/rentas/lotes/001/fichas/C2/pdf')->assertNotFound();
         $this->getJson('/api/rentas/lotes/001/fichas/E2/pdf')->assertNotFound();
@@ -42,10 +63,21 @@ class RentasPdfApiTest extends TestCase
     public function test_enlaces_sin_documentos_son_listas_vacias(): void
     {
         DB::table('tf_fichas')->update(['activo'=>'0']);
-        $this->getJson('/api/rentas/lotes/001/enlaces')->assertOk()->assertExactJson([
-            'individuales'=>[], 'cotitulares'=>[], 'economicas'=>[], 'pu'=>[], 'archivos'=>[],
-        ]);
+        $this->getJson('/api/rentas/lotes/001/enlaces')->assertOk()->assertExactJson([]);
         $this->getJson('/api/rentas/lotes/999/enlaces')->assertNotFound();
+    }
+
+    public function test_unicat_sin_individual_no_aparece_y_varias_individuales_no_duplican_fila(): void
+    {
+        DB::table('tf_fichas')->insert([
+            ['id_ficha'=>'F3','id_lote'=>'001','tipo_ficha'=>'01 ','activo'=>'1','id_uni_cat'=>'F1'],
+            ['id_ficha'=>'E3','id_lote'=>'001','tipo_ficha'=>'03','activo'=>'1','id_uni_cat'=>'sin_individual'],
+            ['id_ficha'=>'F4','id_lote'=>'001','tipo_ficha'=>'01','activo'=>'0','id_uni_cat'=>'sin_individual'],
+        ]);
+        $response = $this->getJson('/api/rentas/lotes/001/enlaces')->assertOk()->assertJsonCount(2)
+            ->assertJsonCount(2, '0.ficha_individual')->assertJsonCount(2, '0.pu');
+        $this->assertSame(['F1', 'F2'], array_column($response->json(), 'unicat'));
+        $this->assertStringContainsString('/F3/', $response->json('0.ficha_individual.1'));
     }
 
     public function test_json_publico_lista_todas_las_individuales_y_sus_enlaces(): void

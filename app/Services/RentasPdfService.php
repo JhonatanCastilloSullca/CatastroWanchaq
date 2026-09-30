@@ -6,6 +6,7 @@ use App\Models\Ficha;
 use App\Models\Institucion;
 use App\Models\Lote;
 use App\Models\TablaCodigo;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 use Mpdf\Mpdf;
@@ -53,6 +54,9 @@ class RentasPdfService
             }
             abort_if($paginas === 0, 404, 'El lote no tiene archivos PDF de Rentas adjuntos.');
         } else {
+            $cotitulares = $tipo === 'predio-urbano'
+                ? $this->cotitularesPorUnidad($lote, (clone $fichas)->pluck('id_uni_cat')->all())
+                : collect();
             $logos = Institucion::first();
             $catalogos = TablaCodigo::whereIn('id_tabla', ['CDP', 'MEP', 'ECS', 'ECC'])
                 ->get()->keyBy(fn ($codigo) => trim($codigo->id_tabla).':'.trim($codigo->codigo));
@@ -69,11 +73,26 @@ class RentasPdfService
                 }
                 $primera = false;
                 $vista = $tipo === 'individual' ? 'pages.pdf.individual' : 'pages.pdf.predio-urbano-rentas';
-                $pdf->WriteHTML(view($vista, compact('ficha', 'logos', 'descripcion', 'anio'))->render());
+                $titularesPu = $cotitulares->get($ficha->id_uni_cat, collect());
+                if ($titularesPu->isEmpty()) {
+                    $titularesPu = $ficha->titulars;
+                }
+                $pdf->WriteHTML(view($vista, compact('ficha', 'logos', 'descripcion', 'anio', 'titularesPu'))->render());
             }
         }
 
         return $pdf->Output('', 'S');
+    }
+
+    public function cotitularesPorUnidad(Lote $lote, array $unidades): Collection
+    {
+        return Ficha::where('id_lote', $lote->id_lote)
+            ->whereIn('id_uni_cat', array_values(array_filter($unidades, fn ($id) => filled($id))))
+            ->whereRaw('TRIM(tipo_ficha) = ?', ['02'])->where('activo', '1')
+            ->with(['titulars' => fn ($query) => $query->reorder()->orderBy('nume_titular'),
+                'titulars.persona', 'titulars.condiciontitular'])->orderBy('id_ficha')
+            ->get(['id_ficha', 'id_uni_cat'])->groupBy('id_uni_cat')
+            ->map(fn ($fichas) => $fichas->flatMap(fn ($ficha) => $ficha->titulars)->sortBy('nume_titular', SORT_NATURAL)->values());
     }
 
     private function documento(): Mpdf
