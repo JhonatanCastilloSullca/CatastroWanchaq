@@ -115,12 +115,18 @@ abstract class AsignacionPersonalImport implements ToCollection, WithHeadingRow
                             $ficha->nume_registro = $dato['registro'];
                         }
                         if ($ficha->isDirty()) {
-                            $ficha->save();
                             $cambio = true;
                         }
                     }
                     $this->resultado[$cambio ? 'actualizadas' : 'sin_cambios']++;
                 }
+                $columnas = [$this->responsable, $this->fecha];
+                if ($this->funcion === 4) {
+                    $columnas[] = 'nume_registro';
+                }
+                app(\App\Services\ActualizarAsignacionMasivaService::class)->guardar(
+                    $fichas->flatMap(fn ($grupo) => $grupo), $columnas
+                );
             }
         });
     }

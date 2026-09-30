@@ -72,6 +72,32 @@ class AsignacionPersonalImportTest extends TestCase
         $this->assertNull(DB::table('tf_fichas')->where('id_ficha','F1')->value('id_verificador'));
     }
 
+    /** @dataProvider opciones */
+    public function test_escrituras_agrupadas_preservan_fechas_nulas_y_auditoria($clase, $rol, $campo, $fecha): void
+    {
+        $rows = collect();
+        foreach (range(1, 100) as $numero) {
+            $id = 'U'.$numero;
+            DB::table('tf_uni_cat')->insert(['id_uni_cat'=>$id]);
+            DB::table('tf_fichas')->insert(['id_ficha'=>$id,'id_uni_cat'=>$id,$fecha=>'2025-01-01']);
+            $rows->push(collect(['cod_referencia'=>$id,'nume_doc'=>'0000000'.$rol,
+                $fecha=>$numero % 2 === 0 ? null : 46254,'nume_registro'=>'008562']));
+        }
+        DB::enableQueryLog();
+        (new $clase)->collection($rows);
+        $queries = DB::getQueryLog();
+        DB::disableQueryLog();
+        $this->assertCount(1, array_filter($queries, fn($q)=>str_starts_with(strtolower($q['query']), 'update')));
+        $this->assertCount(1, array_filter($queries, fn($q)=>str_starts_with(strtolower($q['query']), 'insert')));
+        $this->assertSame(100, DB::table('audits')->count());
+        $this->assertSame('2026-08-20', DB::table('tf_fichas')->where('id_ficha','U1')->value($fecha));
+        $this->assertNull(DB::table('tf_fichas')->where('id_ficha','U2')->value($fecha));
+        $audit = DB::table('audits')->where('auditable_id','U1')->first();
+        $this->assertSame('2025-01-01', json_decode($audit->old_values,true)[$fecha]);
+        $this->assertSame('P'.$rol, json_decode($audit->new_values,true)[$campo]);
+        if ($rol === 4) $this->assertSame('008562',DB::table('tf_fichas')->where('id_ficha','U1')->value('nume_registro'));
+    }
+
     public function test_persona_de_otra_funcion_y_unidad_inexistente_no_se_omiten_silenciosamente(): void
     {
         try {
