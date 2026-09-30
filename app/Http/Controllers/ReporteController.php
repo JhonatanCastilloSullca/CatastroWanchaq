@@ -1344,9 +1344,7 @@ class ReporteController extends Controller
 
     public function importarsupervisor(Request $request)
     {
-        Excel::import(new SupervisorImport(),$request->archivo);
-        return redirect()->route('reporte.exportarsupervisor')
-            ->with('success', 'Archivo agregado Correctamente.');
+        return $this->importarPersonal($request, new SupervisorImport(), 'reporte.exportarsupervisor');
     }
 
     public function exportartecnico()
@@ -1385,9 +1383,7 @@ class ReporteController extends Controller
 
     public function importartecnico(Request $request)
     {
-        Excel::import(new TenicoImport(),$request->archivo);
-        return redirect()->route('reporte.exportartecnico')
-            ->with('success', 'Archivo agregado Correctamente.');
+        return $this->importarPersonal($request, new TenicoImport(), 'reporte.exportartecnico');
     }
 
     public function exportarverificador()
@@ -1427,8 +1423,29 @@ class ReporteController extends Controller
 
     public function importarverificador(Request $request)
     {
-        Excel::import(new VerificadorImport(),$request->archivo);
-        return redirect()->route('reporte.exportarsupervisor')
-            ->with('success', 'Archivo agregado Correctamente.');
+        return $this->importarPersonal($request, new VerificadorImport(), 'reporte.exportarverificador');
     }
+    private function importarPersonal(Request $request, \App\Imports\AsignacionPersonalImport $importacion, string $ruta)
+    {
+        $request->validate(['archivo' => ['required', 'file', 'mimes:xlsx,xls']]);
+        try {
+            DB::transaction(fn () => Excel::import($importacion, $request->file('archivo')));
+        } catch (\Illuminate\Validation\ValidationException $exception) {
+            throw $exception;
+        } catch (\Throwable $exception) {
+            report($exception);
+            $mensaje = 'No se pudo importar el archivo. Se revirtieron los cambios. Revise el registro de errores del servidor.';
+            if ($exception instanceof \Illuminate\Database\QueryException && in_array($exception->errorInfo[0] ?? null, ['55P03', '57014', '40P01'], true)) {
+                $mensaje = 'La base de datos está ocupada o bloqueada. Se revirtieron los cambios de esta carga.';
+            }
+            return $request->expectsJson() ? response()->json(['message' => $mensaje], 422)
+                : redirect()->route($ruta)->with('error', $mensaje);
+        }
+        $resultado = $importacion->resultado();
+        $mensaje = sprintf('Importación terminada: %d filas actualizadas, %d sin cambios y %d sin asignación (omitidas).',
+            $resultado['actualizadas'], $resultado['sin_cambios'], $resultado['omitidas']);
+        return $request->expectsJson() ? response()->json(['message' => $mensaje, 'resultado' => $resultado])
+            : redirect()->route($ruta)->with('success', $mensaje);
+    }
+
 }

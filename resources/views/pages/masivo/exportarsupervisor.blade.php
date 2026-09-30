@@ -114,6 +114,7 @@
                                     Importar archivo Firma Supervisor
                                 </h5>
 
+                                <div id="resultadoImportacion" class="alert d-none" role="status" aria-live="polite"></div>
                                 <form action="{{ route('reporte.importarsupervisor') }}"
                                       method="POST"
                                       enctype="multipart/form-data">
@@ -160,21 +161,4 @@
 
 @endsection
 
-@push('custom-scripts')
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const formularioImportacion = document.querySelector(
-        'form[action="{{ route('reporte.importarsupervisor') }}"]'
-    );
-
-    if (formularioImportacion) {
-        formularioImportacion.addEventListener('submit', function () {
-            const boton = document.getElementById('btnImportar');
-
-            boton.disabled = true;
-            boton.innerHTML = 'Procesando archivo...';
-        });
-    }
-});
-</script>
-@endpush
+@include('pages.masivo.script-importacion', ['rutaImportacion' => 'reporte.importarsupervisor'])

@@ -70,6 +70,29 @@ class CucImportTest extends TestCase
         (new CucImport)->collection(collect([collect(['cod_referencia'=>'001','otro'=>'123'])]));
     }
 
+    public function test_escritura_por_lotes_conserva_valores_previos_y_auditoria(): void
+    {
+        $rows = collect();
+        foreach (range(1, 100) as $numero) {
+            $id = 'U'.$numero;
+            DB::table('tf_uni_cat')->insert(['id_uni_cat'=>$id, 'cuc'=>'ANTERIOR']);
+            DB::table('tf_fichas')->insert(['id_ficha'=>$id, 'id_uni_cat'=>$id, 'cuc'=>'ANTERIOR']);
+            $rows->push(collect(['cod_referencia'=>$id, 'cuc'=>'000000000123']));
+        }
+        DB::enableQueryLog();
+        (new CucImport)->collection($rows);
+        $queries = DB::getQueryLog();
+        DB::disableQueryLog();
+        $this->assertCount(2, array_filter($queries, fn ($q) => str_starts_with(strtolower($q['query']), 'update')));
+        $this->assertCount(2, array_filter($queries, fn ($q) => str_starts_with(strtolower($q['query']), 'insert')));
+        $this->assertSame(200, DB::table('audits')->count());
+        $audit = DB::table('audits')->first();
+        $this->assertSame(['cuc'=>'ANTERIOR'], json_decode($audit->old_values, true));
+        $this->assertSame(['cuc'=>'000000000123'], json_decode($audit->new_values, true));
+        $this->assertSame('updated', $audit->event);
+        $this->assertSame(100, DB::table('tf_fichas')->where('cuc','000000000123')->count());
+    }
+
     public function test_detecta_todos_los_cuc_largos_antes_de_escribir_y_respeta_filas_vacias(): void
     {
         DB::enableQueryLog();

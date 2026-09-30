@@ -65,7 +65,7 @@ class CucImport implements ToCollection, WithHeadingRow
     private function procesarBloque(array $asignaciones, float $inicio): void
     {
         $ids = array_unique(array_column($asignaciones, 'id'));
-        // Dos lecturas por bloque; guardar modelos conserva los eventos y la auditoría.
+        // Lecturas y escrituras por bloque, con auditoría individual de cada cambio.
         $unidades = UniCat::whereIn('id_uni_cat', $ids)->orderBy('id_uni_cat')->lockForUpdate()->get()->keyBy('id_uni_cat');
         $fichas = Ficha::whereIn('id_uni_cat', $ids)->orderBy('id_ficha')->lockForUpdate()->get()->groupBy('id_uni_cat');
         foreach ($asignaciones as $asignacion) {
@@ -81,12 +81,14 @@ class CucImport implements ToCollection, WithHeadingRow
             foreach (collect([$unidad])->concat($fichas->get($asignacion['id'], collect())) as $modelo) {
                 $modelo->cuc = $asignacion['cuc'];
                 if ($modelo->isDirty('cuc')) {
-                    $modelo->save();
                     $cambio = true;
                 }
             }
             $this->resultado[$cambio ? 'actualizadas' : 'sin_cambios']++;
         }
+        app(\App\Services\ActualizarCucMasivoService::class)->guardar(
+            $unidades->values()->concat($fichas->flatMap(fn ($grupo) => $grupo))
+        );
         \Log::info('CUC: bloque procesado', ['segundos' => round(microtime(true) - $inicio, 2), 'resultado' => $this->resultado]);
     }
 
