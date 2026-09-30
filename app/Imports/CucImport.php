@@ -7,18 +7,22 @@ use App\Models\UniCat;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
-use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class CucImport implements ToCollection, WithHeadingRow, SkipsEmptyRows
+class CucImport implements ToCollection, WithHeadingRow
 {
     private array $resultado = ['actualizadas' => 0, 'sin_cambios' => 0, 'sin_cuc' => 0, 'no_encontradas' => 0];
 
     public function collection(Collection $rows): void
     {
         $asignaciones = [];
-        foreach ($rows as $row) {
+        $errores = [];
+        foreach ($rows as $indice => $row) {
+            // Mantener las filas vacías en la lectura conserva el número real del Excel.
+            if ($row->every(fn ($valor) => $valor === null || (is_string($valor) && trim($valor) === ''))) {
+                continue;
+            }
             if (! $row->has('cod_referencia') || ! $row->has('cuc')) {
                 throw ValidationException::withMessages(['archivo' => 'El Excel debe contener las columnas cod_referencia y cuc.']);
             }
@@ -32,7 +36,15 @@ class CucImport implements ToCollection, WithHeadingRow, SkipsEmptyRows
             if (! is_string($referencia) || trim($referencia) === '' || $cuc === '') {
                 throw ValidationException::withMessages(['archivo' => 'Revise los códigos: cod_referencia debe conservarse como texto y el CUC debe contener dígitos.']);
             }
+            if (strlen($cuc) > 12) {
+                $fila = $indice + 2;
+                $errores[] = "Fila {$fila}, referencia {$referencia}: el CUC «{$valor}» contiene ".strlen($cuc).' dígitos; el máximo permitido es 12. Corrija el código en el Excel.';
+                continue;
+            }
             $asignaciones[] = ['id' => trim($referencia), 'cuc' => $cuc];
+        }
+        if ($errores !== []) {
+            throw ValidationException::withMessages(['archivo' => $errores]);
         }
         if ($asignaciones === []) {
             return;

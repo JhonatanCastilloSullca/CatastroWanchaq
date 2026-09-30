@@ -70,6 +70,30 @@ class CucImportTest extends TestCase
         (new CucImport)->collection(collect([collect(['cod_referencia'=>'001','otro'=>'123'])]));
     }
 
+    public function test_detecta_todos_los_cuc_largos_antes_de_escribir_y_respeta_filas_vacias(): void
+    {
+        DB::enableQueryLog();
+        try {
+            (new CucImport)->collection(collect([
+                collect(['cod_referencia'=>'001', 'cuc'=>'27240027-0001']),
+                collect(['cod_referencia'=>null, 'cuc'=>null]),
+                collect(['cod_referencia'=>'001', 'cuc'=>'27240027-00000']),
+                collect(['cod_referencia'=>'002', 'cuc'=>'27240117 00001']),
+            ]));
+            $this->fail('Debe rechazar ambos códigos de 13 dígitos.');
+        } catch (ValidationException $exception) {
+            $this->assertCount(2, $exception->errors()['archivo']);
+            $this->assertStringContainsString('Fila 4', $exception->errors()['archivo'][0]);
+            $this->assertStringContainsString('Fila 5', $exception->errors()['archivo'][1]);
+            $this->assertCount(0, DB::getQueryLog());
+        } finally {
+            DB::disableQueryLog();
+        }
+        $this->assertSame('0011', DB::table('tf_uni_cat')->where('id_uni_cat','001')->value('cuc'));
+        (new CucImport)->collection(collect([collect(['cod_referencia'=>'001','cuc'=>'27240027-0001'])]));
+        $this->assertSame('272400270001', DB::table('tf_uni_cat')->where('id_uni_cat','001')->value('cuc'));
+    }
+
     public function test_fallo_de_base_en_segundo_bloque_revierte_tambien_la_auditoria(): void
     {
         DB::statement("CREATE TRIGGER fallo_cuc BEFORE UPDATE ON tf_uni_cat WHEN NEW.id_uni_cat = '002' BEGIN SELECT RAISE(ABORT, 'fallo simulado'); END");
