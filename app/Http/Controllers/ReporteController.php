@@ -1279,19 +1279,26 @@ class ReporteController extends Controller
     {
         $request->validate(['archivo' => ['required', 'file', 'mimes:xlsx,xls']]);
         $importacion = new CucImport();
+        $inicio = microtime(true);
+        \Log::info('CUC: inicio de importación', ['bytes' => $request->file('archivo')->getSize()]);
         try {
             // También revierte bloques anteriores si una fila posterior falla.
             DB::transaction(fn () => Excel::import($importacion, $request->file('archivo')));
         } catch (\Illuminate\Validation\ValidationException $exception) {
+            \Log::warning('CUC: importación revertida', ['segundos' => round(microtime(true) - $inicio, 2)]);
             throw $exception;
         } catch (\Throwable $exception) {
             report($exception);
             $mensaje = 'No se pudo importar el archivo. No se guardaron cambios. Revise el Excel e intente nuevamente.';
+            if ($exception instanceof \Illuminate\Database\QueryException && in_array($exception->errorInfo[0] ?? null, ['55P03', '57014', '40P01'], true)) {
+                $mensaje = 'La base de datos está ocupada o bloqueada por otra operación. Se revirtieron los cambios de esta carga. Revise las operaciones activas del servidor antes de reintentar.';
+            }
             return $request->expectsJson()
                 ? response()->json(['message' => $mensaje], 422)
                 : redirect()->route('reporte.exportarcuc')->with('error', $mensaje);
         }
         $resultado = $importacion->resultado();
+        \Log::info('CUC: importación completada', ['segundos' => round(microtime(true) - $inicio, 2), 'resultado' => $resultado]);
         $mensaje = sprintf('Importación terminada: %d filas actualizadas, %d sin cambios, %d sin CUC (omitidas) y %d unidades no encontradas.',
             $resultado['actualizadas'], $resultado['sin_cambios'], $resultado['sin_cuc'], $resultado['no_encontradas']);
         if ($request->expectsJson()) {

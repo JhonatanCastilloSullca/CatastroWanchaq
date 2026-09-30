@@ -178,9 +178,16 @@ document.addEventListener('DOMContentLoaded', function () {
             resultado.className = 'alert d-none';
             boton.disabled = true;
             boton.innerHTML = 'Procesando archivo...';
+            const controller = new AbortController();
+            const inicio = Date.now();
+            const contador = setInterval(() => {
+                boton.textContent = 'Procesando archivo... ' + Math.floor((Date.now() - inicio) / 1000) + ' s';
+            }, 1000);
+            const limite = setTimeout(() => controller.abort(), 120000);
             try {
                 const response = await fetch(formularioImportacion.action, {
                     method: 'POST',
+                    signal: controller.signal,
                     body: new FormData(formularioImportacion),
                     headers: { 'Accept': 'application/json' }
                 });
@@ -194,8 +201,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 resultado.textContent = json.message;
             } catch (error) {
                 resultado.className = 'alert alert-danger';
-                resultado.textContent = error.message || 'No se pudo conectar con el servidor. Revise el resultado antes de volver a importar.';
+                resultado.textContent = error.name === 'AbortError'
+                    ? 'El servidor no respondió en 2 minutos. Esto no confirma que la carga se haya cancelado. Revise el resultado y el registro CUC del servidor antes de repetirla.'
+                    : (error.message || 'No se pudo conectar con el servidor. Revise el resultado antes de volver a importar.');
             } finally {
+                clearInterval(contador);
+                clearTimeout(limite);
                 boton.disabled = false;
                 boton.innerHTML = etiqueta;
             }

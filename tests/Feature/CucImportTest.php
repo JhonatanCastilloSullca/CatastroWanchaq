@@ -70,6 +70,21 @@ class CucImportTest extends TestCase
         (new CucImport)->collection(collect([collect(['cod_referencia'=>'001','otro'=>'123'])]));
     }
 
+    public function test_fallo_de_base_en_segundo_bloque_revierte_tambien_la_auditoria(): void
+    {
+        DB::statement("CREATE TRIGGER fallo_cuc BEFORE UPDATE ON tf_uni_cat WHEN NEW.id_uni_cat = '002' BEGIN SELECT RAISE(ABORT, 'fallo simulado'); END");
+        $rows = collect(range(1, 500))->map(fn () => collect(['cod_referencia' => '001', 'cuc' => '9999']));
+        $rows->push(collect(['cod_referencia' => '002', 'cuc' => '8888']));
+        try {
+            (new CucImport)->collection($rows);
+            $this->fail('La segunda actualización debe fallar.');
+        } catch (\Illuminate\Database\QueryException $exception) {
+            $this->assertSame('0011', DB::table('tf_uni_cat')->where('id_uni_cat', '001')->value('cuc'));
+            $this->assertSame('old', DB::table('tf_fichas')->where('id_ficha', 'F2')->value('cuc'));
+            $this->assertSame(0, DB::table('audits')->count());
+        }
+    }
+
     public function test_error_en_bloque_posterior_revierte_archivo_completo(): void
     {
         $book=new Spreadsheet;
