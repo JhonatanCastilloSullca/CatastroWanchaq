@@ -11,7 +11,7 @@ use Mpdf\Mpdf;
 
 class LoteEnlacesController extends Controller
 {
-    private const ARCHIVOS = ['imagen1', 'imagen2', 'imagen3', 'rentas', 'sunarp', 'plano'];
+    private const ARCHIVOS = ['rentas', 'sunarp'];
 
     public function index(Lote $lote)
     {
@@ -21,13 +21,19 @@ class LoteEnlacesController extends Controller
             ->with('archivos')->orderBy('id_uni_cat')->orderBy('id_ficha')
             ->get(['id_ficha', 'id_uni_cat', 'tipo_ficha']);
         $salida = [];
+        $archivosLote = [];
+        foreach (self::ARCHIVOS as $campo) {
+            if ($this->rutaArchivoDisponible($this->nombreArchivoLote($lote, $campo)) !== null) {
+                $archivosLote[$campo] = route('api.rentas.lote.adjunto', ['lote' => $lote->id_lote, 'campo' => $campo]);
+            }
+        }
         foreach ($fichas->groupBy('id_uni_cat') as $unicat => $grupo) {
             // Solo una individual activa habilita una fila de la tabla.
             if (! $grupo->contains(fn ($ficha) => trim($ficha->tipo_ficha) === '01')) {
                 continue;
             }
             $fila = ['unicat' => (string) $unicat, 'ficha_individual' => [], 'cotitulares' => [],
-                'economicas' => [], 'archivos' => [], 'pu' => []];
+                'economicas' => [], 'archivos' => array_values($archivosLote), 'pu' => []];
             foreach ($grupo as $ficha) {
                 $tipo = trim($ficha->tipo_ficha);
                 $params = ['lote' => $lote->id_lote, 'ficha' => $ficha->id_ficha];
@@ -39,7 +45,7 @@ class LoteEnlacesController extends Controller
                 }
                 foreach ($ficha->archivos as $archivo) {
                     foreach (self::ARCHIVOS as $campo) {
-                        if (filled($archivo->$campo)) {
+                        if (!isset($archivosLote[$campo]) && $this->rutaArchivoDisponible($archivo->$campo) !== null) {
                             $fila['archivos'][] = route('api.rentas.ficha.adjunto', $params + ['archivo' => $archivo->id, 'campo' => $campo]);
                         }
                     }
@@ -72,10 +78,36 @@ class LoteEnlacesController extends Controller
             ->whereIn(\DB::raw('TRIM(tipo_ficha)'), ['01', '02', '03'])->firstOrFail();
         $registro = $ficha->archivos()->where('id', $archivo)->firstOrFail();
         $nombre = $registro->$campo;
-        abort_unless(is_string($nombre) && $nombre !== '' && !str_contains($nombre, "\0")
-            && basename(str_replace('\\', '/', $nombre)) === $nombre, 404);
-        $ruta = 'img/archivos/'.$nombre;
-        abort_unless(Storage::exists($ruta), 404, 'El archivo no se encuentra disponible.');
+        $ruta = $this->rutaArchivoDisponible($nombre);
+        abort_if($ruta === null, 404, 'El archivo no se encuentra disponible.');
         return Storage::download($ruta, $nombre, ['Cache-Control' => 'private, no-store', 'X-Content-Type-Options' => 'nosniff']);
+    }
+
+    public function archivoLote(Lote $lote, string $campo)
+    {
+        abort_unless(in_array($campo, self::ARCHIVOS, true), 404);
+        $nombre = $this->nombreArchivoLote($lote, $campo);
+        $ruta = $this->rutaArchivoDisponible($nombre);
+        abort_if($ruta === null, 404, 'El archivo no se encuentra disponible.');
+
+        return Storage::download($ruta, $nombre, ['Cache-Control' => 'private, no-store', 'X-Content-Type-Options' => 'nosniff']);
+    }
+
+    private function nombreArchivoLote(Lote $lote, string $campo): string
+    {
+        return trim((string) $lote->id_lote).'-'.$campo.'.pdf';
+    }
+
+    private function rutaArchivoDisponible(?string $nombre): ?string
+    {
+        if (!filled($nombre) || str_contains($nombre, "\0")
+            || in_array($nombre, ['.', '..'], true)
+            || basename(str_replace('\\', '/', $nombre)) !== $nombre) {
+            return null;
+        }
+
+        $ruta = 'img/archivos/'.$nombre;
+
+        return Storage::disk()->fileExists($ruta) ? $ruta : null;
     }
 }

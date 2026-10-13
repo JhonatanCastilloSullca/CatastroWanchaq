@@ -11,6 +11,27 @@ use Tests\TestCase;
 
 class RentasPdfApiTest extends TestCase
 {
+    public function test_documentos_del_lote_se_comparten_sin_registros_en_bd_y_validan_existencia(): void
+    {
+        foreach (['rentas', 'sunarp'] as $campo) {
+            Storage::put('img/archivos/001-'.$campo.'.pdf', '%PDF-'.$campo);
+        }
+        DB::table('archivos')->insert(['id_ficha' => 'F1', 'rentas' => 'anterior.pdf']);
+        Storage::put('img/archivos/anterior.pdf', '%PDF-anterior');
+        $response = $this->getJson('/api/rentas/lotes/001/enlaces')->assertOk()
+            ->assertJsonCount(2, '0.archivos')->assertJsonCount(2, '1.archivos');
+        $this->assertSame($response->json('0.archivos'), $response->json('1.archivos'));
+        foreach (['rentas', 'sunarp'] as $indice => $campo) {
+            $this->get($response->json('0.archivos.'.$indice))->assertOk()->assertDownload('001-'.$campo.'.pdf');
+        }
+        $this->getJson('/api/rentas/lotes/999/archivos/rentas')->assertNotFound();
+        $this->getJson('/api/rentas/lotes/001/archivos/plano')->assertNotFound();
+        Storage::delete('img/archivos/001-sunarp.pdf');
+        $this->getJson('/api/rentas/lotes/001/enlaces')->assertOk()
+            ->assertJsonCount(1, '0.archivos')->assertJsonCount(1, '1.archivos');
+        $this->getJson($response->json('0.archivos.1'))->assertNotFound();
+    }
+
     public function test_pu_recupera_todos_los_cotitulares_solo_de_la_misma_unidad_y_lote(): void
     {
         DB::statement('CREATE TABLE tf_titulares (id_ficha TEXT, id_persona TEXT, nume_titular TEXT, cond_titular TEXT)');
@@ -65,6 +86,36 @@ class RentasPdfApiTest extends TestCase
         DB::table('tf_fichas')->update(['activo'=>'0']);
         $this->getJson('/api/rentas/lotes/001/enlaces')->assertOk()->assertExactJson([]);
         $this->getJson('/api/rentas/lotes/999/enlaces')->assertNotFound();
+    }
+
+    public function test_adjuntos_solo_incluyen_sunarp_y_rentas_existentes(): void
+    {
+        DB::table('archivos')->insert([
+            'id' => 1, 'id_ficha' => 'F1', 'rentas' => 'rentas.pdf', 'sunarp' => 'sunarp.pdf',
+            'imagen1' => 'foto.jpg', 'imagen2' => 'foto.jpg', 'imagen3' => 'foto.jpg', 'plano' => 'plano.pdf',
+        ]);
+        foreach (['rentas.pdf', 'sunarp.pdf', 'foto.jpg', 'plano.pdf'] as $nombre) {
+            Storage::put('img/archivos/'.$nombre, 'contenido');
+        }
+
+        $response = $this->getJson('/api/rentas/lotes/001/enlaces')->assertOk()->assertJsonCount(2, '0.archivos');
+        foreach (['rentas', 'sunarp'] as $indice => $campo) {
+            $this->assertStringEndsWith('/'.$campo, $response->json('0.archivos.'.$indice));
+            $this->get($response->json('0.archivos.'.$indice))->assertOk()->assertDownload($campo.'.pdf');
+        }
+        foreach (['imagen1', 'imagen2', 'imagen3', 'plano'] as $campo) {
+            $this->getJson('/api/rentas/lotes/001/fichas/F1/archivos/1/'.$campo)->assertNotFound();
+        }
+
+        Storage::delete('img/archivos/rentas.pdf');
+        $this->getJson('/api/rentas/lotes/001/enlaces')->assertOk()->assertJsonCount(1, '0.archivos');
+        $this->getJson($response->json('0.archivos.0'))->assertNotFound();
+        Storage::delete('img/archivos/sunarp.pdf');
+        $this->getJson('/api/rentas/lotes/001/enlaces')->assertOk()->assertJsonPath('0.archivos', []);
+
+        Storage::put('privado.pdf', 'contenido');
+        DB::table('archivos')->update(['rentas' => '../privado.pdf', 'sunarp' => '..\\privado.pdf']);
+        $this->getJson('/api/rentas/lotes/001/enlaces')->assertOk()->assertJsonPath('0.archivos', []);
     }
 
     public function test_unicat_sin_individual_no_aparece_y_varias_individuales_no_duplican_fila(): void
@@ -131,7 +182,7 @@ class RentasPdfApiTest extends TestCase
         Storage::fake('rentas_test');
         DB::statement('CREATE TABLE tf_lotes (id_lote TEXT PRIMARY KEY)');
         DB::statement('CREATE TABLE tf_fichas (id_ficha TEXT PRIMARY KEY, id_lote TEXT, tipo_ficha TEXT, activo TEXT, nume_ficha TEXT, id_uni_cat TEXT)');
-        DB::statement('CREATE TABLE archivos (id INTEGER PRIMARY KEY, id_ficha TEXT, rentas TEXT)');
+        DB::statement('CREATE TABLE archivos (id INTEGER PRIMARY KEY, id_ficha TEXT, rentas TEXT, sunarp TEXT, imagen1 TEXT, imagen2 TEXT, imagen3 TEXT, plano TEXT)');
         DB::table('tf_lotes')->insert(['id_lote' => '001']);
         foreach (['F1', 'F2'] as $id) {
             DB::table('tf_fichas')->insert(['id_ficha' => $id, 'id_lote' => '001', 'tipo_ficha' => '01', 'activo' => '1', 'id_uni_cat' => $id, 'nume_ficha' => $id]);
