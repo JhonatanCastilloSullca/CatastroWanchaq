@@ -11,6 +11,25 @@ use Tests\TestCase;
 
 class RentasPdfApiTest extends TestCase
 {
+    public function test_documentos_con_codigo_corto_respetan_ubigeo_y_priorizan_id_completo(): void
+    {
+        config(['rentas.ubigeo_archivos' => '080108']);
+        DB::table('tf_lotes')->insert([['id_lote' => '08010801023016'], ['id_lote' => '08010101023016']]);
+        DB::table('tf_fichas')->update(['id_lote' => '08010801023016']);
+        Storage::put('img/archivos/01023016-rentas.pdf', '%PDF-corto');
+        Storage::put('img/archivos/01023016-sunarp.pdf', '%PDF-corto');
+        $response = $this->getJson('/api/rentas/lotes/08010801023016/enlaces')->assertOk()
+            ->assertJsonCount(2, '0.archivos')->assertJsonCount(2, '1.archivos');
+        $this->assertSame($response->json('0.archivos'), $response->json('1.archivos'));
+        $this->get($response->json('0.archivos.0'))->assertOk()->assertDownload('01023016-rentas.pdf');
+        $this->getJson('/api/rentas/lotes/08010101023016/archivos/rentas')->assertNotFound();
+        Storage::put('img/archivos/08010801023016-rentas.pdf', '%PDF-completo');
+        $this->get($response->json('0.archivos.0'))->assertOk()->assertDownload('08010801023016-rentas.pdf');
+        Storage::delete(['img/archivos/01023016-sunarp.pdf']);
+        $this->getJson('/api/rentas/lotes/08010801023016/enlaces')->assertOk()->assertJsonCount(1, '0.archivos');
+        $this->getJson($response->json('0.archivos.1'))->assertNotFound();
+    }
+
     public function test_documentos_del_lote_se_comparten_sin_registros_en_bd_y_validan_existencia(): void
     {
         foreach (['rentas', 'sunarp'] as $campo) {

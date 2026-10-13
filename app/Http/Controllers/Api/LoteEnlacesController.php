@@ -23,7 +23,7 @@ class LoteEnlacesController extends Controller
         $salida = [];
         $archivosLote = [];
         foreach (self::ARCHIVOS as $campo) {
-            if ($this->rutaArchivoDisponible($this->nombreArchivoLote($lote, $campo)) !== null) {
+            if ($this->nombreArchivoLote($lote, $campo) !== null) {
                 $archivosLote[$campo] = route('api.rentas.lote.adjunto', ['lote' => $lote->id_lote, 'campo' => $campo]);
             }
         }
@@ -93,9 +93,22 @@ class LoteEnlacesController extends Controller
         return Storage::download($ruta, $nombre, ['Cache-Control' => 'private, no-store', 'X-Content-Type-Options' => 'nosniff']);
     }
 
-    private function nombreArchivoLote(Lote $lote, string $campo): string
+    private function nombreArchivoLote(Lote $lote, string $campo): ?string
     {
-        return trim((string) $lote->id_lote).'-'.$campo.'.pdf';
+        $id = trim((string) $lote->id_lote);
+        $nombres = [$id.'-'.$campo.'.pdf'];
+        $ubigeo = (string) config('rentas.ubigeo_archivos', '080108');
+        // Los documentos históricos usan sector (2), manzana (3) y lote (3).
+        if (preg_match('/^[0-9]{14}$/D', $id) && strlen($ubigeo) === 6 && str_starts_with($id, $ubigeo)) {
+            $nombres[] = substr($id, 6).'-'.$campo.'.pdf';
+        }
+        foreach ($nombres as $nombre) {
+            if ($this->rutaArchivoDisponible($nombre) !== null) {
+                return $nombre;
+            }
+        }
+
+        return null;
     }
 
     private function rutaArchivoDisponible(?string $nombre): ?string
