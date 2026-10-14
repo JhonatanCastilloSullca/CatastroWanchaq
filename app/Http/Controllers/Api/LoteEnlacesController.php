@@ -95,32 +95,11 @@ class LoteEnlacesController extends Controller
 
     private function nombreArchivoLote(Lote $lote, string $campo): ?string
     {
-        $id = trim((string) $lote->id_lote);
-        $nombres = [$id.'-'.$campo.'.pdf'];
-        $ubigeo = (string) config('rentas.ubigeo_archivos', '080108');
-        // Los documentos históricos usan sector (2), manzana (3) y lote (3).
-        if (preg_match('/^[0-9]{14}$/D', $id) && strlen($ubigeo) === 6 && str_starts_with($id, $ubigeo)) {
-            $nombres[] = substr($id, 6).'-'.$campo.'.pdf';
-        }
-        foreach ($nombres as $nombre) {
-            if ($this->rutaArchivoDisponible($nombre) !== null) {
-                return $nombre;
-            }
-        }
-
-        return null;
+        return app(\App\Services\DocumentoLoteService::class)->nombreDisponible((string) $lote->id_lote, $campo);
     }
 
     private function rutaArchivoDisponible(?string $nombre): ?string
     {
-        if (!filled($nombre) || str_contains($nombre, "\0")
-            || in_array($nombre, ['.', '..'], true)
-            || basename(str_replace('\\', '/', $nombre)) !== $nombre) {
-            return null;
-        }
-
-        $ruta = 'img/archivos/'.$nombre;
-
-        return Storage::disk()->fileExists($ruta) ? $ruta : null;
+        return app(\App\Services\DocumentoLoteService::class)->rutaDisponible($nombre);
     }
 }

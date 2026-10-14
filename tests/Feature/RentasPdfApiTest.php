@@ -11,6 +11,22 @@ use Tests\TestCase;
 
 class RentasPdfApiTest extends TestCase
 {
+    public function test_modal_no_permite_eliminar_un_documento_compartido_del_lote(): void
+    {
+        Storage::put('img/archivos/001-rentas.pdf', '%PDF-compartido');
+        $request = \Illuminate\Http\Request::create('/imagenes/test', 'DELETE', [
+            'id_eliminar' => 'F1', 'tipo_eliminar' => 'pdfrentas',
+        ]);
+        try {
+            (new \App\Http\Controllers\ImagenesController)->destroy($request);
+            $this->fail('El documento compartido debe estar protegido.');
+        } catch (\Illuminate\Validation\ValidationException $exception) {
+            $this->assertArrayHasKey('pdfrentas', $exception->errors());
+        }
+        Storage::assertExists('img/archivos/001-rentas.pdf');
+        $this->assertSame(0, DB::table('archivos')->count());
+    }
+
     public function test_documentos_con_codigo_corto_respetan_ubigeo_y_priorizan_id_completo(): void
     {
         config(['rentas.ubigeo_archivos' => '080108']);

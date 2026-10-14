@@ -8,19 +8,21 @@ use App\Models\Sectore;
 use App\Models\Manzana;
 use App\Models\Ficha;
 use App\Models\FichaIndividual;
+use App\Services\DocumentoLoteService;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use DB;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Validation\ValidationException;
 
 class ImagenesController extends Controller
 {
     public function __construct()
     {
 
-        $this->middleware('can:imagenes')->only('ver,store');
+        $this->middleware('can:imagenes')->only(['ver', 'store', 'destroy']);
     }
 
      public function ver(Request $request)
@@ -53,15 +55,35 @@ class ImagenesController extends Controller
             });
         }
 
-        $ficha = $ficha->orderby('nume_ficha')->get();
+        $ficha = $ficha->with(['fichaindividual', 'archivo', 'lote.manzana.sectore'])->orderby('nume_ficha')->get();
+        $documentos = app(DocumentoLoteService::class);
+        $documentosLote = [];
+        foreach ($ficha->pluck('id_lote')->unique() as $idLote) {
+            foreach (['sunarp', 'rentas'] as $campo) {
+                $documentosLote[$idLote][$campo] = $documentos->nombreDisponible((string) $idLote, $campo);
+            }
+        }
+        $adjuntosFicha = [];
+        foreach ($ficha as $registro) {
+            foreach (['sunarp', 'rentas'] as $campo) {
+                $nombre = $registro->archivo?->$campo;
+                $adjuntosFicha[$registro->id_ficha][$campo] = $documentos->rutaDisponible($nombre) !== null ? $nombre : null;
+            }
+        }
         $total = 0;
         $base = asset('storage/img/');
 
-        return view('pages.imagenes.ver', compact('sectores', 'manzanas', 'ficha', 'sector2', 'manzana2','ficha2','base'));
+        return view('pages.imagenes.ver', compact('sectores', 'manzanas', 'ficha', 'sector2', 'manzana2','ficha2','base', 'documentosLote', 'adjuntosFicha'));
     }
 
     public function store(Request $request)
     {
+        $ficha = Ficha::where('id_ficha', $request->id_ficha)->firstOrFail();
+        foreach (['sunarp', 'rentas'] as $campo) {
+            if ($request->hasFile('pdf'.$campo)) {
+                $this->validarAdjuntoDeFicha($ficha, $campo);
+            }
+        }
         $fichaindividual = FichaIndividual::where('id_ficha',$request->id_ficha)->first();
         $archivo = Archivo::where('id_ficha',$request->id_ficha)->first();
         if(!$archivo){
@@ -123,6 +145,10 @@ class ImagenesController extends Controller
 
     public function destroy(Request $request)
     {
+        if (in_array($request->tipo_eliminar, ['pdfsunarp', 'pdfrentas'], true)) {
+            $ficha = Ficha::where('id_ficha', $request->id_eliminar)->firstOrFail();
+            $this->validarAdjuntoDeFicha($ficha, substr($request->tipo_eliminar, 3));
+        }
         $fichaindividual = FichaIndividual::where('id_ficha',$request->id_eliminar)->first();
         $archivo = Archivo::where('id_ficha',$request->id_eliminar)->first();
         if($request->tipo_eliminar == "fachada"){
@@ -190,5 +216,14 @@ class ImagenesController extends Controller
             $archivo->save();
         }
         return redirect()->back()->with('success', 'Imagen Eliminado Correctamente!');
+    }
+
+    private function validarAdjuntoDeFicha(Ficha $ficha, string $campo): void
+    {
+        if (app(DocumentoLoteService::class)->nombreDisponible((string) $ficha->id_lote, $campo) !== null) {
+            throw ValidationException::withMessages([
+                'pdf'.$campo => 'Este documento pertenece a todo el lote y no se puede modificar desde una ficha individual.',
+            ]);
+        }
     }
 }

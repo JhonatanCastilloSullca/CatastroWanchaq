@@ -72,7 +72,8 @@
                                 <td>
                                     <button type="button" class="btn btn-success btn-icon " data-bs-toggle="modal" data-bs-target="#Agregar" data-id="{{$ficha->id_ficha}}"
                                         data-fachada="{{$ficha->fichaindividual->imagen_lote}}" data-plano="{{$ficha->fichaindividual->imagen_plano}}" data-imagen1="{{$ficha->archivo?->imagen1}}" data-imagen2="{{$ficha->archivo?->imagen2}}"
-                                        data-imagen3="{{$ficha->archivo?->imagen3}}" data-sunarpdf="{{$ficha->archivo?->sunarp}}" data-rentaspdf="{{$ficha->archivo?->rentas}}" data-planopdf="{{$ficha->archivo?->plano}}">
+                                        data-imagen3="{{$ficha->archivo?->imagen3}}" data-sunarpdf="{{$documentosLote[$ficha->id_lote]['sunarp'] ?? $adjuntosFicha[$ficha->id_ficha]['sunarp'] ?? ''}}" data-rentaspdf="{{$documentosLote[$ficha->id_lote]['rentas'] ?? $adjuntosFicha[$ficha->id_ficha]['rentas'] ?? ''}}" data-planopdf="{{$ficha->archivo?->plano}}"
+                                        data-sunarp-lote="{{!empty($documentosLote[$ficha->id_lote]['sunarp']) ? '1' : '0'}}" data-rentas-lote="{{!empty($documentosLote[$ficha->id_lote]['rentas']) ? '1' : '0'}}">
                                         <i data-feather="image"></i>
                                     </button>
                                 </td>
@@ -207,6 +208,7 @@
                     </div>
                     <div class="col-md-5">
                         <label for="pdfsunarp" class="form-label">PDF SUNARP:</label>
+                        <p id="sunarp-compartido" class="text-muted small" hidden>Documento compartido del lote, disponible para todas sus fichas. Su reemplazo o eliminación afecta a todo el lote.</p>
                         <input type="file" class="form-control pdfsunarp" id="pdfsunarp" name="pdfsunarp" value="{{old('pdfsunarp')}}">
                         @error('pdfsunarp')
                             <span class="error-message" style="color:red">{{ $message }}</span>
@@ -224,6 +226,7 @@
                     </div>
                     <div class="col-md-5 mb-3">
                         <label for="pdfrentas" class="form-label">PDF RENTAS:</label>
+                        <p id="rentas-compartido" class="text-muted small" hidden>Documento compartido del lote, disponible para todas sus fichas. Su reemplazo o eliminación afecta a todo el lote.</p>
                         <input type="file"  class="form-control pdfrentas" id="pdfrentas" name="pdfrentas" value="{{old('pdfrentas')}}">
                         @error('pdfrentas')
                             <span class="error-message" style="color:red">{{ $message }}</span>
@@ -370,6 +373,14 @@ $(document).ready(function () {
             '#eliminarimagenpdfrentas',
             '{{$base}}/archivos/'
         );
+        for (const campo of ['sunarp', 'rentas']) {
+            const compartido = button.getAttribute('data-' + campo + '-lote') === '1';
+            $('#pdf' + campo).prop('disabled', compartido);
+            $('#' + campo + '-compartido').prop('hidden', !compartido);
+            if (compartido) {
+                $('#eliminarimagenpdf' + campo).hide();
+            }
+        }
     });
 });
 
